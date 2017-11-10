@@ -1,0 +1,285 @@
+<?php
+class ci_autoevaluacion extends planta_ci
+{
+	//-------------------------------------------------------------------------
+	function relacion()
+	{
+		return $this->dep('relacion');
+	}
+	
+	//-------------------------------------------------------------------------
+	function tabla($id)
+	{
+		return $this->dep('relacion')->tabla($id);    
+	}
+	
+	//-----------------------------------------------------------------------------------    
+	//---- form_ficha -------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__form_ficha(planta_ei_formulario $form)
+	{
+		$persona = toba::memoria()->get_dato('persona');
+		$ciclo = toba::memoria()->get_dato('ciclo');
+		$this->tabla('autoevaluaciones')->cargar(array('persona'=>$persona,'ciclo_lectivo'=>$ciclo));
+		$datos = $this->tabla('autoevaluaciones')->get();
+		
+		// si esta cargada la ficha docente armo el link para descarga
+		if ($datos['ficha_docente'] == 'S') {
+			// el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
+			$nombre = substr($datos['ficha_docente_path'],19);
+			$dir_tmp = toba::proyecto()->get_www_temp();
+			exec("cp '". $datos['ficha_docente_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
+			$tamanio = round(filesize($temp_archivo['path']) / 1024);
+			$datos['ficha_docente_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";
+			$datos['archivo'] = $nombre. ' - Tam.: '.$tamanio. ' KB';  
+	
+			// si la ficha esta confirmada pongo en solo lectura el archivo y confirmado
+			if ($datos['confirmado'] == 'S') {
+				$form->ef('archivo')->set_solo_lectura(true);
+				$form->ef('confirmado')->set_solo_lectura(true); 
+				$form->evento('guardar')->desactivar();
+			}  
+			// si la ficha NO esta confirmada
+			else {
+				$this->evento('constancia')->desactivar();
+				$confirma_act = toba::consulta_php('co_autoevaluaciones')->get_actividades_sin_confirmar($persona);
+				if ($confirma_act[0]['confirmado'] == 'N') {
+					// si todavia no confirmo sus actividades
+					$form->ef('confirmado')->set_solo_lectura(true);
+				}
+			}
+		} else {
+			// si la ficha NO esta cargada desactivamos el boton siguiente            
+			$form->evento('siguiente')->desactivar();
+			$this->evento('constancia')->desactivar();
+		}
+		$form->set_datos($datos);
+	}
+
+	function evt__form_ficha__guardar($datos)
+	{
+		$ciclo = toba::memoria()->get_dato('ciclo');
+		$persona = toba::memoria()->get_dato('persona');
+		if (isset($datos['archivo'])) {
+			$nombre_archivo = $datos['archivo']['name'];
+			$doc = toba::consulta_php('co_personas')->get_datos_persona($persona);
+			$nombre_nuevo = 'FD_'.$doc['documento'].'.pdf';   
+			$destino = '/home/fce/informes/'.$nombre_nuevo;
+			// Mover los archivos subidos al servidor del directorio temporal PHP a uno propio.
+			move_uploaded_file($datos['archivo']['tmp_name'], $destino); 
+						
+			$control['persona'] = $persona;
+			$control['ficha_docente'] = 'S';  
+			$control['ficha_docente_path'] = $destino;   
+			$control['ciclo_lectivo'] = $ciclo;
+
+			if ($datos['confirmado'] == 'S') {
+				$control['confirmado'] = $datos['confirmado'];
+				$control['confirmado_fecha'] = date('Y-m-d');
+				$control['validacion'] = rand(10000,99999);
+			}  
+			$this->tabla('autoevaluaciones')->set($control);
+			$this->tabla('autoevaluaciones')->sincronizar();
+			$this->set_pantalla('pant_cuadro');
+		}      
+	}
+	
+	function evt__form_ficha__siguiente($datos)
+	{
+		$this->set_pantalla('pant_cuadro');
+	}    
+		
+	//-----------------------------------------------------------------------------------
+	//---- cuadro_act -------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__cuadro_act(planta_ei_cuadro $cuadro)
+	{
+		$persona = toba::memoria()->get_dato('persona');
+		$nombre = toba::memoria()->get_dato('nombre');
+		$cuadro->set_titulo('Docente: '.$nombre);
+		$ciclo = toba::memoria()->get_dato('ciclo');
+		$datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluaciones_por_act_persona($persona, $ciclo);
+	
+		$aux = array();
+		foreach ($datos as $i) {
+			if ($i['confirmado'] == 'S') {
+				$i['imagen'] = toba_recurso::imagen_toba('tilde.gif', true);
+			} else {
+				$i['imagen'] = toba_recurso::imagen_toba('vacio.png', true);
+			}
+			$aux[] = $i;
+		}
+		$cuadro->set_datos($aux);        
+	}
+
+	function evt__cuadro_act__seleccion($seleccion)
+	{
+		$this->tabla('autoevaluaciones_por_act')->cargar($seleccion);
+		$datos = $this->tabla('autoevaluaciones_por_act')->get();
+		
+		if ($datos['responsable'] == 'S') {
+			$this->set_pantalla('pant_form_resp');
+		} else {
+			$this->set_pantalla('pant_form');
+		}        
+	}
+
+	function evt__cuadro_act__volver($datos)
+	{
+		$this->tabla('autoevaluaciones_por_act')->resetear();
+		$this->set_pantalla('pant_inicial');
+	}
+
+	//-----------------------------------------------------------------------------------
+	//---- form_act ---------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__form_act(planta_ei_formulario $form)
+	{   
+		$datos = $this->tabla('autoevaluaciones_por_act')->get();
+		if ($datos['confirmado'] == 'S') {
+			$form->evento('modificacion')->desactivar(); 
+		}
+		$form->set_datos($datos);              
+	}
+
+	function evt__form_act__modificacion($datos)
+	{
+		$this->tabla('autoevaluaciones_por_act')->set($datos);
+		$this->tabla('autoevaluaciones_por_act')->sincronizar();
+		$this->tabla('autoevaluaciones_por_act')->resetear();
+		$this->set_pantalla('pant_cuadro');
+	}
+
+	function evt__form_act__cancelar()
+	{
+		$this->tabla('autoevaluaciones_por_act')->resetear();
+		$this->set_pantalla('pant_cuadro');
+	}
+
+	//-----------------------------------------------------------------------------------
+	//---- form_resp --------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__form_resp(planta_ei_formulario $form)
+	{
+		$datos = $this->tabla('autoevaluaciones_por_act')->get();
+		
+		if ($datos['dimension_desc'] != 'DO') {
+			$form->ef('informe_catedra_archivo')->set_solo_lectura(true);
+			$form->ef('programa_archivo')->set_solo_lectura(true);
+		}
+		if ($datos['informe_catedra'] == 'S') {
+			// el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
+			$nombre = substr($datos['informe_catedra_path'],19);
+			$dir_tmp = toba::proyecto()->get_www_temp();
+			exec("cp '". $datos['informe_catedra_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
+			$tamanio = round(filesize($temp_archivo['path']) / 1024);
+			$datos['informe_catedra_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";
+			$datos['informe_catedra_archivo'] = $nombre. ' - Tam.: '.$tamanio. ' KB';          
+		} 
+		if ($datos['programa'] == 'S') {
+			// el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
+			$nombre = substr($datos['programa_path'],19);
+			$dir_tmp = toba::proyecto()->get_www_temp();
+			exec("cp '". $datos['programa_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
+			$tamanio = round(filesize($temp_archivo['path']) / 1024);
+			$datos['programa_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";
+			$datos['programa_archivo'] = $nombre. ' - Tam.: '.$tamanio. ' KB';     
+		}
+		if ($datos['informe_otros'] == 'S') {
+			// el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
+			$nombre = substr($datos['informe_otros_path'],19);
+			$dir_tmp = toba::proyecto()->get_www_temp();
+			exec("cp '". $datos['informe_otros_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
+			$tamanio = round(filesize($temp_archivo['path']) / 1024);
+			$datos['informe_otros_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";
+			$datos['informe_otros_archivo'] = $nombre. ' - Tam.: '.$tamanio. ' KB';     
+		}    
+		if ($datos['confirmado'] == 'S')
+			$form->evento('modificacion')->desactivar();
+		
+		$form->set_datos($datos);
+	}
+
+	function evt__form_resp__modificacion($datos)
+	{
+		$ciclo = toba::memoria()->get_dato('ciclo');
+		$persona = toba::memoria()->get_dato('persona');
+		$doc = toba::consulta_php('co_personas')->get_datos_persona($persona);
+		$datos_act = $this->tabla('autoevaluaciones_por_act')->get();
+		
+		if (isset($datos['informe_catedra_archivo'])) {
+			$nombre_archivo = $datos['informe_catedra_archivo']['name'];
+			$nombre_nuevo = 'IC_'.$ciclo.'_'.$ubicacion."_".$nombre_act['codigo'].".pdf";           
+			$destino = '/home/fce/informes/'.$nombre_nuevo;
+			// Mover los archivos subidos al servidor del directorio temporal PHP a uno propio.
+			move_uploaded_file($datos['informe_catedra_archivo']['tmp_name'], $destino);           
+			$datos['informe_catedra'] = 'S';  
+			$datos['informe_catedra_path'] = $destino;   
+			$datos['tipo_informe'] = '';
+		}
+		if (isset($datos['programa_archivo'])) {
+			$nombre_archivo = $datos['programa_archivo']['name'];
+			$nombre_nuevo = 'PR_'.$ciclo.'_'.$ubicacion."_".$nombre_act['codigo'].".pdf";        
+			$destino = '/home/fce/informes/'.$nombre_nuevo;
+			// Mover los archivos subidos al servidor del directorio temporal PHP a uno propio.
+			move_uploaded_file($datos['programa_archivo']['tmp_name'], $destino);           
+			$datos['programa'] = 'S';  
+			$datos['programa_path'] = $destino;
+			$datos['tipo_informe'] = '';
+		}
+		if (isset($datos['informe_otros_archivo'])) {
+			$nombre_archivo = $datos['informe_otros_archivo']['name'];
+			$nombre_act = str_replace(' ','_',$datos_act['actividad_desc']);
+			$nombre_nuevo = 'IO_'.$ciclo.'_'.$datos['tipo_informe'].'_'.$nombre_act.'_'.$doc['documento'].'.pdf';           
+			$destino = '/home/fce/informes/'.$nombre_nuevo;
+			// Mover los archivos subidos al servidor del directorio temporal PHP a uno propio.
+			move_uploaded_file($datos['informe_otros_archivo']['tmp_name'], $destino);           
+			$datos['informe_otros'] = 'S';  
+			$datos['informe_otros_path'] = $destino;
+		}
+		$datos['ciclo_lectivo'] = $ciclo;
+		$this->tabla('autoevaluaciones_por_act')->set($datos);
+		$this->tabla('autoevaluaciones_por_act')->sincronizar();
+		$this->tabla('autoevaluaciones_por_act')->resetear();
+		$this->set_pantalla('pant_cuadro');         
+	}
+
+	function evt__form_resp__cancelar()
+	{
+		$this->dep('relacion')->resetear();
+		$this->set_pantalla('pant_cuadro');
+	}
+
+	function get_tipo_informe()
+	{
+		$datos_act = $this->tabla('autoevaluaciones_por_act')->get();
+		$datos_asig = toba::consulta_php('co_asignaciones')->get_asignacion_tabla($datos_act['asignacion']); 
+		$ambito = $datos_asig['ambito'];
+		$dimension = $datos_asig['dimension'];
+		$datos = toba::consulta_php('co_autoevaluaciones')->get_tipo_informe_por_dim($dimension,$ambito); 
+		return $datos;
+	}
+	
+	//-----------------------------------------------------------------------------------
+	//---- ------------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+	function vista_jasperreports(toba_vista_jasperreports $report) 
+	{    
+		$report->set_nombre_archivo('Constancia de autoevalacion');
+		$persona = toba::memoria()->get_dato('persona');
+		$report->set_parametro('docente','E',$persona);  
+		$path_toba = toba::proyecto()->get_path().'/exportaciones/jasper/';
+		$path = $path_toba.'constancia_autoeval.jasper';
+		$report->set_path_reporte($path);
+		$report->completar_con_datos();
+	}
+}
+?>

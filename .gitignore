@@ -1,0 +1,7 @@
+# Ignorar todos los ficheros...
+www/temp/
+metadatos_compilados/
+nbproject/
+temp/
+# ...excepto el fichero .gitignore
+!.gitignore

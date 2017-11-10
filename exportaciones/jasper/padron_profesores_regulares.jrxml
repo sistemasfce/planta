@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1896433d-5d74-45e9-a855-bd260edde9b7">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Row" mode="Transparent"/>
+	<parameter name="ubicacion_desc" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<queryString language="xPath">
+		<![CDATA[/tabla/datos/fila]]>
+	</queryString>
+	<field name="apellido" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="apellido"]/@valor]]></fieldDescription>
+	</field>
+	<field name="nombres" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="nombres"]/@valor]]></fieldDescription>
+	</field>
+	<field name="documento" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="documento"]/@valor]]></fieldDescription>
+	</field>
+	<variable name="fecha_narrada" class="java.lang.String">
+		<variableExpression><![CDATA[new java.text.SimpleDateFormat("dd 'días del mes de' MMMM 'de' yyyy", new java.util.Locale("es")).format(new java.util.Date())]]></variableExpression>
+	</variable>
+	<background>
+		<band height="802" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="43">
+			<image hAlign="Right">
+				<reportElement x="446" y="0" width="92" height="40" uuid="49fb70c2-e769-434c-b9d8-04d43556865f"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="96" y="7" width="349" height="33" uuid="44761386-a85a-4484-a43f-c3b930bdc3a3"/>
+				<textElement textAlignment="Center">
+					<font pdfFontName="Times-Bold"/>
+				</textElement>
+				<text><![CDATA[Padrón de profesores regulares]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="3" width="92" height="40" uuid="2b063cb9-2610-4c29-91c1-f10d1a4a4e36"/>
+				<imageExpression><![CDATA["escudo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="29">
+			<textField>
+				<reportElement x="96" y="4" width="349" height="20" uuid="f3a7e56f-cba5-4a52-b820-c12bb24b4b2a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{ubicacion_desc}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="19">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="2" y="16" width="550" height="1" uuid="9735d308-86c7-4192-a36b-c05e2ed67c62"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="0" width="55" height="15" forecolor="#736343" uuid="3f7cdb44-0ae5-40c9-9ac9-02f3d4fb0b83"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Voto?]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="67" y="0" width="390" height="15" forecolor="#736343" uuid="612705a0-ae3f-43e0-852b-16da583510e3"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Apellido y nombres]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="457" y="0" width="97" height="15" forecolor="#736343" uuid="ebb647dd-4bb6-479c-87ae-9f1082d12348"/>
+				<textElement textAlignment="Center">
+					<font size="9" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nro Documento]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement x="67" y="0" width="164" height="20" uuid="06622ea3-ea21-48fd-8980-174791559239"/>
+				<textFieldExpression><![CDATA[$F{apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="457" y="1" width="97" height="20" uuid="dca155f2-d71e-4a48-9729-ca6521f17073"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{documento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="1" width="226" height="20" uuid="b264930f-7abd-48d3-8837-3b944e1a55d2"/>
+				<textFieldExpression><![CDATA[$F{nombres}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="5" y="20" width="550" height="1" uuid="d0dd4fdd-ebb1-4f24-8520-da020c4e25ae"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="44" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="550" height="44" forecolor="#D0B48E" uuid="2c4b9ef1-2392-48b8-9ec1-394b41ccf70a"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="506" y="22" width="41" height="20" forecolor="#736343" uuid="bc3cd610-5873-4bb2-abdc-1ac6e8023fb9"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="426" y="22" width="80" height="20" forecolor="#736343" uuid="de6847c7-be60-40c0-bcaa-6c67f8c4b0cc"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="502" y="1" width="45" height="20" uuid="38891206-fce7-4b28-b23c-4fbc875eaede"/>
+					<textFieldExpression><![CDATA[$V{COLUMN_COUNT}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="455" y="1" width="45" height="20" uuid="35ea7b03-619a-4d54-86c2-f327344d441a"/>
+					<textElement textAlignment="Center"/>
+					<text><![CDATA[Total:]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</pageFooter>
+</jasperReport>
