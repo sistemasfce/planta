@@ -45,7 +45,7 @@ class ci_autoevaluaciones_por_docente extends planta_ci
 		$persona = $datos_filtro['persona']['valor'];
 		$ciclo = $datos_filtro['ciclo_lectivo']['valor'];
 		$datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluaciones_por_act_persona($persona,$ciclo);
-		$cuadro->set_titulo('Autoevaluaciones: '.$datos['nombre_completo']);
+                $cuadro->set_titulo('Autoevaluaciones: '.$datos['nombre_completo']);
 		$cuadro->set_datos($datos);        
 	}
 

@@ -102,6 +102,8 @@ class co_autoevaluaciones
     function get_autoevaluaciones_por_act_persona($persona,$ciclo)
     {
 	$sql = "SELECT  apa.*,
+                        CASE WHEN apa.pregunta5 = '' THEN resultado_resp
+                        ELSE pregunta5 END as calificacion,
 			asignaciones.actividad,
 			asignaciones.carrera_academica,
 			ubicaciones.codigo as ubicacion_desc,
