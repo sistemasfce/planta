@@ -16,6 +16,7 @@ class co_evaluaciones
 		      	evaluaciones.asignacion,
 			evaluaciones.calificacion,
 			evaluaciones.confirmado,
+                        evaluaciones.ciclo_lectivo,
 			evaluaciones.notificacion
 		FROM evaluaciones LEFT OUTER JOIN personas as per2 ON (evaluaciones.evaluador = per2.persona),
 			personas, asignaciones

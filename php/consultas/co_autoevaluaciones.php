@@ -102,6 +102,7 @@ class co_autoevaluaciones
     function get_autoevaluaciones_por_act_persona($persona,$ciclo)
     {
 	$sql = "SELECT  apa.*,
+                        personas.apellido || ', ' || nombres as nombre_completo,
                         CASE WHEN apa.pregunta5 = '' THEN resultado_resp
                         ELSE pregunta5 END as calificacion,
 			asignaciones.actividad,
@@ -115,9 +116,11 @@ class co_autoevaluaciones
 			LEFT OUTER JOIN asignaciones ON (apa.asignacion = asignaciones.asignacion)
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
 			LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria)
-			LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
+			LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension),
+                        personas
 			
 		WHERE 	apa.persona = $persona 
+                        AND apa.persona = personas.persona
 			AND apa.estado = 1
 			AND apa.ciclo_lectivo = $ciclo
 		";
