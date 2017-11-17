@@ -55,6 +55,8 @@ class ci_designaciones_consultas extends planta_ci
 		if (isset($this->s__filtro)) {
 			$filtro->set_datos($this->s__filtro);
 		}
+                $filtro->columna('desde')->set_condicion_fija('entre');
+                $filtro->columna('hasta')->set_condicion_fija('entre');
 	}
 
 	function evt__filtro__filtrar($datos)

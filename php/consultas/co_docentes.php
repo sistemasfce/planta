@@ -5,12 +5,13 @@ class co_docentes
     function get_docentes($where=null)
     {
 	if (!isset($where)) $where = '1=1';
-        $sql = "SELECT 	*,
-			apellido || ', ' || nombres as nombre_completo
-		FROM 	personas, personas_perfiles
-		WHERE   personas.persona = personas_perfiles.persona
-		        AND perfil = 1 -- docente
-			AND estado_docente = 1
+        $sql = "SELECT DISTINCT    
+                        personas.*,
+                        apellido || ', ' || nombres as nombre_completo
+                FROM    personas--, personas_perfiles
+                WHERE   -- personas.persona = personas_perfiles.persona
+                        -- AND perfil = 1 -- docente
+                        estado_docente = 1
 			AND $where
 		ORDER BY nombre_completo
         ";
