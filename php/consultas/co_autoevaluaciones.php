@@ -22,6 +22,18 @@ class co_autoevaluaciones
 	return toba::db()->consultar_fila($sql);
     }
 
+    function get_fichas_de_docente($persona)
+    {
+        $sql = "SELECT 	autoevaluaciones.*,
+			personas.apellido || ', ' || nombres as nombre_completo
+		FROM 	autoevaluaciones, personas
+		WHERE   autoevaluaciones.persona = $persona
+			AND autoevaluaciones.persona = personas.persona
+		ORDER BY ficha_docente_fecha 
+        ";
+	return toba::db()->consultar($sql);
+    }
+    
     function get_ficha_de_docente_por_asignacion($asignacion)
     {
         $sql = "SELECT 	autoevaluaciones.*

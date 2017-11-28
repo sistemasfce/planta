@@ -65,7 +65,7 @@ class ci_autoevaluacion extends planta_ci
 		if (isset($datos['archivo'])) {
 			$nombre_archivo = $datos['archivo']['name'];
 			$doc = toba::consulta_php('co_personas')->get_datos_persona($persona);
-			$nombre_nuevo = 'FD_'.$doc['documento'].'.pdf';   
+			$nombre_nuevo = 'FD_'.$ciclo.'_'.$doc['documento'].'.pdf';   
 			$destino = '/home/fce/informes/'.$nombre_nuevo;
 			// Mover los archivos subidos al servidor del directorio temporal PHP a uno propio.
 			move_uploaded_file($datos['archivo']['tmp_name'], $destino); 
@@ -217,7 +217,7 @@ class ci_autoevaluacion extends planta_ci
 		
 		if (isset($datos['informe_catedra_archivo'])) {
 			$nombre_archivo = $datos['informe_catedra_archivo']['name'];
-			$nombre_nuevo = 'IC_'.$ciclo.'_'.$ubicacion."_".$nombre_act['codigo'].".pdf";           
+			$nombre_nuevo = 'IC_'.$ciclo.'_'.$ubicacion.'_'.$nombre_act['codigo'].'.pdf';           
 			$destino = '/home/fce/informes/'.$nombre_nuevo;
 			// Mover los archivos subidos al servidor del directorio temporal PHP a uno propio.
 			move_uploaded_file($datos['informe_catedra_archivo']['tmp_name'], $destino);           
@@ -227,7 +227,7 @@ class ci_autoevaluacion extends planta_ci
 		}
 		if (isset($datos['programa_archivo'])) {
 			$nombre_archivo = $datos['programa_archivo']['name'];
-			$nombre_nuevo = 'PR_'.$ciclo.'_'.$ubicacion."_".$nombre_act['codigo'].".pdf";        
+			$nombre_nuevo = 'PR_'.$ciclo.'_'.$ubicacion.'_'.$nombre_act['codigo'].'.pdf';        
 			$destino = '/home/fce/informes/'.$nombre_nuevo;
 			// Mover los archivos subidos al servidor del directorio temporal PHP a uno propio.
 			move_uploaded_file($datos['programa_archivo']['tmp_name'], $destino);           
@@ -238,7 +238,7 @@ class ci_autoevaluacion extends planta_ci
 		if (isset($datos['informe_otros_archivo'])) {
 			$nombre_archivo = $datos['informe_otros_archivo']['name'];
 			$nombre_act = str_replace(' ','_',$datos_act['actividad_desc']);
-			$nombre_nuevo = 'IO_'.$ciclo.'_'.$datos['tipo_informe'].'_'.$nombre_act.'_'.$doc['documento'].'.pdf';           
+			$nombre_nuevo = 'IO_'.$ciclo.'_'.$ubicacion.'_'.$datos['tipo_informe'].'_'.$nombre_act.'.pdf';           
 			$destino = '/home/fce/informes/'.$nombre_nuevo;
 			// Mover los archivos subidos al servidor del directorio temporal PHP a uno propio.
 			move_uploaded_file($datos['informe_otros_archivo']['tmp_name'], $destino);           
@@ -252,6 +252,45 @@ class ci_autoevaluacion extends planta_ci
 		$this->set_pantalla('pant_cuadro');         
 	}
 
+	//-----------------------------------------------------------------------------------
+	//---- cuadro -----------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__cuadro_ficha(planta_ei_cuadro $cuadro)
+	{
+            $persona = toba::memoria()->get_dato('persona');
+            $datos = toba::consulta_php('co_autoevaluaciones')->get_fichas_de_docente($persona);
+            $cuadro->set_titulo('Ficha docente: '.$datos[0]['nombre_completo']);
+            if (!isset($datos[0]['nombre_completo']))
+		return;
+            $cuadro->set_datos($datos);
+	}
+	
+	function evt__cuadro_ficha__seleccion($seleccion)
+	{
+            toba::memoria()->set_dato('path',$seleccion['ficha_docente_path']);
+	}        
+  
+	//-----------------------------------------------------------------------------------
+	//---- form -------------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__form_ficha_descarga(planta_ei_formulario $form)
+	{
+		$path = toba::memoria()->get_dato('path'); 
+		if (!isset($path))
+			return;  
+		// el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
+		$nombre = substr($path,19);
+		$dir_tmp = toba::proyecto()->get_www_temp();
+		exec("cp '". $path. "' '" .$dir_tmp['path']."/".$nombre."'");
+		$temp_archivo = toba::proyecto()->get_www_temp($nombre);
+		$tamanio = round(filesize($temp_archivo['path']) / 1024);
+		$datos['ficha_docente_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";
+
+		$form->set_datos($datos);         
+	}        
+        
 	function evt__form_resp__cancelar()
 	{
 		$this->dep('relacion')->resetear();

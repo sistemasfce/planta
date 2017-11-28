@@ -103,6 +103,7 @@ class ci_inicio_docentes extends planta_ci
 			toba::memoria()->set_dato('nombre',$nombre['nombre_completo']);
 			$datos['nombre'] = $nombre['nombre_completo'];
 		}
+                toba::memoria()->set_dato('path',null);
 		$form->set_datos($datos);
 	}
 

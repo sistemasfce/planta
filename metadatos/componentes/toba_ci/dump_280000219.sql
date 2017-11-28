@@ -126,6 +126,18 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
+	'280000380', --dep_id
+	'280000219', --objeto_consumidor
+	'280000444', --objeto_proveedor
+	'cuadro_ficha', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'planta', --proyecto
 	'280000196', --dep_id
 	'280000219', --objeto_consumidor
 	'280000232', --objeto_proveedor
@@ -142,6 +154,18 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 	'280000219', --objeto_consumidor
 	'280000228', --objeto_proveedor
 	'form_ficha', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'planta', --proyecto
+	'280000381', --dep_id
+	'280000219', --objeto_consumidor
+	'280000445', --objeto_proveedor
+	'form_ficha_descarga', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -278,6 +302,20 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'280000219', --objeto_ci
 	'0', --orden
 	'280000192'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'planta', --proyecto
+	'280000072', --pantalla
+	'280000219', --objeto_ci
+	'1', --orden
+	'280000380'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'planta', --proyecto
+	'280000072', --pantalla
+	'280000219', --objeto_ci
+	'2', --orden
+	'280000381'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'planta', --proyecto
