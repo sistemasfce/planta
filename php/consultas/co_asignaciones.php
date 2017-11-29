@@ -179,6 +179,8 @@ class co_asignaciones
 	    asignaciones.departamento,
 	    departamentos.descripcion as departamento_desc,
 	    personas.persona,
+            personas.telefono,
+            personas.email,
             personas.apellido || ', ' || personas.nombres as nombre_completo,
             actividades.descripcion as actividad_desc,
             categorias.codigo as rol_desc,
