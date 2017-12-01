@@ -16,8 +16,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba', --clase_proyecto
 	'toba_ei_cuadro', --clase
 	'280000002', --punto_montaje
-	NULL, --subclase
-	NULL, --subclase_archivo
+	'cuadro_evaluar', --subclase
+	'operaciones/sistema_evaluaciones/cuadro_evaluar.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'Sistema de evaluaciones - evaluador - cuadro', --nombre

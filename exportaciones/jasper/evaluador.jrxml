@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5d8aa165-69c9-45ce-805a-89273ba9582f">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="29"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Row" mode="Transparent"/>
+	<parameter name="evaluador" class="java.lang.Integer"/>
+	<parameter name="ciclo" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT 		asignaciones.asignacion,
+                personas.documento,
+                personas.apellido || ', ' || personas.nombres as evaluado,
+                actividades.descripcion as actividad_desc,
+                dimensiones.codigo as dimension_desc,
+                departamentos.descripcion as departamento_desc,
+                categorias.codigo as rol_desc,
+                categorias.descripcion as rol_nombre,
+                ubicaciones.codigo as ubicacion_desc,
+                estados.estado as estado_desc,
+		CASE WHEN evaluaciones.plan_de_mejora = 'N' THEN 'No'
+ELSE 'Sí' END as plan_de_mejora,
+		(SELECT personas.apellido || ', ' || personas.nombres from personas WHERE personas.persona = evaluaciones.evaluador) as evaluador_nombre,
+		evaluaciones.observaciones,
+                evaluaciones.confirmado,
+                evaluaciones.calificacion,
+                evaluaciones.estado,
+                resolucion_anio as ciclo_lectivo,
+		resolucion || '/'  ||resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_nombre
+
+            FROM asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
+            LEFT OUTER JOIN evaluaciones ON (asignaciones.asignacion = evaluaciones.asignacion)
+            LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
+            LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
+            LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
+            LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria)
+            LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
+            LEFT OUTER JOIN estados ON (asignaciones.estado = estados.estado)
+            LEFT OUTER JOIN resoluciones_tipos ON (asignaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo)
+             WHERE    evaluaciones.evaluador = $P{evaluador}
+		AND evaluaciones.ciclo_lectivo = $P{ciclo}
+            ORDER BY personas.apellido, resolucion_fecha]]>
+	</queryString>
+	<field name="asignacion" class="java.lang.Integer"/>
+	<field name="documento" class="java.lang.String"/>
+	<field name="evaluado" class="java.lang.String"/>
+	<field name="actividad_desc" class="java.lang.String"/>
+	<field name="dimension_desc" class="java.lang.String"/>
+	<field name="departamento_desc" class="java.lang.String"/>
+	<field name="rol_desc" class="java.lang.String"/>
+	<field name="rol_nombre" class="java.lang.String"/>
+	<field name="ubicacion_desc" class="java.lang.String"/>
+	<field name="estado_desc" class="java.lang.Integer"/>
+	<field name="plan_de_mejora" class="java.lang.String"/>
+	<field name="evaluador_nombre" class="java.lang.String"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="confirmado" class="java.lang.String"/>
+	<field name="calificacion" class="java.lang.String"/>
+	<field name="estado" class="java.lang.Integer"/>
+	<field name="ciclo_lectivo" class="java.lang.String"/>
+	<field name="resolucion_nombre" class="java.lang.String"/>
+	<variable name="fecha_narrada" class="java.lang.String">
+		<variableExpression><![CDATA[new java.text.SimpleDateFormat("dd 'días del mes de' MMMM 'de' yyyy", new java.util.Locale("es")).format(new java.util.Date())]]></variableExpression>
+	</variable>
+	<variable name="count" class="java.lang.Integer" resetType="Group" resetGroup="propuesta" calculation="Sum">
+		<variableExpression><![CDATA[]]></variableExpression>
+	</variable>
+	<group name="propuesta" isStartNewPage="true" isResetPageNumber="true" isReprintHeaderOnEachPage="true">
+		<groupExpression><![CDATA[]]></groupExpression>
+		<groupHeader>
+			<band height="72">
+				<textField isBlankWhenNull="true">
+					<reportElement x="78" y="4" width="603" height="20" uuid="e862f709-8afe-4127-b9a5-071533231ca9"/>
+					<textElement>
+						<font fontName="DejaVu Sans"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{evaluador_nombre}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="8" y="4" width="69" height="20" forecolor="#736343" uuid="eba38c29-7546-4f98-8ed4-35dcfb2f05a7"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Docente:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="112" y="56" width="70" height="15" forecolor="#736343" uuid="f134b699-9236-4f20-b6bf-4313c69e8efe"/>
+					<textElement textAlignment="Center">
+						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Dimension]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="425" y="56" width="36" height="15" forecolor="#736343" uuid="7a757a16-0a90-4e2d-8ece-41a2c78344b5"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Rol]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="181" y="56" width="203" height="15" forecolor="#736343" uuid="bac671c7-a0e1-489f-9223-b624112b4b47"/>
+					<textElement textAlignment="Center">
+						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Actividad]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="550" y="43" width="44" height="28" forecolor="#736343" uuid="7ba5c819-a9db-434a-97f1-651d5fe5ea90"/>
+					<textElement verticalAlignment="Middle" markup="none">
+						<font fontName="DejaVu Sans" size="9" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Plan de Mejora]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="470" y="56" width="80" height="15" forecolor="#736343" uuid="142064e7-2567-408d-adf5-8012d2a182ef"/>
+					<textElement markup="none">
+						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Calificación]]></text>
+				</staticText>
+				<line>
+					<reportElement positionType="FixRelativeToBottom" x="0" y="70" width="802" height="1" uuid="c7f5fae1-1993-4c23-b8a9-eb3f38e6849b"/>
+					<graphicElement>
+						<pen lineWidth="0.5" lineColor="#999999"/>
+					</graphicElement>
+				</line>
+				<staticText>
+					<reportElement style="Column header" x="3" y="56" width="112" height="14" forecolor="#736343" uuid="d1db7e1a-e922-44ac-b163-de8dba1adcb0"/>
+					<textElement verticalAlignment="Middle" markup="none">
+						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Docente]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="8" y="23" width="83" height="20" forecolor="#736343" uuid="fa4e2929-d596-41c4-b2da-b95370312009"/>
+					<textElement>
+						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Ciclo lectivo:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="593" y="56" width="170" height="15" forecolor="#736343" uuid="bcf46c18-aa68-4692-84b9-5214f0df5fbb"/>
+					<textElement markup="none">
+						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Observaciones]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="91" y="24" width="100" height="19" uuid="3d7cf65b-f283-49e1-b286-a45972f9e8da"/>
+					<textElement>
+						<font fontName="DejaVu Sans"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{ciclo_lectivo}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement style="Column header" x="763" y="55" width="36" height="15" forecolor="#736343" uuid="e2916af4-fcac-4eb5-a5c6-6a74d83c34fa"/>
+					<textElement textAlignment="Center" markup="none">
+						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+					</textElement>
+					<text><![CDATA[Sede]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<pageHeader>
+		<band height="52" splitType="Stretch">
+			<image hAlign="Right">
+				<reportElement x="681" y="3" width="92" height="40" uuid="8527e13b-c1b7-4a1d-b85e-5066eba12872"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="115" y="12" width="566" height="23" uuid="6ddd2e33-8d2d-400c-a222-a179ce49f6d9"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="12" pdfFontName="Times-Bold"/>
+				</textElement>
+				<text><![CDATA[Listado de actividades a evaluar]]></text>
+			</staticText>
+			<image>
+				<reportElement x="24" y="5" width="92" height="40" uuid="222b0451-1789-4d22-8259-62d2e780e89f"/>
+				<imageExpression><![CDATA["escudo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="132" y="0" width="39" height="20" uuid="155d32e5-efd3-4469-a510-9afb6322eef1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dimension_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="181" y="0" width="235" height="20" uuid="91ead20e-9ad2-430c-8da7-5ca371ccae06"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{actividad_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="424" y="0" width="39" height="20" uuid="125334a5-d6d6-4baf-8fd7-e368b89521b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{rol_desc}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="473" y="0" width="77" height="20" uuid="8521e2b5-a2dd-4ad4-b05c-5425d8106ecd">
+					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="550" y="0" width="42" height="20" uuid="61c99470-25a4-4d28-8f7c-22fe02f48325">
+					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{plan_de_mejora}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="593" y="0" width="170" height="20" uuid="017857f4-22c1-4a91-9287-b17647ea09b9">
+					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="763" y="0" width="36" height="20" uuid="f4ad8c95-1e02-4231-9112-68876985f43a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ubicacion_desc}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="4" y="0" width="111" height="20" uuid="ee710b26-964c-4bb6-b6e1-1592c28755ed"/>
+				<textElement>
+					<font fontName="DejaVu Sans"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{evaluado}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-16" y="2" width="815" height="22" forecolor="#D0B48E" uuid="0cbd8cad-c151-4e18-94b9-6f8dc3221497"/>
+				<textField evaluationTime="Group" evaluationGroup="propuesta">
+					<reportElement style="Column header" x="757" y="6" width="57" height="14" forecolor="#736343" uuid="0339e091-a2c8-45a3-99a1-e8dbe1c5d717"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="676" y="6" width="80" height="14" forecolor="#736343" uuid="d778a44e-c8bd-45e3-a448-57bdb96cf873"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+</jasperReport>

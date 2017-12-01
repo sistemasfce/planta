@@ -158,7 +158,7 @@ class ci_inicio_docentes extends planta_ci
 		$tipo = toba::memoria()->get_parametro('param');
 		
 		if ($tipo == 'plan') {
-			$report->set_nombre_archivo('Plan de desarrollo');
+			$report->set_nombre_archivo('Plan de desarrollo.pdf');
 			$funcion = toba::memoria()->get_dato('jasper');
 			$report->set_parametro('funcion','E',$funcion);  
 			$path_toba = toba::proyecto()->get_path().'/exportaciones/jasper/';
@@ -166,37 +166,41 @@ class ci_inicio_docentes extends planta_ci
 			$report->set_path_reporte($path);
 		} 
 		if ($tipo == 'evaluado') {    
-			$report->set_nombre_archivo('Reporte de evaluado');
-			$docente = toba::memoria()->get_dato('docente');
-			$report->set_parametro('docente','E',$docente); 
+			$report->set_nombre_archivo('Reporte de evaluado.pdf');
+			$persona = toba::memoria()->get_dato('persona');
+			$report->set_parametro('persona','E',$persona); 
+			$ciclo = toba::memoria()->get_dato('ciclo');
+			$report->set_parametro('ciclo','E',$ciclo);                         
 			$path_toba = toba::proyecto()->get_path().'/exportaciones/jasper/';
-			$path = $path_toba.'mis_evaluaciones_UNPATA_FCE.jasper';
+			$path = $path_toba.'mis_evaluaciones.jasper';
 			$report->set_path_reporte($path);
 		}
 		if ($tipo == 'evaluado_final') {
-			$report->set_nombre_archivo('Reporte final de evaluado');
-			$docente = toba::memoria()->get_dato('docente');
-			$report->set_parametro('docente','E',$docente); 
+			$report->set_nombre_archivo('Reporte final de evaluado.pdf');
+			$persona = toba::memoria()->get_dato('persona');
+			$report->set_parametro('persona','E',$persona); 
+			$ciclo = toba::memoria()->get_dato('ciclo');
+			$report->set_parametro('ciclo','E',$ciclo); 
 			$path_toba = toba::proyecto()->get_path().'/exportaciones/jasper/';
 			$path = $path_toba.'mis_evaluaciones_final.jasper';
 			$report->set_path_reporte($path);
 		}
 		if ($tipo == 'evaluar') {    
-			$report->set_nombre_archivo('Reporte de evaluador');
-			$docente = toba::memoria()->get_dato('docente');
-			$report->set_parametro('docente','E',$docente); 
-			$evaluador = toba::usuario()->get_nombre();
-			$report->set_parametro('evaluador','S',$evaluador);
+			$report->set_nombre_archivo('Reporte de evaluador.pdf');
+			$persona = toba::memoria()->get_dato('persona');
+			$report->set_parametro('evaluador','E',$persona); 
+			$ciclo = toba::memoria()->get_dato('ciclo');
+			$report->set_parametro('ciclo','E',$ciclo); 
 			$path_toba = toba::proyecto()->get_path().'/exportaciones/jasper/';
-			$path = $path_toba.'evaluaciones_por_evaluador_UNPATA_FCE.jasper';
+			$path = $path_toba.'evaluador.jasper';
 			$report->set_path_reporte($path);
 		}
 		if ($tipo == 'evaluar_final') {
-			$report->set_nombre_archivo('Reporte final de evaluador');
-			$docente = toba::memoria()->get_dato('docente');
-			$report->set_parametro('docente','E',$docente); 
-			$evaluador = toba::usuario()->get_nombre();
-			$report->set_parametro('evaluador','S',$evaluador);
+			$report->set_nombre_archivo('Reporte final de evaluador.pdf');
+			$persona = toba::memoria()->get_dato('persona');
+			$report->set_parametro('evaluador','E',$persona); 
+			$ciclo = toba::memoria()->get_dato('ciclo');
+			$report->set_parametro('ciclo','E',$ciclo); 
 			$path_toba = toba::proyecto()->get_path().'/exportaciones/jasper/';
 			$path = $path_toba.'evaluador_final.jasper';
 			$report->set_path_reporte($path);
