@@ -204,7 +204,17 @@ class ci_inicio_docentes extends planta_ci
 			$path_toba = toba::proyecto()->get_path().'/exportaciones/jasper/';
 			$path = $path_toba.'evaluador_final.jasper';
 			$report->set_path_reporte($path);
-		}        
+		}    
+		if ($tipo == 'autoevaluaciones_final') {
+			$report->set_nombre_archivo('Reporte de autoevaluaciones.pdf');
+			$persona = toba::memoria()->get_dato('persona');
+			$report->set_parametro('persona','E',$persona); 
+			$ciclo = toba::memoria()->get_dato('ciclo');
+			$report->set_parametro('ciclo','E',$ciclo); 
+			$path_toba = toba::proyecto()->get_path().'/exportaciones/jasper/';
+			$path = $path_toba.'mis_autoevaluaciones.jasper';
+			$report->set_path_reporte($path);
+		}                   
 		$report->completar_con_datos();   
 	}
 
