@@ -17,11 +17,10 @@ class ci_designaciones_individual_total extends planta_ci
 			$datos = toba::consulta_php('co_designaciones')->get_designaciones_de_persona($where,$mostrar_historico);
 			foreach ($datos as $dat) {
 				$fila = $dat;
-				if ($fila['designacion_tipo'] == 1 and $fila['estado'] != 3) {
+				if ($fila['designacion_tipo'] == 1 and $fila['designacion'] != null and ($fila['estado'] == 1 or $fila['estado'] == 5) ) {
 					$horas_licenciadas = toba::consulta_php('co_designaciones')->get_horas_licencias_activas($fila['designacion']);
 					$fila['carga_horaria_real'] = $fila['carga_horaria_dedicacion'] - $horas_licenciadas['total'];            
 				}
-
 				if ($dat['estado'] == 1  or $dat['estado'] == 6) {
 					$fila['estado_desc'] = '<font color=green><b>'.$fila['estado_desc'].'</b></font>';
 				}

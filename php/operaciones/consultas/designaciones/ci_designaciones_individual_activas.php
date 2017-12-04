@@ -18,7 +18,7 @@ class ci_designaciones_individual_activas extends planta_ci
 			
 			foreach ($datos as $dat) {
 				$fila = $dat;
-				if ($fila['designacion_tipo'] == 1) {
+				if ($fila['designacion_tipo'] == 1 and $fila['designacion'] != null and ($fila['estado'] == 1 or $fila['estado'] == 5) ) {
 					$horas_licenciadas = toba::consulta_php('co_designaciones')->get_horas_licencias_activas($fila['designacion']);
 					$fila['carga_horaria_real'] = $fila['carga_horaria_dedicacion'] - $horas_licenciadas['total'];            
 				}
