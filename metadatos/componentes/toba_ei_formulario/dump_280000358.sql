@@ -1664,7 +1664,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --carga_dt
 	NULL, --carga_consulta_php
 	'SELECT designacion, categorias.codigo || '' - '' || dedicaciones.codigo || '' -
- '' || resolucion || ''/'' || resolucion_anio as designacion_desc FROM designaciones, categorias, dedicaciones WHERE designaciones.categoria = categorias.categoria AND designaciones.dedicacion = dedicaciones.dedicacion AND designacion_tipo = 1 AND designaciones.estado in (1,4,5,3) AND persona = ''%persona%'';', --carga_sql
+ '' || resolucion || ''/'' || resolucion_anio as designacion_desc FROM designaciones, categorias, dedicaciones WHERE designaciones.categoria = categorias.categoria AND designaciones.dedicacion = dedicaciones.dedicacion AND designacion_tipo = 1 AND persona = ''%persona%'';', --carga_sql
 	'planta', --carga_fuente
 	NULL, --carga_lista
 	'designacion', --carga_col_clave
