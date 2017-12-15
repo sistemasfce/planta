@@ -140,7 +140,7 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 				<text><![CDATA[Ciclo lectivo:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="105" y="65" width="100" height="20" uuid="55b95063-a7d5-4acc-857b-bbde961332a7"/>
+				<reportElement x="91" y="65" width="100" height="20" uuid="55b95063-a7d5-4acc-857b-bbde961332a7"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
@@ -175,12 +175,12 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="107" y="126" width="42" height="15" uuid="5fcafbf4-c058-4a23-aae8-a4005711df89"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
+				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{plan_de_mejora}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="275" y="87" width="280" height="52" uuid="2d3862ec-e22e-4e73-b008-46b50b2d70a5">
 					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
@@ -266,14 +266,14 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 				<textFieldExpression><![CDATA[$F{dimension_desc}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" x="174" y="298" width="83" height="35" forecolor="#000000" uuid="69249516-1570-4f18-a79a-01ab613a4b1a"/>
+				<reportElement style="Column header" x="138" y="297" width="83" height="35" forecolor="#000000" uuid="69249516-1570-4f18-a79a-01ab613a4b1a"/>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Observaciones evaluado:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="275" y="298" width="271" height="35" uuid="8171b170-7a62-4403-98bf-b08ecc9ace9c">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="233" y="298" width="322" height="35" uuid="8171b170-7a62-4403-98bf-b08ecc9ace9c">
 					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
@@ -324,34 +324,34 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 				<text><![CDATA[Fecha:]]></text>
 			</staticText>
 			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
-				<reportElement x="72" y="316" width="77" height="15" uuid="58e6893d-737a-4ff8-be72-3ff30f7ed88d"/>
+				<reportElement x="72" y="316" width="62" height="15" uuid="58e6893d-737a-4ff8-be72-3ff30f7ed88d"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{notificacion_fecha}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" x="7" y="145" width="83" height="31" forecolor="#000000" uuid="b85641d8-5209-4477-8324-35950f124644"/>
+				<reportElement style="Column header" x="7" y="145" width="85" height="31" forecolor="#000000" uuid="b85641d8-5209-4477-8324-35950f124644"/>
 				<textElement verticalAlignment="Top" markup="none">
 					<font fontName="DejaVu Sans" size="9" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Desvíos / Necesidades:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="145" width="463" height="15" uuid="7998b7a0-26c8-4601-8706-922712f3905e"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{desvio1}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="161" width="463" height="15" uuid="241fdcc3-d418-4bcd-a89e-7cae009a9acd"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{desvio2}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="177" width="463" height="15" uuid="c7878c56-814c-409d-9f2c-9285947c5a05"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
@@ -372,42 +372,42 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 				</textElement>
 				<text><![CDATA[Desempeño esperado:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="194" width="463" height="15" uuid="de4f677a-0196-4cdc-9d23-ecf682afee9d"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{act1}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="210" width="463" height="15" uuid="99a045c7-8c02-4169-a2f6-5c470c35307d"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{act2}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="226" width="463" height="15" uuid="1a2de81a-89b4-453f-b678-4b522c1809a2"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{act3}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="243" width="463" height="15" uuid="25ed80ef-835d-4645-98ee-88e9861d7b15"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{desempenio1}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="260" width="463" height="15" uuid="0fdf4357-5caa-4992-bd74-d4aa26aff7c6"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{desempenio2}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="277" width="463" height="15" uuid="cee0096a-fc2e-4c45-8fba-9b94b35ce336"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>

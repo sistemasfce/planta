@@ -175,7 +175,7 @@ AND evaluaciones.estado = 1
 				<reportElement x="77" y="47" width="188" height="15" uuid="46c5cb12-1306-45a6-9841-d5883e80f4ac">
 					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
-				<textElement verticalAlignment="Middle">
+				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
@@ -273,14 +273,14 @@ AND evaluaciones.estado = 1
 				<textFieldExpression><![CDATA[$F{dimension_desc}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" x="202" y="302" width="140" height="35" forecolor="#000000" uuid="048b7ba8-1cf9-40de-9b47-cb4b0b8dd972"/>
+				<reportElement style="Column header" x="154" y="302" width="140" height="35" forecolor="#000000" uuid="048b7ba8-1cf9-40de-9b47-cb4b0b8dd972"/>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Observaciones evaluado:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="342" y="302" width="204" height="35" uuid="84a7fc98-81c5-4c1d-a9e2-4417f3bf2890">
+				<reportElement x="294" y="302" width="252" height="35" uuid="84a7fc98-81c5-4c1d-a9e2-4417f3bf2890">
 					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">

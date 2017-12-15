@@ -157,7 +157,7 @@ ELSE 'Sí' END as notificacion,
 				<textFieldExpression><![CDATA[$F{rol_nombre}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="3" y="47" width="105" height="20" uuid="fca329d5-1e97-4398-892b-bc3fe1141d8e">
+				<reportElement x="3" y="38" width="105" height="20" uuid="fca329d5-1e97-4398-892b-bc3fe1141d8e">
 					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -165,22 +165,26 @@ ELSE 'Sí' END as notificacion,
 				</textElement>
 				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="167" y="47" width="103" height="20" uuid="2e0e46ac-1a3c-4a0a-9320-85192128a9e2">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="167" y="38" width="103" height="20" uuid="2e0e46ac-1a3c-4a0a-9320-85192128a9e2">
 					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{evaluador}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="109" y="47" width="42" height="20" uuid="119c2ca7-936b-4531-8ec5-3a62b4de5391">
+				<reportElement x="109" y="38" width="42" height="20" uuid="119c2ca7-936b-4531-8ec5-3a62b4de5391">
 					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{plan_de_mejora}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="83" y="73" width="718" height="20" uuid="ffcb002b-72d2-4711-9347-ca82596b422f">
+				<reportElement x="83" y="71" width="718" height="20" uuid="ffcb002b-72d2-4711-9347-ca82596b422f">
 					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -189,54 +193,56 @@ ELSE 'Sí' END as notificacion,
 				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="270" y="47" width="36" height="20" uuid="0c62974e-59f1-46a3-bf64-7eed76b9675e"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="270" y="38" width="36" height="20" uuid="0c62974e-59f1-46a3-bf64-7eed76b9675e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{ubicacion_desc}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" x="83" y="32" width="87" height="15" forecolor="#736343" uuid="6cebd04f-67dd-46a1-8320-2ec8a49a83ef"/>
+				<reportElement style="Column header" x="83" y="23" width="87" height="15" forecolor="#736343" uuid="6cebd04f-67dd-46a1-8320-2ec8a49a83ef"/>
 				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Plan de Mejora]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="3" y="32" width="80" height="15" forecolor="#736343" uuid="25333827-983f-43c7-8858-6abc7510295a"/>
+				<reportElement style="Column header" x="3" y="23" width="80" height="15" forecolor="#736343" uuid="25333827-983f-43c7-8858-6abc7510295a"/>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Calificación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="173" y="32" width="90" height="15" forecolor="#736343" uuid="5f285fac-4bbe-4705-870c-a89621e4d640"/>
+				<reportElement style="Column header" x="173" y="23" width="90" height="15" forecolor="#736343" uuid="5f285fac-4bbe-4705-870c-a89621e4d640"/>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Evaluador]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="3" y="74" width="79" height="15" forecolor="#736343" uuid="fd663689-d7b9-402d-b660-60a12f7b598c"/>
+				<reportElement style="Column header" x="3" y="72" width="79" height="15" forecolor="#736343" uuid="fd663689-d7b9-402d-b660-60a12f7b598c"/>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Observaciones:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="270" y="32" width="36" height="15" forecolor="#736343" uuid="23575028-590d-4aa1-9feb-9d88744c4ef8"/>
+				<reportElement style="Column header" x="270" y="23" width="36" height="15" forecolor="#736343" uuid="23575028-590d-4aa1-9feb-9d88744c4ef8"/>
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Sede]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="307" y="32" width="73" height="15" forecolor="#736343" uuid="1517bae0-bc30-4c1f-ae70-93805646b2aa"/>
+				<reportElement style="Column header" x="307" y="23" width="73" height="15" forecolor="#736343" uuid="1517bae0-bc30-4c1f-ae70-93805646b2aa"/>
 				<textElement textAlignment="Center" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Notificación]]></text>
 			</staticText>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="3" y="95" width="785" height="1" uuid="8af0f450-3239-4544-a039-881518e878b7"/>
+				<reportElement positionType="FixRelativeToBottom" x="3" y="93" width="785" height="1" uuid="8af0f450-3239-4544-a039-881518e878b7"/>
 				<graphicElement>
 					<pen lineWidth="0.5" lineColor="#999999"/>
 				</graphicElement>
@@ -270,14 +276,14 @@ ELSE 'Sí' END as notificacion,
 				<textFieldExpression><![CDATA[$F{dimension_desc}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" x="381" y="32" width="420" height="15" forecolor="#736343" uuid="e749a4e8-503a-4b9e-b455-a1eed23e6144"/>
+				<reportElement style="Column header" x="381" y="23" width="420" height="15" forecolor="#736343" uuid="e749a4e8-503a-4b9e-b455-a1eed23e6144"/>
 				<textElement markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
 				</textElement>
 				<text><![CDATA[Observaciones evaluado]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="381" y="47" width="420" height="22" uuid="aafeb046-45f4-438b-8d9d-f26638138c7a">
+				<reportElement x="381" y="38" width="420" height="22" uuid="aafeb046-45f4-438b-8d9d-f26638138c7a">
 					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -286,8 +292,10 @@ ELSE 'Sí' END as notificacion,
 				<textFieldExpression><![CDATA[$F{notificacion_observaciones}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="310" y="47" width="67" height="20" uuid="fdc11bce-b71c-44e2-9b92-8549045f7542"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<reportElement x="310" y="38" width="67" height="20" uuid="fdc11bce-b71c-44e2-9b92-8549045f7542"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{notificacion}]]></textFieldExpression>
 			</textField>
 		</band>
