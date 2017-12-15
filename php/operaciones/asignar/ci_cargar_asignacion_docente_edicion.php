@@ -55,7 +55,9 @@ class ci_cargar_asignacion_docente_edicion extends planta_ci
 			$this->datos_para_cuadro[] = $fila;
 			
 		}
-		$cuadro->set_datos($this->datos_para_cuadro);
+                $datos_ordenados = rs_ordenar_por_columna($this->datos_para_cuadro, 'resolucion_fecha');
+                $this->datos_para_cuadro = $datos_ordenados;
+		$cuadro->set_datos($datos_ordenados);
 	}  
 	
 	function evt__cuadro_des__seleccion($seleccion)
@@ -105,7 +107,8 @@ class ci_cargar_asignacion_docente_edicion extends planta_ci
 			}
 			$datos_para_cuadro[] = $fila;
 		}
-		$cuadro->set_datos($datos_para_cuadro);
+                $datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
+		$cuadro->set_datos($datos_ordenados);
 	}
 	
 	//-----------------------------------------------------------------------------------

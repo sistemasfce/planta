@@ -158,11 +158,11 @@ class co_autoevaluaciones
 			LEFT OUTER JOIN personas_perfiles ON (personas.persona = personas_perfiles.persona)
 		WHERE
 	                autoevaluaciones_por_act.confirmado = 'N' -- pendiente, no fue confirmada por el docente
-	                AND autoevaluaciones_por_act.estado = 1 -- autoeval activa
+	    --            AND autoevaluaciones_por_act.estado = 1 -- autoeval activa
        		        AND designaciones.designacion_tipo = 1 -- designacion tipo alta                    
         		AND actividades.se_evalua = 'S'
-	            AND designaciones.caracter = 2 -- solo los regulares, interinos no evaluan
-	            AND designaciones.categoria <> 6 -- no muestro los ayudantes de segunda
+	    --        AND designaciones.caracter = 2 -- solo los regulares, interinos no evaluan
+	    --        AND designaciones.categoria <> 6 -- no muestro los ayudantes de segunda
 	            AND perfil = 1 -- docente	
 	            AND personas.estado_docente = 1 -- persona con estado activo
 			AND $where
