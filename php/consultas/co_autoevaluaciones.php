@@ -148,7 +148,8 @@ class co_autoevaluaciones
 			caracteres.descripcion as caracter,
 			actividades.descripcion as actividad_desc,
 			autoevaluaciones_por_act.ciclo_lectivo, 
-			designaciones.ubicacion, 
+			autoevaluaciones_por_act.ubicacion, 
+                        (SELECT codigo FROM ubicaciones WHERE ubicacion = autoevaluaciones_por_act.ubicacion) as ubicacion_desc,
                         estados.descripcion as estado_desc,
 			designaciones.departamento 
 		FROM     personas LEFT OUTER JOIN autoevaluaciones_por_act ON (personas.persona = autoevaluaciones_por_act.persona) 
