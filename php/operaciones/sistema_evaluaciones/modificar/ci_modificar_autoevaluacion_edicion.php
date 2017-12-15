@@ -21,12 +21,15 @@ class ci_modificar_autoevaluacion_edicion extends planta_ci
     {
         $datos_para_cuadro = array();
         $datos = $this->tabla('autoevaluaciones_por_act')->get_filas();
+        /*
         foreach ($datos as $dat) {
             if ($dat['estado'] != 1)
                 continue;            
             $datos_para_cuadro[] = $dat;
         }
-        $cuadro->set_datos($datos_para_cuadro);
+        */
+
+        $cuadro->set_datos($datos);
 
     }
     
