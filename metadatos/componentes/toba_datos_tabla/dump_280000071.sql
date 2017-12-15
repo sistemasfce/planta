@@ -61,7 +61,7 @@ INSERT INTO apex_objeto_db_registros (objeto_proyecto, objeto, max_registros, mi
 	'planta', --fuente_datos
 	'1', --permite_actualizacion_automatica
 	NULL, --esquema
-	'public'  --esquema_ext
+	'negocio'  --esquema_ext
 );
 
 ------------------------------------------------------------
@@ -80,7 +80,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	NULL, --largo
 	NULL, --no_nulo
 	'1', --no_nulo_db
-	NULL, --externa
+	'0', --externa
 	'estados'  --tabla
 );
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
@@ -94,7 +94,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'50', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
-	NULL, --externa
+	'0', --externa
 	'estados'  --tabla
 );
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
@@ -108,7 +108,49 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'1', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
-	NULL, --externa
+	'0', --externa
+	'estados'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000071', --objeto
+	'280000851', --col_id
+	'en_designacion', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'1', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'estados'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000071', --objeto
+	'280000852', --col_id
+	'en_asignacion', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'1', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'estados'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000071', --objeto
+	'280000853', --col_id
+	'en_evaluacion', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'1', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
 	'estados'  --tabla
 );
 --- FIN Grupo de desarrollo 280

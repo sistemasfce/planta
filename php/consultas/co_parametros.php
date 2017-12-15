@@ -310,7 +310,17 @@ class co_parametros
         ";
 	return toba::db()->consultar($sql);
     }
-
+    
+    function get_estados_evaluaciones($where=null)
+    {
+	if (!isset($where)) $where = '1=1';
+        $sql = "SELECT *
+		FROM estados
+		WHERE $where AND en_evaluacion = 'S'
+        ";
+	return toba::db()->consultar($sql);
+    }
+    
     function get_designaciones_tipos_renuncia($where=null)
     {
 	if (!isset($where)) $where = '1=1';
