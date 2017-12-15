@@ -149,12 +149,14 @@ class co_autoevaluaciones
 			actividades.descripcion as actividad_desc,
 			autoevaluaciones_por_act.ciclo_lectivo, 
 			designaciones.ubicacion, 
+                        estados.descripcion as estado_desc,
 			designaciones.departamento 
 		FROM     personas LEFT OUTER JOIN autoevaluaciones_por_act ON (personas.persona = autoevaluaciones_por_act.persona) 
 		            LEFT OUTER JOIN asignaciones ON (autoevaluaciones_por_act.asignacion = asignaciones.asignacion)
 		            LEFT OUTER JOIN designaciones ON (asignaciones.designacion = designaciones.designacion)
 		            LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
 			LEFT OUTER JOIN caracteres ON (designaciones.caracter = caracteres.caracter)
+                        LEFT OUTER JOIN estados ON (autoevaluaciones_por_act.estado = estados.estado)
 			LEFT OUTER JOIN personas_perfiles ON (personas.persona = personas_perfiles.persona)
 		WHERE
 	                autoevaluaciones_por_act.confirmado = 'N' -- pendiente, no fue confirmada por el docente
