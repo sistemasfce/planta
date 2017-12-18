@@ -79,11 +79,12 @@ class ci_inicio_docentes extends planta_ci
 
 	function conf__form(planta_ei_formulario $form)
 	{
-		$ciclo = toba::consulta_php('co_parametros')->get_parametro_valor('PAR_AUTOEVAL_CICLO');
-		toba::memoria()->set_dato('ciclo',$ciclo['valor_num']); 
+
 		$usuario = toba::memoria()->get_dato('usuario');
 		if ($usuario == 'admin') {
 			if (isset($this->s__filtro)) {
+				$ciclo = $this->s__filtro['ciclo_lectivo']['valor'];
+				toba::memoria()->set_dato('ciclo',$ciclo);
 				$persona = $this->s__filtro['persona']['valor'];
 				toba::memoria()->set_dato('persona',$persona);            
 				$where = 'persona = '.$persona;
@@ -99,11 +100,13 @@ class ci_inicio_docentes extends planta_ci
 		} else {
 			$persona = toba::memoria()->get_dato('persona');            
 			$where = 'persona = '.$persona;
+			$ciclo = toba::consulta_php('co_parametros')->get_parametro_valor('PAR_AUTOEVAL_CICLO');
+			toba::memoria()->set_dato('ciclo',$ciclo['valor_num']); 
 			$nombre = toba::consulta_php('co_personas')->get_persona_nombre($where);
 			toba::memoria()->set_dato('nombre',$nombre['nombre_completo']);
 			$datos['nombre'] = $nombre['nombre_completo'];
 		}
-                toba::memoria()->set_dato('path',null);
+		toba::memoria()->set_dato('path',null);
 		$form->set_datos($datos);
 	}
 
