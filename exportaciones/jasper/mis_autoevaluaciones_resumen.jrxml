@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mis_autoevaluaciones_resumen" language="groovy" pageWidth="792" pageHeight="612" orientation="Landscape" columnWidth="752" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d6d8e381-8279-4601-91c1-ff3144466d62">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="245"/>
+	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
 	<style name="Row" mode="Transparent"/>
@@ -26,14 +26,14 @@
 		(
 		(SELECT SUM(puntaje)
 FROM autoevaluaciones_por_act LEFT OUTER JOIN evaluaciones_calificaciones ON autoevaluaciones_por_act.calificacion = evaluaciones_calificaciones.descripcion
-WHERE autoevaluaciones_por_act.persona = 881
-			AND autoevaluaciones_por_act.ciclo_lectivo = 2016
+WHERE autoevaluaciones_por_act.persona = $P{persona}
+			AND autoevaluaciones_por_act.ciclo_lectivo = $P{ciclo}
 			AND autoevaluaciones_por_act.estado = 1
 			AND autoevaluaciones_por_act.calificacion <> 'No se realizo') /
 	(SELECT COUNT (*) as cantidad
 FROM autoevaluaciones_por_act
-WHERE autoevaluaciones_por_act.persona = 881
-			AND autoevaluaciones_por_act.ciclo_lectivo = 2016
+WHERE autoevaluaciones_por_act.persona = $P{persona}
+			AND autoevaluaciones_por_act.ciclo_lectivo = $P{ciclo}
 			AND autoevaluaciones_por_act.estado = 1
 			AND calificacion <> 'No se realizo')
 			) as total
@@ -154,21 +154,24 @@ WHERE autoevaluaciones_por_act.persona = 881
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="26" splitType="Stretch">
-			<staticText>
-				<reportElement x="15" y="5" width="100" height="20" uuid="008afcdc-e8af-4a81-bee7-173a7a9b1caa"/>
-				<textElement>
-					<font size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Total:]]></text>
-			</staticText>
+		<band height="3" splitType="Stretch"/>
+	</columnFooter>
+	<lastPageFooter>
+		<band height="23">
 			<textField isBlankWhenNull="true">
-				<reportElement x="657" y="6" width="90" height="15" uuid="bc3a1844-649c-4548-bc4c-a31eb3325953"/>
+				<reportElement x="658" y="0" width="90" height="15" uuid="bc3a1844-649c-4548-bc4c-a31eb3325953"/>
 				<textElement textAlignment="Center">
 					<font size="9" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="15" y="0" width="100" height="20" uuid="008afcdc-e8af-4a81-bee7-173a7a9b1caa"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
 		</band>
-	</columnFooter>
+	</lastPageFooter>
 </jasperReport>
