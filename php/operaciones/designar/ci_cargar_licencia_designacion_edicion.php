@@ -63,7 +63,8 @@ class ci_cargar_licencia_designacion_edicion extends planta_ci
 			}
 			$this->datos_para_cuadro[] = $fila;
 		}
-		//$datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'fecha_desde');
+		$datos_ordenados = rs_ordenar_por_columna($this->datos_para_cuadro, 'fecha_desde');
+                $this->datos_para_cuadro = $datos_ordenados;
 		$cuadro->set_datos($this->datos_para_cuadro);
 	}
 	

@@ -10,6 +10,9 @@
 	<style name="Row" mode="Transparent"/>
 	<parameter name="persona" class="java.lang.Integer"/>
 	<parameter name="ciclo" class="java.lang.Integer"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/sistemas01/toba/proyectos/planta/exportaciones/jasper/"]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT 		asignaciones.asignacion,
                 personas.documento,
@@ -34,8 +37,7 @@ autoevaluaciones_por_act.pregunta3,
 autoevaluaciones_por_act.pregunta4,
 autoevaluaciones_por_act.confirmado,
 autoevaluaciones_por_act.observaciones,
-CASE WHEN autoevaluaciones_por_act.resultado_resp <> '' THEN autoevaluaciones_por_act.resultado_resp
-ELSE autoevaluaciones_por_act.pregunta5 END as calificacion,
+autoevaluaciones_por_act.calificacion,
 		resolucion || '/'  ||resolucion_anio || ' ' ||resoluciones_tipos.descripcion as resolucion_nombre
 
             FROM asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
@@ -89,7 +91,7 @@ ELSE autoevaluaciones_por_act.pregunta5 END as calificacion,
 		<groupHeader>
 			<band height="45">
 				<textField isBlankWhenNull="true">
-					<reportElement x="67" y="4" width="406" height="20" uuid="42cc87c0-08f9-459c-a60f-b662f8392346"/>
+					<reportElement style="Comun" x="67" y="4" width="406" height="20" uuid="42cc87c0-08f9-459c-a60f-b662f8392346"/>
 					<textElement>
 						<font fontName="DejaVu Sans"/>
 					</textElement>
@@ -116,7 +118,7 @@ ELSE autoevaluaciones_por_act.pregunta5 END as calificacion,
 					<text><![CDATA[Ciclo lectivo:]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement x="80" y="24" width="100" height="19" uuid="44ebe28e-ba82-4a72-9c7d-f8551e94d1bd"/>
+					<reportElement style="Comun" x="80" y="24" width="100" height="19" uuid="44ebe28e-ba82-4a72-9c7d-f8551e94d1bd"/>
 					<textElement>
 						<font fontName="DejaVu Sans"/>
 					</textElement>
@@ -128,8 +130,42 @@ ELSE autoevaluaciones_por_act.pregunta5 END as calificacion,
 			<band/>
 		</groupFooter>
 	</group>
+	<title>
+		<band height="136">
+			<image>
+				<reportElement x="24" y="4" width="92" height="40" uuid="27d1ce8b-e872-4fe4-ae78-e6dac0f94612"/>
+				<imageExpression><![CDATA["escudo.jpg"]]></imageExpression>
+			</image>
+			<image hAlign="Right">
+				<reportElement x="681" y="2" width="92" height="40" uuid="b8c6b928-33ce-4c19-a010-4a1f16ceaec6"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="115" y="11" width="566" height="23" uuid="6ac23ae1-b18b-4b3d-8bec-c2eeabae9f9b"/>
+				<textElement textAlignment="Center">
+					<font fontName="DejaVu Sans" size="12" pdfFontName="Times-Bold"/>
+				</textElement>
+				<text><![CDATA[Reporte de autoevaluaciones]]></text>
+			</staticText>
+			<subreport>
+				<reportElement x="3" y="44" width="799" height="86" uuid="8a6b0f1d-2029-43e2-87f5-3e677121db7b"/>
+				<subreportParameter name="persona">
+					<subreportParameterExpression><![CDATA[$P{persona}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="ciclo">
+					<subreportParameterExpression><![CDATA[$P{ciclo}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "mis_autoevaluaciones_resumen.jasper"]]></subreportExpression>
+			</subreport>
+			<break>
+				<reportElement x="0" y="134" width="100" height="1" uuid="85f51ea7-2578-4ef7-94a6-7fd835ecb615"/>
+			</break>
+		</band>
+	</title>
 	<pageHeader>
 		<band height="52" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}!=1]]></printWhenExpression>
 			<image hAlign="Right">
 				<reportElement x="681" y="3" width="92" height="40" uuid="c74b9085-5990-4819-bf2d-a9c6090cb6ea"/>
 				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
@@ -164,18 +200,14 @@ ELSE autoevaluaciones_por_act.pregunta5 END as calificacion,
 				<textFieldExpression><![CDATA[$F{rol_nombre}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="38" width="80" height="15" uuid="fca329d5-1e97-4398-892b-bc3fe1141d8e">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
-				</reportElement>
+				<reportElement x="0" y="38" width="80" height="15" uuid="fca329d5-1e97-4398-892b-bc3fe1141d8e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement stretchType="RelativeToTallestObject" x="86" y="318" width="716" height="40" uuid="ffcb002b-72d2-4711-9347-ca82596b422f">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
-				</reportElement>
+				<reportElement stretchType="RelativeToTallestObject" x="86" y="318" width="716" height="40" uuid="ffcb002b-72d2-4711-9347-ca82596b422f"/>
 				<textElement verticalAlignment="Top">
 					<font size="8"/>
 				</textElement>

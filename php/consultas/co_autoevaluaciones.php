@@ -115,8 +115,6 @@ class co_autoevaluaciones
     {
 	$sql = "SELECT  apa.*,
                         personas.apellido || ', ' || nombres as nombre_completo,
-                        CASE WHEN apa.pregunta5 = '' THEN resultado_resp
-                        ELSE pregunta5 END as calificacion,
 			asignaciones.actividad,
 			asignaciones.carrera_academica,
 			ubicaciones.codigo as ubicacion_desc,

@@ -1161,9 +1161,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001085', --objeto_ei_formulario_fila
 	'280000521', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'pregunta5', --identificador
+	'calificacion', --identificador
 	'ef_editable', --elemento_formulario
-	'pregunta5', --columnas
+	'calificacion', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'16', --orden

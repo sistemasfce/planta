@@ -46,7 +46,7 @@ class ci_modificar_asignacion_designacion_edicion extends planta_ci
 			$datos_para_cuadro[] = $fila;
 		}
                 $datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
-		$cuadro->set_datos($datos_para_cuadro);
+		$cuadro->set_datos($datos_ordenados);                       
 	}
 
 	function evt__cuadro_asig__seleccion($seleccion)

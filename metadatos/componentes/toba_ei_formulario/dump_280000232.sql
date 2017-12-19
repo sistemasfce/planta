@@ -218,7 +218,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="5">
-				<span style="font-size:12px;">[ef id=pregunta5]</span></td>
+				<span style="font-size:12px;">[ef id=calificacion]</span></td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -819,9 +819,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000351', --objeto_ei_formulario_fila
 	'280000232', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'pregunta5', --identificador
+	'calificacion', --identificador
 	'ef_radio', --elemento_formulario
-	'pregunta5', --columnas
+	'calificacion', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'8', --orden

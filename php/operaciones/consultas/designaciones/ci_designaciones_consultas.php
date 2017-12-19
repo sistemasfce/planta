@@ -41,7 +41,8 @@ class ci_designaciones_consultas extends planta_ci
 				}
 				$datos_para_cuadro[] = $fila;
 			}
-			$cuadro->set_datos($datos_para_cuadro);
+                        $datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
+			$cuadro->set_datos($datos_ordenados);
 		}
 	}
 	

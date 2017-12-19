@@ -27,37 +27,37 @@ class ci_cargar_asignacion_docente_edicion extends planta_ci
 
 	function conf__cuadro_des(planta_ei_cuadro $cuadro)
 	{
-		$datos_para_cuadro = array();
-		$aux = array();
-		$datos = $this->tabla('designaciones')->get_filas();
-		
-		foreach ($datos as $dat) {
-			$fila = $dat;
-			//if ($fila['estado'] == 3)
-			//        continue;
-			$fila['resolucion_desc'] = $dat['resolucion']. '/'.$dat['resolucion_anio']. ' '.$dat['resolucion_tipo_desc'];
+            $datos_para_cuadro = array();
+            $aux = array();
+            $datos = $this->tabla('designaciones')->get_filas();
 
-			if ($fila['designacion_tipo'] == 1 and $fila['designacion'] != null and ($fila['estado'] == 1 or $fila['estado'] == 5)) {
-				$horas_licenciadas = toba::consulta_php('co_designaciones')->get_horas_licencias_activas($fila['designacion']);
-				$fila['carga_horaria_real'] = $fila['carga_horaria_dedicacion'] - $horas_licenciadas['total'];            
-			}
-			$suma_asignaciones = toba::consulta_php('co_asignaciones')->get_horas_asignadas_x_designacion($fila['designacion']);
-			$fila['a_definir'] = $fila['carga_horaria_real'] - $suma_asignaciones['suma'];
+            foreach ($datos as $dat) {
+                    $fila = $dat;
+                    //if ($fila['estado'] == 3)
+                    //        continue;
+                    $fila['resolucion_desc'] = $dat['resolucion']. '/'.$dat['resolucion_anio']. ' '.$dat['resolucion_tipo_desc'];
 
-			if ($dat['estado'] == 1  or $dat['estado'] == 6) {
-				$fila['estado_desc'] = '<font color=green><b>'.$fila['estado_desc'].'</b></font>';
-			}
-			if ($dat['estado'] == 3 ) {
-				$fila['estado_desc'] = '<font color=red><b>'.$fila['estado_desc'].'</b></font>';
-			}  else {
-				$fila['estado_desc'] = '<font color=blue><b>'.$fila['estado_desc'].'</b></font>';
-			}
-			$this->datos_para_cuadro[] = $fila;
-			
-		}
-                $datos_ordenados = rs_ordenar_por_columna($this->datos_para_cuadro, 'resolucion_fecha');
-                $this->datos_para_cuadro = $datos_ordenados;
-		$cuadro->set_datos($datos_ordenados);
+                    if ($fila['designacion_tipo'] == 1 and $fila['designacion'] != null and ($fila['estado'] == 1 or $fila['estado'] == 5)) {
+                            $horas_licenciadas = toba::consulta_php('co_designaciones')->get_horas_licencias_activas($fila['designacion']);
+                            $fila['carga_horaria_real'] = $fila['carga_horaria_dedicacion'] - $horas_licenciadas['total'];            
+                    }
+                    $suma_asignaciones = toba::consulta_php('co_asignaciones')->get_horas_asignadas_x_designacion($fila['designacion']);
+                    $fila['a_definir'] = $fila['carga_horaria_real'] - $suma_asignaciones['suma'];
+
+                    if ($dat['estado'] == 1  or $dat['estado'] == 6) {
+                            $fila['estado_desc'] = '<font color=green><b>'.$fila['estado_desc'].'</b></font>';
+                    }
+                    if ($dat['estado'] == 3 ) {
+                            $fila['estado_desc'] = '<font color=red><b>'.$fila['estado_desc'].'</b></font>';
+                    }  else {
+                            $fila['estado_desc'] = '<font color=blue><b>'.$fila['estado_desc'].'</b></font>';
+                    }
+                    $this->datos_para_cuadro[] = $fila;
+
+            }
+            $datos_ordenados = rs_ordenar_por_columna($this->datos_para_cuadro, 'resolucion_fecha');
+            $this->datos_para_cuadro = $datos_ordenados;
+            $cuadro->set_datos($datos_ordenados);
 	}  
 	
 	function evt__cuadro_des__seleccion($seleccion)

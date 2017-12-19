@@ -296,40 +296,12 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'planta', --objeto_proyecto
 	'280000211', --objeto
-	'280000260', --col_id
-	'pregunta5', --columna
-	'C', --tipo
-	'0', --pk
-	'', --secuencia
-	'200', --largo
-	NULL, --no_nulo
-	'0', --no_nulo_db
-	'0', --externa
-	'autoevaluaciones_por_act'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'planta', --objeto_proyecto
-	'280000211', --objeto
 	'280000261', --col_id
 	'observaciones', --columna
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
 	'4000', --largo
-	NULL, --no_nulo
-	'0', --no_nulo_db
-	'0', --externa
-	'autoevaluaciones_por_act'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'planta', --objeto_proyecto
-	'280000211', --objeto
-	'280000262', --col_id
-	'resultado_resp', --columna
-	'C', --tipo
-	'0', --pk
-	'', --secuencia
-	'25', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
@@ -446,6 +418,20 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'0', --no_nulo_db
 	'1', --externa
 	NULL  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000211', --objeto
+	'280000855', --col_id
+	'calificacion', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'25', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'autoevaluaciones_por_act'  --tabla
 );
 --- FIN Grupo de desarrollo 280
 
