@@ -254,6 +254,7 @@ class co_evaluaciones
 	$sql = "
 		SELECT  autoevaluaciones_por_act.persona,
 			personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        
 			(SELECT confirmado FROM autoevaluaciones WHERE ciclo_lectivo = $ciclo 
 				AND autoevaluaciones.persona = autoevaluaciones_por_act.persona) as ficha_docente,
 			(SELECT COUNT (autoevaluacion_por_act) FROM autoevaluaciones_por_act as apa 
@@ -264,6 +265,7 @@ class co_evaluaciones
 				AND apa.estado = 1 AND apa.ciclo_lectivo = $ciclo
 				AND actividades.se_evalua = 'S') as autoeval_realizadas,
 			count (autoevaluacion_por_act) as autoeval_total,
+                        
 			(SELECT COUNT (evaluacion) FROM evaluaciones 
 				LEFT OUTER JOIN asignaciones ON (evaluaciones.asignacion = asignaciones.asignacion)
 				LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
@@ -282,6 +284,7 @@ class co_evaluaciones
 				WHERE evaluaciones.persona = autoevaluaciones_por_act.persona
 				AND evaluaciones.ciclo_lectivo = $ciclo AND evaluaciones.estado = 1 AND actividades.se_evalua = 'S' AND notificacion = 'S'
 			) as evaluado_notificado,
+                        
 			(SELECT COUNT (evaluacion) FROM evaluaciones 
 				LEFT OUTER JOIN asignaciones ON (evaluaciones.asignacion = asignaciones.asignacion)
 				LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
@@ -301,6 +304,7 @@ class co_evaluaciones
 				WHERE evaluaciones.evaluador = autoevaluaciones_por_act.persona
 				AND evaluaciones.ciclo_lectivo = $ciclo AND evaluaciones.estado = 1 AND actividades.se_evalua = 'S' AND notificacion = 'S'
 			) as evaluador_notificado  
+                        
 		FROM autoevaluaciones_por_act 
 			LEFT OUTER JOIN personas ON (autoevaluaciones_por_act.persona = personas.persona)
 			LEFT OUTER JOIN asignaciones ON (autoevaluaciones_por_act.asignacion = asignaciones.asignacion)

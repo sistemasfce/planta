@@ -22,6 +22,7 @@
 		personas.apellido || ', ' || personas.nombres as nombre_completo,
                 	actividades.descripcion as actividad_desc,
                 	ubicaciones.codigo as ubicacion_desc,
+		dimensiones.codigo as dimension_desc,
 		autoevaluaciones_por_act.calificacion,
 		(SELECT ceiling	(
 		(SELECT SUM(puntaje)
@@ -43,12 +44,13 @@ WHERE autoevaluaciones_por_act.persona = $P{persona}
             LEFT OUTER JOIN autoevaluaciones_por_act ON (asignaciones.asignacion = autoevaluaciones_por_act.asignacion)
             LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
             LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
+LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
 
              WHERE         personas.persona = $P{persona}
 			AND autoevaluaciones_por_act.ciclo_lectivo = $P{ciclo}
 			AND autoevaluaciones_por_act.estado = 1
 
-            ORDER BY personas.apellido, resolucion_fecha]]>
+            ORDER BY dimension_desc]]>
 	</queryString>
 	<field name="asignacion" class="java.lang.Integer"/>
 	<field name="documento" class="java.lang.String"/>
@@ -57,6 +59,7 @@ WHERE autoevaluaciones_por_act.persona = $P{persona}
 	<field name="nombre_completo" class="java.lang.String"/>
 	<field name="actividad_desc" class="java.lang.String"/>
 	<field name="ubicacion_desc" class="java.lang.String"/>
+	<field name="dimension_desc" class="java.lang.String"/>
 	<field name="calificacion" class="java.lang.String"/>
 	<field name="total" class="java.lang.Double"/>
 	<background>
@@ -114,21 +117,28 @@ WHERE autoevaluaciones_por_act.persona = $P{persona}
 				<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="567" y="60" width="91" height="20" uuid="22f08f9f-2f09-4aaa-b626-6c1310a0bc89"/>
+				<reportElement x="592" y="60" width="66" height="20" uuid="22f08f9f-2f09-4aaa-b626-6c1310a0bc89"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Ubicación]]></text>
+				<text><![CDATA[Sede]]></text>
 			</staticText>
 			<line>
 				<reportElement x="15" y="79" width="730" height="1" uuid="77211088-f81a-4f75-a964-808daaeab77f"/>
 			</line>
+			<staticText>
+				<reportElement x="516" y="60" width="76" height="20" uuid="46970d13-ab99-4731-9c56-af548a8e9275"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Dimensión]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="23" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="15" y="3" width="547" height="15" uuid="84191de6-2be4-4f60-8dde-ba1113cf2e60"/>
+				<reportElement x="15" y="3" width="501" height="15" uuid="84191de6-2be4-4f60-8dde-ba1113cf2e60"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
@@ -142,7 +152,7 @@ WHERE autoevaluaciones_por_act.persona = $P{persona}
 				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="568" y="3" width="90" height="15" uuid="75f6f0b0-11c4-4adf-b8d1-12f99d97012d"/>
+				<reportElement x="593" y="3" width="65" height="15" uuid="75f6f0b0-11c4-4adf-b8d1-12f99d97012d"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
@@ -151,6 +161,13 @@ WHERE autoevaluaciones_por_act.persona = $P{persona}
 			<line>
 				<reportElement x="15" y="22" width="730" height="1" uuid="8062f95c-90c6-4e4c-8df4-55041d0a1692"/>
 			</line>
+			<textField isBlankWhenNull="true">
+				<reportElement x="524" y="3" width="65" height="15" uuid="cde1fa3b-3259-4cba-af0c-f13e3cb28b96"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{dimension_desc}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 	<columnFooter>
