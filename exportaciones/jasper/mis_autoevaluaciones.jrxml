@@ -11,7 +11,7 @@
 	<parameter name="persona" class="java.lang.Integer"/>
 	<parameter name="ciclo" class="java.lang.Integer"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/home/fce/toba/proyectos/planta/jasper/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/home/fce/toba/proyectos/planta/exportaciones/jasper/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT 		asignaciones.asignacion,
