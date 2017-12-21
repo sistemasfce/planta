@@ -66,32 +66,32 @@ LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
 		<band splitType="Stretch"/>
 	</background>
 	<columnHeader>
-		<band height="82" splitType="Stretch">
+		<band height="80" splitType="Stretch">
 			<staticText>
-				<reportElement x="15" y="60" width="100" height="20" uuid="0e672d96-a036-490f-bae2-7e9f98e2915e"/>
+				<reportElement x="0" y="60" width="115" height="20" uuid="0e672d96-a036-490f-bae2-7e9f98e2915e"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Actividad]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="657" y="60" width="91" height="20" uuid="7a2c1b59-0fc9-448f-8172-406824376a00"/>
+				<reportElement x="661" y="60" width="91" height="20" uuid="7a2c1b59-0fc9-448f-8172-406824376a00"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Calificación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Title" x="15" y="40" width="726" height="20" uuid="846d552c-2148-4004-9d20-753300066a22"/>
+				<reportElement style="Title" x="0" y="40" width="748" height="20" uuid="846d552c-2148-4004-9d20-753300066a22"/>
 				<textElement textAlignment="Center">
-					<font fontName="SansSerif" size="12" pdfFontName="Times-Bold"/>
+					<font fontName="SansSerif" size="12" isBold="false" pdfFontName="Times-Bold"/>
 				</textElement>
 				<text><![CDATA[Resumen de actividades]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement style="Comun" x="94" y="20" width="100" height="19" uuid="f4ae858d-5e70-4576-a77c-e2accd3b2039"/>
 				<textElement>
-					<font fontName="DejaVu Sans" size="10"/>
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ciclo}]]></textFieldExpression>
 			</textField>
@@ -112,22 +112,19 @@ LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
 			<textField isBlankWhenNull="true">
 				<reportElement style="Comun" x="81" y="0" width="406" height="20" uuid="2907a7b2-2da3-492b-8312-4cd16bfa621b"/>
 				<textElement>
-					<font fontName="DejaVu Sans" size="10"/>
+					<font fontName="DejaVu Sans" size="10" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="592" y="60" width="66" height="20" uuid="22f08f9f-2f09-4aaa-b626-6c1310a0bc89"/>
+				<reportElement x="611" y="60" width="50" height="20" uuid="22f08f9f-2f09-4aaa-b626-6c1310a0bc89"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Sede]]></text>
 			</staticText>
-			<line>
-				<reportElement x="15" y="79" width="730" height="1" uuid="77211088-f81a-4f75-a964-808daaeab77f"/>
-			</line>
 			<staticText>
-				<reportElement x="516" y="60" width="76" height="20" uuid="46970d13-ab99-4731-9c56-af548a8e9275"/>
+				<reportElement x="535" y="60" width="76" height="20" uuid="46970d13-ab99-4731-9c56-af548a8e9275"/>
 				<textElement textAlignment="Center">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -136,33 +133,33 @@ LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="23" splitType="Stretch">
+		<band height="20" splitType="Stretch">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="15" y="3" width="501" height="15" uuid="84191de6-2be4-4f60-8dde-ba1113cf2e60"/>
+				<reportElement x="0" y="4" width="535" height="15" uuid="84191de6-2be4-4f60-8dde-ba1113cf2e60"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{actividad_desc}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="658" y="3" width="90" height="15" uuid="8f7f517c-26a0-4fe0-8c7c-a050f11e04cc"/>
+				<reportElement x="662" y="4" width="90" height="15" uuid="8f7f517c-26a0-4fe0-8c7c-a050f11e04cc"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="593" y="3" width="65" height="15" uuid="75f6f0b0-11c4-4adf-b8d1-12f99d97012d"/>
+				<reportElement x="612" y="4" width="49" height="15" uuid="75f6f0b0-11c4-4adf-b8d1-12f99d97012d"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{ubicacion_desc}]]></textFieldExpression>
 			</textField>
 			<line>
-				<reportElement x="15" y="22" width="730" height="1" uuid="8062f95c-90c6-4e4c-8df4-55041d0a1692"/>
+				<reportElement x="0" y="2" width="750" height="1" uuid="8062f95c-90c6-4e4c-8df4-55041d0a1692"/>
 			</line>
 			<textField isBlankWhenNull="true">
-				<reportElement x="524" y="3" width="65" height="15" uuid="cde1fa3b-3259-4cba-af0c-f13e3cb28b96"/>
+				<reportElement x="543" y="4" width="65" height="15" uuid="cde1fa3b-3259-4cba-af0c-f13e3cb28b96"/>
 				<textElement textAlignment="Center">
 					<font size="9"/>
 				</textElement>
@@ -171,19 +168,23 @@ LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="3" splitType="Stretch"/>
+		<band splitType="Stretch"/>
 	</columnFooter>
 	<lastPageFooter>
-		<band height="23">
+		<band height="21">
 			<textField isBlankWhenNull="true">
-				<reportElement x="658" y="0" width="90" height="15" uuid="bc3a1844-649c-4548-bc4c-a31eb3325953"/>
+				<reportElement x="662" y="0" width="90" height="15" uuid="bc3a1844-649c-4548-bc4c-a31eb3325953"/>
 				<textElement textAlignment="Center">
 					<font size="9" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{total}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{total}.compareTo(1) == 0 ? "Insatisfactorio" :
+$F{total}.compareTo(2) == 0 ? "Poco satisfactorio" :
+$F{total}.compareTo(3) == 0 ? "Satisfactorio" :
+$F{total}.compareTo(4) == 0 ? "Muy satisfactorio" :
+$F{total}.compareTo(5) == 0 ? "Excelente" : $F{total}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="15" y="0" width="100" height="20" uuid="008afcdc-e8af-4a81-bee7-173a7a9b1caa"/>
+				<reportElement x="0" y="0" width="115" height="20" uuid="008afcdc-e8af-4a81-bee7-173a7a9b1caa"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>

@@ -1,16 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mis_evaluaciones" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mis_evaluaciones" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2cf85398-a93e-4be3-9afc-b0e899cc4ca1">
 	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="601"/>
-	<property name="ireport.y" value="392"/>
-	<style name="Title" lineSpacing="Single" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
-	<style name="Resalt" lineSpacing="Single" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
-	<style name="Comun" lineSpacing="Single" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
-	<style name="Column header" forecolor="#666666" lineSpacing="Single" fontName="Arial" fontSize="12" isBold="true"/>
-	<style name="Row" mode="Transparent" lineSpacing="Single"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold">
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold">
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica">
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true">
+		<paragraph lineSpacing="Single"/>
+	</style>
+	<style name="Row" mode="Transparent">
+		<paragraph lineSpacing="Single"/>
+	</style>
 	<parameter name="persona" class="java.lang.Integer"/>
 	<parameter name="ciclo" class="java.lang.Integer"/>
-	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
 		<defaultValueExpression><![CDATA["/home/fce/toba/proyectos/planta/exportaciones/jasper/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -91,37 +101,41 @@ autoevaluaciones_por_act.calificacion,
 		<groupHeader>
 			<band height="44">
 				<textField isBlankWhenNull="true">
-					<reportElement style="Comun" x="67" y="4" width="406" height="20"/>
-					<textElement lineSpacing="Single">
-						<font fontName="DejaVu Sans"/>
+					<reportElement style="Comun" x="67" y="4" width="406" height="20" uuid="f0c8aa8e-8e77-4958-99e9-d3bc7ae7e8e0"/>
+					<textElement>
+						<font fontName="DejaVu Sans" isBold="true"/>
+						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_completo}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{nombre_completo}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement style="Column header" x="0" y="4" width="64" height="20" forecolor="#736343"/>
-					<textElement lineSpacing="Single">
+					<reportElement style="Column header" x="0" y="4" width="64" height="20" forecolor="#736343" uuid="7e277219-a402-48f0-8b78-072530e78d97"/>
+					<textElement>
 						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+						<paragraph lineSpacing="Single"/>
 					</textElement>
 					<text><![CDATA[Docente:]]></text>
 				</staticText>
 				<staticText>
-					<reportElement style="Column header" x="0" y="23" width="75" height="20" forecolor="#736343"/>
-					<textElement lineSpacing="Single">
+					<reportElement style="Column header" x="0" y="23" width="75" height="20" forecolor="#736343" uuid="87ab0f20-c150-4099-99c0-19c659885f0c"/>
+					<textElement>
 						<font fontName="DejaVu Sans" size="10" pdfFontName="Helvetica-Bold"/>
+						<paragraph lineSpacing="Single"/>
 					</textElement>
 					<text><![CDATA[Ciclo lectivo:]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement style="Comun" x="80" y="24" width="100" height="19"/>
-					<textElement lineSpacing="Single">
-						<font fontName="DejaVu Sans"/>
+					<reportElement style="Comun" x="80" y="24" width="100" height="19" uuid="15b5bb0f-ba5b-4d75-b88c-dfab9b23c921"/>
+					<textElement>
+						<font fontName="DejaVu Sans" isBold="true"/>
+						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$P{ciclo}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{ciclo}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="43" width="785" height="1"/>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="0" y="43" width="785" height="1" uuid="71d2fb25-e774-4412-a080-7d3a64516945"/>
 					<graphicElement>
-						<pen lineWidth="0.5" lineColor="#999999"/>
+						<pen lineWidth="2.0" lineColor="#999999"/>
 					</graphicElement>
 				</line>
 			</band>
@@ -133,22 +147,23 @@ autoevaluaciones_por_act.calificacion,
 	<title>
 		<band height="136">
 			<image>
-				<reportElement x="24" y="4" width="92" height="40"/>
-				<imageExpression class="java.lang.String"><![CDATA["escudo.jpg"]]></imageExpression>
+				<reportElement x="24" y="4" width="92" height="40" uuid="8cd586b5-b6f7-4e8e-917a-d142579fa562"/>
+				<imageExpression><![CDATA["escudo.jpg"]]></imageExpression>
 			</image>
 			<image hAlign="Right">
-				<reportElement x="681" y="2" width="92" height="40"/>
-				<imageExpression class="java.lang.String"><![CDATA["logo.jpg"]]></imageExpression>
+				<reportElement x="681" y="2" width="92" height="40" uuid="d4be6167-60ca-4b7e-b25d-cd0a6966f266"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement style="Title" x="115" y="11" width="566" height="23"/>
-				<textElement textAlignment="Center" lineSpacing="Single">
+				<reportElement style="Title" x="115" y="11" width="566" height="23" uuid="dd9fc36b-f034-42c6-a159-98098d579f6c"/>
+				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="12" pdfFontName="Times-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Informe Anual Docente]]></text>
 			</staticText>
 			<subreport>
-				<reportElement x="3" y="44" width="799" height="86"/>
+				<reportElement x="3" y="44" width="799" height="86" uuid="10f1cf93-3802-4c7f-8883-4883f30065a9"/>
 				<subreportParameter name="persona">
 					<subreportParameterExpression><![CDATA[$P{persona}]]></subreportParameterExpression>
 				</subreportParameter>
@@ -156,10 +171,10 @@ autoevaluaciones_por_act.calificacion,
 					<subreportParameterExpression><![CDATA[$P{ciclo}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "mis_autoevaluaciones_resumen.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "mis_autoevaluaciones_resumen.jasper"]]></subreportExpression>
 			</subreport>
 			<break>
-				<reportElement x="0" y="134" width="100" height="1"/>
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="130" width="100" height="1" uuid="4cd2c0cd-18b1-4d10-857c-dc5fb9203ed2"/>
 			</break>
 		</band>
 	</title>
@@ -167,287 +182,318 @@ autoevaluaciones_por_act.calificacion,
 		<band height="52" splitType="Stretch">
 			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}!=1]]></printWhenExpression>
 			<image hAlign="Right">
-				<reportElement x="681" y="3" width="92" height="40"/>
-				<imageExpression class="java.lang.String"><![CDATA["logo.jpg"]]></imageExpression>
+				<reportElement x="681" y="3" width="92" height="40" uuid="6b40a2e7-8f06-4242-917a-05297aae0e61"/>
+				<imageExpression><![CDATA["logo.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement style="Title" x="115" y="12" width="566" height="23"/>
-				<textElement textAlignment="Center" lineSpacing="Single">
+				<reportElement style="Title" x="115" y="12" width="566" height="23" uuid="718d65f4-f4de-44e1-a6b0-8095a73d1cdc"/>
+				<textElement textAlignment="Center">
 					<font fontName="DejaVu Sans" size="12" pdfFontName="Times-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Informe Anual Docente]]></text>
 			</staticText>
 			<image>
-				<reportElement x="24" y="5" width="92" height="40"/>
-				<imageExpression class="java.lang.String"><![CDATA["escudo.jpg"]]></imageExpression>
+				<reportElement x="24" y="5" width="92" height="40" uuid="d9a12c73-0e9e-4335-9990-1328c9c16c26"/>
+				<imageExpression><![CDATA["escudo.jpg"]]></imageExpression>
 			</image>
 		</band>
 	</pageHeader>
 	<detail>
 		<band height="53" splitType="Stretch">
 			<textField isBlankWhenNull="true">
-				<reportElement x="167" y="0" width="466" height="20"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
+				<reportElement x="167" y="1" width="466" height="20" uuid="6becf526-9540-4b73-ac86-5e3d1a80c922"/>
+				<textElement verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{actividad_desc}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{actividad_desc}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="669" y="0" width="116" height="20"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
+				<reportElement x="669" y="1" width="116" height="20" uuid="6f453aef-d7a2-460f-9207-16eceeda00a3"/>
+				<textElement verticalAlignment="Middle">
 					<font size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{rol_nombre}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{rol_nombre}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="0" y="38" width="80" height="15"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+				<reportElement x="0" y="38" width="80" height="15" uuid="27f541a0-f19a-4983-b57d-a0c5de671ae8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{calificacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="162" y="38" width="36" height="15"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+				<reportElement x="162" y="38" width="36" height="15" uuid="de648d24-688b-452e-9265-25a7c5458da4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{ubicacion_desc}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{ubicacion_desc}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" x="89" y="23" width="72" height="15" forecolor="#736343"/>
-				<textElement textAlignment="Center" verticalAlignment="Top" lineSpacing="Single" markup="none">
+				<reportElement style="Column header" x="89" y="23" width="72" height="15" forecolor="#736343" uuid="db71a53b-6fae-40dd-a2f4-e08ad8f6a101"/>
+				<textElement textAlignment="Center" verticalAlignment="Top" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Responsable]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="0" y="23" width="80" height="15" forecolor="#736343"/>
-				<textElement lineSpacing="Single" markup="none">
+				<reportElement style="Column header" x="0" y="23" width="80" height="15" forecolor="#736343" uuid="b8d58245-a63a-4484-b8c1-80ca2c442045"/>
+				<textElement textAlignment="Center" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Calificación]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="633" y="0" width="36" height="20" forecolor="#000000"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single" markup="none">
-					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+				<reportElement style="Column header" x="633" y="1" width="36" height="20" forecolor="#736343" uuid="4b4a928d-4ed7-4de0-8f24-19b37c615697"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="DejaVu Sans" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Rol:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="0" y="0" width="65" height="20" forecolor="#000000"/>
-				<textElement verticalAlignment="Middle" lineSpacing="Single" markup="none">
-					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+				<reportElement style="Column header" x="0" y="1" width="65" height="20" forecolor="#736343" uuid="a49b912f-0759-4334-95c5-7a2b975d7ee6"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="DejaVu Sans" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Dimensión:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="108" y="0" width="59" height="20" forecolor="#000000"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single" markup="none">
-					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+				<reportElement style="Column header" x="108" y="1" width="59" height="20" forecolor="#736343" uuid="8bd40e5c-a151-44fc-987e-020980868d41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
+					<font fontName="DejaVu Sans" size="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Actividad:]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="67" y="0" width="39" height="20"/>
-				<textElement textAlignment="Justified" verticalAlignment="Middle" lineSpacing="Single">
+				<reportElement x="67" y="1" width="39" height="20" uuid="5de19b59-d6a1-473e-a31c-0c0e90ab120d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8" isBold="true"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{dimension_desc}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dimension_desc}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" x="164" y="23" width="33" height="15" forecolor="#736343"/>
-				<textElement textAlignment="Center" lineSpacing="Single" markup="none">
+				<reportElement style="Column header" x="164" y="23" width="33" height="15" forecolor="#736343" uuid="a97e1d3c-768d-4b7f-8f1a-643b1a565035"/>
+				<textElement textAlignment="Center" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Sede]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="89" y="38" width="72" height="15"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+				<reportElement x="89" y="38" width="72" height="15" uuid="107e2d88-41b0-431c-b95a-22730e862927"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{responsable}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{responsable}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="198" y="38" width="100" height="15">
+				<reportElement x="198" y="38" width="100" height="15" uuid="f4a0c2e8-d33e-43f4-91f1-a8b56c6fd093">
 					<printWhenExpression><![CDATA[$F{responsable} != 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{informe_catedra}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dimension_desc}.equals("DO") ? $F{informe_catedra} : "NoC"]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="303" y="38" width="100" height="15">
+				<reportElement x="303" y="38" width="100" height="15" uuid="3ba5a3fc-76df-42ad-86fc-5fd26f808c68">
 					<printWhenExpression><![CDATA[$F{responsable} != 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{programa}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{dimension_desc}.equals("DO") ? $F{programa} : "NoC"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" x="198" y="23" width="100" height="15" forecolor="#736343">
+				<reportElement style="Column header" x="198" y="23" width="100" height="15" forecolor="#736343" uuid="7c6c4ea9-67c3-4611-858e-d0bb82a9127b">
 					<printWhenExpression><![CDATA[$F{responsable} != 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center" lineSpacing="Single" markup="none">
+				<textElement textAlignment="Center" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Informe de cátedra]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="303" y="23" width="100" height="15" forecolor="#736343">
+				<reportElement style="Column header" x="303" y="23" width="100" height="15" forecolor="#736343" uuid="2cec242c-d666-46e6-be88-7e8a824c83a6">
 					<printWhenExpression><![CDATA[$F{responsable} != 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center" lineSpacing="Single" markup="none">
+				<textElement textAlignment="Center" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Programa]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="405" y="38" width="100" height="15">
+				<reportElement x="505" y="38" width="100" height="15" uuid="5702939b-7f44-4bbf-af7f-a532f88f7e9b">
 					<printWhenExpression><![CDATA[$F{responsable} != 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{tipo_informe}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{tipo_informe}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="506" y="38" width="100" height="15">
+				<reportElement x="404" y="38" width="100" height="15" uuid="bbff6846-fa3c-4a93-a80c-7f8ea0f9fdda">
 					<printWhenExpression><![CDATA[$F{responsable} != 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center" verticalAlignment="Middle" lineSpacing="Single">
+				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{informe_otros}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{informe_otros}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" x="405" y="23" width="100" height="15" forecolor="#736343">
+				<reportElement style="Column header" x="505" y="23" width="100" height="15" forecolor="#736343" uuid="adc5a2fd-b64c-4977-bda3-9ad43213ddf1">
 					<printWhenExpression><![CDATA[$F{responsable} != 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center" lineSpacing="Single" markup="none">
+				<textElement textAlignment="Center" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Tipo de informe]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="Column header" x="506" y="23" width="100" height="15" forecolor="#736343">
+				<reportElement style="Column header" x="404" y="23" width="100" height="15" forecolor="#736343" uuid="98cef565-c46b-45cc-9b5a-abae1d564a5d">
 					<printWhenExpression><![CDATA[$F{responsable} != 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement textAlignment="Center" lineSpacing="Single" markup="none">
+				<textElement textAlignment="Center" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Otro informe]]></text>
 			</staticText>
 			<line>
-				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="785" height="1"/>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="785" height="1" uuid="f557e162-0525-4299-9d9f-35d4e3e7658f"/>
 				<graphicElement>
-					<pen lineWidth="0.5" lineColor="#999999"/>
+					<pen lineWidth="2.0" lineColor="#999999"/>
 				</graphicElement>
 			</line>
 		</band>
 		<band height="14">
 			<staticText>
-				<reportElement style="Column header" stretchType="RelativeToTallestObject" x="3" y="2" width="268" height="12" forecolor="#736343">
+				<reportElement style="Column header" stretchType="RelativeToTallestObject" x="3" y="2" width="268" height="12" forecolor="#736343" uuid="06f2a14c-1f04-4955-95e3-1e7fc4fae5cb">
 					<printWhenExpression><![CDATA[$F{responsable} == 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement verticalAlignment="Middle" lineSpacing="Single" markup="none">
+				<textElement verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Objetivos específicos de la actividad para el ciclo lectivo]]></text>
 			</staticText>
 		</band>
 		<band height="1">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="795" height="0">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="795" height="0" uuid="78a24f92-c25a-4de0-bb9f-fa79d28b7066">
 					<printWhenExpression><![CDATA[$F{responsable} == 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
+				<textElement verticalAlignment="Middle">
 					<font size="8" isBold="false"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{pregunta1}+"\n"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pregunta1}+"\n"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="12">
 			<staticText>
-				<reportElement style="Column header" positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="268" height="12" forecolor="#736343">
+				<reportElement style="Column header" positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="268" height="12" forecolor="#736343" uuid="f3bcbd6c-b443-4243-b58e-e9243f8d2896">
 					<printWhenExpression><![CDATA[$F{responsable} == 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement verticalAlignment="Middle" lineSpacing="Single" markup="none">
+				<textElement verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Descripción de la actividad]]></text>
 			</staticText>
 		</band>
 		<band height="1">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="795" height="0">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="795" height="0" uuid="3843613a-f8e6-4582-88e0-3e526ccc4c20">
 					<printWhenExpression><![CDATA[$F{responsable} == 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
+				<textElement verticalAlignment="Middle">
 					<font size="8"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{pregunta2}+"\n"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pregunta2}+"\n"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="12">
 			<staticText>
-				<reportElement style="Column header" positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="268" height="12" forecolor="#736343">
+				<reportElement style="Column header" positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="268" height="12" forecolor="#736343" uuid="e75299ca-4a3b-424b-b77e-1d3d2688f789">
 					<printWhenExpression><![CDATA[$F{responsable} == 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement verticalAlignment="Middle" lineSpacing="Single" markup="none">
+				<textElement verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Metas y/o productos obtenidos en el ciclo lectivo]]></text>
 			</staticText>
 		</band>
 		<band height="1">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="795" height="0">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="795" height="0" uuid="4e0f4222-bd41-4590-8a32-bb8e91e95d9b">
 					<printWhenExpression><![CDATA[$F{responsable} == 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
+				<textElement verticalAlignment="Middle">
 					<font size="8"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{pregunta3}+"\n"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pregunta3}+"\n"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="12">
 			<staticText>
-				<reportElement style="Column header" positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="364" height="12" forecolor="#736343">
+				<reportElement style="Column header" positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="364" height="12" forecolor="#736343" uuid="a2d0f295-7156-45bc-ae38-ce93c948ce83">
 					<printWhenExpression><![CDATA[$F{responsable} == 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement verticalAlignment="Middle" lineSpacing="Single" markup="none">
+				<textElement verticalAlignment="Middle" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Logros y dificultades específicos de la actividad en el presente ciclo lectivo]]></text>
 			</staticText>
 		</band>
 		<band height="1">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="795" height="0">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="3" y="0" width="795" height="0" uuid="0374f5b9-f4c3-4a7c-8c8d-efd6f07b3c74">
 					<printWhenExpression><![CDATA[$F{responsable} == 'No']]></printWhenExpression>
 				</reportElement>
-				<textElement verticalAlignment="Middle" lineSpacing="Single">
+				<textElement verticalAlignment="Middle">
 					<font size="8"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{pregunta4}+"\n"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{pregunta4}+"\n"]]></textFieldExpression>
 			</textField>
 		</band>
-		<band height="10">
+		<band height="23">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="89" y="0" width="716" height="10"/>
-				<textElement verticalAlignment="Top" lineSpacing="Single">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="89" y="0" width="716" height="10" uuid="9ac7ab45-94df-486b-94b9-87400ae8b1da"/>
+				<textElement verticalAlignment="Top">
 					<font size="8"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{observaciones}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement style="Column header" stretchType="RelativeToTallestObject" x="3" y="0" width="79" height="10" forecolor="#736343"/>
-				<textElement verticalAlignment="Top" lineSpacing="Single" markup="none">
+				<reportElement style="Column header" stretchType="RelativeToTallestObject" x="3" y="0" width="79" height="10" forecolor="#736343" uuid="850c99d2-4c64-489a-833d-f547725fe479"/>
+				<textElement verticalAlignment="Top" markup="none">
 					<font fontName="DejaVu Sans" size="8" pdfFontName="Helvetica-Bold"/>
+					<paragraph lineSpacing="Single"/>
 				</textElement>
 				<text><![CDATA[Observaciones:]]></text>
 			</staticText>
@@ -456,20 +502,22 @@ autoevaluaciones_por_act.calificacion,
 	<pageFooter>
 		<band height="15" splitType="Stretch">
 			<frame>
-				<reportElement mode="Opaque" x="0" y="0" width="801" height="15" forecolor="#D0B48E"/>
+				<reportElement mode="Opaque" x="0" y="0" width="801" height="15" forecolor="#D0B48E" uuid="5f335510-d366-4c5f-8f83-625f24c65624"/>
 				<textField evaluationTime="Group" evaluationGroup="propuesta">
-					<reportElement style="Column header" x="422" y="1" width="57" height="14" forecolor="#736343"/>
-					<textElement verticalAlignment="Middle" lineSpacing="Single">
+					<reportElement style="Column header" x="422" y="1" width="57" height="14" forecolor="#736343" uuid="ca0a95ce-21bd-4a46-9f9c-eeeaecac0fa1"/>
+					<textElement verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="10" isBold="false"/>
+						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement style="Column header" x="341" y="1" width="80" height="14" forecolor="#736343"/>
-					<textElement textAlignment="Right" verticalAlignment="Middle" lineSpacing="Single">
+					<reportElement style="Column header" x="341" y="1" width="80" height="14" forecolor="#736343" uuid="fa4678fa-8405-4631-9645-d81b9b805a4b"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font fontName="DejaVu Sans" size="10" isBold="false"/>
+						<paragraph lineSpacing="Single"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
 				</textField>
 			</frame>
 		</band>
