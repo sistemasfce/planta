@@ -171,9 +171,9 @@ LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
 		<band splitType="Stretch"/>
 	</columnFooter>
 	<lastPageFooter>
-		<band height="21">
+		<band height="23">
 			<textField isBlankWhenNull="true">
-				<reportElement x="662" y="0" width="90" height="15" uuid="bc3a1844-649c-4548-bc4c-a31eb3325953"/>
+				<reportElement x="662" y="5" width="90" height="15" uuid="bc3a1844-649c-4548-bc4c-a31eb3325953"/>
 				<textElement textAlignment="Center">
 					<font size="9" isBold="true"/>
 				</textElement>
@@ -184,12 +184,15 @@ $F{total}.compareTo(4) == 0 ? "Muy satisfactorio" :
 $F{total}.compareTo(5) == 0 ? "Excelente" : $F{total}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="0" width="115" height="20" uuid="008afcdc-e8af-4a81-bee7-173a7a9b1caa"/>
+				<reportElement x="3" y="3" width="115" height="20" uuid="008afcdc-e8af-4a81-bee7-173a7a9b1caa"/>
 				<textElement>
 					<font size="14" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Total:]]></text>
 			</staticText>
+			<line>
+				<reportElement x="2" y="2" width="750" height="1" uuid="75f4b016-c17a-4fb4-a85a-8a702350c178"/>
+			</line>
 		</band>
 	</lastPageFooter>
 </jasperReport>

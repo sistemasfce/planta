@@ -21,12 +21,14 @@ class ci_modificar_evaluacion_edicion extends planta_ci
     {
         $datos_para_cuadro = array();
         $datos = $this->tabla('evaluaciones')->get_filas();
-        foreach ($datos as $dat) {
-            if ($dat['estado'] != 1)
-                continue;            
-            $datos_para_cuadro[] = $dat;
-        }
-        $cuadro->set_datos($datos_para_cuadro);
+        //foreach ($datos as $dat) {
+        //    if ($dat['estado'] != 1)
+        //        continue;            
+        //    $datos_para_cuadro[] = $dat;
+        //}
+        $datos_ordenados = rs_ordenar_por_columna($datos, 'ciclo_lectivo');
+        $cuadro->set_datos($datos_ordenados);
+        $cuadro->set_titulo('Evaluaciones del docente: '.$datos_ordenados[0]['nombre_completo']);
     }
     
     function evt__cuadro_des__seleccion($seleccion)

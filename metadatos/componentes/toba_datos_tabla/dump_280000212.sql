@@ -419,6 +419,76 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'1', --externa
 	NULL  --tabla
 );
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000856', --col_id
+	'ubicacion_desc', --columna
+	'C', --tipo
+	'0', --pk
+	NULL, --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'1', --externa
+	NULL  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000857', --col_id
+	'actividad_desc', --columna
+	'C', --tipo
+	'0', --pk
+	NULL, --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'1', --externa
+	NULL  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000858', --col_id
+	'rol_desc', --columna
+	'C', --tipo
+	'0', --pk
+	NULL, --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'1', --externa
+	NULL  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000859', --col_id
+	'responsable', --columna
+	'C', --tipo
+	'0', --pk
+	NULL, --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'1', --externa
+	NULL  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000860', --col_id
+	'dimension_desc', --columna
+	'C', --tipo
+	'0', --pk
+	NULL, --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'1', --externa
+	NULL  --tabla
+);
 --- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------
@@ -443,6 +513,91 @@ INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, t
 	'0', --permite_carga_masiva
 	NULL  --metodo_masivo
 );
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000029', --externa_id
+	'sql', --tipo
+	'1', --sincro_continua
+	NULL, --metodo
+	NULL, --clase
+	NULL, --include
+	'280000002', --punto_montaje
+	'SELECT codigo as ubicacion_desc FROM ubicaciones, asignaciones WHERE asignaciones.ubicacion = ubicaciones.ubicacion AND asignacion = %asignacion%;', --sql
+	'0', --dato_estricto
+	NULL, --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000030', --externa_id
+	'sql', --tipo
+	'1', --sincro_continua
+	NULL, --metodo
+	NULL, --clase
+	NULL, --include
+	'280000002', --punto_montaje
+	'SELECT descripcion as actividad_desc FROM actividades, asignaciones WHERE asignaciones.actividad = actividades.actividad AND asignacion = %asignacion%;', --sql
+	'0', --dato_estricto
+	NULL, --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000031', --externa_id
+	'sql', --tipo
+	'1', --sincro_continua
+	NULL, --metodo
+	NULL, --clase
+	NULL, --include
+	'280000002', --punto_montaje
+	'SELECT responsable FROM asignaciones WHERE asignacion = %asignacion%;', --sql
+	'0', --dato_estricto
+	NULL, --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000032', --externa_id
+	'sql', --tipo
+	'1', --sincro_continua
+	NULL, --metodo
+	NULL, --clase
+	NULL, --include
+	'280000002', --punto_montaje
+	'SELECT descripcion as rol_desc FROM categorias, asignaciones WHERE asignaciones.rol = categorias.categoria AND asignacion = %asignacion%;', --sql
+	'0', --dato_estricto
+	NULL, --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000033', --externa_id
+	'sql', --tipo
+	'1', --sincro_continua
+	NULL, --metodo
+	NULL, --clase
+	NULL, --include
+	'280000002', --punto_montaje
+	'SELECT codigo as dimension_desc FROM dimensiones, asignaciones WHERE asignaciones.dimension = dimensiones.dimension AND asignacion = %asignacion%;', --sql
+	'0', --dato_estricto
+	NULL, --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
 --- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------
@@ -460,5 +615,75 @@ INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_i
 	'280000212', --objeto
 	'280000028', --externa_id
 	'280000850', --col_id
+	'1'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000029', --externa_id
+	'280000267', --col_id
+	'0'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000029', --externa_id
+	'280000856', --col_id
+	'1'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000030', --externa_id
+	'280000267', --col_id
+	'0'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000030', --externa_id
+	'280000857', --col_id
+	'1'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000031', --externa_id
+	'280000267', --col_id
+	'0'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000031', --externa_id
+	'280000859', --col_id
+	'1'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000032', --externa_id
+	'280000267', --col_id
+	'0'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000032', --externa_id
+	'280000858', --col_id
+	'1'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000033', --externa_id
+	'280000267', --col_id
+	'0'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000212', --objeto
+	'280000033', --externa_id
+	'280000860', --col_id
 	'1'  --es_resultado
 );
