@@ -41,7 +41,7 @@ class ci_evaluaciones_pendientes extends planta_ci
 		}
 
                  */
-                $datos = toba::consulta_php('co_evaluaciones')->get_evaluaciones_pendientes(); 
+                $datos = toba::consulta_php('co_evaluaciones')->get_evaluaciones_pendientes($where); 
 		$cuadro->set_titulo('Docentes que no tienen confirmada su evaluación');
 		$cuadro->set_datos($datos);        
 	}        

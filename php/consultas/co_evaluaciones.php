@@ -240,8 +240,10 @@ class co_evaluaciones
                 pp.apellido || ', ' || pp.nombres as evaluador_nombre_completo,
                 ubicaciones.codigo as ubicacion_desc,
                 dimensiones.codigo as dimension_desc,
+                estados.descripcion as estado_desc,
 		actividades.descripcion as actividad_desc
-		FROM evaluaciones LEFT OUTER JOIN personas as pp ON (evaluaciones.evaluador = pp.persona),
+		FROM evaluaciones LEFT OUTER JOIN personas as pp ON (evaluaciones.evaluador = pp.persona)
+                LEFT OUTER JOIN estados ON (evaluaciones.estado = estados.estado),
                         personas, 
                         asignaciones
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
