@@ -116,7 +116,7 @@ class co_evaluaciones
 			AND asignaciones.persona <> asig2.persona
 			AND asig2.persona = personas.persona
 			AND asig2.actividad = actividades.actividad
-			AND designaciones.caracter = 2 -- regulares
+		--	AND designaciones.caracter = 2 -- regulares
 			AND evaluaciones.ciclo_lectivo = '$ciclo'
 			$where
 			$ciclo_actual
@@ -161,6 +161,7 @@ class co_evaluaciones
 			ubicaciones 
 
 		WHERE 	asignaciones.actividad = actividades.actividad
+                        AND evaluaciones.estado = 1 
 			AND asignaciones.persona = $persona
 			AND asignaciones.ciclo_lectivo = $ciclo
 			AND asignaciones.responsable = 'S'
@@ -213,6 +214,7 @@ class co_evaluaciones
             personas, 
             ubicaciones 
         WHERE     asignaciones.actividad = actividades.actividad
+            AND evaluaciones.estado = 1 
             AND asignaciones.persona = $persona
             AND asignaciones.ciclo_lectivo = $ciclo
             AND asignaciones.responsable = 'S'
