@@ -14,6 +14,9 @@ class ci_evaluaciones_pendientes extends planta_ci
 			return;
 		$datos_filtro = $this->dep('filtro')->get_datos();
 		$ciclo = $datos_filtro['ciclo_lectivo']['valor'];
+                
+                /*
+                
 		$evaluadores = toba::consulta_php('co_docentes')->get_docentes();   
 		foreach ($evaluadores as $ev) {
 			$persona = $ev['persona'];
@@ -37,8 +40,10 @@ class ci_evaluaciones_pendientes extends planta_ci
 			}  
 		}
 
+                 */
+                $datos = toba::consulta_php('co_evaluaciones')->get_evaluaciones_pendientes(); 
 		$cuadro->set_titulo('Docentes que no tienen confirmada su evaluación');
-		$cuadro->set_datos($aux);        
+		$cuadro->set_datos($datos);        
 	}        
 	
 	//-----------------------------------------------------------------------------------

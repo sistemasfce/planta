@@ -233,18 +233,27 @@ class co_evaluaciones
 //--------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------
 
-    function get_evaluaciones_pendientes($where)
+    function get_evaluaciones_pendientes($where='1=1')
     {
 	$sql = "	
-		SELECT personas.apellido || ', ' || personas.nombres as nombre_completo,
-			actividades.descripcion as actividad_desc
-		FROM evaluaciones, personas, asignaciones
+		SELECT personas.apellido || ', ' || personas.nombres as evaluado_nombre_completo,
+                pp.apellido || ', ' || pp.nombres as evaluador_nombre_completo,
+                ubicaciones.codigo as ubicacion_desc,
+                dimensiones.codigo as dimension_desc,
+		actividades.descripcion as actividad_desc
+		FROM evaluaciones LEFT OUTER JOIN personas as pp ON (evaluaciones.evaluador = pp.persona),
+                        personas, 
+                        asignaciones
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
+                        LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
+                        LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
+                        
 		WHERE 	
 			evaluaciones.asignacion = asignaciones.asignacion
 			AND asignaciones.persona = personas.persona
-			AND evaluaciones.confirmado = 'N' AND $where
-		ORDER BY nombre_completo
+			AND evaluaciones.confirmado = 'N' AND $where 
+                            AND asignaciones.actividad <> 347
+		ORDER BY evaluado_nombre_completo
 		"; 
 	return toba::db()->consultar($sql);
     }
