@@ -28,8 +28,9 @@ class ci_modificar_autoevaluacion_edicion extends planta_ci
             $datos_para_cuadro[] = $dat;
         }
         */
-
-        $cuadro->set_datos($datos);
+        $datos_ordenados = rs_ordenar_por_columna($datos, 'ciclo_lectivo');
+        $cuadro->set_datos($datos_ordenados);
+        $cuadro->set_titulo('Autoevaluaciones del docente: '.$datos_ordenados[0]['nombre_completo']);
 
     }
     
