@@ -241,6 +241,7 @@ class co_evaluaciones
                 ubicaciones.codigo as ubicacion_desc,
                 dimensiones.codigo as dimension_desc,
                 estados.descripcion as estado_desc,
+                departamentos.descripcion as departamento_desc,
 		actividades.descripcion as actividad_desc
 		FROM evaluaciones LEFT OUTER JOIN personas as pp ON (evaluaciones.evaluador = pp.persona)
                 LEFT OUTER JOIN estados ON (evaluaciones.estado = estados.estado),
@@ -249,6 +250,7 @@ class co_evaluaciones
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
                         LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
                         LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
+                        LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento) 
                         
 		WHERE 	
 			evaluaciones.asignacion = asignaciones.asignacion
