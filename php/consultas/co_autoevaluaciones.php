@@ -9,6 +9,29 @@ class co_autoevaluaciones
 //
 //
 
+     function get_autoevaluaciones($where)
+    {
+        $sql = "SELECT 	apa.*,
+			personas.apellido || ', ' || nombres as nombre_completo,
+                        ubicaciones.codigo as ubicacion_desc,
+			dimensiones.codigo as dimension_desc,
+			actividades.descripcion as actividad_desc,
+			categorias.descripcion as rol_desc,
+                        estados.descripcion as estado_desc
+		FROM 	autoevaluaciones_por_act as apa LEFT OUTER JOIN personas ON (apa.persona = personas.persona)
+                        LEFT OUTER JOIN estados ON (apa.estado = estados.estado)
+                        LEFT OUTER JOIN ubicaciones ON (apa.ubicacion = ubicaciones.ubicacion)
+			LEFT OUTER JOIN asignaciones ON (apa.asignacion = asignaciones.asignacion)
+			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
+			LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria)
+			LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
+                WHERE   $where
+		ORDER BY nombre_completo
+        ";
+	return toba::db()->consultar($sql);
+    }
+   
+    
     function get_ficha_de_docente($persona,$ciclo)
     {
         $sql = "SELECT 	autoevaluaciones.*,
