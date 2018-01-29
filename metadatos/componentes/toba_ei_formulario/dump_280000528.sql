@@ -48,39 +48,6 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
 	'planta', --proyecto
-	'280000475', --evento_id
-	'280000528', --objeto
-	'baja', --identificador
-	'&Eliminar', --etiqueta
-	'0', --maneja_datos
-	NULL, --sobre_fila
-	'¿Desea ELIMINAR el registro?', --confirmacion
-	'ei-boton-baja', --estilo
-	'apex', --imagen_recurso_origen
-	'borrar.gif', --imagen
-	'1', --en_botonera
-	NULL, --ayuda
-	'1', --orden
-	NULL, --ci_predep
-	'0', --implicito
-	'0', --defecto
-	NULL, --display_datos_cargados
-	'cargado', --grupo
-	NULL, --accion
-	NULL, --accion_imphtml_debug
-	NULL, --accion_vinculo_carpeta
-	NULL, --accion_vinculo_item
-	NULL, --accion_vinculo_objeto
-	NULL, --accion_vinculo_popup
-	NULL, --accion_vinculo_popup_param
-	NULL, --accion_vinculo_target
-	NULL, --accion_vinculo_celda
-	NULL, --accion_vinculo_servicio
-	'0', --es_seleccion_multiple
-	'0'  --es_autovinculo
-);
-INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
-	'planta', --proyecto
 	'280000477', --evento_id
 	'280000528', --objeto
 	'modificacion', --identificador
@@ -93,7 +60,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'refrescar.png', --imagen
 	'1', --en_botonera
 	NULL, --ayuda
-	'2', --orden
+	'1', --orden
 	NULL, --ci_predep
 	'0', --implicito
 	'0', --defecto
@@ -126,7 +93,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 	'deshacer.png', --imagen
 	'1', --en_botonera
 	NULL, --ayuda
-	'3', --orden
+	'2', --orden
 	NULL, --ci_predep
 	'0', --implicito
 	'0', --defecto
@@ -201,9 +168,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001095', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'calificacion', --identificador
+	'eval_calificacion', --identificador
 	'ef_editable', --elemento_formulario
-	'calificacion', --columnas
+	'eval_calificacion', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'6', --orden
@@ -281,9 +248,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001096', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'calificacion_fecha', --identificador
+	'eval_calificacion_fecha', --identificador
 	'ef_editable_fecha', --elemento_formulario
-	'calificacion_fecha', --columnas
+	'eval_calificacion_fecha', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'7', --orden
@@ -361,9 +328,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001097', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'plan_de_mejora', --identificador
+	'eval_plan_de_mejora', --identificador
 	'ef_checkbox', --elemento_formulario
-	'plan_de_mejora', --columnas
+	'eval_plan_de_mejora', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'8', --orden
@@ -441,9 +408,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001098', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'desvio1', --identificador
+	'eval_desvio1', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'desvio1', --columnas
+	'eval_desvio1', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'9', --orden
@@ -521,9 +488,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001099', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'desvio2', --identificador
+	'eval_desvio2', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'desvio2', --columnas
+	'eval_desvio2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'10', --orden
@@ -601,9 +568,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001100', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'desvio3', --identificador
+	'eval_desvio3', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'desvio3', --columnas
+	'eval_desvio3', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'11', --orden
@@ -681,9 +648,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001101', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'act1', --identificador
+	'eval_act1', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'act1', --columnas
+	'eval_act1', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'12', --orden
@@ -761,9 +728,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001102', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'act2', --identificador
+	'eval_act2', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'act2', --columnas
+	'eval_act2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'13', --orden
@@ -841,9 +808,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001103', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'act3', --identificador
+	'eval_act3', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'act3', --columnas
+	'eval_act3', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'14', --orden
@@ -921,9 +888,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001104', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'desempenio1', --identificador
+	'eval_desempenio1', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'desempenio1', --columnas
+	'eval_desempenio1', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'15', --orden
@@ -1001,9 +968,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001105', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'desempenio2', --identificador
+	'eval_desempenio2', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'desempenio2', --columnas
+	'eval_desempenio2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'16', --orden
@@ -1081,9 +1048,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001106', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'desempenio3', --identificador
+	'eval_desempenio3', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'desempenio3', --columnas
+	'eval_desempenio3', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'17', --orden
@@ -1161,9 +1128,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001107', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'observaciones', --identificador
+	'eval_observaciones', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'observaciones', --columnas
+	'eval_observaciones', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'18', --orden
@@ -1241,9 +1208,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001108', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'notificacion', --identificador
+	'eval_notificacion', --identificador
 	'ef_checkbox', --elemento_formulario
-	'notificacion', --columnas
+	'eval_notificacion', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'19', --orden
@@ -1321,9 +1288,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001109', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'notificacion_fecha', --identificador
+	'eval_notificacion_fecha', --identificador
 	'ef_editable_fecha', --elemento_formulario
-	'notificacion_fecha', --columnas
+	'eval_notificacion_fecha', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'20', --orden
@@ -1401,9 +1368,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001110', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'notificacion_observaciones', --identificador
+	'eval_notificacion_observaciones', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'notificacion_observaciones', --columnas
+	'eval_notificacion_observaciones', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'21', --orden
@@ -1481,9 +1448,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001111', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'confirmado', --identificador
+	'eval_confirmado', --identificador
 	'ef_checkbox', --elemento_formulario
-	'confirmado', --columnas
+	'eval_confirmado', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'22', --orden
@@ -2041,9 +2008,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001132', --objeto_ei_formulario_fila
 	'280000528', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'estado', --identificador
+	'eval_estado', --identificador
 	'ef_combo', --elemento_formulario
-	'estado', --columnas
+	'eval_estado', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'24', --orden

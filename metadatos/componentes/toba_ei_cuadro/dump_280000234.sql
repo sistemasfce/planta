@@ -357,7 +357,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'planta', --objeto_cuadro_proyecto
 	'280000234', --objeto_cuadro
 	'280000384', --objeto_cuadro_col
-	'calificacion', --clave
+	'eval_calificacion', --clave
 	'5', --orden
 	'Evaluación', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo

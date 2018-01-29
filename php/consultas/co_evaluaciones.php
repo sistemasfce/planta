@@ -4,18 +4,16 @@ class co_evaluaciones
 {
     function get_evaluaciones($where)
     {
-        $sql = "SELECT 	apa.*,
+        $sql = "SELECT 	asignaciones.*,
 			personas.apellido || ', ' || nombres as nombre_completo,
                         ubicaciones.codigo as ubicacion_desc,
 			dimensiones.codigo as dimension_desc,
 			actividades.descripcion as actividad_desc,
 			categorias.descripcion as rol_desc,
                         estados.descripcion as estado_desc
-		FROM 	evaluaciones as apa LEFT OUTER JOIN personas ON (apa.persona = personas.persona)
-                  LEFT OUTER JOIN estados ON (apa.estado = estados.estado)
-                      
-			LEFT OUTER JOIN asignaciones ON (apa.asignacion = asignaciones.asignacion)
-                          LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
+		FROM 	asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
+                        LEFT OUTER JOIN estados ON (asignaciones.eval_estado = estados.estado)
+                        LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
 			LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria)
 			LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
@@ -29,7 +27,6 @@ class co_evaluaciones
     function get_evaluaciones_de_persona_por_ciclo($persona,$ciclo)
     {
 	$sql = "SELECT 
-			evaluaciones.evaluacion,
 			personas.apellido || ', ' || personas.nombres as nombre_completo,
 			per2.apellido || ', ' || per2.nombres as evaluador_nombre,
 			ubicaciones.codigo as ubicacion_desc,
@@ -37,24 +34,23 @@ class co_evaluaciones
 			actividades.descripcion as actividad_desc,
 			categorias.descripcion as rol_desc,
 			departamentos.descripcion as departamento_desc,
-		      	evaluaciones.asignacion,
-			evaluaciones.calificacion,
-			evaluaciones.confirmado,
-                        evaluaciones.ciclo_lectivo,
-			evaluaciones.notificacion
-		FROM evaluaciones LEFT OUTER JOIN personas as per2 ON (evaluaciones.evaluador = per2.persona),
-			personas, asignaciones
+		      	asignaciones.asignacion,
+			asignaciones.eval_calificacion,
+			asignaciones.eval_confirmado,
+                        asignaciones.ciclo_lectivo,
+			asignaciones.eval_notificacion
+		FROM asignaciones LEFT OUTER JOIN personas as per2 ON (asignaciones.eval_evaluador = per2.persona)
+			LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
 			LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
 			LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
 			LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria)
 			LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
-		WHERE	evaluaciones.asignacion = asignaciones.asignacion  
-			AND asignaciones.persona = personas.persona
-			AND asignaciones.carrera_academica = 'S'
+		WHERE	
+			asignaciones.carrera_academica = 'S'
 			AND actividades.se_evalua = 'S'
-			AND asignaciones.persona = $persona AND evaluaciones.ciclo_lectivo = $ciclo
-			AND evaluaciones.estado = 1
+			AND asignaciones.persona = $persona AND asignaciones.ciclo_lectivo = $ciclo
+			AND asignaciones.eval_estado = 1
 		";
 	return toba::db()->consultar($sql);
     }
@@ -62,7 +58,7 @@ class co_evaluaciones
     function get_evaluacion_tabla($asignacion)
     {
 	$sql = "SELECT *
-		FROM evaluaciones
+		FROM asignaciones
 		WHERE asignacion = $asignacion
 		";
 	return toba::db()->consultar_fila($sql);
@@ -71,20 +67,19 @@ class co_evaluaciones
 
     function get_evaluacion($asignacion)
     {
-	$sql = "SELECT  evaluaciones.*,
+	$sql = "SELECT  asignaciones.*,
                         ubicaciones.descripcion as ubicacion_desc,
                         dimensiones.descripcion as dimension_desc,
                         actividades.descripcion as actividad_desc,
                         categorias.descripcion as rol_desc,
 			personas.apellido || ', ' || personas.nombres as nombre_completo
-                FROM evaluaciones, asignaciones
+                FROM asignaciones
                         LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
                         LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
                         LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria)
                         LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
 			LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
-                WHERE   evaluaciones.asignacion = asignaciones.asignacion  
-			AND asignaciones.asignacion = $asignacion
+                WHERE   asignaciones.asignacion = $asignacion
 
 		";
 	return toba::db()->consultar_fila($sql);
@@ -116,20 +111,19 @@ class co_evaluaciones
 			categorias.descripcion as rol_desc,
 			dimensiones.codigo as dimension_desc,
 			departamentos.descripcion as departamento_desc,
-			evaluaciones.calificacion,
-			evaluaciones.confirmado,
-			evaluaciones.notificacion
+			asignaciones.eval_calificacion,
+			asignaciones.eval_confirmado,
+			asignaciones.eval_notificacion
 		FROM 	asignaciones, 
 			asignaciones as asig2 LEFT OUTER JOIN dimensiones ON (asig2.dimension = dimensiones.dimension)
 			LEFT OUTER JOIN designaciones ON (asig2.designacion = designaciones.designacion)
 			LEFT OUTER JOIN categorias ON (asig2.rol = categorias.categoria) 
-			LEFT OUTER JOIN departamentos ON (asig2.departamento = departamentos.departamento)
-			LEFT OUTER JOIN evaluaciones ON (asig2.asignacion = evaluaciones.asignacion),
+			LEFT OUTER JOIN departamentos ON (asig2.departamento = departamentos.departamento),
 			personas,
 			ubicaciones, 
 			actividades
 		WHERE asignaciones.persona = $persona
-			AND evaluaciones.estado = 1 
+			AND asig2.eval_estado = 1 
 			AND asignaciones.responsable = 'S'
 			AND asignaciones.ciclo_lectivo = '$ciclo'
 			AND asignaciones.actividad = asig2.actividad
@@ -141,7 +135,6 @@ class co_evaluaciones
 			AND asig2.persona = personas.persona
 			AND asig2.actividad = actividades.actividad
 		--	AND designaciones.caracter = 2 -- regulares
-			AND evaluaciones.ciclo_lectivo = '$ciclo'
 			$where
 			$ciclo_actual
 		ORDER BY actividad_desc, ubicacion_desc, evaluado_nombre_completo
@@ -170,22 +163,21 @@ class co_evaluaciones
                         categorias.descripcion as rol_desc,
                         dimensiones.codigo as dimension_desc,
 			departamentos.descripcion as departamento_desc,
-                        evaluaciones.calificacion,
-                        evaluaciones.confirmado,
-			evaluaciones.notificacion
+                        asignaciones.eval_calificacion,
+                        asignaciones.eval_confirmado,
+			asignaciones.eval_notificacion
 		FROM asignaciones, 
 			actividades LEFT OUTER JOIN actividades_a_evaluar ON (actividades.actividad = actividades_a_evaluar.actividad_evaluador) 
 			LEFT OUTER JOIN actividades as act2 ON (actividades_a_evaluar.actividad_evaluado = act2.actividad), 
 			asignaciones as asig2 
 			LEFT OUTER JOIN dimensiones ON (asig2.dimension = dimensiones.dimension) 
 			LEFT OUTER JOIN categorias ON (asig2.rol = categorias.categoria) 
-			LEFT OUTER JOIN departamentos ON (asig2.departamento = departamentos.departamento)
-			LEFT OUTER JOIN evaluaciones ON (asig2.asignacion = evaluaciones.asignacion), 
+			LEFT OUTER JOIN departamentos ON (asig2.departamento = departamentos.departamento), 
 			personas, 
 			ubicaciones 
 
 		WHERE 	asignaciones.actividad = actividades.actividad
-                        AND evaluaciones.estado = 1 
+                        AND asig2.eval_estado = 1 
 			AND asignaciones.persona = $persona
 			AND asignaciones.ciclo_lectivo = $ciclo
 			AND asignaciones.responsable = 'S'
@@ -224,21 +216,20 @@ class co_evaluaciones
             categorias.descripcion as rol_desc,
             dimensiones.codigo as dimension_desc,
 	    departamentos.descripcion as departamento_desc,
-            evaluaciones.calificacion,
-            evaluaciones.confirmado,
-		evaluaciones.notificacion
+            asignaciones.eval_calificacion,
+            asignaciones.eval_confirmado,
+            asignaciones.eval_notificacion
         FROM asignaciones, 
             actividades LEFT OUTER JOIN ambitos_a_evaluar ON (actividades.actividad = ambitos_a_evaluar.actividad_evaluador) 
             LEFT OUTER JOIN actividades as act2 ON (ambitos_a_evaluar.ambito_evaluado = act2.ambito), 
             asignaciones as asig2 
             LEFT OUTER JOIN dimensiones ON (asig2.dimension = dimensiones.dimension) 
             LEFT OUTER JOIN categorias ON (asig2.rol = categorias.categoria) 
-            LEFT OUTER JOIN departamentos ON (asig2.departamento = departamentos.departamento) 
-            LEFT OUTER JOIN evaluaciones ON (asig2.asignacion = evaluaciones.asignacion), 
+            LEFT OUTER JOIN departamentos ON (asig2.departamento = departamentos.departamento) , 
             personas, 
             ubicaciones 
         WHERE     asignaciones.actividad = actividades.actividad
-            AND evaluaciones.estado = 1 
+            AND asig2.eval_estado = 1 
             AND asignaciones.persona = $persona
             AND asignaciones.ciclo_lectivo = $ciclo
             AND asignaciones.responsable = 'S'
@@ -269,19 +260,16 @@ class co_evaluaciones
                 estados.descripcion as estado_desc,
                 departamentos.descripcion as departamento_desc,
 		actividades.descripcion as actividad_desc
-		FROM evaluaciones LEFT OUTER JOIN personas as pp ON (evaluaciones.evaluador = pp.persona)
-                LEFT OUTER JOIN estados ON (evaluaciones.estado = estados.estado),
-                        personas, 
-                        asignaciones
+		FROM asignaciones LEFT OUTER JOIN personas as pp ON (asignaciones.eval_evaluador = pp.persona)
+                        LEFT OUTER JOIN estados ON (asignaciones.eval_estado = estados.estado)
+                        LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)                       
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
                         LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
                         LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
                         LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento) 
                         
 		WHERE 	
-			evaluaciones.asignacion = asignaciones.asignacion
-			AND asignaciones.persona = personas.persona
-			AND evaluaciones.confirmado = 'N' AND $where 
+			asignaciones.eval_confirmado = 'N' AND asignaciones.eval_estado = 1 AND $where 
                             AND asignaciones.actividad <> 347
 		ORDER BY evaluado_nombre_completo
 		"; 

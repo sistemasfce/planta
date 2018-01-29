@@ -53,7 +53,7 @@ class ci_evaluador extends planta_ci
 			return;
 		}
 		foreach ($doc as $i) {
-			if ($i['confirmado'] == 'S') {
+			if ($i['eval_confirmado'] == 'S') {
 				$i['imagen'] = toba_recurso::imagen_toba('tilde.gif', true);
 			} else {
 				$i['imagen'] = toba_recurso::imagen_toba('vacio.png', true);
@@ -66,8 +66,8 @@ class ci_evaluador extends planta_ci
 	function evt__cuadro__seleccion($seleccion)
 	{       
 		$confirmado = toba::consulta_php('co_autoevaluaciones')->get_autoevaluacion_por_asignacion($seleccion['asignacion']); 
-		if ($confirmado['confirmado'] != 'S') {
-			$this->informar_msg("El docente no completÛ su autoevalaciÛn","error");
+		if ($confirmado['autoeval_confirmado'] != 'S') {
+			$this->informar_msg("El docente no complet√≥ su autoevalaci√≥n","error");
 			return;   
 		} 
 		toba::memoria()->set_dato('asignacion',$seleccion['asignacion']);
@@ -91,80 +91,80 @@ class ci_evaluador extends planta_ci
 		$datos_tabla = toba::consulta_php('co_evaluaciones')->get_evaluacion_tabla($asignacion);
 		$datos = toba::consulta_php('co_evaluaciones')->get_evaluacion($asignacion);
 		$evaluador = toba::memoria()->get_dato('persona');
-		$datos['evaluador'] = $evaluador;
+		$datos['eval_evaluador'] = $evaluador;
 				
 		$datos_docente = toba::consulta_php('co_autoevaluaciones')->get_ficha_de_docente_por_asignacion($asignacion);
-		if ($datos_docente['ficha_docente'] == 'S') {
-			$nombre = substr($datos_docente['ficha_docente_path'],19);
+		if ($datos_docente['autoeval_ficha_docente'] == 'S') {
+			$nombre = substr($datos_docente['autoeval_ficha_docente_path'],19);
 			$dir_tmp = toba::proyecto()->get_www_temp();
-			exec("cp '". $datos_docente['ficha_docente_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			exec("cp '". $datos_docente['autoeval_ficha_docente_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024);
-			$datos['ficha_docente_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar ficha</a>";  
+			$datos['autoeval_ficha_docente_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar ficha</a>";  
 		}    
 		$datos_docente_act = toba::consulta_php('co_autoevaluaciones')->get_informes_docente($asignacion);
-		if ($datos_docente_act['informe_catedra'] == 'S') {
-			$nombre = substr($datos_docente_act['informe_catedra_path'],19);
+		if ($datos_docente_act['autoeval_informe_catedra'] == 'S') {
+			$nombre = substr($datos_docente_act['autoeval_informe_catedra_path'],19);
 			$dir_tmp = toba::proyecto()->get_www_temp();
-			exec("cp '". $datos_docente_act['informe_catedra_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			exec("cp '". $datos_docente_act['autoeval_informe_catedra_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024);
-			$datos['informe_catedra_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar informe de catedra</a>";      
+			$datos['autoeval_informe_catedra_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar informe de catedra</a>";      
 		} 
-		if ($datos_docente_act['programa'] == 'S') {
-			$nombre = substr($datos_docente_act['programa_path'],19);
+		if ($datos_docente_act['autoeval_programa'] == 'S') {
+			$nombre = substr($datos_docente_act['autoeval_programa_path'],19);
 			$dir_tmp = toba::proyecto()->get_www_temp();
-			exec("cp '". $datos_docente_act['programa_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			exec("cp '". $datos_docente_act['autoeval_programa_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024);
-			$datos['programa_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar programa</a>";      
+			$datos['autoeval_programa_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar programa</a>";      
 		} 
-		if ($datos_docente_act['informe_otros'] == 'S') {
-			$nombre = substr($datos_docente_act['informe_otros_path'],19);
+		if ($datos_docente_act['autoeval_informe_otros'] == 'S') {
+			$nombre = substr($datos_docente_act['autoeval_informe_otros_path'],19);
 			$dir_tmp = toba::proyecto()->get_www_temp();
-			exec("cp '". $datos_docente_act['informe_otros_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			exec("cp '". $datos_docente_act['autoeval_informe_otros_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024); 
-			$datos['tipo_informe'] = $datos_docente_act['tipo_informe'];
-			$datos['informe_otros_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo de informe</a>";      
+			$datos['autoeval_tipo_informe'] = $datos_docente_act['tipo_informe'];
+			$datos['autoeval_informe_otros_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo de informe</a>";      
 		}             
 		$form->set_datos($datos);
 			
-		if ($datos['confirmado'] == 'S')
+		if ($datos['eval_confirmado'] == 'S')
 			$form->evento('modificacion')->desactivar();
 	}
 
 	function evt__form__modificacion($datos)
 	{
-		if (($datos['calificacion'] == 'Insatisfactorio' or $datos['calificacion'] == 'Poco satisfactorio') and $datos['plan_de_mejora'] == 'N') {
-			$this->informar_msg("Si la evaluaciÛn NO es satistactoria se debe solicitar un plan de mejora","error");
+		if (($datos['eval_calificacion'] == 'Insatisfactorio' or $datos['calificacion'] == 'Poco satisfactorio') and $datos['plan_de_mejora'] == 'N') {
+			$this->informar_msg("Si la evaluaci√≥n NO es satistactoria se debe solicitar un plan de mejora","error");
 			return;
 		} 
-		if ($datos['notificacion'] == 'S') {
-			$this->informar_msg("La evaluaciÛn ya fue notificada por el docente, no se puede modificar","error");
+		if ($datos['eval_notificacion'] == 'S') {
+			$this->informar_msg("La evaluaci√≥n ya fue notificada por el docente, no se puede modificar","error");
 			return;
 		} 
-		if ($datos['confirmado'] == 'S' and $datos['calificacion'] == null) {
-			$this->informar_msg("No se puede confirmar una evaluaciÛn sin cargar la calificaciÛn","error");
+		if ($datos['eval_confirmado'] == 'S' and $datos['eval_calificacion'] == null) {
+			$this->informar_msg("No se puede confirmar una evaluaci√≥n sin cargar la calificaci√≥n","error");
 			return;
 		}    
-		if ($datos['calificacion'] == 'No se realizo' and $datos['observaciones'] == null) {
+		if ($datos['eval_calificacion'] == 'No se realizo' and $datos['eval_observaciones'] == null) {
 			$this->informar_msg("Si la actividad NO se realizo debe explicar el motivo en el campo observaciones","error");
 			return;
 		} 
-		if ($datos['confirmado'] == 'N') {
-			$this->informar_msg("Los datos se guardaron correctamente, pero la evaluaciÛn a˙n no fue confirmada","notificacion");
+		if ($datos['eval_confirmado'] == 'N') {
+			$this->informar_msg("Los datos se guardaron correctamente, pero la evaluaci√≥n a√∫n no fue confirmada","notificacion");
 		} 
 	
 		$datos['fecha'] = date('Y-m-d');
 		$asignacion = toba::memoria()->get_dato('asignacion');  
 		$datos['asignacion'] = $asignacion;
-		$this->tabla('evaluaciones')->set($datos);
+		$this->tabla('asignaciones')->set($datos);
 		$this->relacion()->sincronizar();
 		$this->relacion()->resetear();
 		toba::memoria()->set_dato('asignacion',null); 
 		
-		if ($datos['confirmado'] == 'S') {
+		if ($datos['eval_confirmado'] == 'S') {
 			$this->enviar_mail($asignacion);
 		}         
 		
@@ -184,10 +184,10 @@ class ci_evaluador extends planta_ci
 		
 		if (isset($docente['mail'])) {
 			$asunto = "Sistema de evaluacion de actividades FCE";
-			$cuerpo_mail = '<p>'."A travÈs del presente correo le informamos que Ud. fue evaluado en una de sus actividades en el marco del SISTEMA DE EVALUACI”N DE ACTIVIDADES. ".
-				" Para poder conocer la evaluaciÛn deber· ingresar al sistema, dentro del apartado INFORME ANUAL DE DESEMPE—O, y hacer click en ìMis evaluacionesî. ".
-				" AllÌ se desplegara el listado de sus actividades y por cada una de ellas, al ingresar a travÈs del icono de la lupa, podr· acceder a la evaluaciÛn y los comentarios realizados por el evaluador. ".
-				" Al pie de la evaluaciÛn, deber· notificarse de la misma, tildando el campo ìnotificaciÛnî, contando con el espacio de ìobservacionesî para comentarios. ".
+			$cuerpo_mail = '<p>'."A trav√©s del presente correo le informamos que Ud. fue evaluado en una de sus actividades en el marco del SISTEMA DE EVALUACION DE ACTIVIDADES. ".
+				" Para poder conocer la evaluaci√≥n deber√° ingresar al sistema, dentro del apartado INFORME ANUAL DE DESEMPE√ëO, y hacer click en Mis evaluaciones. ".
+				" All√≠ se desplegara el listado de sus actividades y por cada una de ellas, al ingresar a trav√©s del icono de la lupa, podr√° acceder a la evaluaci√≥n y los comentarios realizados por el evaluador. ".
+				" Al pie de la evaluaci√≥n, deber√° notificarse de la misma, tildando el campo notificaci√≥n, contando con el espacio de observaciones para comentarios. ".
 				'</p>';
 			$mail = new toba_mail($docente['mail'], $asunto, $cuerpo_mail);
 			$mail->set_html(true);

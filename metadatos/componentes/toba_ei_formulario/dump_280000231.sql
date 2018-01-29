@@ -164,31 +164,31 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=informe_catedra_archivo]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_informe_catedra_archivo]</span></td>
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=informe_catedra_path]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_informe_catedra_path]</span></td>
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=programa_archivo]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_programa_archivo]</span></td>
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=programa_path]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_programa_path]</span></td>
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=tipo_informe]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_tipo_informe]</span></td>
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=informe_otros_archivo]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_informe_otros_archivo]</span></td>
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=informe_otros_path]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_informe_otros_path]</span></td>
 		</tr>
 		<tr>
 			<td>
@@ -196,11 +196,11 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=calificacion]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_calificacion]</span></td>
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=observaciones]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_observaciones]</span></td>
 		</tr>
 		<tr>
 			<td>
@@ -212,7 +212,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<strong><span style="font-size:14px;">[ef id=confirmado]</span></strong></td>
+				<strong><span style="font-size:14px;">[ef id=autoeval_confirmado]</span></strong></td>
 		</tr>
 		<tr>
 			<td>
@@ -233,9 +233,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000335', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'informe_catedra_archivo', --identificador
+	'autoeval_informe_catedra_archivo', --identificador
 	'ef_upload', --elemento_formulario
-	'informe_catedra_archivo', --columnas
+	'autoeval_informe_catedra_archivo', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'1', --orden
@@ -313,9 +313,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000336', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'informe_catedra_path', --identificador
+	'autoeval_informe_catedra_path', --identificador
 	'ef_fijo', --elemento_formulario
-	'informe_catedra_path', --columnas
+	'autoeval_informe_catedra_path', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'2', --orden
@@ -393,9 +393,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000337', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'programa_archivo', --identificador
+	'autoeval_programa_archivo', --identificador
 	'ef_upload', --elemento_formulario
-	'programa_archivo', --columnas
+	'autoeval_programa_archivo', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'3', --orden
@@ -473,9 +473,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000338', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'programa_path', --identificador
+	'autoeval_programa_path', --identificador
 	'ef_fijo', --elemento_formulario
-	'programa_path', --columnas
+	'autoeval_programa_path', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'4', --orden
@@ -553,9 +553,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000339', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'tipo_informe', --identificador
+	'autoeval_tipo_informe', --identificador
 	'ef_combo', --elemento_formulario
-	'tipo_informe', --columnas
+	'autoeval_tipo_informe', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'5', --orden
@@ -633,9 +633,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000340', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'informe_otros_archivo', --identificador
+	'autoeval_informe_otros_archivo', --identificador
 	'ef_upload', --elemento_formulario
-	'informe_otros_archivo', --columnas
+	'autoeval_informe_otros_archivo', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'6', --orden
@@ -713,9 +713,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000341', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'informe_otros_path', --identificador
+	'autoeval_informe_otros_path', --identificador
 	'ef_fijo', --elemento_formulario
-	'informe_otros_path', --columnas
+	'autoeval_informe_otros_path', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'7', --orden
@@ -793,9 +793,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000342', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'calificacion', --identificador
+	'autoeval_calificacion', --identificador
 	'ef_radio', --elemento_formulario
-	'calificacion', --columnas
+	'autoeval_calificacion', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'8', --orden
@@ -873,9 +873,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000343', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'confirmado', --identificador
+	'autoeval_confirmado', --identificador
 	'ef_checkbox', --elemento_formulario
-	'confirmado', --columnas
+	'autoeval_confirmado', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'9', --orden
@@ -953,9 +953,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001123', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'observaciones', --identificador
+	'autoeval_observaciones', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'observaciones', --columnas
+	'autoeval_observaciones', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'10', --orden

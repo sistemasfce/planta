@@ -503,6 +503,510 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'1', --externa
 	NULL  --tabla
 );
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000863', --col_id
+	'autoeval_informe_catedra', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'1', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000864', --col_id
+	'autoeval_informe_catedra_path', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'500', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000865', --col_id
+	'autoeval_programa', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'1', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000866', --col_id
+	'autoeval_programa_path', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'500', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000867', --col_id
+	'autoeval_tipo_informe', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'50', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000868', --col_id
+	'autoeval_informe_otros', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'1', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000869', --col_id
+	'autoeval_informe_otros_path', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'500', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000870', --col_id
+	'autoeval_pregunta1', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'4000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000871', --col_id
+	'autoeval_pregunta2', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'4000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000872', --col_id
+	'autoeval_pregunta3', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'4000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000873', --col_id
+	'autoeval_pregunta4', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'4000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000874', --col_id
+	'autoeval_calificacion', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'25', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000875', --col_id
+	'autoeval_observaciones', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'4000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000876', --col_id
+	'autoeval_confirmado', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'1', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000877', --col_id
+	'autoeval_estado', --columna
+	'E', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000878', --col_id
+	'autoeval_fecha_carga', --columna
+	'T', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000879', --col_id
+	'eval_evaluador', --columna
+	'E', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000880', --col_id
+	'eval_calificacion', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'30', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000881', --col_id
+	'eval_calificacion_fecha', --columna
+	'T', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000882', --col_id
+	'eval_plan_de_mejora', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'1', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000883', --col_id
+	'eval_desvio1', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000884', --col_id
+	'eval_desvio2', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000885', --col_id
+	'eval_desvio3', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000886', --col_id
+	'eval_act1', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000887', --col_id
+	'eval_act2', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000888', --col_id
+	'eval_act3', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000889', --col_id
+	'eval_desempenio1', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000890', --col_id
+	'eval_desempenio2', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000891', --col_id
+	'eval_desempenio3', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000892', --col_id
+	'eval_observaciones', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000893', --col_id
+	'eval_notificacion', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'1', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000894', --col_id
+	'eval_notificacion_fecha', --columna
+	'T', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000895', --col_id
+	'eval_notificacion_observaciones', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'2000', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000896', --col_id
+	'eval_confirmado', --columna
+	'C', --tipo
+	'0', --pk
+	'', --secuencia
+	'1', --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000897', --col_id
+	'eval_fecha_carga', --columna
+	'T', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000898', --col_id
+	'eval_estado', --columna
+	'E', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'asignaciones'  --tabla
+);
 --- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------

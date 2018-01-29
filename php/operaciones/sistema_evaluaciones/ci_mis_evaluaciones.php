@@ -27,15 +27,15 @@ class ci_mis_evaluaciones extends planta_ci
 
 		$aux = array();
 		foreach ($datos as $i) {           
-				if ($i['confirmado'] == 'S') {
+				if ($i['eval_confirmado'] == 'S') {
 					$i['imagen'] = toba_recurso::imagen_toba('tilde.gif', true);
 				} else {
-						$i['imagen'] = toba_recurso::imagen_toba('vacio.png', true);
+					$i['imagen'] = toba_recurso::imagen_toba('vacio.png', true);
 				}
-				if ($i['notificacion'] == 'S') {
+				if ($i['eval_notificacion'] == 'S') {
 					$i['imagen_not'] = toba_recurso::imagen_toba('tilde.gif', true);
 				} else {
-						$i['imagen_not'] = toba_recurso::imagen_toba('vacio.png', true);
+					$i['imagen_not'] = toba_recurso::imagen_toba('vacio.png', true);
 				}            
 				$aux[] = $i;
 		}
@@ -45,11 +45,11 @@ class ci_mis_evaluaciones extends planta_ci
 	function evt__cuadro__seleccion($seleccion)
 	{
 		toba::memoria()->set_dato('asignacion',$seleccion['asignacion']);
-		if ($seleccion['confirmado'] == 'S') {
-				$this->set_pantalla('pant_form');
+		if ($seleccion['eval_confirmado'] == 'S') {
+                    $this->set_pantalla('pant_form');
 		} else {
 			// SOLO PARA PROBAR!!!
-				$this->set_pantalla('pant_form');
+			$this->set_pantalla('pant_form');
 			//$this->informar_msg("La actividad NO fue evaluada","info");
 		}       
 	}
@@ -69,10 +69,10 @@ class ci_mis_evaluaciones extends planta_ci
 		$datos_tabla = toba::consulta_php('co_evaluaciones')->get_evaluacion_tabla($asignacion);
 		$datos = toba::consulta_php('co_evaluaciones')->get_evaluacion($asignacion);
 			
-		$this->relacion()->tabla('evaluaciones')->resetear();
-		$this->relacion()->tabla('evaluaciones')->cargar($datos_tabla);
+		$this->relacion()->tabla('asignaciones')->resetear();
+		$this->relacion()->tabla('asignaciones')->cargar($datos_tabla);
 
-		if ($datos['confirmado'] == 'S') {
+		if ($datos['eval_confirmado'] == 'S') {
 			$form->set_datos($datos);
 		} else {
 			$aux['actividad_desc'] = 'ESTA ACTIVIDAD NO FUE EVALUADA';
@@ -80,16 +80,16 @@ class ci_mis_evaluaciones extends planta_ci
 			$form->evento('modificacion')->desactivar();
 			$form->evento('pdf_plan')->desactivar();
 		}
-		if ($datos['notificacion'] == 'S')
+		if ($datos['eval_notificacion'] == 'S')
 			$form->evento('modificacion')->desactivar();       
 	}
 
 	function evt__form__modificacion($datos)
 	{     
-		$datos['notificacion_fecha'] = date('Y-m-d');
+		$datos['eval_notificacion_fecha'] = date('Y-m-d');
 		$asignacion = toba::memoria()->get_dato('asignacion');  
 		$datos['asignacion'] = $asignacion;
-		$this->tabla('evaluaciones')->set($datos);
+		$this->tabla('asignaciones')->set($datos);
 		$this->relacion()->sincronizar();
 		$this->relacion()->resetear();
 		toba::memoria()->set_dato('asignacion',null);    

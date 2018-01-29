@@ -11,17 +11,16 @@ class co_autoevaluaciones
 
      function get_autoevaluaciones($where)
     {
-        $sql = "SELECT 	apa.*,
+        $sql = "SELECT 	asignaciones.*,
 			personas.apellido || ', ' || nombres as nombre_completo,
                         ubicaciones.codigo as ubicacion_desc,
 			dimensiones.codigo as dimension_desc,
 			actividades.descripcion as actividad_desc,
 			categorias.descripcion as rol_desc,
                         estados.descripcion as estado_desc
-		FROM 	autoevaluaciones_por_act as apa LEFT OUTER JOIN personas ON (apa.persona = personas.persona)
-                        LEFT OUTER JOIN estados ON (apa.estado = estados.estado)
-                        LEFT OUTER JOIN ubicaciones ON (apa.ubicacion = ubicaciones.ubicacion)
-			LEFT OUTER JOIN asignaciones ON (apa.asignacion = asignaciones.asignacion)
+		FROM 	asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
+                        LEFT OUTER JOIN estados ON (asignaciones.autoeval_estado = estados.estado)
+                        LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
 			LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria)
 			LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
@@ -118,25 +117,25 @@ class co_autoevaluaciones
 
     function get_informes_docente($asignacion)
     {   
-        $sql = "SELECT autoevaluaciones_por_act.*
-                FROM autoevaluaciones_por_act
-                WHERE autoevaluaciones_por_act.asignacion = $asignacion
+        $sql = "SELECT asignaciones.*
+                FROM asignaciones
+                WHERE asignaciones.asignacion = $asignacion
                 ";
         return toba::db()->consultar($sql);
     }  
 
     function get_actividades_sin_confirmar($persona)
     {
-	$sql = "SELECT confirmado
-		FROM autoevaluaciones_por_act
-		WHERE persona = $persona AND estado = 1 AND confirmado = 'N'
+	$sql = "SELECT autoeval_confirmado
+		FROM asignaciones
+		WHERE persona = $persona AND autoeval_estado = 1 AND autoeval_confirmado = 'N'
 		";
 	return toba::db()->consultar($sql);
     }
 
     function get_autoevaluaciones_por_act_persona($persona,$ciclo)
     {
-	$sql = "SELECT  apa.*,
+	$sql = "SELECT  asignaciones.*,
                         personas.apellido || ', ' || nombres as nombre_completo,
 			asignaciones.actividad,
 			asignaciones.carrera_academica,
@@ -145,17 +144,16 @@ class co_autoevaluaciones
 			actividades.descripcion as actividad_desc,
 			categorias.descripcion as rol_desc,
 			asignaciones.responsable
-                FROM autoevaluaciones_por_act as apa LEFT OUTER JOIN ubicaciones ON (apa.ubicacion = ubicaciones.ubicacion)
-			LEFT OUTER JOIN asignaciones ON (apa.asignacion = asignaciones.asignacion)
+                FROM asignaciones LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
 			LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria)
 			LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension),
                         personas
 			
-		WHERE 	apa.persona = $persona 
-                        AND apa.persona = personas.persona
-			AND apa.estado = 1
-			AND apa.ciclo_lectivo = $ciclo
+		WHERE 	asignaciones.persona = $persona 
+                        AND asignaciones.persona = personas.persona
+			AND asignaciones.autoeval_estado = 1
+			AND asignaciones.ciclo_lectivo = $ciclo
 		";
 	return toba::db()->consultar($sql);
     }
@@ -165,23 +163,22 @@ class co_autoevaluaciones
 	$sql = "
 		SELECT 	DISTINCT
 			apellido || ', ' || nombres as nombre_completo, 
-			confirmado, 
+			autoeval_confirmado, 
 			caracteres.descripcion as caracter,
 			actividades.descripcion as actividad_desc,
-			autoevaluaciones_por_act.ciclo_lectivo, 
-			autoevaluaciones_por_act.ubicacion, 
-                        (SELECT codigo FROM ubicaciones WHERE ubicacion = autoevaluaciones_por_act.ubicacion) as ubicacion_desc,
+			asignaciones.ciclo_lectivo, 
+			asignaciones.ubicacion, 
+                        (SELECT codigo FROM ubicaciones WHERE ubicacion = asignaciones.ubicacion) as ubicacion_desc,
                         estados.descripcion as estado_desc,
 			designaciones.departamento 
-		FROM     personas LEFT OUTER JOIN autoevaluaciones_por_act ON (personas.persona = autoevaluaciones_por_act.persona) 
-		            LEFT OUTER JOIN asignaciones ON (autoevaluaciones_por_act.asignacion = asignaciones.asignacion)
+		FROM     personas LEFT OUTER JOIN asignaciones ON (personas.persona = asignaciones.persona) 
 		            LEFT OUTER JOIN designaciones ON (asignaciones.designacion = designaciones.designacion)
 		            LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
 			LEFT OUTER JOIN caracteres ON (designaciones.caracter = caracteres.caracter)
-                        LEFT OUTER JOIN estados ON (autoevaluaciones_por_act.estado = estados.estado)
+                        LEFT OUTER JOIN estados ON (asignaciones.autoeval_estado = estados.estado)
 			LEFT OUTER JOIN personas_perfiles ON (personas.persona = personas_perfiles.persona)
 		WHERE
-	                autoevaluaciones_por_act.confirmado = 'N' -- pendiente, no fue confirmada por el docente
+	                asignaciones.autoeval_confirmado = 'N' -- pendiente, no fue confirmada por el docente
 	   
        		        AND designaciones.designacion_tipo = 1 -- designacion tipo alta                    
         		AND actividades.se_evalua = 'S'
@@ -211,17 +208,17 @@ class co_autoevaluaciones
 
     function get_autoevaluacion_por_asignacion($asignacion)
     {
-	$sql = "SELECT apa.*,
+	$sql = "SELECT asignaciones.*,
 			categorias.descripcion as rol_desc,
 			(SELECT substring(actividades.descripcion from 1 for 100)) as actividad_desc,
 			ubicaciones.descripcion as ubicacion_desc,
 			personas.apellido || ', ' || personas.nombres as nombre_completo
-		FROM autoevaluaciones_por_act as apa LEFT OUTER JOIN asignaciones ON (apa.asignacion = asignaciones.asignacion)
+		FROM asignaciones 
 			LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria)
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad) 
 			LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
 			LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
-		WHERE apa.asignacion = $asignacion
+		WHERE asignaciones.asignacion = $asignacion
 		";
 
 	return toba::db()->consultar_fila($sql);

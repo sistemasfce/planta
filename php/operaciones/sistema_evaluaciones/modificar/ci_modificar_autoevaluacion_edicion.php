@@ -20,7 +20,7 @@ class ci_modificar_autoevaluacion_edicion extends planta_ci
     function conf__cuadro_des(planta_ei_cuadro $cuadro)
     {
         $datos_para_cuadro = array();
-        $datos = $this->tabla('autoevaluaciones_por_act')->get_filas();
+        $datos = $this->tabla('asignaciones')->get_filas();
         /*
         foreach ($datos as $dat) {
             if ($dat['estado'] != 1)
@@ -36,7 +36,7 @@ class ci_modificar_autoevaluacion_edicion extends planta_ci
     
     function evt__cuadro_des__seleccion($seleccion)
     {
-        $this->tabla('autoevaluaciones_por_act')->set_cursor($seleccion);
+        $this->tabla('asignaciones')->set_cursor($seleccion);
     }    
     
     //-----------------------------------------------------------------------------------
@@ -45,26 +45,21 @@ class ci_modificar_autoevaluacion_edicion extends planta_ci
 
     function conf__form_des(planta_ei_formulario $form)
     {
-        if ($this->tabla('autoevaluaciones_por_act')->hay_cursor()) {
-            $datos = $this->tabla('autoevaluaciones_por_act')->get();    
+        if ($this->tabla('asignaciones')->hay_cursor()) {
+            $datos = $this->tabla('asignaciones')->get();    
             $form->set_datos($datos);
         }        
     }
 
-    function evt__form_des__baja()
-    {
-        $this->tabla('autoevaluaciones_por_act')->set(null);
-    }
-
     function evt__form_des__modificacion($datos)
     {
-        $this->tabla('autoevaluaciones_por_act')->set($datos);
+        $this->tabla('asignaciones')->set($datos);
         $this->evt__form_des__cancelar();
     }
 
     function evt__form_des__cancelar()
     {
-        $this->tabla('autoevaluaciones_por_act')->resetear_cursor();
+        $this->tabla('asignaciones')->resetear_cursor();
     }
 }
 

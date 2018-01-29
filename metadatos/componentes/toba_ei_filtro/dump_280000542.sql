@@ -134,7 +134,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'planta', --objeto_ei_filtro_proyecto
 	'opciones', --tipo
 	'ciclo_lectivo', --nombre
-	'apa.ciclo_lectivo', --expresion
+	'asignaciones.ciclo_lectivo', --expresion
 	'Ciclo lectivo', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio
@@ -192,7 +192,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'planta', --objeto_ei_filtro_proyecto
 	'opciones', --tipo
 	'estado', --nombre
-	'apa.estado', --expresion
+	'asignaciones.eval_estado', --expresion
 	'Estado', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio

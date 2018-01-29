@@ -106,32 +106,32 @@ class ci_autoevaluaciones_por_docente extends planta_ci
 			return;
 		$datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluacion_por_asignacion($asignacion);
 
-		if ($datos['informe_catedra'] == 'S') {
+		if ($datos['autoeval_informe_catedra'] == 'S') {
 			// el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
-			$nombre = substr($datos['informe_catedra_path'],19);
+			$nombre = substr($datos['autoeval_informe_catedra_path'],19);
 			$dir_tmp = toba::proyecto()->get_www_temp();
-			exec("cp '". $datos['informe_catedra_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			exec("cp '". $datos['autoeval_informe_catedra_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024);
-			$datos['informe_catedra_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";         
+			$datos['autoeval_informe_catedra_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";         
 		} 
-		if ($datos['programa'] == 'S') {
+		if ($datos['autoeval_programa'] == 'S') {
 			// el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
-			$nombre = substr($datos['programa_path'],19);
+			$nombre = substr($datos['autoeval_programa_path'],19);
 			$dir_tmp = toba::proyecto()->get_www_temp();
-			exec("cp '". $datos['programa_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			exec("cp '". $datos['autoeval_programa_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024);
-			$datos['programa_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";    
+			$datos['autoeval_programa_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";    
 		}
-		if ($datos['informe_otros'] == 'S') {
+		if ($datos['autoeval_informe_otros'] == 'S') {
 			// el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
-			$nombre = substr($datos['informe_otros_path'],19);
+			$nombre = substr($datos['autoeval_informe_otros_path'],19);
 			$dir_tmp = toba::proyecto()->get_www_temp();
-			exec("cp '". $datos['informe_otros_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			exec("cp '". $datos['autoeval_informe_otros_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024);
-			$datos['informe_otros_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";    
+			$datos['autoeval_informe_otros_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";    
 		}
 		
 		$form->set_datos($datos); 

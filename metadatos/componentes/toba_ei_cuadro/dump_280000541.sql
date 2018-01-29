@@ -79,8 +79,8 @@ INSERT INTO apex_objeto_cuadro (objeto_cuadro_proyecto, objeto_cuadro, titulo, s
 	NULL, --desplegable_activo
 	'1', --scroll
 	'600px', --scroll_alto
-	NULL, --cc_modo
-	NULL, --cc_modo_anidado_colap
+	't', --cc_modo
+	'0', --cc_modo_anidado_colap
 	NULL, --cc_modo_anidado_totcol
 	NULL  --cc_modo_anidado_totcua
 );
@@ -125,7 +125,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'planta', --objeto_cuadro_proyecto
 	'280000541', --objeto_cuadro
 	'280000878', --objeto_cuadro_col
-	'confirmado', --clave
+	'autoeval_confirmado', --clave
 	'7', --orden
 	'Confirmado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
@@ -311,7 +311,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'planta', --objeto_cuadro_proyecto
 	'280000541', --objeto_cuadro
 	'280000885', --objeto_cuadro_col
-	'calificacion', --clave
+	'autoeval_calificacion', --clave
 	'6', --orden
 	'Calificacion', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo

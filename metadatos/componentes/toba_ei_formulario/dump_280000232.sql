@@ -186,7 +186,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="5">
-				<span style="font-size:12px;">[ef id=pregunta1]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_pregunta1]</span></td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -194,7 +194,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="5">
-				<span style="font-size:12px;">[ef id=pregunta2]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_pregunta2]</span></td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -202,7 +202,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="5">
-				<span style="font-size:12px;">[ef id=pregunta3]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_pregunta3]</span></td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -210,7 +210,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="5">
-				<span style="font-size:12px;">[ef id=pregunta4]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_pregunta4]</span></td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -218,7 +218,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="5">
-				<span style="font-size:12px;">[ef id=calificacion]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_calificacion]</span></td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -226,7 +226,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="5">
-				[ef id=observaciones]</td>
+				[ef id=autoeval_observaciones]</td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -238,7 +238,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="5">
-				<strong><span style="font-size:14px;">[ef id=confirmado]</span></strong></td>
+				<strong><span style="font-size:14px;">[ef id=autoeval_confirmado]</span></strong></td>
 		</tr>
 		<tr>
 			<td colspan="5">
@@ -499,9 +499,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000347', --objeto_ei_formulario_fila
 	'280000232', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'pregunta1', --identificador
+	'autoeval_pregunta1', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'pregunta1', --columnas
+	'autoeval_pregunta1', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'4', --orden
@@ -579,9 +579,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000348', --objeto_ei_formulario_fila
 	'280000232', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'pregunta2', --identificador
+	'autoeval_pregunta2', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'pregunta2', --columnas
+	'autoeval_pregunta2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'5', --orden
@@ -659,9 +659,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000349', --objeto_ei_formulario_fila
 	'280000232', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'pregunta3', --identificador
+	'autoeval_pregunta3', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'pregunta3', --columnas
+	'autoeval_pregunta3', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'6', --orden
@@ -739,9 +739,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000350', --objeto_ei_formulario_fila
 	'280000232', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'pregunta4', --identificador
+	'autoeval_pregunta4', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'pregunta4', --columnas
+	'autoeval_pregunta4', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'7', --orden
@@ -819,9 +819,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000351', --objeto_ei_formulario_fila
 	'280000232', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'calificacion', --identificador
+	'autoeval_calificacion', --identificador
 	'ef_radio', --elemento_formulario
-	'calificacion', --columnas
+	'autoeval_calificacion', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'8', --orden
@@ -899,9 +899,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000352', --objeto_ei_formulario_fila
 	'280000232', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'observaciones', --identificador
+	'autoeval_observaciones', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'observaciones', --columnas
+	'autoeval_observaciones', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'9', --orden
@@ -979,9 +979,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000353', --objeto_ei_formulario_fila
 	'280000232', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'confirmado', --identificador
+	'autoeval_confirmado', --identificador
 	'ef_checkbox', --elemento_formulario
-	'confirmado', --columnas
+	'autoeval_confirmado', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'10', --orden

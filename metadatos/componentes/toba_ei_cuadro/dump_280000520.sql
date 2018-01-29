@@ -187,7 +187,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'planta', --objeto_cuadro_proyecto
 	'280000520', --objeto_cuadro
 	'280000846', --objeto_cuadro_col
-	'calificacion', --clave
+	'autoeval_calificacion', --clave
 	'5', --orden
 	'Calificacion', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
@@ -218,7 +218,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'planta', --objeto_cuadro_proyecto
 	'280000520', --objeto_cuadro
 	'280000848', --objeto_cuadro_col
-	'confirmado', --clave
+	'autoeval_confirmado', --clave
 	'6', --orden
 	'Confirmado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo

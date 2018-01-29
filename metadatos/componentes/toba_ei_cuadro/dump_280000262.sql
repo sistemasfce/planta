@@ -271,7 +271,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'planta', --objeto_cuadro_proyecto
 	'280000262', --objeto_cuadro
 	'280000423', --objeto_cuadro_col
-	'calificacion', --clave
+	'eval_calificacion', --clave
 	'8', --orden
 	'Calificación', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
@@ -302,7 +302,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'planta', --objeto_cuadro_proyecto
 	'280000262', --objeto_cuadro
 	'280000424', --objeto_cuadro_col
-	'confirmado', --clave
+	'eval_confirmado', --clave
 	'10', --orden
 	'Confirmado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
@@ -333,7 +333,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'planta', --objeto_cuadro_proyecto
 	'280000262', --objeto_cuadro
 	'280000425', --objeto_cuadro_col
-	'notificacion', --clave
+	'eval_notificacion', --clave
 	'11', --orden
 	'Notificación', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo

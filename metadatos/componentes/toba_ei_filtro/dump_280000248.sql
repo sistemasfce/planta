@@ -134,7 +134,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'planta', --objeto_ei_filtro_proyecto
 	'opciones', --tipo
 	'ciclo_lectivo', --nombre
-	'autoevaluaciones_por_act.ciclo_lectivo', --expresion
+	'asignaciones.ciclo_lectivo', --expresion
 	'Ciclo lectivo', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio
@@ -192,7 +192,7 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'planta', --objeto_ei_filtro_proyecto
 	'opciones', --tipo
 	'ubicacion', --nombre
-	'autoevaluaciones_por_act.ubicacion', --expresion
+	'asignaciones.ubicacion', --expresion
 	'Ubicación', --etiqueta
 	NULL, --descripcion
 	'0', --obligatorio

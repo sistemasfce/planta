@@ -65,10 +65,10 @@ INSERT INTO apex_objeto_datos_rel (proyecto, objeto, debug, clave, ap, punto_mon
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
-	'280000458', --dep_id
+	'280000469', --dep_id
 	'280000525', --objeto_consumidor
-	'280000211', --objeto_proveedor
-	'autoevaluaciones_por_act', --identificador
+	'280000090', --objeto_proveedor
+	'asignaciones', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
@@ -97,15 +97,15 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador, padre_proyecto, padre_objeto, padre_id, padre_clave, hijo_proyecto, hijo_objeto, hijo_id, hijo_clave, cascada, orden) VALUES (
 	'planta', --proyecto
 	'280000525', --objeto
-	'280000041', --asoc_id
+	'280000043', --asoc_id
 	NULL, --identificador
 	'planta', --padre_proyecto
 	'280000024', --padre_objeto
 	'personas', --padre_id
 	NULL, --padre_clave
 	'planta', --hijo_proyecto
-	'280000211', --hijo_objeto
-	'autoevaluaciones_por_act', --hijo_id
+	'280000090', --hijo_objeto
+	'asignaciones', --hijo_id
 	NULL, --hijo_clave
 	NULL, --cascada
 	'1'  --orden
@@ -118,9 +118,9 @@ INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador
 INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
 	'planta', --proyecto
 	'280000525', --objeto
-	'280000041', --asoc_id
+	'280000043', --asoc_id
 	'280000024', --padre_objeto
 	'280000067', --padre_clave
-	'280000211', --hijo_objeto
-	'280000245'  --hijo_clave
+	'280000090', --hijo_objeto
+	'280000187'  --hijo_clave
 );
