@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mis_evaluaciones_final" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1810bd35-b36e-4dc5-be4f-fa71bf47a748">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="192"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
 	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
 	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
@@ -25,31 +25,30 @@
                 categorias.descripcion as rol_nombre,
                 ubicaciones.codigo as ubicacion_desc,
                 estados.estado as estado_desc,
-		CASE WHEN evaluaciones.plan_de_mejora = 'N' THEN 'No'
+		CASE WHEN asignaciones.eval_plan_de_mejora = 'N' THEN 'No'
 ELSE 'Sí' END as plan_de_mejora,
-		(SELECT apellido || ', ' || nombres from personas WHERE personas.persona = evaluaciones.evaluador) as evaluador_nombre,
-		evaluaciones.observaciones,
-                evaluaciones.confirmado,
-                evaluaciones.calificacion,
-	evaluaciones.calificacion_fecha,
-evaluaciones.notificacion_fecha,
-evaluaciones.desvio1,
-evaluaciones.desvio2,
-evaluaciones.desvio3,
-evaluaciones.act1,
-evaluaciones.act2,
-evaluaciones.act3,
-evaluaciones.desempenio1,
-evaluaciones.desempenio2,
-evaluaciones.desempenio3,
-		CASE WHEN evaluaciones.notificacion = 'N' THEN 'No'
+		(SELECT apellido || ', ' || nombres from personas WHERE personas.persona = asignaciones.eval_evaluador) as evaluador_nombre,
+		asignaciones.eval_observaciones,
+                asignaciones.eval_confirmado,
+                asignaciones.eval_calificacion,
+	asignaciones.eval_calificacion_fecha,
+asignaciones.eval_notificacion_fecha,
+asignaciones.eval_desvio1,
+asignaciones.eval_desvio2,
+asignaciones.eval_desvio3,
+asignaciones.eval_act1,
+asignaciones.eval_act2,
+asignaciones.eval_act3,
+asignaciones.eval_desempenio1,
+asignaciones.eval_desempenio2,
+asignaciones.eval_desempenio3,
+		CASE WHEN asignaciones.eval_notificacion = 'N' THEN 'No'
 ELSE 'Sí' END as notificacion,
-		evaluaciones.notificacion_observaciones,
+		asignaciones.eval_notificacion_observaciones,
                 resolucion_anio as ciclo_lectivo,
             resolucion || '/'  ||resolucion_anio || ' ' ||resoluciones_tipos.descripcion as resolucion_nombre
 
             FROM asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
-            LEFT OUTER JOIN evaluaciones ON (asignaciones.asignacion = evaluaciones.asignacion)
             LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
             LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
             LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
@@ -58,8 +57,8 @@ ELSE 'Sí' END as notificacion,
             LEFT OUTER JOIN estados ON (asignaciones.estado = estados.estado)
             LEFT OUTER JOIN resoluciones_tipos ON (asignaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo)
              WHERE         personas.persona = $P{persona}
-			AND evaluaciones.ciclo_lectivo = $P{ciclo}
-AND evaluaciones.estado = 1
+			AND asignaciones.ciclo_lectivo = $P{ciclo}
+AND asignaciones.eval_estado = 1
             ORDER BY personas.apellido, resolucion_fecha]]>
 	</queryString>
 	<field name="asignacion" class="java.lang.Integer"/>
@@ -76,22 +75,22 @@ AND evaluaciones.estado = 1
 	<field name="estado_desc" class="java.lang.Integer"/>
 	<field name="plan_de_mejora" class="java.lang.String"/>
 	<field name="evaluador_nombre" class="java.lang.String"/>
-	<field name="observaciones" class="java.lang.String"/>
-	<field name="confirmado" class="java.lang.String"/>
-	<field name="calificacion" class="java.lang.String"/>
-	<field name="calificacion_fecha" class="java.sql.Timestamp"/>
-	<field name="notificacion_fecha" class="java.sql.Timestamp"/>
-	<field name="desvio1" class="java.lang.String"/>
-	<field name="desvio2" class="java.lang.String"/>
-	<field name="desvio3" class="java.lang.String"/>
-	<field name="act1" class="java.lang.String"/>
-	<field name="act2" class="java.lang.String"/>
-	<field name="act3" class="java.lang.String"/>
-	<field name="desempenio1" class="java.lang.String"/>
-	<field name="desempenio2" class="java.lang.String"/>
-	<field name="desempenio3" class="java.lang.String"/>
+	<field name="eval_observaciones" class="java.lang.String"/>
+	<field name="eval_confirmado" class="java.lang.String"/>
+	<field name="eval_calificacion" class="java.lang.String"/>
+	<field name="eval_calificacion_fecha" class="java.sql.Timestamp"/>
+	<field name="eval_notificacion_fecha" class="java.sql.Timestamp"/>
+	<field name="eval_desvio1" class="java.lang.String"/>
+	<field name="eval_desvio2" class="java.lang.String"/>
+	<field name="eval_desvio3" class="java.lang.String"/>
+	<field name="eval_act1" class="java.lang.String"/>
+	<field name="eval_act2" class="java.lang.String"/>
+	<field name="eval_act3" class="java.lang.String"/>
+	<field name="eval_desempenio1" class="java.lang.String"/>
+	<field name="eval_desempenio2" class="java.lang.String"/>
+	<field name="eval_desempenio3" class="java.lang.String"/>
 	<field name="notificacion" class="java.lang.String"/>
-	<field name="notificacion_observaciones" class="java.lang.String"/>
+	<field name="eval_notificacion_observaciones" class="java.lang.String"/>
 	<field name="ciclo_lectivo" class="java.lang.String"/>
 	<field name="resolucion_nombre" class="java.lang.String"/>
 	<variable name="fecha_narrada" class="java.lang.String">
@@ -173,12 +172,12 @@ AND evaluaciones.estado = 1
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="77" y="47" width="188" height="15" uuid="46c5cb12-1306-45a6-9841-d5883e80f4ac">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_calificacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="94" y="126" width="42" height="15" uuid="db8661af-fcfb-41f2-ab9a-ecc06121c5bf"/>
@@ -189,12 +188,12 @@ AND evaluaciones.estado = 1
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="269" y="66" width="279" height="62" uuid="1c089766-9c45-4e9f-94fa-a2100d133236">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_observaciones}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="418" y="23" width="81" height="20" uuid="c791611f-e109-40d0-83fb-5d4a4d6db683"/>
@@ -281,12 +280,12 @@ AND evaluaciones.estado = 1
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="294" y="302" width="252" height="35" uuid="84a7fc98-81c5-4c1d-a9e2-4417f3bf2890">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{notificacion_observaciones}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_notificacion_observaciones}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="84" y="302" width="62" height="15" uuid="4fe21ff3-127b-4e96-9850-5e98484f6d72"/>
@@ -321,7 +320,7 @@ AND evaluaciones.estado = 1
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{calificacion_fecha}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_calificacion_fecha}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" x="7" y="318" width="62" height="15" forecolor="#000000" uuid="b5278ced-01da-442e-aad7-02d84a4ff68d"/>
@@ -335,7 +334,7 @@ AND evaluaciones.estado = 1
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{notificacion_fecha}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_notificacion_fecha}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" x="7" y="149" width="83" height="31" forecolor="#000000" uuid="2ad6fe37-e29b-4e1c-bc81-7f4fc60fc5a3"/>
@@ -349,21 +348,21 @@ AND evaluaciones.estado = 1
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desvio1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desvio1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="92" y="165" width="463" height="15" uuid="2f582b8e-f872-43f2-98cc-f373914ca3a8"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desvio2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desvio2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="92" y="181" width="463" height="15" uuid="ae5b5f56-2901-4311-9f82-076903dc9cae"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desvio3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desvio3}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" x="7" y="197" width="83" height="15" forecolor="#000000" uuid="5237ea53-9a6c-4682-a2fb-aceed1e91283"/>
@@ -384,42 +383,42 @@ AND evaluaciones.estado = 1
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{act1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_act1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="92" y="214" width="463" height="15" uuid="968c7a66-0848-4295-971d-ed8cf527ad33"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{act2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_act2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="92" y="230" width="463" height="15" uuid="887ee34b-5e59-465c-9187-a802bb0546a4"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{act3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_act3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="92" y="247" width="463" height="15" uuid="1d465777-ee7f-4b3d-be26-9468fb9b8402"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desempenio1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desempenio1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="92" y="264" width="463" height="15" uuid="b1da8a7e-34d3-4436-b6ed-c2395f483ce9"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desempenio2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desempenio2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="92" y="281" width="463" height="15" uuid="37df962c-5172-432e-a6bd-c8a987294fe8"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desempenio3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desempenio3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="73" y="66" width="185" height="15" uuid="338deeac-0019-49f1-b1c7-a5e06bba1aee"/>

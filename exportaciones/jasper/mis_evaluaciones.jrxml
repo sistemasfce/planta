@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mis_evaluaciones" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3b3d8edc-5ed6-4d32-ae52-937a2669931c">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="96"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
 	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
@@ -23,20 +23,19 @@
                 categorias.descripcion as rol_nombre,
                 ubicaciones.codigo as ubicacion_desc,
                 estados.estado as estado_desc,
-		CASE WHEN evaluaciones.plan_de_mejora = 'N' THEN 'No'
+		CASE WHEN asignaciones.eval_plan_de_mejora = 'N' THEN 'No'
 ELSE 'Sí' END as plan_de_mejora,
-		(SELECT apellido || ', ' || nombres from personas WHERE personas.persona = evaluaciones.evaluador) as evaluador,
-		evaluaciones.observaciones,
-                evaluaciones.confirmado,
-                evaluaciones.calificacion,
-		CASE WHEN evaluaciones.notificacion = 'N' THEN 'No'
+		(SELECT apellido || ', ' || nombres from personas WHERE personas.persona = asignaciones.eval_evaluador) as evaluador,
+		asignaciones.eval_observaciones,
+                asignaciones.eval_confirmado,
+                asignaciones.eval_calificacion,
+		CASE WHEN asignaciones.eval_notificacion = 'N' THEN 'No'
 ELSE 'Sí' END as notificacion,
-		evaluaciones.notificacion_observaciones,
+		asignaciones.eval_notificacion_observaciones,
                 resolucion_anio as ciclo_lectivo,
             resolucion || '/'  ||resolucion_anio || ' ' ||resoluciones_tipos.descripcion as resolucion_nombre
 
             FROM asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
-            LEFT OUTER JOIN evaluaciones ON (asignaciones.asignacion = evaluaciones.asignacion)
             LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
             LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
             LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
@@ -45,8 +44,8 @@ ELSE 'Sí' END as notificacion,
             LEFT OUTER JOIN estados ON (asignaciones.estado = estados.estado)
             LEFT OUTER JOIN resoluciones_tipos ON (asignaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo)
              WHERE         personas.persona = $P{persona}
-			AND evaluaciones.ciclo_lectivo = $P{ciclo}
-			AND evaluaciones.estado = 1
+			AND asignaciones.ciclo_lectivo = $P{ciclo}
+			AND asignaciones.eval_estado = 1
 
             ORDER BY personas.apellido, resolucion_fecha]]>
 	</queryString>
@@ -64,11 +63,11 @@ ELSE 'Sí' END as notificacion,
 	<field name="estado_desc" class="java.lang.Integer"/>
 	<field name="plan_de_mejora" class="java.lang.String"/>
 	<field name="evaluador" class="java.lang.String"/>
-	<field name="observaciones" class="java.lang.String"/>
-	<field name="confirmado" class="java.lang.String"/>
-	<field name="calificacion" class="java.lang.String"/>
+	<field name="eval_observaciones" class="java.lang.String"/>
+	<field name="eval_confirmado" class="java.lang.String"/>
+	<field name="eval_calificacion" class="java.lang.String"/>
 	<field name="notificacion" class="java.lang.String"/>
-	<field name="notificacion_observaciones" class="java.lang.String"/>
+	<field name="eval_notificacion_observaciones" class="java.lang.String"/>
 	<field name="ciclo_lectivo" class="java.lang.String"/>
 	<field name="resolucion_nombre" class="java.lang.String"/>
 	<variable name="fecha_narrada" class="java.lang.String">
@@ -158,16 +157,16 @@ ELSE 'Sí' END as notificacion,
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="3" y="38" width="105" height="20" uuid="fca329d5-1e97-4398-892b-bc3fe1141d8e">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_calificacion}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="167" y="38" width="103" height="20" uuid="2e0e46ac-1a3c-4a0a-9320-85192128a9e2">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
@@ -176,7 +175,7 @@ ELSE 'Sí' END as notificacion,
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="109" y="38" width="42" height="20" uuid="119c2ca7-936b-4531-8ec5-3a62b4de5391">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="9"/>
@@ -185,12 +184,12 @@ ELSE 'Sí' END as notificacion,
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="83" y="71" width="718" height="20" uuid="ffcb002b-72d2-4711-9347-ca82596b422f">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_observaciones}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="270" y="38" width="36" height="20" uuid="0c62974e-59f1-46a3-bf64-7eed76b9675e"/>
@@ -284,12 +283,12 @@ ELSE 'Sí' END as notificacion,
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="381" y="38" width="420" height="22" uuid="aafeb046-45f4-438b-8d9d-f26638138c7a">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{notificacion_observaciones}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_notificacion_observaciones}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="310" y="38" width="67" height="20" uuid="fdc11bce-b71c-44e2-9b92-8549045f7542"/>

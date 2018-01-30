@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="affca742-8ed8-436b-a0c7-56e2f655f119">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="151"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
 	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
 	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
@@ -21,37 +21,36 @@
                 categorias.descripcion as rol_nombre,
                 ubicaciones.codigo as ubicacion_desc,
                 estados.estado as estado_desc,
-		(SELECT personas.apellido || ', ' || personas.nombres from personas WHERE personas.persona = evaluaciones.evaluador) as evaluador_nombre,
-		evaluaciones.observaciones,
-                evaluaciones.confirmado,
-                evaluaciones.calificacion,
+		(SELECT personas.apellido || ', ' || personas.nombres from personas WHERE personas.persona = asignaciones.eval_evaluador) as evaluador_nombre,
+		asignaciones.eval_observaciones,
+                asignaciones.eval_confirmado,
+                asignaciones.eval_calificacion,
                 estados.estado as estado_desc,
-		CASE WHEN evaluaciones.plan_de_mejora = 'N' THEN 'No'
+		CASE WHEN asignaciones.eval_plan_de_mejora = 'N' THEN 'No'
 ELSE 'Sí' END as plan_de_mejora,
-		(SELECT apellido || ', ' || nombres from personas WHERE personas.persona = evaluaciones.evaluador) as evaluador_nombre,
-		evaluaciones.observaciones,
-                evaluaciones.confirmado,
-                evaluaciones.calificacion,
-		CASE WHEN evaluaciones.notificacion = 'N' THEN 'No'
+		(SELECT apellido || ', ' || nombres from personas WHERE personas.persona = asignaciones.eval_evaluador) as evaluador_nombre,
+		asignaciones.eval_observaciones,
+                asignaciones.eval_confirmado,
+                asignaciones.eval_calificacion,
+		CASE WHEN asignaciones.eval_notificacion = 'N' THEN 'No'
 ELSE 'Sí' END as notificacion,
-		evaluaciones.notificacion_observaciones,
+		asignaciones.eval_notificacion_observaciones,
                 resolucion_anio as ciclo_lectivo,
-evaluaciones.notificacion_fecha,
-evaluaciones.desvio1,
-evaluaciones.desvio2,
-evaluaciones.desvio3,
-evaluaciones.act1,
-evaluaciones.act2,
-evaluaciones.act3,
-evaluaciones.desempenio1,
-evaluaciones.desempenio2,
-evaluaciones.desempenio3,
-evaluaciones.calificacion_fecha,
-evaluaciones.notificacion_fecha,
+asignaciones.eval_notificacion_fecha,
+asignaciones.eval_desvio1,
+asignaciones.eval_desvio2,
+asignaciones.eval_desvio3,
+asignaciones.eval_act1,
+asignaciones.eval_act2,
+asignaciones.eval_act3,
+asignaciones.eval_desempenio1,
+asignaciones.eval_desempenio2,
+asignaciones.eval_desempenio3,
+asignaciones.eval_calificacion_fecha,
+asignaciones.eval_notificacion_fecha,
 		resolucion || '/'  ||resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_nombre
 
             FROM asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
-            LEFT OUTER JOIN evaluaciones ON (asignaciones.asignacion = evaluaciones.asignacion)
             LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
             LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
             LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
@@ -59,8 +58,8 @@ evaluaciones.notificacion_fecha,
             LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
             LEFT OUTER JOIN estados ON (asignaciones.estado = estados.estado)
             LEFT OUTER JOIN resoluciones_tipos ON (asignaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo)
-             WHERE    evaluaciones.evaluador = $P{evaluador}
-AND evaluaciones.ciclo_lectivo = $P{ciclo}
+             WHERE    asignaciones.eval_evaluador = $P{evaluador}
+AND asignaciones.ciclo_lectivo = $P{ciclo}
             ORDER BY personas.apellido, resolucion_fecha]]>
 	</queryString>
 	<field name="asignacion" class="java.lang.Integer"/>
@@ -74,24 +73,24 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 	<field name="ubicacion_desc" class="java.lang.String"/>
 	<field name="estado_desc" class="java.lang.Integer"/>
 	<field name="evaluador_nombre" class="java.lang.String"/>
-	<field name="observaciones" class="java.lang.String"/>
-	<field name="confirmado" class="java.lang.String"/>
-	<field name="calificacion" class="java.lang.String"/>
+	<field name="eval_observaciones" class="java.lang.String"/>
+	<field name="eval_confirmado" class="java.lang.String"/>
+	<field name="eval_calificacion" class="java.lang.String"/>
 	<field name="plan_de_mejora" class="java.lang.String"/>
 	<field name="notificacion" class="java.lang.String"/>
-	<field name="notificacion_observaciones" class="java.lang.String"/>
+	<field name="eval_notificacion_observaciones" class="java.lang.String"/>
 	<field name="ciclo_lectivo" class="java.lang.String"/>
-	<field name="notificacion_fecha" class="java.sql.Timestamp"/>
-	<field name="desvio1" class="java.lang.String"/>
-	<field name="desvio2" class="java.lang.String"/>
-	<field name="desvio3" class="java.lang.String"/>
-	<field name="act1" class="java.lang.String"/>
-	<field name="act2" class="java.lang.String"/>
-	<field name="act3" class="java.lang.String"/>
-	<field name="desempenio1" class="java.lang.String"/>
-	<field name="desempenio2" class="java.lang.String"/>
-	<field name="desempenio3" class="java.lang.String"/>
-	<field name="calificacion_fecha" class="java.sql.Timestamp"/>
+	<field name="eval_notificacion_fecha" class="java.sql.Timestamp"/>
+	<field name="eval_desvio1" class="java.lang.String"/>
+	<field name="eval_desvio2" class="java.lang.String"/>
+	<field name="eval_desvio3" class="java.lang.String"/>
+	<field name="eval_act1" class="java.lang.String"/>
+	<field name="eval_act2" class="java.lang.String"/>
+	<field name="eval_act3" class="java.lang.String"/>
+	<field name="eval_desempenio1" class="java.lang.String"/>
+	<field name="eval_desempenio2" class="java.lang.String"/>
+	<field name="eval_desempenio3" class="java.lang.String"/>
+	<field name="eval_calificacion_fecha" class="java.sql.Timestamp"/>
 	<field name="resolucion_nombre" class="java.lang.String"/>
 	<variable name="fecha_narrada" class="java.lang.String">
 		<variableExpression><![CDATA[new java.text.SimpleDateFormat("dd 'días del mes de' MMMM 'de' yyyy", new java.util.Locale("es")).format(new java.util.Date())]]></variableExpression>
@@ -166,12 +165,12 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="82" y="69" width="175" height="15" uuid="9d9c012b-d625-4f23-ac72-300a175ae744">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" isBold="false"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_calificacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="107" y="126" width="42" height="15" uuid="5fcafbf4-c058-4a23-aae8-a4005711df89"/>
@@ -182,12 +181,12 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="275" y="87" width="280" height="52" uuid="2d3862ec-e22e-4e73-b008-46b50b2d70a5">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_observaciones}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="418" y="46" width="81" height="20" uuid="ced8d600-4287-4c8c-a513-1349e73e5241"/>
@@ -274,12 +273,12 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="233" y="298" width="322" height="35" uuid="8171b170-7a62-4403-98bf-b08ecc9ace9c">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{notificacion_observaciones}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_notificacion_observaciones}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="91" y="297" width="44" height="15" uuid="d5c79ca0-dfeb-46e9-9cbf-0c05c6081c0d"/>
@@ -314,7 +313,7 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{calificacion_fecha}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_calificacion_fecha}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" x="7" y="315" width="62" height="15" forecolor="#000000" uuid="01d64852-57fc-4b8d-8216-11cabe845cbb"/>
@@ -328,7 +327,7 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{notificacion_fecha}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_notificacion_fecha}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" x="7" y="145" width="85" height="31" forecolor="#000000" uuid="b85641d8-5209-4477-8324-35950f124644"/>
@@ -342,21 +341,21 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desvio1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desvio1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="161" width="463" height="15" uuid="241fdcc3-d418-4bcd-a89e-7cae009a9acd"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desvio2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desvio2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="177" width="463" height="15" uuid="c7878c56-814c-409d-9f2c-9285947c5a05"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desvio3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desvio3}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" x="7" y="193" width="83" height="15" forecolor="#000000" uuid="6c78444a-40d7-46ef-90f3-a8f9992d4978"/>
@@ -377,42 +376,42 @@ AND evaluaciones.ciclo_lectivo = $P{ciclo}
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{act1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_act1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="210" width="463" height="15" uuid="99a045c7-8c02-4169-a2f6-5c470c35307d"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{act2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_act2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="226" width="463" height="15" uuid="1a2de81a-89b4-453f-b678-4b522c1809a2"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{act3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_act3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="243" width="463" height="15" uuid="25ed80ef-835d-4645-98ee-88e9861d7b15"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desempenio1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desempenio1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="260" width="463" height="15" uuid="0fdf4357-5caa-4992-bd74-d4aa26aff7c6"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desempenio2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desempenio2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="277" width="463" height="15" uuid="cee0096a-fc2e-4c45-8fba-9b94b35ce336"/>
 				<textElement>
 					<font fontName="DejaVu Sans"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{desempenio3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desempenio3}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" x="7" y="3" width="109" height="20" forecolor="#000000" uuid="7110592b-827a-4d11-a013-4358026cdc49"/>

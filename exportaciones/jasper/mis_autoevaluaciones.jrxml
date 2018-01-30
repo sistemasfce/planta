@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mis_evaluaciones" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2cf85398-a93e-4be3-9afc-b0e899cc4ca1">
-	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="178"/>
+	<property name="ireport.y" value="146"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold">
 		<paragraph lineSpacing="Single"/>
 	</style>
@@ -37,21 +37,20 @@
                 ubicaciones.codigo as ubicacion_desc,
                 estados.estado as estado_desc,
 CASE WHEN asignaciones.responsable = 'N' THEN 'No' ELSE 'Sí' END as responsable,
-CASE WHEN autoevaluaciones_por_act.informe_catedra = 'S' THEN 'Sí' ELSE 'No' END as informe_catedra,
-CASE WHEN autoevaluaciones_por_act.programa = 'S' THEN 'Sí' ELSE 'No' END as programa,
-CASE WHEN autoevaluaciones_por_act.informe_otros = 'S' THEN 'Sí' ELSE 'No' END as informe_otros,
-autoevaluaciones_por_act.tipo_informe,
-autoevaluaciones_por_act.pregunta1,
-autoevaluaciones_por_act.pregunta2,
-autoevaluaciones_por_act.pregunta3,
-autoevaluaciones_por_act.pregunta4,
-autoevaluaciones_por_act.confirmado,
-autoevaluaciones_por_act.observaciones,
-autoevaluaciones_por_act.calificacion,
+CASE WHEN asignaciones.autoeval_informe_catedra = 'S' THEN 'Sí' ELSE 'No' END as informe_catedra,
+CASE WHEN asignaciones.autoeval_programa = 'S' THEN 'Sí' ELSE 'No' END as programa,
+CASE WHEN asignaciones.autoeval_informe_otros = 'S' THEN 'Sí' ELSE 'No' END as informe_otros,
+asignaciones.autoeval_tipo_informe,
+asignaciones.autoeval_pregunta1,
+asignaciones.autoeval_pregunta2,
+asignaciones.autoeval_pregunta3,
+asignaciones.autoeval_pregunta4,
+asignaciones.autoeval_confirmado,
+asignaciones.autoeval_observaciones,
+asignaciones.autoeval_calificacion,
 		resolucion || '/'  ||resolucion_anio || ' ' ||resoluciones_tipos.descripcion as resolucion_nombre
 
             FROM asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
-            LEFT OUTER JOIN autoevaluaciones_por_act ON (asignaciones.asignacion = autoevaluaciones_por_act.asignacion)
             LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
             LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
             LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
@@ -60,8 +59,8 @@ autoevaluaciones_por_act.calificacion,
             LEFT OUTER JOIN estados ON (asignaciones.estado = estados.estado)
             LEFT OUTER JOIN resoluciones_tipos ON (asignaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo)
              WHERE         personas.persona = $P{persona}
-			AND autoevaluaciones_por_act.ciclo_lectivo = $P{ciclo}
-			AND autoevaluaciones_por_act.estado = 1
+			AND asignaciones.ciclo_lectivo = $P{ciclo}
+			AND asignaciones.autoeval_estado = 1
 
             ORDER BY personas.apellido, resolucion_fecha]]>
 	</queryString>
@@ -81,14 +80,14 @@ autoevaluaciones_por_act.calificacion,
 	<field name="informe_catedra" class="java.lang.String"/>
 	<field name="programa" class="java.lang.String"/>
 	<field name="informe_otros" class="java.lang.String"/>
-	<field name="tipo_informe" class="java.lang.String"/>
-	<field name="pregunta1" class="java.lang.String"/>
-	<field name="pregunta2" class="java.lang.String"/>
-	<field name="pregunta3" class="java.lang.String"/>
-	<field name="pregunta4" class="java.lang.String"/>
-	<field name="confirmado" class="java.lang.String"/>
-	<field name="observaciones" class="java.lang.String"/>
-	<field name="calificacion" class="java.lang.String"/>
+	<field name="autoeval_tipo_informe" class="java.lang.String"/>
+	<field name="autoeval_pregunta1" class="java.lang.String"/>
+	<field name="autoeval_pregunta2" class="java.lang.String"/>
+	<field name="autoeval_pregunta3" class="java.lang.String"/>
+	<field name="autoeval_pregunta4" class="java.lang.String"/>
+	<field name="autoeval_confirmado" class="java.lang.String"/>
+	<field name="autoeval_observaciones" class="java.lang.String"/>
+	<field name="autoeval_calificacion" class="java.lang.String"/>
 	<field name="resolucion_nombre" class="java.lang.String"/>
 	<variable name="fecha_narrada" class="java.lang.String">
 		<variableExpression><![CDATA[new java.text.SimpleDateFormat("dd 'días del mes de' MMMM 'de' yyyy", new java.util.Locale("es")).format(new java.util.Date())]]></variableExpression>
@@ -223,7 +222,7 @@ autoevaluaciones_por_act.calificacion,
 					<font size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{autoeval_calificacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="162" y="38" width="36" height="15" uuid="de648d24-688b-452e-9265-25a7c5458da4"/>
@@ -345,7 +344,7 @@ autoevaluaciones_por_act.calificacion,
 					<font size="9"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{tipo_informe}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{autoeval_tipo_informe}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="404" y="38" width="100" height="15" uuid="bbff6846-fa3c-4a93-a80c-7f8ea0f9fdda">
@@ -405,7 +404,7 @@ autoevaluaciones_por_act.calificacion,
 					<font size="8" isBold="false"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pregunta1}+"\n"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{autoeval_pregunta1}+"\n"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="12">
@@ -429,7 +428,7 @@ autoevaluaciones_por_act.calificacion,
 					<font size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pregunta2}+"\n"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{autoeval_pregunta2}+"\n"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="12">
@@ -453,7 +452,7 @@ autoevaluaciones_por_act.calificacion,
 					<font size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pregunta3}+"\n"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{autoeval_pregunta3}+"\n"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="12">
@@ -477,7 +476,7 @@ autoevaluaciones_por_act.calificacion,
 					<font size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{pregunta4}+"\n"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{autoeval_pregunta4}+"\n"]]></textFieldExpression>
 			</textField>
 		</band>
 		<band height="23">
@@ -487,7 +486,7 @@ autoevaluaciones_por_act.calificacion,
 					<font size="8"/>
 					<paragraph lineSpacing="Single"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{autoeval_observaciones}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" stretchType="RelativeToTallestObject" x="3" y="0" width="79" height="10" forecolor="#736343" uuid="850c99d2-4c64-489a-833d-f547725fe479"/>

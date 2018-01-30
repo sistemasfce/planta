@@ -47,6 +47,46 @@ class co_asignaciones
 	return toba::db()->consultar($sql);
    }
 
+       function get_asignaciones_total($where=null)
+    {
+	if (!isset($where)) $where = '1=1';
+        $sql = "
+	SELECT  asignaciones.*,
+                        personas.documento,
+                        personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        actividades.descripcion as actividad_desc,
+                        departamentos.descripcion as departamento_desc,
+                        categorias.codigo as categoria_desc,
+                        ubicaciones.codigo as ubicacion_desc,
+			dimensiones.codigo as dimension_desc,
+                        resolucion || '/' || resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_desc,
+                        evaluadores.apellido || ', ' || evaluadores.nombres as eval_evaluador_desc,
+                        estados.descripcion as estado_desc,
+                        estados_autoeval.descripcion as autoeval_estado_desc,
+                        estados_eval.descripcion as eval_estado_desc
+                FROM    asignaciones LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
+                        LEFT OUTER JOIN estados as estados_eval ON (asignaciones.eval_estado = estados_eval.estado)
+                        LEFT OUTER JOIN estados as estados_autoeval ON (asignaciones.autoeval_estado = estados_autoeval.estado)
+                        LEFT OUTER JOIN personas as evaluadores ON (asignaciones.eval_evaluador = evaluadores.persona)
+                        LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension),  
+                        actividades, 
+                        personas,
+                        resoluciones_tipos,
+                        categorias,
+                        ubicaciones,
+                        estados
+                WHERE   asignaciones.persona = personas.persona
+                        AND asignaciones.actividad = actividades.actividad
+                        AND asignaciones.rol = categorias.categoria
+                        AND asignaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo
+                        AND asignaciones.ubicacion = ubicaciones.ubicacion
+                        AND asignaciones.estado = estados.estado
+			AND $where
+                ORDER BY nombre_completo, asignaciones.resolucion_fecha::date DESC, actividades.descripcion
+        ";
+	return toba::db()->consultar($sql);
+   }
+   
     function get_asignaciones_de_persona($where, $mostrar_historico)
     {
         if ($mostrar_historico) { // si quiero ver el historico...

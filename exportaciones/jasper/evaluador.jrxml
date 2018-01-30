@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5d8aa165-69c9-45ce-805a-89273ba9582f">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="29"/>
+	<property name="ireport.x" value="217"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
 	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
@@ -21,18 +21,17 @@
                 categorias.descripcion as rol_nombre,
                 ubicaciones.codigo as ubicacion_desc,
                 estados.estado as estado_desc,
-		CASE WHEN evaluaciones.plan_de_mejora = 'N' THEN 'No'
+		CASE WHEN asignaciones.eval_plan_de_mejora = 'N' THEN 'No'
 ELSE 'Sí' END as plan_de_mejora,
-		(SELECT personas.apellido || ', ' || personas.nombres from personas WHERE personas.persona = evaluaciones.evaluador) as evaluador_nombre,
-		evaluaciones.observaciones,
-                evaluaciones.confirmado,
-                evaluaciones.calificacion,
-                evaluaciones.estado,
+		(SELECT personas.apellido || ', ' || personas.nombres from personas WHERE personas.persona = asignaciones.eval_evaluador) as evaluador_nombre,
+		asignaciones.eval_observaciones,
+                asignaciones.eval_confirmado,
+                asignaciones.eval_calificacion,
+                asignaciones.eval_estado,
                 resolucion_anio as ciclo_lectivo,
 		resolucion || '/'  ||resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_nombre
 
             FROM asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
-            LEFT OUTER JOIN evaluaciones ON (asignaciones.asignacion = evaluaciones.asignacion)
             LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
             LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
             LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
@@ -40,8 +39,8 @@ ELSE 'Sí' END as plan_de_mejora,
             LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
             LEFT OUTER JOIN estados ON (asignaciones.estado = estados.estado)
             LEFT OUTER JOIN resoluciones_tipos ON (asignaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo)
-             WHERE    evaluaciones.evaluador = $P{evaluador}
-		AND evaluaciones.ciclo_lectivo = $P{ciclo}
+             WHERE    asignaciones.eval_evaluador = $P{evaluador}
+		AND asignaciones.ciclo_lectivo = $P{ciclo}
             ORDER BY personas.apellido, resolucion_fecha]]>
 	</queryString>
 	<field name="asignacion" class="java.lang.Integer"/>
@@ -56,10 +55,10 @@ ELSE 'Sí' END as plan_de_mejora,
 	<field name="estado_desc" class="java.lang.Integer"/>
 	<field name="plan_de_mejora" class="java.lang.String"/>
 	<field name="evaluador_nombre" class="java.lang.String"/>
-	<field name="observaciones" class="java.lang.String"/>
-	<field name="confirmado" class="java.lang.String"/>
-	<field name="calificacion" class="java.lang.String"/>
-	<field name="estado" class="java.lang.Integer"/>
+	<field name="eval_observaciones" class="java.lang.String"/>
+	<field name="eval_confirmado" class="java.lang.String"/>
+	<field name="eval_calificacion" class="java.lang.String"/>
+	<field name="eval_estado" class="java.lang.Integer"/>
 	<field name="ciclo_lectivo" class="java.lang.String"/>
 	<field name="resolucion_nombre" class="java.lang.String"/>
 	<variable name="fecha_narrada" class="java.lang.String">
@@ -212,16 +211,16 @@ ELSE 'Sí' END as plan_de_mejora,
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="473" y="0" width="77" height="20" uuid="8521e2b5-a2dd-4ad4-b05c-5425d8106ecd">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_calificacion}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="550" y="0" width="42" height="20" uuid="61c99470-25a4-4d28-8f7c-22fe02f48325">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="DejaVu Sans"/>
@@ -230,12 +229,12 @@ ELSE 'Sí' END as plan_de_mejora,
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="593" y="0" width="170" height="20" uuid="017857f4-22c1-4a91-9287-b17647ea09b9">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{observaciones}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_observaciones}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="763" y="0" width="36" height="20" uuid="f4ad8c95-1e02-4231-9112-68876985f43a"/>
