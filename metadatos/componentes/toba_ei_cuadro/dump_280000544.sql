@@ -95,7 +95,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000899', --objeto_cuadro_col
 	'categoria_desc', --clave
-	'4', --orden
+	'6', --orden
 	'Cat.', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -126,7 +126,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000900', --objeto_cuadro_col
 	'dimension_desc', --clave
-	'5', --orden
+	'7', --orden
 	'Dim.', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -157,7 +157,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000901', --objeto_cuadro_col
 	'departamento_desc', --clave
-	'3', --orden
+	'5', --orden
 	'Depto', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -188,7 +188,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000902', --objeto_cuadro_col
 	'carga_horaria', --clave
-	'6', --orden
+	'9', --orden
 	'Carga horaria', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -219,7 +219,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000903', --objeto_cuadro_col
 	'nombre_completo', --clave
-	'1', --orden
+	'3', --orden
 	'Docente', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -250,7 +250,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000904', --objeto_cuadro_col
 	'ubicacion_desc', --clave
-	'7', --orden
+	'10', --orden
 	'Ubicación', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -281,7 +281,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000905', --objeto_cuadro_col
 	'fecha_desde', --clave
-	'8', --orden
+	'11', --orden
 	'Desde', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -312,7 +312,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000906', --objeto_cuadro_col
 	'fecha_hasta', --clave
-	'9', --orden
+	'12', --orden
 	'Hasta', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -343,7 +343,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000907', --objeto_cuadro_col
 	'resolucion_fecha', --clave
-	'11', --orden
+	'14', --orden
 	'Fecha resol.', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'7', --estilo
@@ -374,7 +374,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000908', --objeto_cuadro_col
 	'carrera_academica', --clave
-	'12', --orden
+	'15', --orden
 	'C.A.', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -405,7 +405,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000909', --objeto_cuadro_col
 	'resolucion_desc', --clave
-	'10', --orden
+	'13', --orden
 	'Resol.', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -436,7 +436,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000910', --objeto_cuadro_col
 	'estado_desc', --clave
-	'13', --orden
+	'16', --orden
 	'Estado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -458,7 +458,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --vinculo_target
 	NULL, --vinculo_celda
 	NULL, --vinculo_servicio
-	'1', --permitir_html
+	'0', --permitir_html
 	NULL, --grupo
 	NULL  --evento_asociado
 );
@@ -467,7 +467,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000911', --objeto_cuadro_col
 	'actividad_desc', --clave
-	'2', --orden
+	'4', --orden
 	'Actividad', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -498,7 +498,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000912', --objeto_cuadro_col
 	'observaciones', --clave
-	'14', --orden
+	'17', --orden
 	'Obs', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -529,7 +529,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000913', --objeto_cuadro_col
 	'autoeval_informe_catedra', --clave
-	'15', --orden
+	'18', --orden
 	'Inf cátedra', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -560,7 +560,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000914', --objeto_cuadro_col
 	'autoeval_programa', --clave
-	'16', --orden
+	'19', --orden
 	'programa', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -591,7 +591,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000915', --objeto_cuadro_col
 	'autoeval_tipo_informe', --clave
-	'17', --orden
+	'20', --orden
 	'Inf otro', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -622,7 +622,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000916', --objeto_cuadro_col
 	'autoeval_pregunta1', --clave
-	'18', --orden
+	'21', --orden
 	'pregunta1', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -653,7 +653,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000917', --objeto_cuadro_col
 	'autoeval_pregunta2', --clave
-	'19', --orden
+	'22', --orden
 	'pregunta2', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -684,7 +684,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000918', --objeto_cuadro_col
 	'autoeval_pregunta3', --clave
-	'20', --orden
+	'23', --orden
 	'pregunta3', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -715,7 +715,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000919', --objeto_cuadro_col
 	'autoeval_pregunta4', --clave
-	'21', --orden
+	'24', --orden
 	'pregunta4', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -746,7 +746,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000920', --objeto_cuadro_col
 	'autoeval_calificacion', --clave
-	'22', --orden
+	'25', --orden
 	'calificación', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -777,7 +777,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000921', --objeto_cuadro_col
 	'autoeval_observaciones', --clave
-	'23', --orden
+	'26', --orden
 	'obs', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -808,7 +808,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000922', --objeto_cuadro_col
 	'autoeval_confirmado', --clave
-	'24', --orden
+	'27', --orden
 	'confirmado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -839,7 +839,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000923', --objeto_cuadro_col
 	'autoeval_estado_desc', --clave
-	'25', --orden
+	'28', --orden
 	'estado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -870,7 +870,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000924', --objeto_cuadro_col
 	'eval_evaluador_desc', --clave
-	'26', --orden
+	'29', --orden
 	'evaluador', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -901,7 +901,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000925', --objeto_cuadro_col
 	'eval_calificacion', --clave
-	'27', --orden
+	'30', --orden
 	'Calificación', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -932,7 +932,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000926', --objeto_cuadro_col
 	'eval_plan_de_mejora', --clave
-	'28', --orden
+	'31', --orden
 	'Plan de mejora', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -963,7 +963,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000927', --objeto_cuadro_col
 	'eval_observaciones', --clave
-	'29', --orden
+	'32', --orden
 	'Obs', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -994,7 +994,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000928', --objeto_cuadro_col
 	'eval_notificacion', --clave
-	'30', --orden
+	'33', --orden
 	'Notificación', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -1025,7 +1025,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000929', --objeto_cuadro_col
 	'eval_confirmado', --clave
-	'31', --orden
+	'34', --orden
 	'Confirmado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -1056,7 +1056,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000544', --objeto_cuadro
 	'280000930', --objeto_cuadro_col
 	'eval_estado_desc', --clave
-	'32', --orden
+	'35', --orden
 	'Estado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -1080,6 +1080,99 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --vinculo_servicio
 	'0', --permitir_html
 	'Evaluación', --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000544', --objeto_cuadro
+	'280000946', --objeto_cuadro_col
+	'asignacion', --clave
+	'1', --orden
+	'N° de registro', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'4', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	NULL, --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	NULL, --total
+	NULL, --total_cc
+	NULL, --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000544', --objeto_cuadro
+	'280000947', --objeto_cuadro_col
+	'documento', --clave
+	'2', --orden
+	'N° doc', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'4', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	NULL, --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	NULL, --total
+	NULL, --total_cc
+	NULL, --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000544', --objeto_cuadro
+	'280000948', --objeto_cuadro_col
+	'responsable', --clave
+	'8', --orden
+	'Resp.', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'col-cen-s1', --estilo
+	NULL, --ancho
+	'13', --formateo
+	NULL, --vinculo_indice
+	'0', --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	'0', --total
+	NULL, --total_cc
+	'0', --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
 	NULL  --evento_asociado
 );
 --- FIN Grupo de desarrollo 280

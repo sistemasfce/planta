@@ -25,6 +25,7 @@ class ci_asignaciones_consultas extends planta_ci
 		$datos_para_cuadro = array();
 		if ($where != '1=1') {
 			$datos = toba::consulta_php('co_asignaciones')->get_asignaciones($where);
+                        /*
 			foreach ($datos as $dat) {
 				$fila = $dat;
 				if ($dat['estado'] == 1 or $dat['estado'] == 6) {
@@ -37,7 +38,8 @@ class ci_asignaciones_consultas extends planta_ci
 				}
 				$datos_para_cuadro[] = $fila;
 			}
-                        $datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
+                         */
+                        $datos_ordenados = rs_ordenar_por_columna($datos, 'resolucion_fecha');
 			$cuadro->set_datos($datos_ordenados);
 		}
 	}   

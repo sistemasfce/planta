@@ -25,6 +25,7 @@ class ci_designaciones_consultas extends planta_ci
 		if ($where != '1=1') {
 			$datos = toba::consulta_php('co_designaciones')->get_designaciones($where);
 			$datos_para_cuadro = array();
+                        /*
 			foreach ($datos as $dat) {
 				$fila = $dat;
 				if ($fila['designacion_tipo'] == 1 and $fila['designacion'] != null and ($fila['estado'] == 1 or $fila['estado'] == 5) ) {
@@ -41,7 +42,9 @@ class ci_designaciones_consultas extends planta_ci
 				}
 				$datos_para_cuadro[] = $fila;
 			}
-                        $datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
+                         * 
+                         */
+                        $datos_ordenados = rs_ordenar_por_columna($datos, 'resolucion_fecha');
 			$cuadro->set_datos($datos_ordenados);
 		}
 	}
