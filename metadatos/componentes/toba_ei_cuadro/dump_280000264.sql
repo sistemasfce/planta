@@ -95,7 +95,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000264', --objeto_cuadro
 	'280000426', --objeto_cuadro_col
 	'evaluado_nombre_completo', --clave
-	'1', --orden
+	'2', --orden
 	'Docente', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -126,7 +126,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000264', --objeto_cuadro
 	'280000427', --objeto_cuadro_col
 	'ubicacion_desc', --clave
-	'2', --orden
+	'3', --orden
 	'Ubicación', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s3', --estilo
@@ -157,7 +157,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000264', --objeto_cuadro
 	'280000428', --objeto_cuadro_col
 	'dimension_desc', --clave
-	'3', --orden
+	'4', --orden
 	'Dimensión', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -188,7 +188,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000264', --objeto_cuadro
 	'280000429', --objeto_cuadro_col
 	'motivo', --clave
-	'7', --orden
+	'8', --orden
 	NULL, --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -219,7 +219,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000264', --objeto_cuadro
 	'280000430', --objeto_cuadro_col
 	'actividad_desc', --clave
-	'5', --orden
+	'6', --orden
 	'Actividad', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -250,7 +250,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000264', --objeto_cuadro
 	'280000431', --objeto_cuadro_col
 	'departamento_desc', --clave
-	'4', --orden
+	'5', --orden
 	'Departamento', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -281,7 +281,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000264', --objeto_cuadro
 	'280000432', --objeto_cuadro_col
 	'rol_desc', --clave
-	'6', --orden
+	'7', --orden
 	'Rol', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -312,7 +312,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000264', --objeto_cuadro
 	'280000433', --objeto_cuadro_col
 	'eval_calificacion', --clave
-	'8', --orden
+	'9', --orden
 	'Calificación', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -343,7 +343,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000264', --objeto_cuadro
 	'280000434', --objeto_cuadro_col
 	'eval_confirmado', --clave
-	'9', --orden
+	'10', --orden
 	'Evaluación confirmada', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -374,7 +374,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000264', --objeto_cuadro
 	'280000435', --objeto_cuadro_col
 	'eval_notificacion', --clave
-	'10', --orden
+	'11', --orden
 	'Notificación', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -389,6 +389,37 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000264', --objeto_cuadro
+	'280000939', --objeto_cuadro_col
+	'asignacion', --clave
+	'1', --orden
+	'N° registro', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'4', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	NULL, --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	NULL, --total
+	NULL, --total_cc
+	NULL, --usar_vinculo
 	NULL, --vinculo_carpeta
 	NULL, --vinculo_item
 	NULL, --vinculo_popup

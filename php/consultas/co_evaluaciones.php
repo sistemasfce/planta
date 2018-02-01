@@ -111,9 +111,9 @@ class co_evaluaciones
 			categorias.descripcion as rol_desc,
 			dimensiones.codigo as dimension_desc,
 			departamentos.descripcion as departamento_desc,
-			asignaciones.eval_calificacion,
-			asignaciones.eval_confirmado,
-			asignaciones.eval_notificacion
+			asig2.eval_calificacion,
+			asig2.eval_confirmado,
+			asig2.eval_notificacion
 		FROM 	asignaciones, 
 			asignaciones as asig2 LEFT OUTER JOIN dimensiones ON (asig2.dimension = dimensiones.dimension)
 			LEFT OUTER JOIN designaciones ON (asig2.designacion = designaciones.designacion)
@@ -127,7 +127,6 @@ class co_evaluaciones
 			AND asignaciones.responsable = 'S'
 			AND asignaciones.ciclo_lectivo = '$ciclo'
 			AND asignaciones.actividad = asig2.actividad
-			
 			AND asig2.ubicacion = asignaciones.ubicacion
 			AND asig2.ubicacion = ubicaciones.ubicacion
 			AND asig2.ciclo_lectivo = '$ciclo'
@@ -163,9 +162,9 @@ class co_evaluaciones
                         categorias.descripcion as rol_desc,
                         dimensiones.codigo as dimension_desc,
 			departamentos.descripcion as departamento_desc,
-                        asignaciones.eval_calificacion,
-                        asignaciones.eval_confirmado,
-			asignaciones.eval_notificacion
+                        asig2.eval_calificacion,
+                        asig2.eval_confirmado,
+			asig2.eval_notificacion
 		FROM asignaciones, 
 			actividades LEFT OUTER JOIN actividades_a_evaluar ON (actividades.actividad = actividades_a_evaluar.actividad_evaluador) 
 			LEFT OUTER JOIN actividades as act2 ON (actividades_a_evaluar.actividad_evaluado = act2.actividad), 
@@ -216,9 +215,9 @@ class co_evaluaciones
             categorias.descripcion as rol_desc,
             dimensiones.codigo as dimension_desc,
 	    departamentos.descripcion as departamento_desc,
-            asignaciones.eval_calificacion,
-            asignaciones.eval_confirmado,
-            asignaciones.eval_notificacion
+            asig2.eval_calificacion,
+            asig2.eval_confirmado,
+            asig2.eval_notificacion
         FROM asignaciones, 
             actividades LEFT OUTER JOIN ambitos_a_evaluar ON (actividades.actividad = ambitos_a_evaluar.actividad_evaluador) 
             LEFT OUTER JOIN actividades as act2 ON (ambitos_a_evaluar.ambito_evaluado = act2.ambito), 
