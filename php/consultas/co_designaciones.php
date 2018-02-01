@@ -16,6 +16,8 @@ class co_designaciones
     {
 	if (!isset($where)) $where = '1=1';
         $sql = "SELECT  designaciones.designacion,
+                        personas.persona,
+                        designaciones.designacion_padre,
 			personas.documento,
 			personas.apellido || ', ' || personas.nombres as nombre_completo,
 			espacios_disciplinares.descripcion as espacio_disciplinar_desc,
@@ -33,7 +35,7 @@ class co_designaciones
 			resolucion_fecha,
 			resolucion_anio,
 			resolucion || '/' || resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_desc,
-			ratif_resolucion || '/' || ratif_resolucion_anio as ratif_resolucion_desc,
+			ratif_resolucion || '/' || ratif_resolucion_anio || ' ' || resoluciones_tipos2.descripcion as ratif_resolucion_desc,
 			carrera_academica,
 			designaciones.observaciones,
 			designaciones.designacion_tipo,
@@ -43,28 +45,20 @@ class co_designaciones
 			(SELECT resolucion || '/' || resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_padre 
 				FROM designaciones as d2, resoluciones_tipos 
 				WHERE d2.resolucion_tipo = resoluciones_tipos.resolucion_tipo AND d2.designacion = designaciones.designacion_padre) as resolucion_padre
-		FROM 	designaciones, 
-			designaciones_tipos,
-			espacios_disciplinares, 
-			dedicaciones, 
-			personas,
-			departamentos,
-			resoluciones_tipos,
-			categorias,
-			caracteres,
-			ubicaciones,
-			estados
-		WHERE 	designaciones.persona = personas.persona
-			AND designaciones.espacio_disciplinar = espacios_disciplinares.espacio_disciplinar
-			AND designaciones.designacion_tipo = designaciones_tipos.designacion_tipo 
-			AND designaciones.dedicacion = dedicaciones.dedicacion
-			AND designaciones.categoria = categorias.categoria
-			AND designaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo
-			AND designaciones.caracter = caracteres.caracter
-			AND designaciones.ubicacion = ubicaciones.ubicacion
-			AND designaciones.departamento = departamentos.departamento
-			AND designaciones.estado = estados.estado
-		AND	$where
+		FROM 	designaciones LEFT OUTER JOIN resoluciones_tipos as resoluciones_tipos2 ON (designaciones.ratif_resolucion_tipo = resoluciones_tipos2.resolucion_tipo)
+			LEFT OUTER JOIN designaciones_tipos ON (designaciones.designacion_tipo = designaciones_tipos.designacion_tipo )
+			LEFT OUTER JOIN espacios_disciplinares ON (designaciones.espacio_disciplinar = espacios_disciplinares.espacio_disciplinar)
+			LEFT OUTER JOIN dedicaciones ON (designaciones.dedicacion = dedicaciones.dedicacion)
+			LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
+			LEFT OUTER JOIN departamentos ON (designaciones.departamento = departamentos.departamento)
+			LEFT OUTER JOIN resoluciones_tipos ON (designaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo)
+			LEFT OUTER JOIN categorias ON (designaciones.categoria = categorias.categoria)
+			LEFT OUTER JOIN caracteres ON (designaciones.caracter = caracteres.caracter)
+			LEFT OUTER JOIN ubicaciones ON (designaciones.ubicacion = ubicaciones.ubicacion)
+			LEFT OUTER JOIN estados ON (designaciones.estado = estados.estado)
+		WHERE 	
+
+		$where
 		ORDER BY nombre_completo, designaciones.resolucion_fecha::date DESC, espacios_disciplinares.descripcion
         ";
 	return toba::db()->consultar($sql);
