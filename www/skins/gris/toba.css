@@ -166,6 +166,15 @@ a.nivel-0:hover, a.nivel-0:focus, a.nivel-0.rollover, a.nivel-0.rollover:visited
 	text-align: center;
 }
 
+.ei-cuadro-cc-sum-nivel-2 {
+    border: 1px solid #4f4c4d;
+    color: #231f20;
+    background-color: white;
+    text-align: center;
+    margin: 0px;
+    padding: 2px;
+}
+
 .ei-cuadro-cc-pie-nivel-1 {
 	COLOR: #231f20;
 	background-color: #999999;;

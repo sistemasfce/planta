@@ -304,5 +304,25 @@ class co_asignaciones
 		";
 	return toba::db()->consultar($sql);
    }
+
+   function get_cantidad($where)
+   {
+	$sql = "
+		SELECT COUNT (*) as cantidad,
+                    
+                    categorias.codigo as categoria_desc,
+                    ubicaciones.codigo as ubicacion_desc,
+                    dimensiones.codigo as dimension_desc,
+                    departamentos.descripcion as departamento_desc
+		FROM asignaciones LEFT JOIN ubicaciones ON asignaciones.ubicacion = ubicaciones.ubicacion
+                LEFT JOIN categorias ON asignaciones.rol = categorias.categoria
+                LEFT JOIN departamentos ON asignaciones.departamento = departamentos.departamento
+                LEFT JOIN dimensiones ON asignaciones.dimension = dimensiones.dimension
+		WHERE $where AND asignaciones.estado = 1
+                GROUP BY dimension_desc, ubicacion_desc, departamento_desc, categoria_desc    
+		";
+	return toba::db()->consultar($sql);
+   }   
+   
 }
 ?>
