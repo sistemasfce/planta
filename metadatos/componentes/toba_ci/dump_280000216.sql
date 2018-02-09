@@ -186,6 +186,18 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
+	'280000487', --dep_id
+	'280000216', --objeto_consumidor
+	'280000563', --objeto_proveedor
+	'historicos', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'planta', --proyecto
 	'280000186', --dep_id
 	'280000216', --objeto_consumidor
 	'280000223', --objeto_proveedor
@@ -329,6 +341,25 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 	NULL, --template_impresion
 	NULL  --punto_montaje
 );
+INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
+	'planta', --objeto_ci_proyecto
+	'280000216', --objeto_ci
+	'280000172', --pantalla
+	'pant_historicos', --identificador
+	'7', --orden
+	'Historicos', --etiqueta
+	NULL, --descripcion
+	NULL, --tip
+	'apex', --imagen_recurso_origen
+	NULL, --imagen
+	NULL, --objetos
+	NULL, --eventos
+	NULL, --subclase
+	NULL, --subclase_archivo
+	NULL, --template
+	NULL, --template_impresion
+	NULL  --punto_montaje
+);
 --- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------
@@ -382,6 +413,13 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'280000216', --objeto_ci
 	'0', --orden
 	'280000253'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'planta', --proyecto
+	'280000172', --pantalla
+	'280000216', --objeto_ci
+	'0', --orden
+	'280000487'  --dep_id
 );
 
 ------------------------------------------------------------

@@ -96,6 +96,7 @@ class ci_inicio_docentes extends planta_ci
 				$form->evento('autoevaluacion')->desactivar();
 				$form->evento('desempenio')->desactivar();
 				$form->evento('cambiar_clave')->desactivar();
+                                $form->evento('historicos')->desactivar();
 			}
 		} else {
 			$persona = toba::memoria()->get_dato('persona');            
@@ -125,6 +126,11 @@ class ci_inicio_docentes extends planta_ci
 		$this->set_pantalla('pant_clave');
 	}      
 	
+	function evt__form__historicos($datos)
+	{
+		$this->set_pantalla('pant_historicos');
+	}            
+        
 	function evt__volver()
 	{
 		$this->dep('autoevaluacion')->dep('relacion')->resetear();

@@ -45,7 +45,7 @@ class ci_modificar_asignacion_designacion_edicion extends planta_ci
 			}
 			$datos_para_cuadro[] = $fila;
 		}
-                $datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
+				$datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
 		$cuadro->set_datos($datos_ordenados);                       
 	}
 
@@ -72,6 +72,7 @@ class ci_modificar_asignacion_designacion_edicion extends planta_ci
 	function evt__form_asig__baja()
 	{
 		$this->tabla('asignaciones')->set(null);
+		$this->tabla('asignaciones')->resetear_cursor();
 	}
 
 	function evt__form_asig__modificacion($datos)
