@@ -79,7 +79,8 @@ a.nivel-0:hover, a.nivel-0:focus, a.nivel-0.rollover, a.nivel-0.rollover:visited
 }
 
 .ci-tabs-h-lista {
-	background-color: #CCCCCC;
+    background-color: darkgray;
+    border: 1px solid #231f20;
 }
 
 .ei-base {
@@ -315,6 +316,8 @@ a.nivel-0:hover, a.nivel-0:focus, a.nivel-0.rollover, a.nivel-0.rollover:visited
 .ci-tabs-h-solapa .ci-tabs-boton-desact {
 	color:gray !important;
 	cursor: default;
+        background-color: gray;
+        border: 1px solid #231f20;
 }
 .ci-tabs-v-solapa  .ci-tabs-boton-desact {
 	color:gray;

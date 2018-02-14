@@ -1021,6 +1021,34 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'1', --externa
 	NULL  --tabla
 );
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000903', --col_id
+	'autoeval_estado_desc', --columna
+	'C', --tipo
+	'0', --pk
+	NULL, --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'1', --externa
+	NULL  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000904', --col_id
+	'eval_estado_desc', --columna
+	'C', --tipo
+	'0', --pk
+	NULL, --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'1', --externa
+	NULL  --tabla
+);
 --- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------
@@ -1199,6 +1227,40 @@ INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, t
 	'0', --permite_carga_masiva
 	NULL  --metodo_masivo
 );
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000028', --externa_id
+	'sql', --tipo
+	'1', --sincro_continua
+	NULL, --metodo
+	NULL, --clase
+	NULL, --include
+	'280000002', --punto_montaje
+	'SELECT descripcion as eval_estado_desc FROM estados WHERE estado = %eval_estado%', --sql
+	'0', --dato_estricto
+	NULL, --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000029', --externa_id
+	'sql', --tipo
+	'1', --sincro_continua
+	NULL, --metodo
+	NULL, --clase
+	NULL, --include
+	'280000002', --punto_montaje
+	'SELECT descripcion as autoeval_estado_desc FROM estados WHERE estado = %autoeval_estado%', --sql
+	'0', --dato_estricto
+	NULL, --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
 --- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------
@@ -1342,5 +1404,33 @@ INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_i
 	'280000090', --objeto
 	'280000027', --externa_id
 	'280000899', --col_id
+	'1'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000028', --externa_id
+	'280000898', --col_id
+	'0'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000028', --externa_id
+	'280000904', --col_id
+	'1'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000029', --externa_id
+	'280000877', --col_id
+	'0'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000090', --objeto
+	'280000029', --externa_id
+	'280000903', --col_id
 	'1'  --es_resultado
 );
