@@ -29,14 +29,14 @@
 
 	// pongo como historico las designaciones que eran activas y finalizaron	
 	$sql = "UPDATE designaciones
-		SET estado = 3
+		SET estado = 15, fecha_cambios = now()
 		WHERE estado = 1 AND fecha_hasta::date < current_date 
 		";
 	toba::db()->consultar($sql);
 
 	// pongo como historico las asignaciones activas que finalizaron
 	$sql = "UPDATE asignaciones
-		SET estado = 3, cambia_estado = 'N'
+		SET estado = 15, cambia_estado = 'N', fecha_cambios = now()
 		WHERE estado = 1 AND fecha_hasta::date < current_date
 		";
 	toba::db()->consultar($sql);
