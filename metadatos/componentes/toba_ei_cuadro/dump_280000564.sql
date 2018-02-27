@@ -143,7 +143,7 @@ INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto
 	'0', --pie_mostrar_titular
 	'0', --pie_mostrar_titulos
 	NULL, --imp_paginar
-	'1'  --modo_inicio_colapsado
+	'0'  --modo_inicio_colapsado
 );
 --- FIN Grupo de desarrollo 280
 
