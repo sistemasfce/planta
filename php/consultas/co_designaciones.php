@@ -124,7 +124,7 @@ class co_designaciones
                         AND designaciones.departamento = departamentos.departamento
                         AND designaciones.estado = estados.estado
 
-		--AND designaciones.persona = $persona
+		
 		AND $where
 		AND $where_estado
 		ORDER BY designaciones.resolucion_fecha::date DESC, espacios_disciplinares.descripcion
