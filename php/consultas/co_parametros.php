@@ -290,7 +290,7 @@ class co_parametros
         ";
 	return toba::db()->consultar($sql);
     }
-
+    
     function get_departamentos($where=null)
     {
 	if (!isset($where)) $where = '1=1';

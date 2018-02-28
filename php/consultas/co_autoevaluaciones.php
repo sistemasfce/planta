@@ -8,7 +8,7 @@ class co_autoevaluaciones
 // ------------------------------------------ AUTEVALUACIONES POR DOCENTE (FICHA DOCENTE)-----------------------------------------
 //
 //
-
+    
      function get_autoevaluaciones($where)
     {
         $sql = "SELECT 	asignaciones.*,
@@ -107,6 +107,19 @@ class co_autoevaluaciones
 
 		";
         return toba::db()->consultar($sql);
+    }
+    
+    function get_autoevaluaciones_control_personas($where=null)
+    {
+	if (!isset($where)) $where = '1=1';
+        $sql = "SELECT director.apellido || ', ' || director.nombres as director_nombre,
+                        personas.apellido || ', ' || personas.nombres as persona_nombre
+            FROM autoevaluaciones_control_personas LEFT OUTER JOIN personas as director 
+            ON (autoevaluaciones_control_personas.director = director.persona)
+            LEFT OUTER JOIN personas
+            ON (autoevaluaciones_control_personas.persona = personas.persona)
+        ";
+	return toba::db()->consultar($sql);
     }
 
 //
