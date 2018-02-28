@@ -81,7 +81,8 @@ SELECT apellido || ', ' || nombres as nombre_completo,
             ) as horas_licenciadas,
  
             (SELECT sum(carga_horaria::Int) FROM asignaciones WHERE asignaciones.persona = personas.persona
-            AND asignaciones.estado = 1) as horas_asignadas
+            AND asignaciones.estado = 1) as horas_asignadas,
+            (SELECT SUM(carga_horaria) FROM asignaciones WHERE persona = personas.persona AND asignaciones.estado = 1) as horas_asig
 	
    FROM personas, personas_perfiles
    
