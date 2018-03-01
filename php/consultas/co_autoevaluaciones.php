@@ -122,6 +122,19 @@ class co_autoevaluaciones
         ";
 	return toba::db()->consultar($sql);
     }
+    
+    function get_autoevaluaciones_a_controlar($persona)
+    {
+        $sql = "SELECT director.apellido || ', ' || director.nombres as director_nombre,
+                        personas.apellido || ', ' || personas.nombres as persona_nombre
+            FROM autoevaluaciones_control_personas LEFT OUTER JOIN personas as director 
+            ON (autoevaluaciones_control_personas.director = director.persona)
+            LEFT OUTER JOIN personas
+            ON (autoevaluaciones_control_personas.persona = personas.persona)
+            WHERE director = $persona
+            ORDER BY director.apellido, personas.apellido";
+        return toba::db()->consultar($sql);
+    }
 
 //
 //

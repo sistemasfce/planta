@@ -73,6 +73,15 @@ class ci_inicio_docentes extends planta_ci
 		}
 	}   
 
+        function conf__cuadro(planta_ei_cuadro $cuadro)
+        {
+            $persona = toba::memoria()->get_dato('persona');
+            if (isset($persona)) {
+                $datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluaciones_a_controlar($persona);
+                $cuadro->set_datos($datos);                
+            }
+        }
+        
 	//-----------------------------------------------------------------------------------
 	//---- form -------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
