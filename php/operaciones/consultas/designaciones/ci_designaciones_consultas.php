@@ -22,17 +22,17 @@ class ci_designaciones_consultas extends planta_ci
 	function conf__cuadro_des(planta_ei_cuadro $cuadro)
 	{
 		$where = $this->dep('filtro')->get_sql_where();
-		if ($where != '1=1') {
+		//if ($where != '1=1') {
 			$datos = toba::consulta_php('co_designaciones')->get_designaciones($where);
 			$datos_para_cuadro = array();
-                        
+						
 			foreach ($datos as $dat) {
 				$fila = $dat;
 				if ($fila['designacion_tipo'] == 1 and $fila['designacion'] != null and ($fila['estado'] == 1 or $fila['estado'] == 5) ) {
 					$horas_licenciadas = toba::consulta_php('co_designaciones')->get_horas_licencias_activas($fila['designacion']);
 					$fila['carga_horaria_real'] = $fila['carga_horaria_dedicacion'] - $horas_licenciadas['total'];            
 				}
-                                /*
+								/*
 				if ($dat['estado'] == 1 or $dat['estado'] == 6) {
 					$fila['estado_desc'] = '<font color=green><b>'.$fila['estado_desc'].'</b></font>';
 				}
@@ -41,14 +41,14 @@ class ci_designaciones_consultas extends planta_ci
 				}  else {
 					$fila['estado_desc'] = '<font color=blue><b>'.$fila['estado_desc'].'</b></font>';
 				}
-                                 * 
-                                 */
+									* 
+									*/
 				$datos_para_cuadro[] = $fila;
 			}
-                        
-                        $datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
+						
+			$datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
 			$cuadro->set_datos($datos_ordenados);
-		}
+		//}
 	}
 	
 	//-----------------------------------------------------------------------------------
@@ -60,8 +60,8 @@ class ci_designaciones_consultas extends planta_ci
 		if (isset($this->s__filtro)) {
 			$filtro->set_datos($this->s__filtro);
 		}
-				$filtro->columna('desde')->set_condicion_fija('entre');
-				$filtro->columna('hasta')->set_condicion_fija('entre');
+		//$filtro->columna('desde')->set_condicion_fija('entre');
+		//$filtro->columna('hasta')->set_condicion_fija('entre');
 	}
 
 	function evt__filtro__filtrar($datos)
