@@ -52,7 +52,7 @@ class ci_autoevaluacion extends planta_ci
 			}
 		} else {
 			// si la ficha NO esta cargada desactivamos el boton siguiente            
-			$form->evento('siguiente')->desactivar();
+			//$form->evento('siguiente')->desactivar();
 			$this->evento('constancia')->desactivar();
 		}
 		$form->set_datos($datos);
@@ -258,19 +258,19 @@ class ci_autoevaluacion extends planta_ci
 
 	function conf__cuadro_ficha(planta_ei_cuadro $cuadro)
 	{
-            $persona = toba::memoria()->get_dato('persona');
-            $datos = toba::consulta_php('co_autoevaluaciones')->get_fichas_de_docente($persona);
-            $cuadro->set_titulo('Ficha docente: '.$datos[0]['nombre_completo']);
-            if (!isset($datos[0]['nombre_completo']))
+			$persona = toba::memoria()->get_dato('persona');
+			$datos = toba::consulta_php('co_autoevaluaciones')->get_fichas_de_docente($persona);
+			$cuadro->set_titulo('Ficha docente: '.$datos[0]['nombre_completo']);
+			if (!isset($datos[0]['nombre_completo']))
 		return;
-            $cuadro->set_datos($datos);
+			$cuadro->set_datos($datos);
 	}
 	
 	function evt__cuadro_ficha__seleccion($seleccion)
 	{
-            toba::memoria()->set_dato('path',$seleccion['ficha_docente_path']);
+			toba::memoria()->set_dato('path',$seleccion['ficha_docente_path']);
 	}        
-  
+	
 	//-----------------------------------------------------------------------------------
 	//---- form -------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
@@ -290,7 +290,7 @@ class ci_autoevaluacion extends planta_ci
 
 		$form->set_datos($datos);         
 	}        
-        
+		
 	function evt__form_resp__cancelar()
 	{
 		$this->dep('relacion')->resetear();
