@@ -107,7 +107,7 @@ class ci_inicio_docentes extends planta_ci
 	{
 
 		$usuario = toba::memoria()->get_dato('usuario');
-		if ($usuario == 'admin' or $perfil[0] != 'usuario') {
+		if ($usuario == 'admin' or $perfil[0] == 'usuario') {
 			if (isset($this->s__filtro)) {
 				$ciclo = $this->s__filtro['ciclo_lectivo']['valor'];
 				toba::memoria()->set_dato('ciclo',$ciclo);
