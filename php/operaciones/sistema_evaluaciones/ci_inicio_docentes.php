@@ -23,7 +23,7 @@ class ci_inicio_docentes extends planta_ci
 	function conf__pant_inicial(toba_ei_pantalla $pantalla)
 	{
 		$perfil = toba::usuario()->get_perfiles_funcionales();
-		if ($perfil[0] != 'admin') {
+		if ($perfil[0] != 'admin' and $perfil[0] != 'usuario') {
 			$documento = toba::usuario()->get_id();
 			$this->pantalla('pant_inicial')->eliminar_dep('filtro');
 			$persona = toba::consulta_php('co_personas')->get_id($documento);
@@ -73,15 +73,15 @@ class ci_inicio_docentes extends planta_ci
 		}
 	}   
 
-        function conf__cuadro(planta_ei_cuadro $cuadro)
-        {
-            $persona = toba::memoria()->get_dato('persona');
-            if (isset($persona)) {
-                $datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluaciones_a_controlar($persona);
-                $cuadro->set_datos($datos);                
-            }
-        }
-        
+		function conf__cuadro(planta_ei_cuadro $cuadro)
+		{
+			$persona = toba::memoria()->get_dato('persona');
+			if (isset($persona)) {
+				$datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluaciones_a_controlar($persona);
+				$cuadro->set_datos($datos);                
+			}
+		}
+		
 	//-----------------------------------------------------------------------------------
 	//---- form -------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
@@ -105,7 +105,7 @@ class ci_inicio_docentes extends planta_ci
 				$form->evento('autoevaluacion')->desactivar();
 				$form->evento('desempenio')->desactivar();
 				$form->evento('cambiar_clave')->desactivar();
-                                $form->evento('historicos')->desactivar();
+								$form->evento('historicos')->desactivar();
 			}
 		} else {
 			$persona = toba::memoria()->get_dato('persona');            
@@ -139,7 +139,7 @@ class ci_inicio_docentes extends planta_ci
 	{
 		$this->set_pantalla('pant_historicos');
 	}            
-        
+		
 	function evt__volver()
 	{
 		$this->dep('autoevaluacion')->dep('relacion')->resetear();
