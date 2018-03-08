@@ -78,7 +78,7 @@ class ci_inicio_docentes extends planta_ci
             $persona = toba::memoria()->get_dato('persona');
             $ciclo = toba::consulta_php('co_parametros')->get_parametro_valor('PAR_AUTOEVAL_CICLO');
             if (isset($persona)) {
-                $datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluaciones_a_controlar($persona,$ciclo);
+                $datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluaciones_a_controlar($persona,$ciclo['valor_num']);
                 
                 foreach ($datos as $dat) {
                     $aux = $dat;
