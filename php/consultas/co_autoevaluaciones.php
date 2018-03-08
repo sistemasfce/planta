@@ -112,7 +112,8 @@ class co_autoevaluaciones
     function get_autoevaluaciones_control_personas($where=null)
     {
 	if (!isset($where)) $where = '1=1';
-        $sql = "SELECT director.apellido || ', ' || director.nombres as director_nombre,
+        $sql = "SELECT autoevaluaciones_control_personas.autoevaluacion_control_persona,
+            director.apellido || ', ' || director.nombres as director_nombre,
                         personas.apellido || ', ' || personas.nombres as persona_nombre
             FROM autoevaluaciones_control_personas LEFT OUTER JOIN personas as director 
             ON (autoevaluaciones_control_personas.director = director.persona)
@@ -123,14 +124,18 @@ class co_autoevaluaciones
 	return toba::db()->consultar($sql);
     }
     
-    function get_autoevaluaciones_a_controlar($persona)
+    function get_autoevaluaciones_a_controlar($persona, $ciclo)
     {
-        $sql = "SELECT director.apellido || ', ' || director.nombres as director_nombre,
-                        personas.apellido || ', ' || personas.nombres as persona_nombre
-            FROM autoevaluaciones_control_personas LEFT OUTER JOIN personas as director 
-            ON (autoevaluaciones_control_personas.director = director.persona)
-            LEFT OUTER JOIN personas
-            ON (autoevaluaciones_control_personas.persona = personas.persona)
+        $sql = "SELECT autoevaluaciones_control_personas.autoevaluacion_control_persona,
+                        director.apellido || ', ' || director.nombres as director_nombre,
+                        personas.apellido || ', ' || personas.nombres as persona_nombre,
+                        CASE WHEN autoevaluaciones.ciclo_lectivo = $ciclo THEN 'S' ELSE 'N' END as subio_ficha,
+                        CASE WHEN autoevaluaciones.ciclo_lectivo = $ciclo AND autoevaluaciones.confirmado = 'S' THEN 'S' ELSE 'N' END as confirmo_ficha,
+                        CASE WHEN autoevaluaciones.ciclo_lectivo = $ciclo THEN autoevaluaciones.ficha_docente_path END as path_ficha
+                        
+            FROM autoevaluaciones_control_personas LEFT OUTER JOIN personas as director ON (autoevaluaciones_control_personas.director = director.persona)
+            LEFT OUTER JOIN personas ON (autoevaluaciones_control_personas.persona = personas.persona)
+            LEFT OUTER JOIN autoevaluaciones ON (personas.persona = autoevaluaciones.persona AND autoevaluaciones.ciclo_lectivo = $ciclo)
             WHERE director = $persona
             ORDER BY director.apellido, personas.apellido";
         return toba::db()->consultar($sql);

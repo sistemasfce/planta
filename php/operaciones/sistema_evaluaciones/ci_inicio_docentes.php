@@ -73,14 +73,30 @@ class ci_inicio_docentes extends planta_ci
 		}
 	}   
 
-		function conf__cuadro(planta_ei_cuadro $cuadro)
-		{
-			$persona = toba::memoria()->get_dato('persona');
-			if (isset($persona)) {
-				$datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluaciones_a_controlar($persona);
-				$cuadro->set_datos($datos);                
-			}
-		}
+        function conf__cuadro(planta_ei_cuadro $cuadro)
+        {
+            $persona = toba::memoria()->get_dato('persona');
+            $ciclo = toba::memoria()->get_dato('ciclo');
+            if (isset($persona)) {
+                $datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluaciones_a_controlar($persona,$ciclo);
+                
+                foreach ($datos as $dat) {
+                    $aux = $dat;
+                    if ($dat['path_ficha'] != '') {
+                          // el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
+                        $nombre = substr($datos['path_ficha'],19);
+                        $dir_tmp = toba::proyecto()->get_www_temp();
+                        exec("cp '". $datos['path_ficha']. "' '" .$dir_tmp['path']."/".$nombre."'");
+                        $temp_archivo = toba::proyecto()->get_www_temp($nombre);
+                        $tamanio = round(filesize($temp_archivo['path']) / 1024);
+                        $aux['archivo'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";
+                        #$datos['archivo'] = $nombre. ' - Tam.: '.$tamanio. ' KB';                          
+                    }
+                    $datos_aux[] = $aux;
+                }
+                $cuadro->set_datos($datos_aux);                
+            }
+        }
 		
 	//-----------------------------------------------------------------------------------
 	//---- form -------------------------------------------------------------------------
@@ -90,7 +106,7 @@ class ci_inicio_docentes extends planta_ci
 	{
 
 		$usuario = toba::memoria()->get_dato('usuario');
-		if ($usuario == 'admin') {
+		if ($usuario == 'admin' or $perfil[0] != 'usuario') {
 			if (isset($this->s__filtro)) {
 				$ciclo = $this->s__filtro['ciclo_lectivo']['valor'];
 				toba::memoria()->set_dato('ciclo',$ciclo);
@@ -105,7 +121,7 @@ class ci_inicio_docentes extends planta_ci
 				$form->evento('autoevaluacion')->desactivar();
 				$form->evento('desempenio')->desactivar();
 				$form->evento('cambiar_clave')->desactivar();
-								$form->evento('historicos')->desactivar();
+				$form->evento('historicos')->desactivar();
 			}
 		} else {
 			$persona = toba::memoria()->get_dato('persona');            
