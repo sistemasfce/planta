@@ -85,9 +85,9 @@ class ci_inicio_docentes extends planta_ci
                     $aux = $dat;
                     if ($dat['path_ficha'] != '') {
                           // el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
-                        $nombre = substr($datos['path_ficha'],19);
+                        $nombre = substr($dat['path_ficha'],19);
                         $dir_tmp = toba::proyecto()->get_www_temp();
-                        exec("cp '". $datos['path_ficha']. "' '" .$dir_tmp['path']."/".$nombre."'");
+                        exec("cp '". $dat['path_ficha']. "' '" .$dir_tmp['path']."/".$nombre."'");
                         $temp_archivo = toba::proyecto()->get_www_temp($nombre);
                         $tamanio = round(filesize($temp_archivo['path']) / 1024);
                         $aux['archivo'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";
