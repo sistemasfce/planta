@@ -258,12 +258,28 @@ class ci_autoevaluacion extends planta_ci
 
 	function conf__cuadro_ficha(planta_ei_cuadro $cuadro)
 	{
-			$persona = toba::memoria()->get_dato('persona');
-			$datos = toba::consulta_php('co_autoevaluaciones')->get_fichas_de_docente($persona);
-			$cuadro->set_titulo('Ficha docente: '.$datos[0]['nombre_completo']);
-			if (!isset($datos[0]['nombre_completo']))
-		return;
-			$cuadro->set_datos($datos);
+            $persona = toba::memoria()->get_dato('persona');
+            $datos = toba::consulta_php('co_autoevaluaciones')->get_fichas_de_docente($persona);
+            $cuadro->set_titulo('Ficha docente: '.$datos[0]['nombre_completo']);
+            if (!isset($datos[0]['nombre_completo']))
+                return;
+            
+            foreach ($datos as $dat) {
+                $aux = $dat;
+                if ($dat['ficha_docente_path'] != '') {
+                      // el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
+                    $nombre = substr($dat['ficha_docente_path'],19);
+                    $dir_tmp = toba::proyecto()->get_www_temp();
+                    exec("cp '". $dat['ficha_docente_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+                    $temp_archivo = toba::proyecto()->get_www_temp($nombre);
+                    $tamanio = round(filesize($temp_archivo['path']) / 1024);
+                    $aux['archivo'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";
+                    #$datos['archivo'] = $nombre. ' - Tam.: '.$tamanio. ' KB';                          
+                }
+                $datos_aux[] = $aux;
+            }            
+            $cuadro->set_datos($datos_aux);
+            
 	}
 	
 	function evt__cuadro_ficha__seleccion($seleccion)
