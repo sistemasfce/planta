@@ -31,7 +31,7 @@ class ci_historicos extends planta_ci
         $datos_para_cuadro = array();
         
         foreach ($datos as $dat) {
-            if ($dat['ciclo_lectivo'] == $ciclo)
+            if ($dat['ciclo_lectivo'] >= $ciclo)
                 continue;  
             if ($dat['autoeval_estado'] == 1) // si el estado es activo
                 $datos_para_cuadro[] = $dat;
