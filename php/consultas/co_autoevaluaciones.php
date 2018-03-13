@@ -129,6 +129,9 @@ class co_autoevaluaciones
         $sql = "SELECT autoevaluaciones_control_personas.autoevaluacion_control_persona,
                         director.apellido || ', ' || director.nombres as director_nombre,
                         personas.apellido || ', ' || personas.nombres as persona_nombre,
+                        (SELECT departamentos.descripcion FROM designaciones 
+                        LEFT OUTER JOIN departamentos ON designaciones.departamento = departamentos.departamento 
+                        WHERE designaciones.estado = 1 AND designaciones.persona = autoevaluaciones_control_personas.persona LIMIT 1) as depto,
                         CASE WHEN autoevaluaciones.ciclo_lectivo = $ciclo THEN 'S' ELSE 'N' END as subio_ficha,
                         CASE WHEN autoevaluaciones.ciclo_lectivo = $ciclo AND autoevaluaciones.confirmado = 'S' THEN 'S' ELSE 'N' END as confirmo_ficha,
                         CASE WHEN autoevaluaciones.ciclo_lectivo = $ciclo THEN autoevaluaciones.ficha_docente_path END as path_ficha
@@ -137,7 +140,7 @@ class co_autoevaluaciones
             LEFT OUTER JOIN personas ON (autoevaluaciones_control_personas.persona = personas.persona)
             LEFT OUTER JOIN autoevaluaciones ON (personas.persona = autoevaluaciones.persona AND autoevaluaciones.ciclo_lectivo = $ciclo)
             WHERE director = $persona
-            ORDER BY director.apellido, personas.apellido";
+            ORDER BY depto, director.apellido, personas.apellido";
         return toba::db()->consultar($sql);
     }
 
