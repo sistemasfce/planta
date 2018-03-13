@@ -145,7 +145,7 @@ class co_autoevaluaciones
             LEFT OUTER JOIN personas ON (autoevaluaciones_control_personas.persona = personas.persona)
             LEFT OUTER JOIN autoevaluaciones ON (personas.persona = autoevaluaciones.persona AND autoevaluaciones.ciclo_lectivo = $ciclo)
             WHERE director = $persona
-            ORDER BY depto, director.apellido, personas.apellido";
+            ORDER BY depto, ubicacion_desc, director.apellido, personas.apellido";
         return toba::db()->consultar($sql);
     }
 
