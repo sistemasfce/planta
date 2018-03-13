@@ -132,6 +132,11 @@ class co_autoevaluaciones
                         (SELECT departamentos.descripcion FROM designaciones 
                         LEFT OUTER JOIN departamentos ON designaciones.departamento = departamentos.departamento 
                         WHERE designaciones.estado in (1,4,5) AND designaciones.persona = autoevaluaciones_control_personas.persona ORDER BY designaciones.departamento LIMIT 1) as depto,
+                    
+                        (SELECT ubicaciones.descripcion FROM designaciones 
+                        LEFT OUTER JOIN ubicaciones ON designaciones.ubicacion = ubicaciones.ubicacion 
+                        WHERE designaciones.estado in (1,4,5) AND designaciones.persona = autoevaluaciones_control_personas.persona ORDER BY ubicaciones.ubicacion DESC LIMIT 1) as ubicacion_desc,
+ 
                         CASE WHEN autoevaluaciones.ciclo_lectivo = $ciclo THEN 'S' ELSE 'N' END as subio_ficha,
                         CASE WHEN autoevaluaciones.ciclo_lectivo = $ciclo AND autoevaluaciones.confirmado = 'S' THEN 'S' ELSE 'N' END as confirmo_ficha,
                         CASE WHEN autoevaluaciones.ciclo_lectivo = $ciclo THEN autoevaluaciones.ficha_docente_path END as path_ficha
