@@ -19,50 +19,52 @@ class ci_autoevaluacion extends planta_ci
 
 	function conf__form_ficha(planta_ei_formulario $form)
 	{
-		$persona = toba::memoria()->get_dato('persona');
-		$ciclo = toba::memoria()->get_dato('ciclo');
-		$this->tabla('autoevaluaciones')->cargar(array('persona'=>$persona,'ciclo_lectivo'=>$ciclo));
-		$datos = $this->tabla('autoevaluaciones')->get();
-		
-		// si esta cargada la ficha docente armo el link para descarga
-		if ($datos['ficha_docente'] == 'S') {
-			// el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
-			$nombre = substr($datos['ficha_docente_path'],19);
-			$dir_tmp = toba::proyecto()->get_www_temp();
-			exec("cp '". $datos['ficha_docente_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
-			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
-			$tamanio = round(filesize($temp_archivo['path']) / 1024);
-			$datos['ficha_docente_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";
-			$datos['archivo'] = $nombre. ' - Tam.: '.$tamanio. ' KB';  
-	
-			// si la ficha esta confirmada pongo en solo lectura el archivo y confirmado
-			if ($datos['confirmado'] == 'S') {
-				$form->ef('archivo')->set_solo_lectura(true);
-				$form->ef('confirmado')->set_solo_lectura(true); 
-				$form->evento('guardar')->desactivar();
-			}  
-			// si la ficha NO esta confirmada
-			else {
-				$this->evento('constancia')->desactivar();
-				$confirma_act = toba::consulta_php('co_autoevaluaciones')->get_actividades_sin_confirmar($persona);
-				if ($confirma_act[0]['confirmado'] == 'N') {
-					// si todavia no confirmo sus actividades
-					$form->ef('confirmado')->set_solo_lectura(true);
-				}
-			}
-		} else {
-			// si la ficha NO esta cargada desactivamos el boton siguiente            
-			//$form->evento('siguiente')->desactivar();
-			$this->evento('constancia')->desactivar();
-		}
-		$form->set_datos($datos);
+            $persona = toba::memoria()->get_dato('persona');
+            $ciclo = toba::memoria()->get_dato('ciclo');
+            $this->tabla('autoevaluaciones')->cargar(array('persona'=>$persona,'ciclo_lectivo'=>$ciclo));
+            $datos = $this->tabla('autoevaluaciones')->get();
+
+            // si esta cargada la ficha docente armo el link para descarga
+            if ($datos['ficha_docente'] == 'S') {
+                // el 19 es para que corte la cadena despues del caracter 19, de /home/fce/informes/
+                $nombre = substr($datos['ficha_docente_path'],19);
+                $dir_tmp = toba::proyecto()->get_www_temp();
+                exec("cp '". $datos['ficha_docente_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+                $temp_archivo = toba::proyecto()->get_www_temp($nombre);
+                $tamanio = round(filesize($temp_archivo['path']) / 1024);
+                $datos['ficha_docente_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo</a>";
+                $datos['archivo'] = $nombre. ' - Tam.: '.$tamanio. ' KB';  
+
+                // si la ficha esta confirmada pongo en solo lectura el archivo y confirmado
+                if ($datos['confirmado'] == 'S') {
+                    $form->ef('archivo')->set_solo_lectura(true);
+                    $form->ef('confirmado')->set_solo_lectura(true); 
+                    $form->evento('guardar')->desactivar();
+                }  
+                // si la ficha NO esta confirmada
+                else {
+                    $this->evento('constancia')->desactivar();
+                    $confirma_act = toba::consulta_php('co_autoevaluaciones')->get_actividades_sin_confirmar($persona,$ciclo);
+                    if ($confirma_act[0]['autoeval_confirmado'] == 'N') {
+                        // si todavia no confirmo sus actividades
+                        $form->ef('confirmado')->set_solo_lectura(true);
+                    }                        
+                }
+            } else {
+                // si la ficha NO esta cargada desactivamos el boton siguiente            
+                //$form->evento('siguiente')->desactivar();
+                $this->evento('constancia')->desactivar();
+            }
+         
+            $form->set_datos($datos);
 	}
 
 	function evt__form_ficha__guardar($datos)
 	{
 		$ciclo = toba::memoria()->get_dato('ciclo');
 		$persona = toba::memoria()->get_dato('persona');
-		if (isset($datos['archivo'])) {
+                
+		if (isset($datos['archivo']) or isset($datos['ficha_docente_path'])) {
 			$nombre_archivo = $datos['archivo']['name'];
 			$doc = toba::consulta_php('co_personas')->get_datos_persona($persona);
 			$nombre_nuevo = 'FD_'.$ciclo.'_'.$doc['documento'].'.pdf';   

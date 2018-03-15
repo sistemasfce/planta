@@ -164,11 +164,11 @@ class co_autoevaluaciones
         return toba::db()->consultar($sql);
     }  
 
-    function get_actividades_sin_confirmar($persona)
+    function get_actividades_sin_confirmar($persona,$ciclo)
     {
 	$sql = "SELECT autoeval_confirmado
 		FROM asignaciones
-		WHERE persona = $persona AND autoeval_estado = 1 AND autoeval_confirmado = 'N'
+		WHERE persona = $persona AND autoeval_estado = 1 AND autoeval_confirmado = 'N' AND ciclo_lectivo = $ciclo
 		";
 	return toba::db()->consultar($sql);
     }
