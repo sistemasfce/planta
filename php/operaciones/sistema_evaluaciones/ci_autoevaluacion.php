@@ -19,6 +19,9 @@ class ci_autoevaluacion extends planta_ci
 
 	function conf__form_ficha(planta_ei_formulario $form)
 	{
+            $fecha = new DateTime();
+            $fecha->getTimestamp();
+            ei_arbol($fecha->getTimestamp());
             $persona = toba::memoria()->get_dato('persona');
             $ciclo = toba::memoria()->get_dato('ciclo');
             $this->tabla('autoevaluaciones')->cargar(array('persona'=>$persona,'ciclo_lectivo'=>$ciclo));
@@ -82,6 +85,7 @@ class ci_autoevaluacion extends planta_ci
 				$control['confirmado_fecha'] = date('Y-m-d');
 				$control['validacion'] = rand(10000,99999);
 			}  
+                        
 			$this->tabla('autoevaluaciones')->set($control);
 			$this->tabla('autoevaluaciones')->sincronizar();
 			$this->set_pantalla('pant_cuadro');
