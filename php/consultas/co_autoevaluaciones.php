@@ -194,6 +194,7 @@ class co_autoevaluaciones
                         AND asignaciones.persona = personas.persona
 			AND asignaciones.autoeval_estado = 1
 			AND asignaciones.ciclo_lectivo = $ciclo
+                ORDER BY actividad_desc
 		";
 	return toba::db()->consultar($sql);
     }

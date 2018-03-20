@@ -168,7 +168,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=autoeval_informe_catedra_path]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_informe_catedra_path_2]</span></td>
 		</tr>
 		<tr>
 			<td>
@@ -176,7 +176,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=autoeval_programa_path]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_programa_path_2]</span></td>
 		</tr>
 		<tr>
 			<td>
@@ -188,7 +188,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=autoeval_informe_otros_path]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_informe_otros_path_2]</span></td>
 		</tr>
 		<tr>
 			<td>
@@ -313,9 +313,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000336', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'autoeval_informe_catedra_path', --identificador
+	'autoeval_informe_catedra_path_2', --identificador
 	'ef_fijo', --elemento_formulario
-	'autoeval_informe_catedra_path', --columnas
+	'autoeval_informe_catedra_path_2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'2', --orden
@@ -473,9 +473,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000338', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'autoeval_programa_path', --identificador
+	'autoeval_programa_path_2', --identificador
 	'ef_fijo', --elemento_formulario
-	'autoeval_programa_path', --columnas
+	'autoeval_programa_path_2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'4', --orden
@@ -713,9 +713,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000341', --objeto_ei_formulario_fila
 	'280000231', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'autoeval_informe_otros_path', --identificador
+	'autoeval_informe_otros_path_2', --identificador
 	'ef_fijo', --elemento_formulario
-	'autoeval_informe_otros_path', --columnas
+	'autoeval_informe_otros_path_2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'7', --orden
