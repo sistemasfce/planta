@@ -21,7 +21,7 @@ class ci_autoevaluacion extends planta_ci
 	{
             $fecha = new DateTime();
             $fecha->getTimestamp();
-            ei_arbol($fecha->getTimestamp());
+            
             $persona = toba::memoria()->get_dato('persona');
             $ciclo = toba::memoria()->get_dato('ciclo');
             $this->tabla('autoevaluaciones')->cargar(array('persona'=>$persona,'ciclo_lectivo'=>$ciclo));
