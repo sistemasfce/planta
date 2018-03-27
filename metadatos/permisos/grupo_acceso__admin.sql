@@ -565,4 +565,10 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	NULL, --item_id
 	'280000163'  --item
 );
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'planta', --proyecto
+	'admin', --usuario_grupo_acc
+	NULL, --item_id
+	'280000165'  --item
+);
 --- FIN Grupo de desarrollo 280

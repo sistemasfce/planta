@@ -142,5 +142,33 @@ class co_personas
 		";
 	return toba::db()->consultar($sql);
     }
+    
+     function get_antiguedad()
+    {
+        $sql = "SELECT  
+                    personas.apellido || ', ' || personas.nombres as nombre_completo,
+                    date_part('year',age(fecha_nac)) as edad, 
+                    (SELECT descripcion FROM perfiles_estados WHERE 
+                            perfiles_estados.perfil_estado = personas.estado_docente) as estado_docente_desc,
+                    (SELECT descripcion FROM perfiles_estados WHERE 
+                            perfiles_estados.perfil_estado = personas.estado_nodocente) as estado_nodocente_desc,
+                    (SELECT descripcion FROM perfiles_estados WHERE 
+                            perfiles_estados.perfil_estado = personas.estado_externo) as estado_externo_desc,
+                    (SELECT min (desde) FROM (
+                        SELECT fecha_desde as desde FROM designaciones 
+                            WHERE designaciones.persona = personas.persona
+                        UNION
+                        SELECT vigencia_desde as desde FROM hist_datos_academicos 
+                            WHERE persona = personas.persona
+                    ) as consulta) as anio_ingreso
+                    
+                    
+
+		FROM personas
+                WHERE personas.estado_docente = 1 or personas.estado_nodocente = 1
+		ORDER BY nombre_completo
+        ";
+	return toba::db()->consultar($sql);
+    }   
 }
 ?>
