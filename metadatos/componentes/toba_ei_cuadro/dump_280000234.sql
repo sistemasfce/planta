@@ -295,7 +295,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'planta', --objeto_cuadro_proyecto
 	'280000234', --objeto_cuadro
 	'280000382', --objeto_cuadro_col
-	'actividad_desc', --clave
+	'actividad_nombre', --clave
 	'3', --orden
 	'Actividad', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo

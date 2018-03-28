@@ -16,6 +16,7 @@ class co_autoevaluaciones
                         ubicaciones.codigo as ubicacion_desc,
 			dimensiones.codigo as dimension_desc,
 			actividades.descripcion as actividad_desc,
+                        actividades.nombre as actividad_nombre,
 			categorias.descripcion as rol_desc,
                         estados.descripcion as estado_desc
 		FROM 	asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
@@ -182,6 +183,7 @@ class co_autoevaluaciones
 			ubicaciones.codigo as ubicacion_desc,
 			dimensiones.codigo as dimension_desc,
 			actividades.descripcion as actividad_desc,
+                        actividades.nombre as actividad_nombre,
 			categorias.descripcion as rol_desc,
 			asignaciones.responsable
                 FROM asignaciones LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
@@ -207,6 +209,7 @@ class co_autoevaluaciones
 			autoeval_confirmado, 
 			caracteres.descripcion as caracter,
 			actividades.descripcion as actividad_desc,
+                        actividades.nombre as actividad_nombre,
 			asignaciones.ciclo_lectivo, 
 			asignaciones.ubicacion, 
                         (SELECT codigo FROM ubicaciones WHERE ubicacion = asignaciones.ubicacion) as ubicacion_desc,
@@ -252,6 +255,7 @@ class co_autoevaluaciones
 	$sql = "SELECT asignaciones.*,
 			categorias.descripcion as rol_desc,
 			(SELECT substring(actividades.descripcion from 1 for 100)) as actividad_desc,
+                        actividades.nombre as actividad_nombre,
 			ubicaciones.descripcion as ubicacion_desc,
 			personas.apellido || ', ' || personas.nombres as nombre_completo
 		FROM asignaciones 

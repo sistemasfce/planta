@@ -9,6 +9,7 @@ class co_evaluaciones
                         ubicaciones.codigo as ubicacion_desc,
 			dimensiones.codigo as dimension_desc,
 			actividades.descripcion as actividad_desc,
+                        actividades.nombre as actividad_nombre,
 			categorias.descripcion as rol_desc,
                         estados.descripcion as estado_desc
 		FROM 	asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
@@ -32,6 +33,7 @@ class co_evaluaciones
 			ubicaciones.codigo as ubicacion_desc,
 			dimensiones.descripcion as dimension_desc,
 			actividades.descripcion as actividad_desc,
+                        actividades.nombre as actividad_nombre,
 			categorias.descripcion as rol_desc,
 			departamentos.descripcion as departamento_desc,
 		      	asignaciones.asignacion,
@@ -71,6 +73,7 @@ class co_evaluaciones
                         ubicaciones.descripcion as ubicacion_desc,
                         dimensiones.descripcion as dimension_desc,
                         actividades.descripcion as actividad_desc,
+                        actividades.nombre as actividad_nombre,
                         categorias.descripcion as rol_desc,
 			personas.apellido || ', ' || personas.nombres as nombre_completo
                 FROM asignaciones
@@ -107,6 +110,7 @@ class co_evaluaciones
 			personas.persona as persona_evaluado,
 			personas.apellido || ', ' || nombres as evaluado_nombre_completo,
 			actividades.descripcion as actividad_desc,
+                        actividades.nombre as actividad_nombre,
 			ubicaciones.codigo as ubicacion_desc,
 			categorias.descripcion as rol_desc,
 			dimensiones.codigo as dimension_desc,
@@ -158,6 +162,7 @@ class co_evaluaciones
                         personas.persona as persona_evaluado,
                         personas.apellido || ', ' || nombres as evaluado_nombre_completo,
                         act2.descripcion as actividad_desc,
+                        act2.nombre as actividad_nombre,
                         ubicaciones.codigo as ubicacion_desc,
                         categorias.descripcion as rol_desc,
                         dimensiones.codigo as dimension_desc,
@@ -211,6 +216,7 @@ class co_evaluaciones
             personas.persona as persona_evaluado,
             personas.apellido || ', ' || nombres as evaluado_nombre_completo,
             act2.descripcion as actividad_desc,
+            act2.nombre as actividad_nombre,
             ubicaciones.codigo as ubicacion_desc,
             categorias.descripcion as rol_desc,
             dimensiones.codigo as dimension_desc,
@@ -258,6 +264,7 @@ class co_evaluaciones
                 dimensiones.codigo as dimension_desc,
                 estados.descripcion as estado_desc,
                 departamentos.descripcion as departamento_desc,
+                actividades.nombre as actividad_nombre,
 		actividades.descripcion as actividad_desc
 		FROM asignaciones LEFT OUTER JOIN personas as pp ON (asignaciones.eval_evaluador = pp.persona)
                         LEFT OUTER JOIN estados ON (asignaciones.eval_estado = estados.estado)
