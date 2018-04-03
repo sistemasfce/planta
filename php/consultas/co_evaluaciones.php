@@ -104,7 +104,7 @@ class co_evaluaciones
 	else
 		$where = "";
 	$sql = "-- obtener los docentes de una actividad en donde soy responsable
-		SELECT 	
+		SELECT 	DISTINCT 
 			'Soy responsable de la actividad' as motivo,
 			asig2.asignacion,
 			personas.persona as persona_evaluado,

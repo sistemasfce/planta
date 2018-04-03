@@ -34,8 +34,9 @@ class ci_evaluador extends planta_ci
 		// si la actividad esta en la tabla ambitos_a_evaluar
 		// buscar los docentes responsables de esas actividades
 		$ambitos_a_evaluar = toba::consulta_php('co_evaluaciones')->get_ambitos_a_evaluar($persona,$ciclo);
-		$doc = array_merge($doc,$ambitos_a_evaluar);
-		
+
+                $doc = array_merge($doc,$ambitos_a_evaluar);
+		$datos_ordenados = rs_ordenar_por_columna($doc, 'evaluado_nombre_completo');
 		// buscar en la tabla de excepciones por actividad
 		
 		// si tengo resultados de la consulta anterior
@@ -47,12 +48,12 @@ class ci_evaluador extends planta_ci
 		// a algun docente que no tenga responsable en su actividad
 		
 		
-		if (!isset($doc[0])) {
+		if (!isset($datos_ordenados[0])) {
 			$cuadro->evento('listado')->desactivar();
 			$cuadro->evento('reporte')->desactivar(); 
 			return;
 		}
-		foreach ($doc as $i) {
+		foreach ($datos_ordenados as $i) {
 			if ($i['eval_confirmado'] == 'S') {
 				$i['imagen'] = toba_recurso::imagen_toba('tilde.gif', true);
 			} else {

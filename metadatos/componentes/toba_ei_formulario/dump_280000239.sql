@@ -102,11 +102,11 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;">[ef id=calificacion]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_calificacion]</span></td>
 		</tr>
 		<tr>
 			<td>
-				[ef id=observaciones]</td>
+				[ef id=autoeval_observaciones]</td>
 		</tr>
 	</tbody>
 </table>
@@ -443,9 +443,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000409', --objeto_ei_formulario_fila
 	'280000239', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'calificacion', --identificador
+	'autoeval_calificacion', --identificador
 	'ef_fijo', --elemento_formulario
-	'calificacion', --columnas
+	'autoeval_calificacion', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'5', --orden
@@ -523,9 +523,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280001124', --objeto_ei_formulario_fila
 	'280000239', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'observaciones', --identificador
+	'autoeval_observaciones', --identificador
 	'ef_editable_textarea', --elemento_formulario
-	'observaciones', --columnas
+	'autoeval_observaciones', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'6', --orden
