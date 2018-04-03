@@ -138,6 +138,7 @@ class co_evaluaciones
 			AND asig2.persona = personas.persona
 			AND asig2.actividad = actividades.actividad
 		--	AND designaciones.caracter = 2 -- regulares
+                        AND asignaciones.persona <> asig2.persona
 			$where
 			$ciclo_actual
 		ORDER BY actividad_desc, ubicacion_desc, evaluado_nombre_completo
@@ -156,7 +157,7 @@ class co_evaluaciones
 		$where = " AND confirmado = 'N'";
 	else
 		$where = "";
-	$sql = "SELECT
+	$sql = "SELECT DISTINCT
                         'mi actividad evalua al resp' as motivo,
                         asig2.asignacion,
                         personas.persona as persona_evaluado,
@@ -192,6 +193,7 @@ class co_evaluaciones
             		AND asig2.ubicacion = ubicaciones.ubicacion
             		AND asig2.responsable = actividades_a_evaluar.responsable
 			AND asig2.ciclo_lectivo = $ciclo
+                        AND asignaciones.persona <> asig2.persona
 			$where
 			$ciclo_actual
 		";
@@ -210,7 +212,7 @@ class co_evaluaciones
 	else
 		$where = "";
 	$sql = "
-	SELECT
+	SELECT DISTINCT 
             'evaluo al resp por ambito' as motivo,
             asig2.asignacion,
             personas.persona as persona_evaluado,
@@ -244,7 +246,8 @@ class co_evaluaciones
             AND asig2.persona = personas.persona
             AND asig2.ubicacion = ubicaciones.ubicacion
             AND asig2.responsable = ambitos_a_evaluar.responsable
-	AND asig2.ciclo_lectivo = $ciclo
+            AND asig2.ciclo_lectivo = $ciclo
+            AND asignaciones.persona <> asig2.persona
 	    	$where
 		$ciclo_actual
 		";
