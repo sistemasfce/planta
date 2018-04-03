@@ -162,7 +162,7 @@ class co_autoevaluaciones
                 FROM asignaciones
                 WHERE asignaciones.asignacion = $asignacion
                 ";
-        return toba::db()->consultar($sql);
+        return toba::db()->consultar_fila($sql);
     }  
 
     function get_actividades_sin_confirmar($persona,$ciclo)

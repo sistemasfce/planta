@@ -245,19 +245,19 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 			<td>
 				<span style="font-size:12px;"><strong>Ficha docente:</strong></span></td>
 			<td colspan="2">
-				<span style="font-size:12px;">[ef id=ficha_docente_path]</span></td>
+				<span style="font-size:12px;">[ef id=ficha_docente_path_2]</td>
 		</tr>
 		<tr>
 			<td>
 				<span style="font-size:12px;"><strong>Programa:</strong></span></td>
 			<td colspan="2">
-				<span style="font-size:12px;">[ef id=autoeval_programa_path]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_programa_path_2]</td>
 		</tr>
 		<tr>
 			<td>
 				<span style="font-size:12px;"><strong>Informe de c&aacute;tedra:</strong></span></td>
 			<td colspan="2">
-				<span style="font-size:12px;">[ef id=autoeval_informe_catedra_path]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_informe_catedra_path_2]</td>
 		</tr>
 		<tr>
 			<td>
@@ -269,7 +269,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 			<td>
 				<span style="font-size:12px;"><strong>Informe:</strong></span></td>
 			<td colspan="2">
-				<span style="font-size:12px;">[ef id=autoeval_informe_otros_path]</span></td>
+				<span style="font-size:12px;">[ef id=autoeval_informe_otros_path_2]</td>
 		</tr>
 		<tr>
 			<td>
@@ -2340,9 +2340,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000399', --objeto_ei_formulario_fila
 	'280000237', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'ficha_docente_path', --identificador
+	'ficha_docente_path_2', --identificador
 	'ef_fijo', --elemento_formulario
-	'ficha_docente_path', --columnas
+	'ficha_docente_path_2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'25', --orden
@@ -2434,7 +2434,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --estilo
 	NULL, --total
 	NULL, --inicializacion
-	'0', --permitir_html
+	'1', --permitir_html
 	'0', --deshabilitar_rest_func
 	NULL, --estado_defecto
 	'0', --solo_lectura
@@ -2500,9 +2500,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000401', --objeto_ei_formulario_fila
 	'280000237', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'autoeval_informe_otros_path', --identificador
+	'autoeval_informe_otros_path_2', --identificador
 	'ef_fijo', --elemento_formulario
-	'autoeval_informe_otros_path', --columnas
+	'autoeval_informe_otros_path_2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'27', --orden
@@ -2580,9 +2580,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000402', --objeto_ei_formulario_fila
 	'280000237', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'autoeval_informe_catedra_path', --identificador
+	'autoeval_informe_catedra_path_2', --identificador
 	'ef_fijo', --elemento_formulario
-	'autoeval_informe_catedra_path', --columnas
+	'autoeval_informe_catedra_path_2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'28', --orden
@@ -2660,9 +2660,9 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'280000403', --objeto_ei_formulario_fila
 	'280000237', --objeto_ei_formulario
 	'planta', --objeto_ei_formulario_proyecto
-	'autoeval_programa_path', --identificador
+	'autoeval_programa_path_2', --identificador
 	'ef_fijo', --elemento_formulario
-	'autoeval_programa_path', --columnas
+	'autoeval_programa_path_2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'29', --orden

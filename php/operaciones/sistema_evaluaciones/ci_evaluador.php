@@ -94,22 +94,23 @@ class ci_evaluador extends planta_ci
 		$datos['eval_evaluador'] = $evaluador;
 				
 		$datos_docente = toba::consulta_php('co_autoevaluaciones')->get_ficha_de_docente_por_asignacion($asignacion);
-		if ($datos_docente['autoeval_ficha_docente'] == 'S') {
-			$nombre = substr($datos_docente['autoeval_ficha_docente_path'],19);
+                if ($datos_docente['ficha_docente'] == 'S') {
+			$nombre = substr($datos_docente['ficha_docente_path'],19);
 			$dir_tmp = toba::proyecto()->get_www_temp();
-			exec("cp '". $datos_docente['autoeval_ficha_docente_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
+			exec("cp '". $datos_docente['ficha_docente_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024);
-			$datos['autoeval_ficha_docente_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar ficha</a>";  
+			$datos['ficha_docente_path_2'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar ficha</a>";  
 		}    
 		$datos_docente_act = toba::consulta_php('co_autoevaluaciones')->get_informes_docente($asignacion);
+                //ei_arbol($datos_docente_act);
 		if ($datos_docente_act['autoeval_informe_catedra'] == 'S') {
 			$nombre = substr($datos_docente_act['autoeval_informe_catedra_path'],19);
 			$dir_tmp = toba::proyecto()->get_www_temp();
 			exec("cp '". $datos_docente_act['autoeval_informe_catedra_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024);
-			$datos['autoeval_informe_catedra_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar informe de catedra</a>";      
+			$datos['autoeval_informe_catedra_path_2'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar informe de catedra</a>";      
 		} 
 		if ($datos_docente_act['autoeval_programa'] == 'S') {
 			$nombre = substr($datos_docente_act['autoeval_programa_path'],19);
@@ -117,7 +118,7 @@ class ci_evaluador extends planta_ci
 			exec("cp '". $datos_docente_act['autoeval_programa_path']. "' '" .$dir_tmp['path']."/".$nombre."'");
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024);
-			$datos['autoeval_programa_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar programa</a>";      
+			$datos['autoeval_programa_path_2'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar programa</a>";      
 		} 
 		if ($datos_docente_act['autoeval_informe_otros'] == 'S') {
 			$nombre = substr($datos_docente_act['autoeval_informe_otros_path'],19);
@@ -126,7 +127,7 @@ class ci_evaluador extends planta_ci
 			$temp_archivo = toba::proyecto()->get_www_temp($nombre);
 			$tamanio = round(filesize($temp_archivo['path']) / 1024); 
 			$datos['autoeval_tipo_informe'] = $datos_docente_act['tipo_informe'];
-			$datos['autoeval_informe_otros_path'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo de informe</a>";      
+			$datos['autoeval_informe_otros_path_2'] = "<a href='{$temp_archivo['url']}'target='_blank'>Descargar archivo de informe</a>";      
 		}             
 		$form->set_datos($datos);
 			
