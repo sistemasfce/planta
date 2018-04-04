@@ -70,12 +70,11 @@ class co_autoevaluaciones
 
     function get_ficha_pendientes($where,$ciclo)
     {
-	$sql = "SELECT DISTINCT *
+	$sql = "SELECT DISTINCT ON (nombre_completo) *
 		FROM (	SELECT apellido || ', ' || nombres as nombre_completo,
 			personas.persona,
 			'' as ficha_docente_path,
 			'' as confirmado,
-			designaciones.carrera_academica,
 			$ciclo as ciclo_lectivo,
 			designaciones.ubicacion,
 			designaciones.departamento
@@ -86,23 +85,19 @@ class co_autoevaluaciones
 				AND designaciones.designacion_tipo = 1 
 				AND designaciones.estado in (1,4)
 		UNION
-			SELECT apellido || ', ' || nombres as nombre_completo,
-			personas.persona,
-			autoevaluaciones.ficha_docente_path,
-			confirmado,
-			designaciones.carrera_academica,
-			autoevaluaciones.ciclo_lectivo,
-			designaciones.ubicacion,
-			designaciones.departamento
-			FROM personas, 
-				autoevaluaciones, 
-				designaciones
-			WHERE personas.persona = autoevaluaciones.persona 
-			AND autoevaluaciones.confirmado = 'N'
-			AND personas.persona = designaciones.persona
-			AND designaciones.designacion_tipo = 1
-			AND designaciones.estado in (1,4)
-			) as sub
+                    SELECT apellido || ', ' || nombres as nombre_completo,
+                    personas.persona,
+                    autoevaluaciones.ficha_docente_path,
+                    autoevaluaciones.confirmado,
+                    autoevaluaciones.ciclo_lectivo,
+                    designaciones.ubicacion,
+                    designaciones.departamento
+                    FROM personas, 
+                        autoevaluaciones LEFT OUTER JOIN designaciones ON (autoevaluaciones.persona = designaciones.persona AND designaciones.estado in (1,4))
+
+                    WHERE personas.persona = autoevaluaciones.persona 
+                    AND autoevaluaciones.confirmado = 'N'
+		) as sub
 		WHERE $where AND persona in (SELECT persona FROM designaciones WHERE extract (year from fecha_desde) <= $ciclo)
 		ORDER BY nombre_completo
 
@@ -206,6 +201,7 @@ class co_autoevaluaciones
     {
 	$sql = "
 		SELECT 	DISTINCT
+                        asignaciones.asignacion,
 			apellido || ', ' || nombres as nombre_completo, 
 			autoeval_confirmado, 
 			caracteres.descripcion as caracter,
@@ -223,13 +219,13 @@ class co_autoevaluaciones
                         LEFT OUTER JOIN estados ON (asignaciones.autoeval_estado = estados.estado)
 			LEFT OUTER JOIN personas_perfiles ON (personas.persona = personas_perfiles.persona)
 		WHERE
-	                asignaciones.autoeval_confirmado = 'N' -- pendiente, no fue confirmada por el docente
+	                (asignaciones.autoeval_confirmado = 'N' or asignaciones.autoeval_confirmado is null or asignaciones.autoeval_confirmado = '') -- pendiente, no fue confirmada por el docente
 	   
        		        AND designaciones.designacion_tipo = 1 -- designacion tipo alta                    
         		AND actividades.se_evalua = 'S'
-	
-	            AND perfil = 1 -- docente	
-	            AND personas.estado_docente = 1 -- persona con estado activo
+                        AND asignaciones.autoeval_estado = 1
+                        AND perfil = 1 -- docente	
+                        AND personas.estado_docente = 1 -- persona con estado activo
 			AND $where
 			ORDER BY nombre_completo
 		";

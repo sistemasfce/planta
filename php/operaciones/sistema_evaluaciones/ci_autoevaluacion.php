@@ -257,7 +257,7 @@ class ci_autoevaluacion extends planta_ci
 			$datos['autoeval_informe_otros_path'] = $destino;
 		}
 		$datos['ciclo_lectivo'] = $ciclo;
-                
+             
 		$this->tabla('asignaciones')->set($datos);
 		$this->tabla('asignaciones')->sincronizar();
 		$this->tabla('asignaciones')->resetear();

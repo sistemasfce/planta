@@ -13,7 +13,7 @@ class ci_autoeval_pendientes_act extends planta_ci
 		if ($where == '1=1')
 			return;
 		$datos = toba::consulta_php('co_autoevaluaciones')->get_act_pendientes($where);
-		$cuadro->set_titulo('Docentes que no completaron o no confirmaron su autoevaluación');
+		$cuadro->set_titulo('Docentes que no completaron o no confirmaron su autoevaluaciÃ³n');
 		$cuadro->set_datos($datos);        
 	}        
 	
