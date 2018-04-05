@@ -77,7 +77,7 @@ SELECT apellido || ', ' || nombres as nombre_completo,
             AND designaciones.estado = 6 AND designaciones.designacion_tipo in (2,3)
             and exists 
                         (SELECT designacion FROM designaciones as dd2 WHERE dd2.estado in (1,4,5) AND dd2.designacion_tipo = 1 
-                        AND dd2.persona = personas.persona)        
+                        AND dd2.persona = personas.persona AND dd2.designacion = designaciones.designacion_padre)        
             ) as horas_licenciadas,
  
             (SELECT sum(carga_horaria::Int) FROM asignaciones WHERE asignaciones.persona = personas.persona
