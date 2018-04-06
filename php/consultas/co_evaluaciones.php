@@ -195,7 +195,8 @@ class co_evaluaciones
 			AND asig2.ciclo_lectivo = $ciclo
                         AND asignaciones.persona <> asig2.persona
                         AND ( (asig2.fecha_desde < '$ciclo-11-01' AND asig2.dimension = 4) or (asig2.fecha_desde < '$ciclo-11-01' AND asig2.dimension <> 4) )
-			$where
+                        AND asignaciones.fecha_desde < '$ciclo-11-01'
+                        $where
 			$ciclo_actual
 		";
 	return toba::db()->consultar($sql);
@@ -249,9 +250,11 @@ class co_evaluaciones
             AND asig2.responsable = ambitos_a_evaluar.responsable
             AND asig2.ciclo_lectivo = $ciclo
             AND asignaciones.persona <> asig2.persona
-	    	$where
-		$ciclo_actual
-		";
+            AND ( (asig2.fecha_desde < '$ciclo-11-01' AND asig2.dimension = 4) or (asig2.fecha_desde < '$ciclo-11-01' AND asig2.dimension <> 4) )
+            AND asignaciones.fecha_desde < '$ciclo-11-01'
+	    $where
+            $ciclo_actual
+            ";
 	return toba::db()->consultar($sql);
     }
 
