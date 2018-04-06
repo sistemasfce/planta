@@ -146,6 +146,10 @@ class co_evaluaciones
 	return toba::db()->consultar($sql);
     }
 
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+    
     function get_actividades_a_evaluar($persona,$ciclo,$pendientes=null)
     {
 	if ($ciclo == date('Y'))    
@@ -201,7 +205,62 @@ class co_evaluaciones
 		";
 	return toba::db()->consultar($sql);
     }
- 
+
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+    
+    function get_actividades_a_evaluar_directores($persona,$ciclo,$ubicacion,$pendientes=null)
+    {
+	if ($ciclo == date('Y'))    
+                $ciclo_actual = " AND asignaciones.estado = 1";
+        else
+                $ciclo_actual = ""; 
+
+	if (isset($pendientes))
+		$where = " AND confirmado = 'N'";
+	else
+		$where = "";
+	$sql = "-- obtener los docentes de una actividad en donde soy responsable
+        SELECT DISTINCT 
+                        'mi actividad evalua las materias del director' as motivo,
+                        asignaciones.asignacion,
+                        personas.persona as persona_evaluado,
+                        personas.apellido || ', ' || nombres as evaluado_nombre_completo,
+                        actividades.descripcion as actividad_desc,
+                        actividades.nombre as actividad_nombre,
+                        ubicaciones.codigo as ubicacion_desc,
+                        categorias.descripcion as rol_desc,
+                        dimensiones.codigo as dimension_desc,
+			departamentos.descripcion as departamento_desc,
+                        asignaciones.eval_calificacion,
+                        asignaciones.eval_confirmado,
+			asignaciones.eval_notificacion
+
+        FROM asignaciones LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
+		LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
+		LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension) 
+		LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria) 
+		LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
+		LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
+
+        WHERE 	asignaciones.persona in (SELECT persona FROM asignaciones as asig WHERE autoeval_estado = 1 AND ciclo_lectivo = $ciclo
+					AND actividad in (415,405,383,447,322,362,321,372,676,387,314,315,317,316))
+		AND asignaciones.responsable = 'S'
+		AND asignaciones.dimension = 1
+		AND asignaciones.autoeval_estado = 1
+		AND asignaciones.ciclo_lectivo = $ciclo
+		AND asignaciones.ubicacion = $ubicacion
+                        $where
+			$ciclo_actual
+		";
+	return toba::db()->consultar($sql);
+    }    
+    
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------    
+    
     function get_ambitos_a_evaluar($persona,$ciclo,$pendientes=null)
     {
         if ($ciclo == date('Y'))
@@ -257,7 +316,24 @@ class co_evaluaciones
             ";
 	return toba::db()->consultar($sql);
     }
-
+    
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------
+    
+    function evaluador_es_academica($persona,$ciclo)
+    {
+        $sql = "SELECT asignaciones.ubicacion 
+                FROM asignaciones 
+                WHERE asignaciones.persona = $persona
+                    AND asignaciones.ciclo_lectivo = $ciclo
+                    AND asignaciones.autoeval_estado = 1 
+                    AND asignaciones.actividad in (427,688,687,443) -- secretario academico, colaborador academico
+                    AND asignaciones.fecha_desde < '$ciclo-11-01'
+                ";
+        return toba::db()->consultar($sql);
+    }
+    
 //--------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------
 //--------------------------------------------------------------------------------------------

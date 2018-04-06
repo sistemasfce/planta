@@ -33,9 +33,17 @@ class ci_evaluador extends planta_ci
 		// buscar para todas mis actividades donde soy responsable
 		// si la actividad esta en la tabla ambitos_a_evaluar
 		// buscar los docentes responsables de esas actividades
-		$ambitos_a_evaluar = toba::consulta_php('co_evaluaciones')->get_ambitos_a_evaluar($persona,$ciclo);
-
+		$ambitos_a_evaluar = toba::consulta_php('co_evaluaciones')->get_ambitos_a_evaluar($persona,$ciclo);                
                 $doc = array_merge($doc,$ambitos_a_evaluar);
+                
+                $es_academica = toba::consulta_php('co_evaluaciones')->evaluador_es_academica($persona,$ciclo);
+                if ($es_academica[0]['ubicacion'] != null) {
+                    # si es sec academica o colaborador busco a los responables que son directores
+                    # para evaluarlos en sus materias
+                    $actividades_a_evaluar_directores = toba::consulta_php('co_evaluaciones')->get_actividades_a_evaluar_directores($persona,$ciclo,$es_academica[0]['ubicacion']);
+                    $doc = array_merge($doc,$actividades_a_evaluar_directores);                   
+                }
+                
 		$datos_ordenados = rs_ordenar_por_columna($doc, 'evaluado_nombre_completo');
 		// buscar en la tabla de excepciones por actividad
 		
