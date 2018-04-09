@@ -49,8 +49,8 @@ class co_evaluaciones
 			LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
 			LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
 		WHERE	
-			asignaciones.carrera_academica = 'S'
-			AND actividades.se_evalua = 'S'
+			
+			actividades.se_evalua = 'S'
 			AND asignaciones.persona = $persona AND asignaciones.ciclo_lectivo = $ciclo
 			AND asignaciones.eval_estado = 1
 		";
