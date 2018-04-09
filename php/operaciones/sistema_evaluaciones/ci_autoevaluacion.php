@@ -249,7 +249,7 @@ class ci_autoevaluacion extends planta_ci
 			$nombre_archivo = $datos['autoeval_informe_otros_archivo']['name'];
 			$nombre_act = str_replace(' ','_',$datos_act['actividad_desc']);
                         $info = new SplFileInfo($nombre_archivo);
-			$nombre_nuevo = 'IO_'.$ciclo.'_'.$datos_act['ubicacion_desc'].'_'.$datos['autoeval_tipo_informe']. '.' .$info->getExtension();         
+			$nombre_nuevo = 'IO_'.$ciclo.'_'.$datos_act['ubicacion_desc'].'_'.$datos['autoeval_tipo_informe'].'_'.  $nombre_act.'.' .$info->getExtension();         
 			$destino = '/home/fce/informes/'.$nombre_nuevo;
 			// Mover los archivos subidos al servidor del directorio temporal PHP a uno propio.
 			move_uploaded_file($datos['autoeval_informe_otros_archivo']['tmp_name'], $destino);           
