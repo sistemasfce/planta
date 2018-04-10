@@ -10,6 +10,7 @@ class co_inicio
 		WHERE   
 			(select extract(month FROM fecha_nac)) = $mes
 			AND (select extract(day FROM fecha_nac)) = $dia
+                            AND personas.estado_docente <> 5
 		ORDER BY nombre_completo
         ";
 	return toba::db()->consultar($sql);
