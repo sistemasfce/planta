@@ -67,7 +67,7 @@ class co_designaciones
     function get_designaciones_de_persona($where,$mostrar_historico=null)
     {
 	if (!$mostrar_historico) {
-		$where_estado = " designaciones.estado not in (3,4,15)";
+		$where_estado = " designaciones.estado in (1,5)";
 		// estado 3 = historico, 4 = licencia total, 15 = finalizada
 	} else {
 		$where_estado = "1=1";
