@@ -190,6 +190,7 @@ class co_autoevaluaciones
 		WHERE 	asignaciones.persona = $persona 
                         AND asignaciones.persona = personas.persona
 			AND asignaciones.autoeval_estado = 1
+                        AND actividades.se_evalua = 'S'
 			AND asignaciones.ciclo_lectivo = $ciclo
                         AND asignaciones.actividad <> 347 -- A DEFINIR
                 ORDER BY actividad_desc
