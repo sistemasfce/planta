@@ -49,6 +49,7 @@ LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
              WHERE         personas.persona = $P{persona}
 			AND asignaciones.ciclo_lectivo = $P{ciclo}
 			AND asignaciones.autoeval_estado = 1
+			AND actividades.se_evalua = 'S'
 
             ORDER BY dimension_desc]]>
 	</queryString>
