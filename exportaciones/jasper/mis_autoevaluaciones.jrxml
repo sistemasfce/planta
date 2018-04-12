@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mis_evaluaciones" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2cf85398-a93e-4be3-9afc-b0e899cc4ca1">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="178"/>
-	<property name="ireport.y" value="146"/>
+	<property name="ireport.y" value="143"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold">
 		<paragraph lineSpacing="Single"/>
 	</style>
@@ -61,6 +61,7 @@ asignaciones.autoeval_calificacion,
              WHERE         personas.persona = $P{persona}
 			AND asignaciones.ciclo_lectivo = $P{ciclo}
 			AND asignaciones.autoeval_estado = 1
+			AND actividades.se_evalua = 'S'
 
             ORDER BY personas.apellido, resolucion_fecha]]>
 	</queryString>
