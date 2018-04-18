@@ -244,7 +244,9 @@ class co_asignaciones
    {
 	$sql = "
 		SELECT ubicacion_desc, tipo_doc, documento, nombre_completo, 
-			codigo, descripcion, to_char(fecha_hasta,'DD/MM/YYYY') as fecha 
+			codigo, descripcion, 
+                        to_char(fecha_desde,'DD/MM/YYYY') as fecha_desde,
+                        to_char(fecha_hasta,'DD/MM/YYYY') as fecha_hasta 
 		FROM vista_rad 
 		WHERE ubicacion = $ubicacion
 		";

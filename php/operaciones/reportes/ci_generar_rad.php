@@ -18,7 +18,7 @@ class ci_generar_rad extends planta_ci
 			//fputcsv($handle, $lista, $delimiter = '|');
 			// Armo las filas con los datos de la consulta y lo cargo en el archivo csv
 		foreach ($data as $rows) {
-			fputcsv($handle, array($rows['ubicacion_desc'], $rows['tipo_doc'], $rows['documento'], $rows['nombre_completo'], $rows['codigo'], $rows['descripcion'], $rows['fecha'], $rows['fecha']), $delimiter = ';');
+			fputcsv($handle, array($rows['ubicacion_desc'], $rows['tipo_doc'], $rows['documento'], $rows['nombre_completo'], $rows['codigo'], $rows['descripcion'], $rows['fecha_desde'], $rows['fecha_hasta']), $delimiter = ';');
 		}        
 			fclose($handle); 
 
@@ -27,7 +27,7 @@ class ci_generar_rad extends planta_ci
 		$data = toba::consulta_php('co_asignaciones')->get_rad($ubicacion);
 		$handle = fopen($filename, 'w');
 		foreach ($data as $rows) {
-			fputcsv($handle, array($rows['ubicacion_desc'], $rows['tipo_doc'], $rows['documento'], $rows['nombre_completo'], $rows['codigo'], $rows['descripcion'], $rows['fecha'], $rows['fecha']), $delimiter = ';');
+			fputcsv($handle, array($rows['ubicacion_desc'], $rows['tipo_doc'], $rows['documento'], $rows['nombre_completo'], $rows['codigo'], $rows['descripcion'], $rows['fecha_desde'], $rows['fecha_hasta']), $delimiter = ';');
 		}        
 		fclose($handle);   
 
@@ -36,7 +36,7 @@ class ci_generar_rad extends planta_ci
 		$data = toba::consulta_php('co_asignaciones')->get_rad($ubicacion);
 		$handle = fopen($filename, 'w');
 		foreach ($data as $rows) {
-			fputcsv($handle, array($rows['ubicacion_desc'], $rows['tipo_doc'], $rows['documento'], $rows['nombre_completo'], $rows['codigo'], $rows['descripcion'], $rows['fecha'], $rows['fecha']), $delimiter = ';');
+			fputcsv($handle, array($rows['ubicacion_desc'], $rows['tipo_doc'], $rows['documento'], $rows['nombre_completo'], $rows['codigo'], $rows['descripcion'], $rows['fecha_desde'], $rows['fecha_hasta']), $delimiter = ';');
 		}        
 		fclose($handle);           
 	
