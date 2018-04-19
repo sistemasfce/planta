@@ -145,6 +145,8 @@ class ci_autoevaluacion extends planta_ci
 
 	function conf__form_act(planta_ei_formulario $form)
 	{   
+                $nombre = toba::memoria()->get_dato('nombre');
+		$form->set_titulo('Docente: '.$nombre);
 		$datos = $this->tabla('asignaciones')->get();
 		if ($datos['autoeval_confirmado'] == 'S') {
 			$form->evento('modificacion')->desactivar(); 
@@ -172,6 +174,8 @@ class ci_autoevaluacion extends planta_ci
 
 	function conf__form_resp(planta_ei_formulario $form)
 	{
+            	$nombre = toba::memoria()->get_dato('nombre');
+		$form->set_titulo('Docente: '.$nombre);
 		$datos = $this->tabla('asignaciones')->get();
 		
 		if ($datos['dimension_desc'] != 'DO') {
