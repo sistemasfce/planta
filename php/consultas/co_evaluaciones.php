@@ -128,6 +128,7 @@ class co_evaluaciones
 			actividades
 		WHERE asignaciones.persona = $persona
 			AND asig2.eval_estado = 1 
+                        AND asignaciones.eval_estado = 1
 			AND asignaciones.responsable = 'S'
 			AND asignaciones.ciclo_lectivo = '$ciclo'
 			AND asignaciones.actividad = asig2.actividad
