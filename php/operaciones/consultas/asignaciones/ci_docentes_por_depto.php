@@ -1,5 +1,5 @@
 <?php
-class ci_docentes_por_actividad extends planta_ci
+class ci_docentes_por_depto extends planta_ci
 {
     protected $s__filtro;
 
@@ -11,8 +11,7 @@ class ci_docentes_por_actividad extends planta_ci
     {
         $filtro = $this->dep('filtro')->get_sql_where();
         if ($filtro != '1=1') {
-            $where = $this->dep('filtro')->get_datos();
-            $datos = toba::consulta_php('co_asignaciones')->get_personas_por_actividad($where['actividad']['valor'],$where['ubicacion']['valor']);
+            $datos = toba::consulta_php('co_asignaciones')->get_docentes_por_depto($filtro);
             $cuadro->set_datos($datos);
         }
     }
@@ -36,6 +35,6 @@ class ci_docentes_por_actividad extends planta_ci
     function evt__filtro__cancelar()
     {
         unset($this->s__filtro);
-    }    
+    }   
 }
 ?>

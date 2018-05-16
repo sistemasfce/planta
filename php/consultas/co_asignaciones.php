@@ -210,6 +210,32 @@ class co_asignaciones
 		";
 	return toba::db()->consultar($sql);
    }
+   
+   function get_docentes_por_depto($where)
+   {
+        $sql = "
+            SELECT 
+                personas.apellido || ', ' || personas.nombres as nombre_completo,
+                personas.email,
+                actividades.descripcion as actividad_desc,
+                categorias.descripcion as rol_desc,
+                responsable
+            FROM 	
+                personas, 
+                asignaciones LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
+                LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria)
+            WHERE 
+                asignaciones.persona = personas.persona
+                AND asignaciones.estado = 1
+                AND asignaciones.dimension = 1
+                AND $where
+            ORDER BY
+                actividad_desc,
+                nombre_completo
+        ";
+       	return toba::db()->consultar($sql);
+   }   
+   
 
    function get_planta_docente($where)
    {
