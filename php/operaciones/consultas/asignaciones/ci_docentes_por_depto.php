@@ -9,7 +9,7 @@ class ci_docentes_por_depto extends planta_ci
 
     function conf__pant_inicial(toba_ei_pantalla $pantalla)
     {
-        toba::memoria()->set_dato('persona',null);
+        //toba::memoria()->set_dato('persona',null);
         $perfil = toba::usuario()->get_perfiles_funcionales();
         if ($perfil[0] != 'admin' and $perfil[0] != 'usuario') {
             $documento = toba::usuario()->get_id();

@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[280000053]--  Ver autoevaluaciones por docente 
+--[280000053]--  Autoevaluaciones de un docente 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,7 +23,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Ver autoevaluaciones por docente', --nombre
+	'Autoevaluaciones de un docente', --nombre
 	NULL, --descripcion
 	'280000002', --punto_montaje
 	NULL, --actividad_accion
