@@ -47,7 +47,31 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'planta', --proyecto
 	'docente', --usuario_grupo_acc
 	NULL, --item_id
+	'280000038'  --item
+);
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'planta', --proyecto
+	'docente', --usuario_grupo_acc
+	NULL, --item_id
+	'280000039'  --item
+);
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'planta', --proyecto
+	'docente', --usuario_grupo_acc
+	NULL, --item_id
 	'280000041'  --item
+);
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'planta', --proyecto
+	'docente', --usuario_grupo_acc
+	NULL, --item_id
+	'280000053'  --item
+);
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'planta', --proyecto
+	'docente', --usuario_grupo_acc
+	NULL, --item_id
+	'280000056'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
 	'planta', --proyecto

@@ -25,11 +25,12 @@ class ci_docentes_por_depto extends planta_ci
 
     function conf__cuadro(planta_ei_cuadro $cuadro)
     {
-        $persona = toba::memoria()->get_dato('persona');
-        if (isset($persona)) {
+        $perfil = toba::usuario()->get_perfiles_funcionales();
+        if ($perfil[0] != 'admin' and $perfil[0] != 'usuario') {
             // si la persona es docente, dado su id busco su cargo y ubicacion
-                $datos = toba::consulta_php('co_asignaciones')->get_docentes_por_depto_persona($persona);
-                $cuadro->set_datos($datos);           
+            $persona = toba::memoria()->get_dato('persona');
+            $datos = toba::consulta_php('co_asignaciones')->get_docentes_por_depto_persona($persona);
+            $cuadro->set_datos($datos);           
         } else {
             // si la persona es admin uso el filtro
             $filtro = $this->dep('filtro')->get_sql_where();
