@@ -2,50 +2,50 @@
 
 class co_asignaciones
 {
-
     function get_asignaciones($where=null)
     {
-	if (!isset($where)) $where = '1=1';
+	if (!isset($where)) 
+            $where = '1=1';
         $sql = "
-	SELECT  asignaciones.asignacion,
-                        personas.documento,
-                        personas.apellido || ', ' || personas.nombres as nombre_completo,
-                        actividades.descripcion as actividad_desc,
-                        departamentos.descripcion as departamento_desc,
-                        categorias.codigo as categoria_desc,
-                        asignaciones.carga_horaria,
-                        ubicaciones.codigo as ubicacion_desc,
-			dimensiones.codigo as dimension_desc,
-                        fecha_desde,
-                        fecha_hasta,
-                        resolucion,
-                        resolucion_fecha,
-                        resolucion_anio,
-                        resolucion || '/' || resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_desc,
-                        carrera_academica,
-			responsable,
-                        asignaciones.observaciones,
-                        asignaciones.estado,
-                        estados.descripcion as estado_desc
-                FROM    asignaciones LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
-                        LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension),  
-                        actividades, 
-                        personas,
-                        resoluciones_tipos,
-                        categorias,
-                        ubicaciones,
-                        estados
-                WHERE   asignaciones.persona = personas.persona
-                        AND asignaciones.actividad = actividades.actividad
-                        AND asignaciones.rol = categorias.categoria
-                        AND asignaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo
-                        AND asignaciones.ubicacion = ubicaciones.ubicacion
-                        AND asignaciones.estado = estados.estado
-			AND $where
-                ORDER BY nombre_completo, asignaciones.resolucion_fecha::date DESC, actividades.descripcion
+            SELECT  asignaciones.asignacion,
+                    personas.documento,
+                    personas.apellido || ', ' || personas.nombres as nombre_completo,
+                    actividades.descripcion as actividad_desc,
+                    departamentos.descripcion as departamento_desc,
+                    categorias.codigo as categoria_desc,
+                    asignaciones.carga_horaria,
+                    ubicaciones.codigo as ubicacion_desc,
+                    dimensiones.codigo as dimension_desc,
+                    fecha_desde,
+                    fecha_hasta,
+                    resolucion,
+                    resolucion_fecha,
+                    resolucion_anio,
+                    resolucion || '/' || resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_desc,
+                    carrera_academica,
+                    responsable,
+                    asignaciones.observaciones,
+                    asignaciones.estado,
+                    estados.descripcion as estado_desc
+            FROM    asignaciones LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
+                    LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension),  
+                    actividades, 
+                    personas,
+                    resoluciones_tipos,
+                    categorias,
+                    ubicaciones,
+                    estados
+            WHERE   asignaciones.persona = personas.persona
+                    AND asignaciones.actividad = actividades.actividad
+                    AND asignaciones.rol = categorias.categoria
+                    AND asignaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo
+                    AND asignaciones.ubicacion = ubicaciones.ubicacion
+                    AND asignaciones.estado = estados.estado
+                    AND $where
+            ORDER BY nombre_completo, asignaciones.resolucion_fecha::date DESC, actividades.descripcion
         ";
 	return toba::db()->consultar($sql);
-   }
+    }
 
        function get_asignaciones_total($where=null)
     {
@@ -235,7 +235,36 @@ class co_asignaciones
         ";
        	return toba::db()->consultar($sql);
    }   
-   
+
+   function get_docentes_por_depto_persona($persona)
+   {
+        $sql = "
+            SELECT 
+                personas.apellido || ', ' || personas.nombres as nombre_completo,
+                personas.email,
+                actividades.descripcion as actividad_desc,
+                categorias.descripcion as rol_desc,
+                asignaciones.responsable
+            FROM 	
+                personas, 
+                asignaciones LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
+                LEFT OUTER JOIN categorias ON (asignaciones.rol = categorias.categoria),
+                asignaciones as asig2
+            WHERE 
+                asignaciones.persona = personas.persona
+                AND asignaciones.estado = 1
+                AND asignaciones.dimension = 1
+                AND asig2.persona = $persona
+                AND asig2.actividad in (415,405,383,447,322,362,321)
+                AND asig2.departamento = asignaciones.departamento
+                AND asig2.ubicacion = asignaciones.ubicacion
+                AND asig2.estado = 1
+            ORDER BY
+                actividad_desc,
+                nombre_completo
+        ";
+       	return toba::db()->consultar($sql);
+   }      
 
    function get_planta_docente($where)
    {
