@@ -615,6 +615,48 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'0', --externa
 	'designaciones'  --tabla
 );
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000089', --objeto
+	'280000952', --col_id
+	'fecha_cambios', --columna
+	'T', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'designaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000089', --objeto
+	'280000953', --col_id
+	'dimension', --columna
+	'E', --tipo
+	'0', --pk
+	'', --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'0', --externa
+	'designaciones'  --tabla
+);
+INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
+	'planta', --objeto_proyecto
+	'280000089', --objeto
+	'280000954', --col_id
+	'dimension_desc', --columna
+	'C', --tipo
+	'0', --pk
+	NULL, --secuencia
+	NULL, --largo
+	NULL, --no_nulo
+	'0', --no_nulo_db
+	'1', --externa
+	NULL  --tabla
+);
 --- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------
@@ -810,6 +852,23 @@ AND designacion = %designacion_padre%', --sql
 	'0', --permite_carga_masiva
 	NULL  --metodo_masivo
 );
+INSERT INTO apex_objeto_db_registros_ext (objeto_proyecto, objeto, externa_id, tipo, sincro_continua, metodo, clase, include, punto_montaje, sql, dato_estricto, carga_dt, carga_consulta_php, permite_carga_masiva, metodo_masivo) VALUES (
+	'planta', --objeto_proyecto
+	'280000089', --objeto
+	'280000030', --externa_id
+	'sql', --tipo
+	'1', --sincro_continua
+	NULL, --metodo
+	NULL, --clase
+	NULL, --include
+	'280000002', --punto_montaje
+	'SELECT codigo as dimension_desc FROM dimensiones WHERE dimension = ''%dimension%'';', --sql
+	'0', --dato_estricto
+	NULL, --carga_dt
+	NULL, --carga_consulta_php
+	'0', --permite_carga_masiva
+	NULL  --metodo_masivo
+);
 --- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------
@@ -967,5 +1026,19 @@ INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_i
 	'280000089', --objeto
 	'280000013', --externa_id
 	'280000218', --col_id
+	'1'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000089', --objeto
+	'280000030', --externa_id
+	'280000953', --col_id
+	'0'  --es_resultado
+);
+INSERT INTO apex_objeto_db_registros_ext_col (objeto_proyecto, objeto, externa_id, col_id, es_resultado) VALUES (
+	'planta', --objeto_proyecto
+	'280000089', --objeto
+	'280000030', --externa_id
+	'280000954', --col_id
 	'1'  --es_resultado
 );

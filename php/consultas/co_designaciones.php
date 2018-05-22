@@ -28,6 +28,7 @@ class co_designaciones
 			designaciones.carga_horaria::Int * 44 as carga_horaria_dedicacion,
 			caracteres.codigo as caracter_desc,
 			ubicaciones.codigo as ubicacion_desc,
+                        dimensiones.codigo as dimension_desc,
 			--fecha_desde,
 			COALESCE (fecha_desde_jubilacion, fecha_desde) as fecha_desde,
 			fecha_hasta,
@@ -56,6 +57,7 @@ class co_designaciones
 			LEFT OUTER JOIN caracteres ON (designaciones.caracter = caracteres.caracter)
 			LEFT OUTER JOIN ubicaciones ON (designaciones.ubicacion = ubicaciones.ubicacion)
 			LEFT OUTER JOIN estados ON (designaciones.estado = estados.estado)
+                        LEFT OUTER JOIN dimensiones ON (designaciones.dimension = dimensiones.dimension)
 		WHERE 	
 
 		$where
@@ -84,6 +86,7 @@ class co_designaciones
                         designaciones.carga_horaria::Int * 44 as carga_horaria_dedicacion,
                         caracteres.codigo as caracter_desc,
                         ubicaciones.codigo as ubicacion_desc,
+                        dimensiones.codigo as dimension_desc,
                         --fecha_desde,
 			COALESCE (fecha_desde_jubilacion, fecha_desde) as fecha_desde,
                         fecha_hasta,
@@ -102,7 +105,7 @@ class co_designaciones
 				FROM designaciones as d2, resoluciones_tipos 
 				WHERE d2.resolucion_tipo = resoluciones_tipos.resolucion_tipo AND d2.designacion = designaciones.designacion_padre) as resolucion_padre
 
-                FROM    designaciones, 
+                FROM    designaciones LEFT OUTER JOIN dimensiones ON (designaciones.dimension = dimensiones.dimension), 
                         designaciones_tipos,
                         espacios_disciplinares, 
                         dedicaciones, 

@@ -210,7 +210,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000135', --objeto_cuadro
 	'280000121', --objeto_cuadro_col
 	'fecha_desde', --clave
-	'10', --orden
+	'11', --orden
 	'Desde', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -241,7 +241,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000135', --objeto_cuadro
 	'280000122', --objeto_cuadro_col
 	'fecha_hasta', --clave
-	'11', --orden
+	'12', --orden
 	'Hasta', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -272,7 +272,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000135', --objeto_cuadro
 	'280000123', --objeto_cuadro_col
 	'carrera_academica', --clave
-	'15', --orden
+	'16', --orden
 	'C.A.', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -365,7 +365,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000135', --objeto_cuadro
 	'280000126', --objeto_cuadro_col
 	'resolucion_desc', --clave
-	'12', --orden
+	'13', --orden
 	'Resolución', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -396,7 +396,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000135', --objeto_cuadro
 	'280000127', --objeto_cuadro_col
 	'estado_desc', --clave
-	'17', --orden
+	'18', --orden
 	'Estado', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -427,7 +427,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000135', --objeto_cuadro
 	'280000128', --objeto_cuadro_col
 	'designacion_tipo_desc', --clave
-	'16', --orden
+	'17', --orden
 	'Tipo', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
@@ -582,7 +582,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000135', --objeto_cuadro
 	'280000568', --objeto_cuadro_col
 	'resolucion_padre', --clave
-	'18', --orden
+	'19', --orden
 	'Afectada a', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -613,7 +613,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000135', --objeto_cuadro
 	'280000681', --objeto_cuadro_col
 	'observaciones', --clave
-	'19', --orden
+	'20', --orden
 	'Obs', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -644,7 +644,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000135', --objeto_cuadro
 	'280000688', --objeto_cuadro_col
 	'resolucion_fecha', --clave
-	'13', --orden
+	'14', --orden
 	'Resol. fecha', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'7', --estilo
@@ -675,7 +675,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000135', --objeto_cuadro
 	'280000713', --objeto_cuadro_col
 	'ratif_resolucion_desc', --clave
-	'14', --orden
+	'15', --orden
 	'Resol. ratificada', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
@@ -690,6 +690,37 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --total
 	NULL, --total_cc
 	NULL, --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000135', --objeto_cuadro
+	'280001067', --objeto_cuadro_col
+	'dimension_desc', --clave
+	'10', --orden
+	'Dimensión', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'col-cen-s1', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	'0', --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	'0', --total
+	NULL, --total_cc
+	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
 	NULL, --vinculo_item
 	NULL, --vinculo_popup
