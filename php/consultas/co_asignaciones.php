@@ -146,10 +146,12 @@ class co_asignaciones
    // obtener la suma de horas asignadas activas de una designacion
    function get_horas_asignadas_x_designacion($designacion)
    {
+        $anio = date('Y');
 	$sql = "
 		SELECT sum(carga_horaria) as suma
 		FROM asignaciones
-		WHERE designacion = $designacion AND estado = 1 
+		WHERE designacion = $designacion AND estado = 1
+                    OR (designacion = $designacion AND estado = 15 AND ciclo_lectivo = $anio)
 		";
 	return toba::db()->consultar_fila($sql);
    }  

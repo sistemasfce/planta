@@ -7,7 +7,7 @@ class ci_autoevaluaciones_por_docente extends planta_ci
     function conf()
     {
         $perfil = toba::usuario()->get_perfiles_funcionales();
-        if ($perfil[0] != 'admin' and $perfil[0] != 'usuario') {
+        if ($perfil[0] != 'admin' and $perfil[0] != 'usuario_inv' and $perfil[0] != 'usuario') {
             $this->pantalla('pant_inicial')->eliminar_dep('filtro');
         } else {
             $this->pantalla('pant_inicial')->eliminar_dep('filtro_delegado');
@@ -23,7 +23,7 @@ class ci_autoevaluaciones_por_docente extends planta_ci
     function conf__cuadro(planta_ei_cuadro $cuadro)
     {
         $perfil = toba::usuario()->get_perfiles_funcionales();
-        if ($perfil[0] != 'admin' and $perfil[0] != 'usuario') {
+        if ($perfil[0] != 'admin' and $perfil[0] != 'usuario_inv' and $perfil[0] != 'usuario') {
             $where = $this->dep('filtro_delegado')->get_sql_where();  
             $datos_filtro = $this->dep('filtro_delegado')->get_datos();
             $ciclo_array = toba::consulta_php('co_parametros')->get_parametro_valor('PAR_AUTOEVAL_CICLO');
@@ -55,7 +55,7 @@ class ci_autoevaluaciones_por_docente extends planta_ci
     function conf__cuadro_act(planta_ei_cuadro $cuadro)
     {
         $perfil = toba::usuario()->get_perfiles_funcionales();
-        if ($perfil[0] != 'admin' and $perfil[0] != 'usuario') {
+        if ($perfil[0] != 'admin' and $perfil[0] != 'usuario_inv' and $perfil[0] != 'usuario') {
             $where = $this->dep('filtro_delegado')->get_sql_where();  
             $datos_filtro = $this->dep('filtro_delegado')->get_datos();
             $ciclo_array = toba::consulta_php('co_parametros')->get_parametro_valor('PAR_AUTOEVAL_CICLO');
