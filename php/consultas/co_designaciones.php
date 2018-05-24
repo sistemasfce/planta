@@ -148,30 +148,27 @@ class co_designaciones
 
     function get_horas_neto($where)
     {
+        $ciclo = date('Y');
 	$sql = "
-		SELECT apellido || ', ' || nombres as nombre_completo,
-
-			(SELECT sum(carga_horaria_dedicacion::Int) FROM designaciones WHERE designaciones.persona = personas.persona
-			AND designaciones.estado in (1,4,5) AND designaciones.designacion_tipo = 1) as horas_desig,
-
-			(SELECT sum(carga_horaria_dedicacion::Int) FROM designaciones WHERE designaciones.persona = personas.persona
-			AND designaciones.estado = 6 AND designaciones.designacion_tipo in (2,3)
-			and exists 
-		            	(SELECT designacion FROM designaciones as dd2 WHERE dd2.estado in (1,4,5) AND dd2.designacion_tipo = 1 
-            			AND dd2.persona = personas.persona)		
-			) as horas_licenciadas,
-
-			(SELECT sum(carga_horaria::Int) FROM asignaciones WHERE asignaciones.persona = personas.persona
-			AND asignaciones.estado = 1) as horas_asignadas
-
-		FROM personas, personas_perfiles
-		WHERE personas.persona = personas_perfiles.persona
-                        AND perfil = 1 -- docente
-                        AND 1 = (SELECT pp.perfil_estado FROM personas_perfiles as pp WHERE
-                                 pp.persona = personas.persona 
-                                 AND pp.perfil = 1 ORDER BY pp.fecha, pp.persona_perfil DESC LIMIT 1) 
-		ORDER BY nombre_completo
-		";
+            SELECT apellido || ', ' || nombres as nombre_completo,
+                (SELECT sum(carga_horaria_dedicacion::Int) FROM designaciones WHERE designaciones.persona = personas.persona
+                AND designaciones.estado in (1,4,5) AND designaciones.designacion_tipo = 1) as horas_desig,
+                (SELECT sum(carga_horaria_dedicacion::Int) FROM designaciones WHERE designaciones.persona = personas.persona
+                AND designaciones.estado = 6 AND designaciones.designacion_tipo in (2,3)
+                and exists 
+                    (SELECT designacion FROM designaciones as dd2 WHERE dd2.estado in (1,4,5) AND dd2.designacion_tipo = 1 
+                    AND dd2.persona = personas.persona)		
+                ) as horas_licenciadas,
+                (SELECT sum(carga_horaria::Int) FROM asignaciones WHERE asignaciones.persona = personas.persona
+                AND asignaciones.estado = 1 OR (asignaciones.persona = personas.persona AND asignaciones.estado = 15 AND asignaciones.ciclo_lectivo = $ciclo)) as horas_asignadas
+            FROM personas, personas_perfiles
+            WHERE personas.persona = personas_perfiles.persona
+                AND perfil = 1 -- docente
+                AND 1 = (SELECT pp.perfil_estado FROM personas_perfiles as pp WHERE
+                         pp.persona = personas.persona 
+                         AND pp.perfil = 1 ORDER BY pp.fecha, pp.persona_perfil DESC LIMIT 1) 
+            ORDER BY nombre_completo
+            ";
 	return toba::db()->consultar($sql);
     }
 
