@@ -14,7 +14,7 @@ class co_acreeditacion
 
                 SELECT 	personas.apellido || ', ' || personas.nombres as nombre_completo,
                         designaciones.designacion,
-                        designaciones.carga_horaria
+                        designaciones.carga_horaria::Int
                 FROM 	designaciones LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
                 WHERE 	designaciones.estado = 1
                         AND designaciones.dimension = 1
@@ -25,7 +25,7 @@ class co_acreeditacion
                 -- docentes con licencias parciales
                 SELECT 	personas.apellido || ', ' || personas.nombres as nombre_completo,
                         designaciones.designacion,
-                        designaciones.carga_horaria
+                        des2.carga_horaria::Int - designaciones.carga_horaria::Int
                 FROM 	designaciones LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
                         LEFT OUTER JOIN designaciones as des2 ON designaciones.designacion_padre = des2.designacion
                 WHERE 	designaciones.estado = 6 -- licencia vigente
@@ -39,7 +39,7 @@ class co_acreeditacion
                 -- docentes funcionarios
                 SELECT 	personas.apellido || ', ' || personas.nombres as nombre_completo,
                         designaciones.designacion,
-                        designaciones.carga_horaria
+                        des2.carga_horaria::Int
                 FROM 	designaciones LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
                         LEFT OUTER JOIN designaciones as des2 ON designaciones.designacion_padre = des2.designacion
                 WHERE 	designaciones.estado = 6 -- licencia vigente
