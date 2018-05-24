@@ -6,45 +6,50 @@ class co_acreeditacion
     {
         $sql = "  
             -- docentes activos
-            SELECT  personas.apellido || ', ' || personas.nombres as nombre_completo,
+            SELECT nombre_completo,
                     COUNT (designacion) as cantidad_designaciones,
                     SUM (carga_horaria::Int) as suma_horas
-            FROM    designaciones LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
-            WHERE   designaciones.estado = 1
-                    AND designaciones.dimension = 1
-                    AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
+
+            FROM (
+
+                SELECT 	personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        designaciones.designacion,
+                        designaciones.carga_horaria
+                FROM 	designaciones LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
+                WHERE 	designaciones.estado = 1
+                        AND designaciones.dimension = 1
+                        AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
+
+                UNION ALL
+
+                -- docentes con licencias parciales
+                SELECT 	personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        designaciones.designacion,
+                        designaciones.carga_horaria
+                FROM 	designaciones LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
+                        LEFT OUTER JOIN designaciones as des2 ON designaciones.designacion_padre = des2.designacion
+                WHERE 	designaciones.estado = 6 -- licencia vigente
+                        AND designaciones.designacion_tipo = 2 -- licencia
+                        AND des2.estado = 5 -- licencia parcial
+                        AND designaciones.dimension = 1
+                        AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
+
+                UNION ALL
+
+                -- docentes funcionarios
+                SELECT 	personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        designaciones.designacion,
+                        designaciones.carga_horaria
+                FROM 	designaciones LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
+                        LEFT OUTER JOIN designaciones as des2 ON designaciones.designacion_padre = des2.designacion
+                WHERE 	designaciones.estado = 6 -- licencia vigente
+                        AND designaciones.designacion_tipo = 2 -- licencia
+                        AND des2.estado = 4 -- licencia total
+                        AND designaciones.dimension = 1
+                        AND designaciones.persona in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
+
+            ) as c1
             GROUP BY nombre_completo
-
-            UNION ALL
-
-            -- docentes con licencias parciales
-            SELECT  personas.apellido || ', ' || personas.nombres as nombre_completo,
-                    COUNT (designaciones.designacion) as cantidad_designaciones,
-                    SUM (designaciones.carga_horaria::Int) as suma_horas
-            FROM    designaciones LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
-                    LEFT OUTER JOIN designaciones as des2 ON designaciones.designacion_padre = des2.designacion
-            WHERE 	designaciones.estado = 6 -- licencia vigente
-                    AND designaciones.designacion_tipo = 2 -- licencia
-                    AND des2.estado = 5 -- licencia parcial
-                    AND designaciones.dimension = 1
-                    AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
-            GROUP BY nombre_completo
-
-            UNION ALL
-
-            -- docentes funcionarios
-            SELECT  personas.apellido || ', ' || personas.nombres as nombre_completo,
-                    COUNT (designaciones.designacion) as cantidad_designaciones,
-                    SUM (designaciones.carga_horaria::Int) as suma_horas
-            FROM    designaciones LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
-                    LEFT OUTER JOIN designaciones as des2 ON designaciones.designacion_padre = des2.designacion
-            WHERE   designaciones.estado = 6 -- licencia vigente
-                    AND designaciones.designacion_tipo = 2 -- licencia
-                    AND des2.estado = 4 -- licencia total
-                    AND designaciones.dimension = 1
-                    AND designaciones.persona in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
-            GROUP BY nombre_completo
-
             ORDER BY nombre_completo
         ";
         return toba::db()->consultar($sql);
