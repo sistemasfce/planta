@@ -8,7 +8,7 @@ class ci_inicio extends planta_ci
             toba::vinculador()->navegar_a("planta","280000078");
             return;
         }
-}
+    }
 
     //-----------------------------------------------------------------------------------
     //---- form -------------------------------------------------------------------------
@@ -20,7 +20,7 @@ class ci_inicio extends planta_ci
         $dia = date('d');
         $datos = toba::consulta_php('co_inicio')->get_cumpleanios($mes, $dia);
         if (isset($datos[0])) {
-            $texto = 'Hoy es el cumpleaÃ±os de ';
+            $texto = 'Hoy es el cumpleaños de ';
             foreach ($datos as $dat) {
                 $texto.= $dat['nombre_completo']. ' - ';
             }
