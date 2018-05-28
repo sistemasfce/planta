@@ -19,6 +19,7 @@ class co_acreeditacion
                 WHERE 	designaciones.estado = 1
                         AND designaciones.dimension = 1
                         AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
+                        AND designaciones.persona not in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
 
                 UNION ALL
 
@@ -33,6 +34,7 @@ class co_acreeditacion
                         AND des2.estado = 5 -- licencia parcial
                         AND designaciones.dimension = 1
                         AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
+                        AND designaciones.persona not in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
 
                 UNION ALL
 
@@ -44,7 +46,7 @@ class co_acreeditacion
                         LEFT OUTER JOIN designaciones as des2 ON designaciones.designacion_padre = des2.designacion
                 WHERE 	designaciones.estado = 6 -- licencia vigente
                         AND designaciones.designacion_tipo = 2 -- licencia
-                        AND des2.estado = 4 -- licencia total
+                        AND des2.estado in (4,5) -- licencia total y parcial
                         AND designaciones.dimension = 1
                         AND designaciones.persona in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
 
@@ -98,6 +100,7 @@ class co_acreeditacion
                 WHERE 	designaciones.estado = 1 
                         AND designaciones.dimension = 1
                         AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
+                        AND designaciones.persona not in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
                 GROUP BY designaciones.persona, categorias.descripcion
 
                 UNION ALL
@@ -114,6 +117,7 @@ class co_acreeditacion
                         AND des2.estado = 5 -- licencia parcial
                         AND designaciones.dimension = 1
                         AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
+                        AND designaciones.persona not in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
                 GROUP BY designaciones.persona, categorias.descripcion
 
                 UNION ALL
@@ -127,7 +131,7 @@ class co_acreeditacion
                         LEFT OUTER JOIN designaciones as des2 ON designaciones.designacion_padre = des2.designacion
                 WHERE 	designaciones.estado = 6 -- licencia vigente
                         AND designaciones.designacion_tipo = 2 -- licencia
-                        AND des2.estado = 4 -- licencia total
+                        AND des2.estado in (4,5) -- licencia total y parcial
                         AND designaciones.dimension = 1
                         AND designaciones.persona in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
                 GROUP BY designaciones.persona, categorias.descripcion	
