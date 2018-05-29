@@ -38,7 +38,7 @@ class co_acreeditacion
 
                 UNION ALL
 
-                -- docentes funcionarios
+                -- docentes funcionarios o con licencias totales que quiero mostrar
                 SELECT 	personas.apellido || ', ' || personas.nombres as nombre_completo,
                         designaciones.designacion,
                         des2.carga_horaria::Int
@@ -48,7 +48,7 @@ class co_acreeditacion
                         AND designaciones.designacion_tipo = 2 -- licencia
                         AND des2.estado in (4,5) -- licencia total y parcial
                         AND designaciones.dimension = 1
-                        AND designaciones.persona in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
+                        AND designaciones.persona in (1124,1375,1482,841,1074,1147,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
 
             ) as c1
             GROUP BY nombre_completo
@@ -100,14 +100,14 @@ class co_acreeditacion
                 WHERE 	designaciones.estado = 1 
                         AND designaciones.dimension = 1
                         AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
-                        AND designaciones.persona not in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
+                        AND designaciones.persona not in (1147,1039,1384) --julio ib, cristina, celeste
                 GROUP BY designaciones.persona, categorias.descripcion
 
                 UNION ALL
 
                 -- consulta docentes con licencias parciales
                 SELECT 	categorias.descripcion as categoria, 
-                        SUM(designaciones.carga_horaria::Int)
+                        SUM(des2.carga_horaria::Int - designaciones.carga_horaria::Int)
                 FROM 	designaciones 
                         LEFT OUTER JOIN categorias ON designaciones.categoria = categorias.categoria
                         LEFT OUTER JOIN dedicaciones ON designaciones.dedicacion = dedicaciones.dedicacion
@@ -117,12 +117,12 @@ class co_acreeditacion
                         AND des2.estado = 5 -- licencia parcial
                         AND designaciones.dimension = 1
                         AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
-                        AND designaciones.persona not in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
+                        AND designaciones.persona not in (841,1074,1147,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
                 GROUP BY designaciones.persona, categorias.descripcion
 
                 UNION ALL
 
-                -- consulta docente funcionarios, recupero sus designaciones licenciadas
+                 -- docentes funcionarios o con licencias totales que quiero mostrar
                 SELECT 	categorias.descripcion as categoria, 
                         SUM(designaciones.carga_horaria::Int)
                 FROM 	designaciones 
@@ -133,7 +133,7 @@ class co_acreeditacion
                         AND designaciones.designacion_tipo = 2 -- licencia
                         AND des2.estado in (4,5) -- licencia total y parcial
                         AND designaciones.dimension = 1
-                        AND designaciones.persona in (841,1074,1147,863,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
+                        AND designaciones.persona in (859,1474,1124,1375,1482,841,1074,1147,1039,1384) --lili,gallo,mansilla,zamarreño,michi,daniel, yanina, julio ib, cristina, celeste
                 GROUP BY designaciones.persona, categorias.descripcion	
                 ) as c3
 
