@@ -48,7 +48,7 @@ class co_acreeditacion
                         AND designaciones.designacion_tipo = 2 -- licencia
                         AND des2.estado in (4,5) -- licencia total y parcial
                         AND designaciones.dimension = 1
-                         AND designaciones.persona in (859,1474,1124,1375,1482,841,1074,1147,1039,1384) --lili,gallo,mansilla,zamarreño,michi,daniel, yanina, julio ib, cristina, celeste
+                        AND designaciones.persona in (841,1074,1147,1039,1384) --daniel, yanina, julio ib, cristina, celeste
                         OR (designaciones.estado = 1 AND designaciones.dimension = 1 AND designaciones.persona in (841,1074))
             ) as c1
             GROUP BY nombre_completo
@@ -133,7 +133,8 @@ class co_acreeditacion
                         AND designaciones.designacion_tipo = 2 -- licencia
                         AND des2.estado in (4,5) -- licencia total y parcial
                         AND designaciones.dimension = 1
-                        AND designaciones.persona in (859,1474,1124,1375,1482,841,1074,1147,1039,1384) --lili,gallo,mansilla,zamarreño,michi,daniel, yanina, julio ib, cristina, celeste
+                        --AND designaciones.persona in (859,1474,1124,1375,1482,841,1074,1147,1039,1384) --lili,gallo,mansilla,zamarreño,michi,daniel, yanina, julio ib, cristina, celeste
+                        AND designaciones.persona in (841,1074,1147,1039,1384) --daniel, yanina, julio ib, cristina, celeste
                         OR (designaciones.estado = 1 AND designaciones.dimension = 1 AND designaciones.persona in (841,1074))
                 GROUP BY designaciones.persona, categorias.descripcion	
                 ) as c3

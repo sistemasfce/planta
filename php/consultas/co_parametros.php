@@ -364,6 +364,16 @@ class co_parametros
         ";
 	return toba::db()->consultar($sql);
     }
+    
+    function get_designaciones_tipos_licencias($where=null)
+    {
+	if (!isset($where)) $where = '1=1';
+        $sql = "SELECT *
+		FROM designaciones_tipos
+		WHERE designacion_tipo in (2,9) AND $where
+        ";
+	return toba::db()->consultar($sql);
+    }    
 
     function get_licencias_tipos($where=null)
     {
