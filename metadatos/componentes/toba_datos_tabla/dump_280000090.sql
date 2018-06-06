@@ -791,7 +791,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'2000', --largo
+	'3000', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
@@ -805,7 +805,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'2000', --largo
+	'3000', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
@@ -819,7 +819,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'2000', --largo
+	'3000', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
@@ -833,7 +833,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'2000', --largo
+	'3000', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
@@ -847,7 +847,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'2000', --largo
+	'3000', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
@@ -861,7 +861,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'2000', --largo
+	'3000', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
@@ -875,7 +875,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'2000', --largo
+	'3000', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
@@ -889,7 +889,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'2000', --largo
+	'3000', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
@@ -903,7 +903,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'2000', --largo
+	'3000', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
@@ -917,7 +917,7 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 	'C', --tipo
 	'0', --pk
 	'', --secuencia
-	'2000', --largo
+	'3000', --largo
 	NULL, --no_nulo
 	'0', --no_nulo_db
 	'0', --externa
