@@ -18,6 +18,7 @@ class co_acreeditacion
                 FROM 	designaciones LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
                 WHERE 	designaciones.estado = 1
                         AND designaciones.dimension = 1
+                        AND designaciones.caracter <> 9
                         AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
                         AND designaciones.persona not in (841,1074,1147,1039,1384) --daniel, yanina,julio ib, cristina, celeste
 
@@ -33,6 +34,7 @@ class co_acreeditacion
                         AND designaciones.designacion_tipo = 2 -- licencia
                         AND des2.estado = 5 -- licencia parcial
                         AND designaciones.dimension = 1
+                        AND designaciones.caracter <> 9
                         AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
                         AND designaciones.persona not in (841,1074,1147,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
 
@@ -48,6 +50,7 @@ class co_acreeditacion
                         AND designaciones.designacion_tipo = 2 -- licencia
                         AND des2.estado in (4,5) -- licencia total y parcial
                         AND designaciones.dimension = 1
+                        AND designaciones.caracter <> 9
                         AND designaciones.persona in (841,1074,1147,1039,1384) --daniel, yanina, julio ib, cristina, celeste
                         OR (designaciones.estado = 1 AND designaciones.dimension = 1 AND designaciones.persona in (841,1074))
             ) as c1
@@ -99,6 +102,7 @@ class co_acreeditacion
                         LEFT OUTER JOIN dedicaciones ON designaciones.dedicacion = dedicaciones.dedicacion
                 WHERE 	designaciones.estado = 1 
                         AND designaciones.dimension = 1
+                        AND designaciones.caracter <> 9
                         AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
                         AND designaciones.persona not in (841,1074,1147,1039,1384) --daniel, yanina,julio ib, cristina, celeste
                 GROUP BY designaciones.persona, categorias.descripcion
@@ -116,6 +120,7 @@ class co_acreeditacion
                         AND designaciones.designacion_tipo = 2 -- licencia
                         AND des2.estado = 5 -- licencia parcial
                         AND designaciones.dimension = 1
+                        AND designaciones.caracter <> 9
                         AND designaciones.categoria not in (14,15,44,10) --decano,vice,delegado,secretario de facultad
                         AND designaciones.persona not in (841,1074,1147,1039,1384) --daniel, yanina, julio ib, marcela, cristina, celeste
                 GROUP BY designaciones.persona, categorias.descripcion
@@ -133,6 +138,7 @@ class co_acreeditacion
                         AND designaciones.designacion_tipo = 2 -- licencia
                         AND des2.estado in (4,5) -- licencia total y parcial
                         AND designaciones.dimension = 1
+                        AND designaciones.caracter <> 9
                         --AND designaciones.persona in (859,1474,1124,1375,1482,841,1074,1147,1039,1384) --lili,gallo,mansilla,zamarreño,michi,daniel, yanina, julio ib, cristina, celeste
                         AND designaciones.persona in (841,1074,1147,1039,1384) --daniel, yanina, julio ib, cristina, celeste
                         OR (designaciones.estado = 1 AND designaciones.dimension = 1 AND designaciones.persona in (841,1074))
