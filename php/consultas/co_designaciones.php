@@ -140,7 +140,7 @@ class co_designaciones
 	$sql = "SELECT SUM (carga_horaria_dedicacion::Int) as total
 		FROM designaciones
 		WHERE 	designacion_padre = $designacion 
-			AND designacion_tipo in (2,3)
+			AND designacion_tipo in (2,3,9)
 			AND estado = 6
 		";
 	return toba::db()->consultar_fila($sql);
@@ -154,7 +154,7 @@ class co_designaciones
                 (SELECT sum(carga_horaria_dedicacion::Int) FROM designaciones WHERE designaciones.persona = personas.persona
                 AND designaciones.estado in (1,4,5) AND designaciones.designacion_tipo = 1) as horas_desig,
                 (SELECT sum(carga_horaria_dedicacion::Int) FROM designaciones WHERE designaciones.persona = personas.persona
-                AND designaciones.estado = 6 AND designaciones.designacion_tipo in (2,3)
+                AND designaciones.estado = 6 AND designaciones.designacion_tipo in (2,3,9)
                 and exists 
                     (SELECT designacion FROM designaciones as dd2 WHERE dd2.estado in (1,4,5) AND dd2.designacion_tipo = 1 
                     AND dd2.persona = personas.persona)		

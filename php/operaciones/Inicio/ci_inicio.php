@@ -80,7 +80,8 @@ class ci_inicio extends planta_ci
 
     function conf__cuadro_pv(planta_ei_cuadro $cuadro)
     {
-        $hasta = '2018-02-28';
+        $anio = date('Y');
+        $hasta = $anio.'-02-28';
         $datos = toba::consulta_php('co_inicio')->get_asignaciones_periodo_menor($hasta);
         $datos_para_cuadro = array();
         foreach ($datos as $dat) {
