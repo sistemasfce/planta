@@ -37,7 +37,9 @@ class co_evaluaciones
 			categorias.descripcion as rol_desc,
 			departamentos.descripcion as departamento_desc,
 		      	asignaciones.asignacion,
-			asignaciones.eval_calificacion,
+                        CASE WHEN asignaciones.eval_confirmado = 'S' THEN
+			asignaciones.eval_calificacion
+                        else '' END as eval_calificacion,
 			asignaciones.eval_confirmado,
                         asignaciones.ciclo_lectivo,
 			asignaciones.eval_notificacion
