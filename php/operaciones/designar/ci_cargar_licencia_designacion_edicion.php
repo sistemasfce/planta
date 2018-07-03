@@ -104,8 +104,8 @@ class ci_cargar_licencia_designacion_edicion extends planta_ci
 		$real =toba::memoria()->get_dato('horas_real');
 		$licencia = $datos['carga_horaria'] * 44;
 		if ($licencia > $real) { // si la carga horaria de la licencia es mayor a la designacion
-			//$this->informar_msg("La carga horaria de la licencia NO puede ser mayor que la designación","error");
-			//return;
+			$this->informar_msg("La carga horaria de la licencia NO puede ser mayor que la designación","error");
+			return;
 		}
 		if ($this->s__desig_seleccionada == null) {
 			$this->informar_msg("Debe seleccionar una designación","error");
