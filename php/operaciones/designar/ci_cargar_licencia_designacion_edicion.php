@@ -64,7 +64,7 @@ class ci_cargar_licencia_designacion_edicion extends planta_ci
 			$this->datos_para_cuadro[] = $fila;
 		}
 		$datos_ordenados = rs_ordenar_por_columna($this->datos_para_cuadro, 'fecha_desde');
-                $this->datos_para_cuadro = $datos_ordenados;
+				$this->datos_para_cuadro = $datos_ordenados;
 		$cuadro->set_datos($this->datos_para_cuadro);
 	}
 	
@@ -72,13 +72,13 @@ class ci_cargar_licencia_designacion_edicion extends planta_ci
 	{
 		$datos = $this->datos_para_cuadro;
 		if ($datos[$fila]['designacion_tipo'] != 1) {
-			$evento->anular(); 
+		//    $evento->anular(); 
 		} else {
 			if ($datos[$fila]['estado'] == 3 or $datos[$fila]['estado'] == 4) {
-				$evento->anular(); 
+			//       $evento->anular(); 
 			}
 			else {
-					$evento->mostrar();  
+			//       $evento->mostrar();  
 			}  
 		}   
 	}  
