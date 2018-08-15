@@ -57,14 +57,18 @@ class ci_inicio_docentes extends planta_ci
             if ($hoy >= $desde and $hoy <= $hasta) {
                 // estoy dentro de las fechas de evaluacion
                 // miro si la persona esta bloqueada en este periodo
+                toba::memoria()->set_dato('bloqueado','N');
                 if ($excepciones_eval['bloqueado'] == 'S') {
-                    $this->dep('desempenio')->dep('form_desemp')->evento('evaluador')->desactivar();
+                    toba::memoria()->set_dato('bloqueado','S');
+                    //$this->dependencia('desempenio')->dep('form_desemp')->evento('evaluador')->desactivar();
                 }
             } else {
                 if ($excepciones_eval['habilitado'] == 'S') {
                     // la persona esta habilitada, dejo el boton disponible    
+                    toba::memoria()->set_dato('bloqueado','N');
                 } else {
-                    $this->dep('desempenio')->dep('form_desemp')->evento('evaluador')->desactivar();
+                    toba::memoria()->set_dato('bloqueado','S');
+                    //$this->dependencia('desempenio')->dep('form_desemp')->evento('evaluador')->desactivar();
                 }
             }
         } else {
