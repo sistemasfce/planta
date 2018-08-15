@@ -58,13 +58,13 @@ class ci_inicio_docentes extends planta_ci
                 // estoy dentro de las fechas de evaluacion
                 // miro si la persona esta bloqueada en este periodo
                 if ($excepciones_eval['bloqueado'] == 'S') {
-                    $this->dep('form')->evento('desempenio')->desactivar();
+                    $this->dep('desempenio')->dep('form_desemp')->evento('evaluador')->desactivar();
                 }
             } else {
                 if ($excepciones_eval['habilitado'] == 'S') {
                     // la persona esta habilitada, dejo el boton disponible    
                 } else {
-                    $this->dep('form')->evento('desempenio')->desactivar();
+                    $this->dep('desempenio')->dep('form_desemp')->evento('evaluador')->desactivar();
                 }
             }
         } else {
