@@ -84,7 +84,7 @@ class co_personas
     function get_datos_contacto($perfil)
     {
 	$sql = "
-		SELECT documento,	
+		SELECT DISTINCT documento,	
 			apellido || ', ' || nombres as nombre_completo,
 			(SELECT nombre FROM mug_localidades WHERE localidad = personas.localidad) as localidad,
 			email,
