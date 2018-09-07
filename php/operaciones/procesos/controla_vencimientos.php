@@ -23,6 +23,12 @@
 		SET estado = 1
 		WHERE designacion = ".$dat['designacion_padre']." AND estado = 7 ";
 		toba::db()->consultar($sql_asig);
+                
+                // paso a finalizado la licencia que estaba activa
+                $sql_lice = "UPDATE designaciones
+                SET estado = 15
+                WHERE designacion = ".$dat['designacion_padre']." AND estado = 6 ";
+                toba::db()->consultar($sql_lice);
 	}
 
 	//----------------------------------------------VENCIMIENTOS DE ACTIVOS designaciones/asignaciones-----------------
