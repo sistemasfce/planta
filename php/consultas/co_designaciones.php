@@ -20,6 +20,7 @@ class co_designaciones
                         designaciones.designacion_padre,
 			personas.documento,
 			personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        personas.email,
 			espacios_disciplinares.descripcion as espacio_disciplinar_desc,
 			departamentos.descripcion as departamento_desc,
 			categorias.codigo as categoria_desc,
