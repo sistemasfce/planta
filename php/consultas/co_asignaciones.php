@@ -27,6 +27,7 @@ class co_asignaciones
                     asignaciones.responsable,
                     asignaciones.observaciones,
                     asignaciones.estado,
+                    asignaciones.ciclo_lectivo,
                     estados.descripcion as estado_desc
             FROM    asignaciones LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
                     LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
