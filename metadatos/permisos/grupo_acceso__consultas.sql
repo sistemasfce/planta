@@ -107,30 +107,6 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'planta', --proyecto
 	'consultas', --usuario_grupo_acc
 	NULL, --item_id
-	'280000048'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'consultas', --usuario_grupo_acc
-	NULL, --item_id
-	'280000049'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'consultas', --usuario_grupo_acc
-	NULL, --item_id
-	'280000050'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'consultas', --usuario_grupo_acc
-	NULL, --item_id
-	'280000051'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'consultas', --usuario_grupo_acc
-	NULL, --item_id
 	'280000052'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
@@ -162,18 +138,6 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'consultas', --usuario_grupo_acc
 	NULL, --item_id
 	'280000057'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'consultas', --usuario_grupo_acc
-	NULL, --item_id
-	'280000062'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'consultas', --usuario_grupo_acc
-	NULL, --item_id
-	'280000063'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
 	'planta', --proyecto
@@ -228,12 +192,6 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'consultas', --usuario_grupo_acc
 	NULL, --item_id
 	'280000077'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'consultas', --usuario_grupo_acc
-	NULL, --item_id
-	'280000078'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
 	'planta', --proyecto
