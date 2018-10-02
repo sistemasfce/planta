@@ -93,10 +93,11 @@ class co_asignaciones
    
     function get_asignaciones_de_persona($where, $mostrar_historico)
     {
+        $anio = date('Y');
         if ($mostrar_historico) { // si quiero ver el historico...
                 $hist = "1=1";
         } else {
-                $hist = " asignaciones.estado = 1";
+                $hist = " (asignaciones.estado = 1 OR (asignaciones.estado = 15 AND asignaciones.ciclo_lectivo = $anio)) ";
         }
 
         $sql = "
