@@ -112,7 +112,7 @@ class co_asignaciones
                         ubicaciones.codigo as ubicacion_desc,
 			dimensiones.codigo as dimension_desc,
 			designaciones.designacion,
-			designaciones.resolucion || '/' || designaciones.resolucion_anio as resol_designacion,
+			designaciones.resolucion || '/' || designaciones.resolucion_anio || ' - ' || dedicaciones.descripcion || ' - ' || ded_cat.descripcion as resol_designacion,
                         asignaciones.fecha_desde,
                         asignaciones.fecha_hasta,
 			asignaciones.responsable,
@@ -127,7 +127,9 @@ class co_asignaciones
 
                 FROM    asignaciones LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
 			LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
-			LEFT OUTER JOIN designaciones ON (asignaciones.designacion = designaciones.designacion),  
+			LEFT OUTER JOIN designaciones ON (asignaciones.designacion = designaciones.designacion)
+                        LEFT OUTER JOIN dedicaciones ON (designaciones.dedicacion = dedicaciones.dedicacion)
+                        LEFT OUTER JOIN categorias as ded_cat ON (designaciones.categoria = ded_cat.categoria),
                         actividades, 
                         personas,
                         resoluciones_tipos,
