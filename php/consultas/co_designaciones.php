@@ -2,7 +2,20 @@
 
 class co_designaciones
 {
-
+    function get_cargo_actual($persona)
+    {
+	$sql = "SELECT categorias.descripcion || ' - ' || dedicaciones.descripcion || ' - ' || espacios_disciplinares.descripcion as cargo_actual
+		FROM designaciones  LEFT OUTER JOIN dedicaciones ON designaciones.dedicacion = dedicaciones.dedicacion
+                                    LEFT OUTER JOIN categorias ON designaciones.categoria = categorias.categoria
+                                    LEFT OUTER JOIN espacios_disciplinares ON designaciones.espacio_disciplinar = espacios_disciplinares.espacio_disciplinar
+		WHERE designaciones.persona = $persona
+                    AND designaciones.estado = 1
+                    AND designaciones.dimension = 1
+		";
+	return toba::db()->consultar($sql);        
+    }
+    
+    
     function get_designacion_tabla($designacion) 
     {
 	$sql = "SELECT *
