@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[280000555]--  Personas completo - cuadro 
+--[280000718]--  fcefceCargar asignación a docente - ci_edicion - cuadro_asig 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -9,7 +9,7 @@
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'planta', --proyecto
-	'280000555', --objeto
+	'280000718', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
@@ -20,7 +20,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'Personas completo - cuadro', --nombre
+	'fcefceCargar asignación a docente - ci_edicion - cuadro_asig', --nombre
 	NULL, --titulo
 	'0', --colapsable
 	NULL, --descripcion
@@ -36,7 +36,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --parametro_e
 	NULL, --parametro_f
 	NULL, --usuario
-	'2018-02-01 13:38:35', --creacion
+	'2017-06-01 11:36:40', --creacion
 	'abajo'  --posicion_botonera
 );
 --- FIN Grupo de desarrollo 280
@@ -46,9 +46,9 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 ------------------------------------------------------------
 INSERT INTO apex_objeto_cuadro (objeto_cuadro_proyecto, objeto_cuadro, titulo, subtitulo, sql, columnas_clave, columna_descripcion, clave_dbr, archivos_callbacks, ancho, ordenar, paginar, tamano_pagina, tipo_paginado, mostrar_total_registros, eof_invisible, eof_customizado, siempre_con_titulo, exportar_paginado, exportar, exportar_rtf, pdf_propiedades, pdf_respetar_paginacion, asociacion_columnas, ev_seleccion, ev_eliminar, dao_nucleo_proyecto, dao_nucleo, dao_metodo, dao_parametros, desplegable, desplegable_activo, scroll, scroll_alto, cc_modo, cc_modo_anidado_colap, cc_modo_anidado_totcol, cc_modo_anidado_totcua) VALUES (
 	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
+	'280000718', --objeto_cuadro
 	NULL, --titulo
-	NULL, --subtitulo
+	'FICHA DEL DOCENTE', --subtitulo
 	NULL, --sql
 	NULL, --columnas_clave
 	NULL, --columna_descripcion
@@ -79,11 +79,48 @@ INSERT INTO apex_objeto_cuadro (objeto_cuadro_proyecto, objeto_cuadro, titulo, s
 	NULL, --desplegable_activo
 	'0', --scroll
 	'500px', --scroll_alto
-	NULL, --cc_modo
-	NULL, --cc_modo_anidado_colap
+	't', --cc_modo
+	'0', --cc_modo_anidado_colap
 	NULL, --cc_modo_anidado_totcol
 	NULL  --cc_modo_anidado_totcua
 );
+
+------------------------------------------------------------
+-- apex_objeto_cuadro_cc
+------------------------------------------------------------
+
+--- INICIO Grupo de desarrollo 280
+INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_cc, identificador, descripcion, orden, columnas_id, columnas_descripcion, pie_contar_filas, pie_mostrar_titular, pie_mostrar_titulos, imp_paginar, modo_inicio_colapsado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280000054', --objeto_cuadro_cc
+	'nombre_completo', --identificador
+	'Docente', --descripcion
+	'1', --orden
+	'nombre_completo', --columnas_id
+	'nombre_completo', --columnas_descripcion
+	'0', --pie_contar_filas
+	'0', --pie_mostrar_titular
+	'0', --pie_mostrar_titulos
+	NULL, --imp_paginar
+	'0'  --modo_inicio_colapsado
+);
+INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_cc, identificador, descripcion, orden, columnas_id, columnas_descripcion, pie_contar_filas, pie_mostrar_titular, pie_mostrar_titulos, imp_paginar, modo_inicio_colapsado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280000055', --objeto_cuadro_cc
+	'designacion', --identificador
+	'Resolución de designación', --descripcion
+	'2', --orden
+	'designacion', --columnas_id
+	'resol_designacion', --columnas_descripcion
+	'0', --pie_contar_filas
+	'0', --pie_mostrar_titular
+	'0', --pie_mostrar_titulos
+	NULL, --imp_paginar
+	'0'  --modo_inicio_colapsado
+);
+--- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------
 -- apex_objeto_ei_cuadro_columna
@@ -92,631 +129,11 @@ INSERT INTO apex_objeto_cuadro (objeto_cuadro_proyecto, objeto_cuadro, titulo, s
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
 	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000975', --objeto_cuadro_col
-	'apellido', --clave
-	'2', --orden
-	'Apellido', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000976', --objeto_cuadro_col
-	'nombres', --clave
-	'3', --orden
-	'Nombres', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000978', --objeto_cuadro_col
-	'documento', --clave
-	'4', --orden
-	'Documento', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000979', --objeto_cuadro_col
-	'sexo', --clave
-	'5', --orden
-	'Sexo', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000980', --objeto_cuadro_col
-	'fecha_nac', --clave
-	'7', --orden
-	'Fecha nac', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000981', --objeto_cuadro_col
-	'legajo', --clave
-	'8', --orden
-	'Legajo', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000982', --objeto_cuadro_col
-	'direccion', --clave
-	'9', --orden
-	'Direccion', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000983', --objeto_cuadro_col
-	'localidad', --clave
-	'10', --orden
-	'Localidad', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'0', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000984', --objeto_cuadro_col
-	'telefono', --clave
-	'11', --orden
-	'Telefono', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000985', --objeto_cuadro_col
-	'telefono_2', --clave
-	'12', --orden
-	'Telefono 2', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000986', --objeto_cuadro_col
-	'email', --clave
-	'13', --orden
-	'Email', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000987', --objeto_cuadro_col
-	'email_2', --clave
-	'14', --orden
-	'Email 2', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000988', --objeto_cuadro_col
-	'cuil', --clave
-	'15', --orden
-	'Cuil', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'0', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000989', --objeto_cuadro_col
-	'fecha_ingreso', --clave
-	'16', --orden
-	'Fecha ingreso', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000991', --objeto_cuadro_col
-	'legajo_no_doc', --clave
-	'17', --orden
-	'Legajo no doc', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000992', --objeto_cuadro_col
-	'observaciones', --clave
-	'18', --orden
-	'Observaciones', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000996', --objeto_cuadro_col
-	'persona', --clave
+	'280000718', --objeto_cuadro
+	'280001156', --objeto_cuadro_col
+	'dimension_desc', --clave
 	'1', --orden
-	'N° registro', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000997', --objeto_cuadro_col
-	'estado_docente_desc', --clave
-	'19', --orden
-	'docente', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000998', --objeto_cuadro_col
-	'estado_nodocente_desc', --clave
-	'20', --orden
-	'nodocente', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280000999', --objeto_cuadro_col
-	'estado_externo_desc', --clave
-	'21', --orden
-	'externo', --titulo
-	'ei-cuadro-col-tit', --estilo_titulo
-	'4', --estilo
-	NULL, --ancho
-	'1', --formateo
-	NULL, --vinculo_indice
-	NULL, --no_ordenar
-	NULL, --mostrar_xls
-	NULL, --mostrar_pdf
-	NULL, --pdf_propiedades
-	NULL, --desabilitado
-	NULL, --total
-	NULL, --total_cc
-	NULL, --usar_vinculo
-	NULL, --vinculo_carpeta
-	NULL, --vinculo_item
-	NULL, --vinculo_popup
-	NULL, --vinculo_popup_param
-	NULL, --vinculo_target
-	NULL, --vinculo_celda
-	NULL, --vinculo_servicio
-	'0', --permitir_html
-	NULL, --grupo
-	NULL  --evento_asociado
-);
-INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000555', --objeto_cuadro
-	'280001155', --objeto_cuadro_col
-	'edad', --clave
-	'6', --orden
-	'Edad', --titulo
+	'Dimension', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'col-cen-s1', --estilo
 	NULL, --ancho
@@ -741,4 +158,418 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --grupo
 	NULL  --evento_asociado
 );
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001157', --objeto_cuadro_col
+	'actividad_desc', --clave
+	'2', --orden
+	'Actividad', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'0', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	NULL, --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	NULL, --total
+	NULL, --total_cc
+	NULL, --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001158', --objeto_cuadro_col
+	'departamento_desc', --clave
+	'3', --orden
+	'Departamento', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'0', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	NULL, --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	NULL, --total
+	NULL, --total_cc
+	NULL, --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001159', --objeto_cuadro_col
+	'rol_desc', --clave
+	'4', --orden
+	'Rol', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'col-cen-s1', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	'0', --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	'0', --total
+	NULL, --total_cc
+	'0', --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001160', --objeto_cuadro_col
+	'ubicacion_desc', --clave
+	'6', --orden
+	'Ubicacion', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'col-cen-s1', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	'0', --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	'0', --total
+	NULL, --total_cc
+	'0', --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001161', --objeto_cuadro_col
+	'resolucion_fecha', --clave
+	'10', --orden
+	'Resolucion fecha', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'4', --estilo
+	NULL, --ancho
+	'8', --formateo
+	NULL, --vinculo_indice
+	NULL, --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	NULL, --total
+	NULL, --total_cc
+	NULL, --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001162', --objeto_cuadro_col
+	'fecha_desde', --clave
+	'7', --orden
+	'Desde', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'4', --estilo
+	NULL, --ancho
+	'8', --formateo
+	NULL, --vinculo_indice
+	NULL, --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	NULL, --total
+	NULL, --total_cc
+	NULL, --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001163', --objeto_cuadro_col
+	'fecha_hasta', --clave
+	'8', --orden
+	'Hasta', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'4', --estilo
+	NULL, --ancho
+	'8', --formateo
+	NULL, --vinculo_indice
+	NULL, --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	NULL, --total
+	NULL, --total_cc
+	NULL, --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001164', --objeto_cuadro_col
+	'resolucion_desc', --clave
+	'9', --orden
+	'Resolución', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'4', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	NULL, --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	NULL, --total
+	NULL, --total_cc
+	NULL, --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001165', --objeto_cuadro_col
+	'responsable', --clave
+	'11', --orden
+	'Responsable', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'col-cen-s1', --estilo
+	NULL, --ancho
+	'13', --formateo
+	NULL, --vinculo_indice
+	'0', --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	'0', --total
+	NULL, --total_cc
+	'0', --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001166', --objeto_cuadro_col
+	'carrera_academica', --clave
+	'12', --orden
+	'C.A.', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'col-cen-s1', --estilo
+	NULL, --ancho
+	'13', --formateo
+	NULL, --vinculo_indice
+	'0', --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	'0', --total
+	NULL, --total_cc
+	'0', --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001167', --objeto_cuadro_col
+	'estado_desc', --clave
+	'13', --orden
+	'Estado', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'col-cen-s1', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	'0', --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	'0', --total
+	NULL, --total_cc
+	'0', --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'1', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001168', --objeto_cuadro_col
+	'carga_horaria', --clave
+	'5', --orden
+	'Carga horaria', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'col-cen-s1', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	'0', --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	'1', --total
+	NULL, --total_cc
+	'0', --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
+INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, clave, orden, titulo, estilo_titulo, estilo, ancho, formateo, vinculo_indice, no_ordenar, mostrar_xls, mostrar_pdf, pdf_propiedades, desabilitado, total, total_cc, usar_vinculo, vinculo_carpeta, vinculo_item, vinculo_popup, vinculo_popup_param, vinculo_target, vinculo_celda, vinculo_servicio, permitir_html, grupo, evento_asociado) VALUES (
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001169', --objeto_cuadro_col
+	'observaciones', --clave
+	'14', --orden
+	'Obs', --titulo
+	'ei-cuadro-col-tit', --estilo_titulo
+	'4', --estilo
+	NULL, --ancho
+	'1', --formateo
+	NULL, --vinculo_indice
+	NULL, --no_ordenar
+	NULL, --mostrar_xls
+	NULL, --mostrar_pdf
+	NULL, --pdf_propiedades
+	NULL, --desabilitado
+	NULL, --total
+	NULL, --total_cc
+	NULL, --usar_vinculo
+	NULL, --vinculo_carpeta
+	NULL, --vinculo_item
+	NULL, --vinculo_popup
+	NULL, --vinculo_popup_param
+	NULL, --vinculo_target
+	NULL, --vinculo_celda
+	NULL, --vinculo_servicio
+	'0', --permitir_html
+	NULL, --grupo
+	NULL  --evento_asociado
+);
 --- FIN Grupo de desarrollo 280
+
+------------------------------------------------------------
+-- apex_objeto_cuadro_col_cc
+------------------------------------------------------------
+INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
+	'280000055', --objeto_cuadro_cc
+	'planta', --objeto_cuadro_proyecto
+	'280000718', --objeto_cuadro
+	'280001168', --objeto_cuadro_col
+	'1'  --total
+);

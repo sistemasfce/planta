@@ -149,6 +149,57 @@ class co_asignaciones
         ";
 	return toba::db()->consultar($sql);
    }
+   
+   function get_ficha_legajo($where)
+   {
+        $sql = "
+	SELECT  asignaciones.asignacion,
+		asignaciones.designacion,
+                        personas.documento,
+                        personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        actividades.descripcion as actividad_desc,
+                        departamentos.descripcion as departamento_desc,
+                        categorias.codigo as rol_desc,
+                        asignaciones.carga_horaria,
+                        ubicaciones.codigo as ubicacion_desc,
+			dimensiones.codigo as dimension_desc,
+			designaciones.designacion,
+			designaciones.resolucion || '/' || designaciones.resolucion_anio || ' - ' || dedicaciones.descripcion || ' - ' || ded_cat.descripcion || ' - ' || esp.descripcion || ' - ' || designaciones.fecha_desde || ' - ' || COALESCE (designaciones.fecha_hasta::character Varying,'') as resol_designacion, 
+                        asignaciones.fecha_desde,
+                        asignaciones.fecha_hasta,
+			asignaciones.responsable,
+                        asignaciones.resolucion,
+                        asignaciones.resolucion_fecha,
+                        asignaciones.resolucion_anio,
+                        asignaciones.resolucion || '/' || asignaciones.resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_desc,
+                        asignaciones.carrera_academica,
+                        asignaciones.observaciones,
+                        asignaciones.estado,
+                        estados.descripcion as estado_desc
+
+                FROM    asignaciones LEFT OUTER JOIN departamentos ON (asignaciones.departamento = departamentos.departamento)
+			LEFT OUTER JOIN dimensiones ON (asignaciones.dimension = dimensiones.dimension)
+			LEFT OUTER JOIN designaciones ON (asignaciones.designacion = designaciones.designacion)
+                        LEFT OUTER JOIN dedicaciones ON (designaciones.dedicacion = dedicaciones.dedicacion)
+                        LEFT OUTER JOIN categorias as ded_cat ON (designaciones.categoria = ded_cat.categoria)
+                        LEFT OUTER JOIN espacios_disciplinares as esp ON (designaciones.espacio_disciplinar = esp.espacio_disciplinar),
+                        actividades, 
+                        personas,
+                        resoluciones_tipos,
+                        categorias,
+                        ubicaciones,
+                        estados
+                WHERE   asignaciones.persona = personas.persona
+                        AND asignaciones.actividad = actividades.actividad
+                        AND asignaciones.rol = categorias.categoria
+                        AND asignaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo
+                        AND asignaciones.ubicacion = ubicaciones.ubicacion
+                        AND asignaciones.estado = estados.estado
+                        AND asignaciones.estado in (1,15)
+			AND $where
+                ORDER BY asignaciones.resolucion_fecha::date DESC, actividad_desc";
+       return toba::db()->consultar($sql);
+   }
 
    // obtener la suma de horas asignadas activas de una designacion
    function get_horas_asignadas_x_designacion($designacion)
