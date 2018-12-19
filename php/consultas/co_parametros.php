@@ -326,7 +326,7 @@ class co_parametros
 	if (!isset($where)) $where = '1=1';
         $sql = "SELECT *
 		FROM designaciones_tipos
-		WHERE designacion_tipo in (3,4,5,6,7) 
+		WHERE designacion_tipo in (3,4,5,6,7,10) 
 		AND $where
         ";
 	return toba::db()->consultar($sql);
