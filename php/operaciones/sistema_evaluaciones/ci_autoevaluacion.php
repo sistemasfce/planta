@@ -59,7 +59,7 @@ class ci_autoevaluacion extends planta_ci
             }
         } else {
             // si la ficha NO esta cargada desactivamos el boton siguiente            
-            //$form->evento('siguiente')->desactivar();
+            $form->evento('siguiente')->desactivar();
             $this->evento('constancia')->desactivar();
         }
         $form->set_datos($datos);

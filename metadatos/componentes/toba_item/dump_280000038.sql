@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[280000038]--  Autoevaluaciones 
+--[280000038]--  Consultar Autoevaluaciones 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -13,7 +13,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	'280000038', --item
 	NULL, --padre_id
 	'planta', --padre_proyecto
-	'280000010', --padre
+	'280000077', --padre
 	'1', --carpeta
 	'0', --nivel_acceso
 	NULL, --solicitud_tipo
@@ -23,7 +23,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Autoevaluaciones', --nombre
+	'Consultar Autoevaluaciones', --nombre
 	NULL, --descripcion
 	NULL, --punto_montaje
 	NULL, --actividad_accion
