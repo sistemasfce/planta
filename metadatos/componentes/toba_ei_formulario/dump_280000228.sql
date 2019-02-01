@@ -155,7 +155,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 	NULL, --analisis_cambios
 	'0', --no_imprimir_efs_sin_estado
 	'0', --resaltar_efs_con_estado
-	'<p><span style="font-size:12px;">Estimado Docente </span></p><p><span style="font-size:12px;">Aqu&iacute; Ud. deber&aacute; adjuntar el archivo correspondiente a la actualizaci&oacute;n anual de la Ficha Docente de acuerdo a la Disposici&oacute;n Nro 05/16 DFCE</span></p><p align="JUSTIFY" style="margin-bottom: 0.35cm"><span style="font-size:12px;">No podr&aacute; continuar con la autoevaluaci&oacute;n de las actividades asignadas hasta tanto suba y guarde el archivo correspondiente a la Ficha Docente. &nbsp;</span></p>
+	'<p><span style="font-size:12px;">Estimado Docente </span></p><p><span style="font-size:12px;">Aqu&iacute; Ud. deber&aacute; adjuntar el archivo correspondiente a la actualizaci&oacute;n anual de la Ficha Docente de acuerdo a la Disposici&oacute;n Nro 05/16 DFCE.</span></p><p align="JUSTIFY" style="margin-bottom: 0.35cm"><span style="font-size:12px;">No podr&aacute; continuar con la autoevaluaci&oacute;n de las actividades asignadas hasta tanto suba y guarde el archivo correspondiente a la Ficha Docente. &nbsp;</span></p><p align="JUSTIFY" style="margin-bottom: 0.35cm"><span style="font-size:12px;">Mas informaci&oacute;n sobre ficha docente: <a href="http://web.sistemasfce.com.ar/home/docentes/ficha-del-docente.html" target="_blank">http://web.sistemasfce.com.ar/home/docentes/ficha-del-docente.html</a></span></p>
 <table>
 	<tbody>
 		<tr>
@@ -168,19 +168,19 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;"><strong style="color: rgb(178, 34, 34);">Haciendo click en el bot&oacute;n &quot;guardar&quot; la ficha docente quedar&aacute; guardada en el sistema y se podr&aacute; modificar en otro momento.&nbsp;</strong></span></td>
+				<strong><span style="color:#000000;"><span style="font-size:12px;">Haciendo click en el bot&oacute;n &quot;guardar&quot; la ficha quedar&aacute; guardada de manera provisoria en el sistema, y se podr&aacute; modificar en otro momento.</span></span></strong></td>
 		</tr>
 		<tr>
 			<td>
-				<strong><span style="font-size:12px;">Confirmar autoevaluaci&oacute;n (no podr&aacute; volver a modificar)</span></strong></td>
+				&nbsp;</td>
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;"><strong>[ef id=confirmado]</strong></span></td>
+				<span style="color:#b22222;"><span style="font-size:12px;"><strong>[ef id=confirmado]</strong></span></span></td>
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;"><strong style="color: rgb(178, 34, 34);"><span style="font-family: arial, sans-serif;">hasta tanto no confirme la autoevaluaci&oacute;n,</span><strong>&nbsp;no podr&aacute; cerrar el informe anual docente</strong></strong></span></td>
+				<strong><span style="color:#000000;"><span style="font-size:12px;">Una vez comfirmada, la ficha no podr&aacute; modificarse. Esto le pemitir&aacute; avanzar en la autoevaluaci&oacute;n de las actividades y asi podr&aacute; finalizar el informe anual docente.</span></span></strong></td>
 		</tr>
 	</tbody>
 </table>
@@ -363,7 +363,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'3', --orden
-	'Confirmar autoevaluación:', --etiqueta
+	'Confirmar ficha docente:', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado

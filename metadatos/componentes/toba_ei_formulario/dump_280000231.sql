@@ -135,7 +135,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 	NULL, --clase
 	NULL, --auto_reset
 	'100%', --ancho
-	'130px', --ancho_etiqueta
+	'170px', --ancho_etiqueta
 	'0', --expandir_descripcion
 	NULL, --campo_bl
 	NULL, --scroll
@@ -192,7 +192,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;"><span style="font-family: ''Arial Narrow'', sans-serif; text-align: justify;">Resultado de la Autoevaluaci&oacute;n</span></span></td>
+				<span style="font-size:12px;"><strong>Resultado de la Autoevaluaci&oacute;n</strong></span></td>
 		</tr>
 		<tr>
 			<td>
@@ -204,19 +204,15 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;"><strong style="color: rgb(178, 34, 34);">Haciendo click en el bot&oacute;n &quot;guardar&quot; la autoevaluaci&oacute;n quedar&aacute; guardada en el sistema y se podr&aacute; modificar en otro momento.&nbsp;</strong></span></td>
+				<span style="font-size:12px;"><strong><span style="color:#000000;">Haciendo click en el bot&oacute;n &quot;guardar&quot; la autoevaluaci&oacute;n quedar&aacute; guardada en el sistema y se podr&aacute; modificar en otro momento.&nbsp;</span></strong></span></td>
 		</tr>
 		<tr>
 			<td>
-				<span style="font-size:12px;"><strong>Confirmar autoevaluaci&oacute;n (no podr&aacute; volver a modificar)</strong></span></td>
+				<span style="color:#b22222;"><strong><span style="font-size:14px;">[ef id=autoeval_confirmado]</span></strong></span></td>
 		</tr>
 		<tr>
 			<td>
-				<strong><span style="font-size:14px;">[ef id=autoeval_confirmado]</span></strong></td>
-		</tr>
-		<tr>
-			<td>
-				<span style="font-size:12px;"><strong style="color: rgb(178, 34, 34);"><span style="font-family: arial, sans-serif;">hasta tanto no confirme la autoevaluaci&oacute;n,</span><strong>&nbsp;no podr&aacute; cerrar el informe anual docente</strong></strong></span></td>
+				<span style="font-size:12px;"><strong>hasta tanto no confirme la autoevaluaci&oacute;n, no podr&aacute; cerrar el informe anual docente.</strong></span></td>
 		</tr>
 	</tbody>
 </table>
@@ -399,7 +395,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'3', --orden
-	'Programa de cátedra', --etiqueta
+	'Programa de la asignatura', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado

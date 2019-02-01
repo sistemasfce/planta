@@ -208,7 +208,7 @@ class ci_evaluador extends planta_ci
             $mail->set_html(true);
             //$mail->enviar();
         }
-    }    
+    }
 
     function vista_jasperreports(toba_vista_jasperreports $report) 
     {    
