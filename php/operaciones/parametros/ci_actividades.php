@@ -39,7 +39,6 @@ class ci_actividades extends planta_ci
 		}
 	}
 	
-	
 	function evt__form__alta($datos)
 	{
 		$this->tabla('actividades')->set($datos);
