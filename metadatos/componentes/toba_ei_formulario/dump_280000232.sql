@@ -181,68 +181,64 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 <table>
 	<tbody>
 		<tr>
-			<td colspan="5">
-				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;"><font face="Arial Narrow, sans-serif">1) Objetivos espec&iacute;ficos de la actividad para el ciclo lectivo:</font></span></p></td>
+			<td colspan="4">
+				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;">1) Objetivos espec&iacute;ficos de la actividad para el ciclo lectivo:</span></p></td>
 		</tr>
 		<tr>
-			<td colspan="5">
+			<td colspan="4">
 				<span style="font-size:12px;">[ef id=autoeval_pregunta1]</span></td>
 		</tr>
 		<tr>
-			<td colspan="5">
-				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;"><font face="Arial Narrow, sans-serif">2) Descripci&oacute;n de la actividad:</font></span></p></td>
+			<td colspan="4">
+				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;">2) Descripci&oacute;n de la actividad:</span></p></td>
 		</tr>
 		<tr>
-			<td colspan="5">
+			<td colspan="4">
 				<span style="font-size:12px;">[ef id=autoeval_pregunta2]</span></td>
 		</tr>
 		<tr>
-			<td colspan="5">
-				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;"><font face="Arial Narrow, sans-serif">3) Metas y/o productos obtenidos en el ciclo lectivo:</font></span></p></td>
+			<td colspan="4">
+				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;">3) Metas y/o productos obtenidos en el ciclo lectivo:</span></p></td>
 		</tr>
 		<tr>
-			<td colspan="5">
+			<td colspan="4">
 				<span style="font-size:12px;">[ef id=autoeval_pregunta3]</span></td>
 		</tr>
 		<tr>
-			<td colspan="5">
-				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;"><font face="Arial Narrow, sans-serif">4) Logros y dificultades espec&iacute;ficos de la actividad en el presente ciclo lectivo:&nbsp;</font></span></p></td>
+			<td colspan="4">
+				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;">4) Logros y dificultades espec&iacute;ficos de la actividad en el presente ciclo lectivo:&nbsp;</span></p></td>
 		</tr>
 		<tr>
-			<td colspan="5">
+			<td colspan="4">
 				<span style="font-size:12px;">[ef id=autoeval_pregunta4]</span></td>
 		</tr>
 		<tr>
-			<td colspan="5">
-				<p align="JUSTIFY" lang="es-ES"><span style="font-size:12px;"><font face="Arial Narrow, sans-serif">5) Resultado de la Autoevaluaci&oacute;n</font></span></p></td>
+			<td colspan="4">
+				<p align="JUSTIFY" lang="es-ES"><span style="font-size:12px;">5) Resultado de la Autoevaluaci&oacute;n</span></p></td>
 		</tr>
 		<tr>
-			<td colspan="5">
+			<td colspan="4">
 				<span style="font-size:12px;">[ef id=autoeval_calificacion]</span></td>
 		</tr>
 		<tr>
-			<td colspan="5">
+			<td colspan="4">
 				<span style="font-size:12px;">Observaciones</span></td>
 		</tr>
 		<tr>
-			<td colspan="5">
+			<td colspan="4">
 				[ef id=autoeval_observaciones]</td>
 		</tr>
 		<tr>
-			<td colspan="5">
-				<span style="font-size:12px;"><strong style="color: rgb(178, 34, 34);">Haciendo click en el bot&oacute;n &quot;guardar&quot; la autoevaluaci&oacute;n quedar&aacute; guardada en el sistema y se podr&aacute; modificar en otro momento.&nbsp;</strong></span></td>
+			<td colspan="4">
+				<strong><span style="font-size:12px;">Haciendo click en el bot&oacute;n &quot;guardar&quot; la autoevaluaci&oacute;n quedar&aacute; guardada en el sistema y se podr&aacute; modificar en otro momento.&nbsp;</span></strong></td>
 		</tr>
 		<tr>
-			<td colspan="5">
-				<strong><span style="font-size:12px;">&nbsp;Confirmar autoevaluaci&oacute;n (no podr&aacute; volver a modificar)</span></strong></td>
+			<td colspan="4">
+				<span style="color:#b22222;"><strong><span style="font-size:14px;">[ef id=autoeval_confirmado]</span></strong></span></td>
 		</tr>
 		<tr>
-			<td colspan="5">
-				<strong><span style="font-size:14px;">[ef id=autoeval_confirmado]</span></strong></td>
-		</tr>
-		<tr>
-			<td colspan="5">
-				<span style="font-size:12px;"><strong style="color: rgb(178, 34, 34);"><span style="font-family: arial, sans-serif;">hasta tanto no confirme la autoevaluaci&oacute;n,</span><strong>&nbsp;no podr&aacute; cerrar el informe anual docente</strong></strong></span></td>
+			<td colspan="4">
+				<strong><span style="font-size:12px;">hasta tanto no confirme la autoevaluaci&oacute;n,&nbsp;no podr&aacute; cerrar el informe anual docente.</span></strong></td>
 		</tr>
 	</tbody>
 </table>
