@@ -153,14 +153,14 @@ class co_autoevaluaciones
                     ubicaciones.codigo as ubicacion_desc,	
                     asignaciones.responsable,
                     CASE 
-                        WHEN asignaciones.autoeval_confirmado is null THEN 'NO'
-                        WHEN asignaciones.autoeval_confirmado = 'N' THEN 'NO'
+                        WHEN asignaciones.autoeval_confirmado is null THEN 'N'
+                        WHEN asignaciones.autoeval_confirmado = 'N' THEN 'N'
                         ELSE 'SI'
                     END as autoevaluo,
                     CASE 
-                        WHEN asignaciones.eval_confirmado is null THEN 'NO'
-                        WHEN asignaciones.eval_confirmado = 'N' THEN 'NO'
-                        ELSE 'SI' 
+                        WHEN asignaciones.eval_confirmado is null THEN 'N'
+                        WHEN asignaciones.eval_confirmado = 'N' THEN 'N'
+                        ELSE 'S' 
                     END as evaluado,
                     asignaciones.eval_notificacion as notificado
                 FROM
