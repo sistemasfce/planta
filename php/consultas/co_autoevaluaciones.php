@@ -177,6 +177,43 @@ class co_autoevaluaciones
                     AND asignaciones.eval_estado = 1
                     --AND asignaciones.estado = 15
                     AND actividades.se_evalua = 'S'
+                    
+            UNION
+
+            SELECT DISTINCT
+                    personas.apellido || ', ' || personas.nombres as persona_nombre,
+                    actividades.descripcion as actividad_desc,
+                    ubicaciones.codigo as ubicacion_desc,	
+                    asignaciones.responsable,
+                    CASE 
+                        WHEN asignaciones.autoeval_confirmado is null THEN 'N'
+                        WHEN asignaciones.autoeval_confirmado = 'N' THEN 'N'
+                        ELSE 'S'
+                    END as autoevaluo,
+                    CASE 
+                        WHEN asignaciones.eval_confirmado is null THEN 'N'
+                        WHEN asignaciones.eval_confirmado = 'N' THEN 'N'
+                        ELSE 'S' 
+                    END as evaluado,
+                    asignaciones.eval_notificacion as notificado
+                FROM
+                    asignaciones LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
+                    LEFT OUTER JOIN actividades_a_evaluar ON (actividades.actividad = actividades_a_evaluar.actividad_evaluado)
+                    LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
+                    LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
+                WHERE
+                    asignaciones.ciclo_lectivo = $ciclo
+                    AND actividades_a_evaluar.actividad_evaluador in (SELECT actividad FROM asignaciones as as2 
+                                                                WHERE persona = $persona AND as2.ciclo_lectivo = $ciclo      
+                                                                AND as2.estado = 1)
+			AND actividades_a_evaluar.ubicacion_evaluador = asignaciones.ubicacion
+					
+                    AND asignaciones.autoeval_estado = 1
+                    AND asignaciones.eval_estado = 1
+                    --AND asignaciones.estado = 15
+                    AND actividades.se_evalua = 'S'
+
+
                 ORDER BY persona_nombre
                  ";
         return toba::db()->consultar($sql);
