@@ -147,7 +147,7 @@ class co_autoevaluaciones
     
     function get_actividades_a_controlar($persona, $ciclo)
     {
-        $sql = "SELECT 
+        $sql = "SELECT DISTINCT
                     personas.apellido || ', ' || personas.nombres as persona_nombre,
                     actividades.descripcion as actividad_desc,
                     ubicaciones.codigo as ubicacion_desc,	
