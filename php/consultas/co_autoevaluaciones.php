@@ -144,6 +144,43 @@ class co_autoevaluaciones
             ORDER BY depto, ubicacion_desc, director.apellido, personas.apellido";
         return toba::db()->consultar($sql);
     }
+    
+    function get_actividades_a_controlar($persona, $ciclo)
+    {
+        $sql = "SELECT 
+                    personas.apellido || ', ' || personas.nombres as persona_nombre,
+                    actividades.descripcion as actividad_desc,
+                    ubicaciones.codigo as ubicacion_desc,	
+                    asignaciones.responsable,
+                    CASE 
+                        WHEN asignaciones.autoeval_confirmado is null THEN 'NO'
+                        WHEN asignaciones.autoeval_confirmado = 'N' THEN 'NO'
+                        ELSE 'SI'
+                    END as autoevaluo,
+                    CASE 
+                        WHEN asignaciones.eval_confirmado is null THEN 'NO'
+                        WHEN asignaciones.eval_confirmado = 'N' THEN 'NO'
+                        ELSE 'SI' 
+                    END as evaluado,
+                    asignaciones.eval_notificacion as notificado
+                FROM
+                    asignaciones LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
+                    LEFT OUTER JOIN ambitos_a_evaluar ON (actividades.ambito = ambitos_a_evaluar.ambito_evaluado)
+                    LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
+                    LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
+                WHERE
+                    asignaciones.ciclo_lectivo = $ciclo
+                    AND ambitos_a_evaluar.actividad_evaluador in (SELECT actividad FROM asignaciones as as2 
+                                                                WHERE persona = $persona AND as2.ciclo_lectivo = $ciclo        
+                                                                AND as2.estado = 1)
+                    AND asignaciones.autoeval_estado = 1
+                    AND asignaciones.eval_estado = 1
+                    --AND asignaciones.estado = 15
+                    AND actividades.se_evalua = 'S'
+                ORDER BY persona_nombre
+                 ";
+        return toba::db()->consultar($sql);
+    }    
 
 //
 //
