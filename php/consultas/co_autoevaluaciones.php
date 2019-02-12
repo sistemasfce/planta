@@ -155,7 +155,7 @@ class co_autoevaluaciones
                     CASE 
                         WHEN asignaciones.autoeval_confirmado is null THEN 'N'
                         WHEN asignaciones.autoeval_confirmado = 'N' THEN 'N'
-                        ELSE 'SI'
+                        ELSE 'S'
                     END as autoevaluo,
                     CASE 
                         WHEN asignaciones.eval_confirmado is null THEN 'N'
