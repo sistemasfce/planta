@@ -196,18 +196,22 @@ class co_autoevaluaciones
                         ELSE 'S' 
                     END as evaluado,
                     asignaciones.eval_notificacion as notificado
-                FROM
+               FROM
                     asignaciones LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
-                    LEFT OUTER JOIN actividades_a_evaluar ON (actividades.actividad = actividades_a_evaluar.actividad_evaluado)
+                    LEFT OUTER JOIN actividades_a_seguir ON (actividades.actividad = actividades_a_seguir.actividad_seguida)
                     LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
-                    LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
+                    LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion),
+                    asignaciones as asig2
                 WHERE
                     asignaciones.ciclo_lectivo = $ciclo
-                    AND actividades_a_evaluar.actividad_evaluador in (SELECT actividad FROM asignaciones as as2 
-                                                                WHERE persona = $persona AND as2.ciclo_lectivo = $ciclo      
-                                                                AND as2.estado = 1)
-			AND actividades_a_evaluar.ubicacion_evaluador = asignaciones.ubicacion
-					
+
+		AND asig2.persona = $persona
+		AND asig2.ciclo_lectivo = $ciclo
+		AND asig2.estado = 1
+		AND asig2.actividad = actividades_a_seguir.actividad_sigue
+		AND asig2.ubicacion = actividades_a_seguir.ubicacion_sigue
+		AND actividades_a_seguir.ubicacion_sigue = asignaciones.ubicacion
+                    
                     AND asignaciones.autoeval_estado = 1
                     AND asignaciones.eval_estado = 1
                     --AND asignaciones.estado = 15

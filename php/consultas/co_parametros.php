@@ -96,6 +96,24 @@ class co_parametros
 	return toba::db()->consultar($sql);
     }
 
+    function get_actividades_a_seguir($where=null)
+    {
+	if (!isset($where)) $where = '1=1';
+        $sql = "SELECT *, actividades.descripcion as act_sigue, 
+			act2.descripcion as act_seguida,
+			ubicaciones.codigo as ubicacion_sigue,
+			ubicaciones2.codigo as ubicacion_seguida
+		FROM actividades_a_seguir, actividades, actividades as act2, ubicaciones, ubicaciones as ubicaciones2
+		WHERE actividades_a_seguir.actividad_sigue = actividades.actividad
+			AND actividades_a_seguir.actividad_seguida = act2.actividad
+			AND actividades_a_seguir.ubicacion_sigue = ubicaciones.ubicacion
+			AND actividades_a_seguir.ubicacion_seguida = ubicaciones2.ubicacion
+			AND $where
+		ORDER BY act_sigue, act_seguida
+        ";
+	return toba::db()->consultar($sql);
+    }
+    
     function get_ambitos_a_evaluar($where=null)
     {
 	if (!isset($where)) $where = '1=1';
