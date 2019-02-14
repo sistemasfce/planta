@@ -228,6 +228,26 @@ class co_autoevaluaciones
 // ------------------------------------------ AUTEVALUACIONES POR ACTIVIDAD ------------------------------------------------------
 //
 //
+    function es_seguimiento($persona,$ciclo)
+    {
+        $sql = "SELECT actividad_evaluador
+                FROM ambitos_a_evaluar
+                WHERE ambitos_a_evaluar.actividad_evaluador in (SELECT actividad FROM asignaciones as as2 
+                                                                WHERE persona = $persona AND as2.ciclo_lectivo = $ciclo        
+                                                                AND as2.estado = 1)
+                                                                
+                UNION
+                    SELECT actividades_a_seguir.actividad_sigue
+                    FROM actividades_a_seguir, asignaciones as asig2
+                    WHERE asig2.persona = $persona
+                        AND asig2.ciclo_lectivo = $ciclo
+                        AND asig2.estado = 1
+                        AND asig2.actividad = actividades_a_seguir.actividad_sigue
+                        AND asig2.ubicacion = actividades_a_seguir.ubicacion_sigue
+                
+                ";
+        return toba::db()->consultar($sql);
+    }
 
     function get_informes_docente($asignacion)
     {   
