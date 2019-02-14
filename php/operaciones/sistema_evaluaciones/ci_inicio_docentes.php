@@ -74,6 +74,7 @@ class ci_inicio_docentes extends planta_ci
         } else {
             toba::memoria()->set_dato('usuario','admin');
         }
+        
     }   
 
     function conf__cuadro(planta_ei_cuadro $cuadro)
@@ -149,6 +150,34 @@ class ci_inicio_docentes extends planta_ci
         toba::memoria()->set_dato('path',null);
         $form->set_datos($datos);
     }
+    
+    function conf__form_seg(planta_ei_formulario $form)
+    {
+        $autoevaluado = 0;
+        $evaluado = 0;
+        $total = 0;
+        $notificado = 0;
+        $persona = toba::memoria()->get_dato('persona');
+        $datos_aux = array();
+        $ciclo = toba::consulta_php('co_parametros')->get_parametro_valor('PAR_AUTOEVAL_CICLO');
+        if (isset($persona)) {
+            $datos = toba::consulta_php('co_autoevaluaciones')->get_actividades_a_controlar($persona,$ciclo['valor_num']);
+            foreach ($datos as $dat) {
+              if ($dat['autoevaluo'] == 'S')  
+                $autoevaluado++;
+              if ($dat['evaluado'] == 'S')  
+                $evaluado++;         
+              if ($dat['notificado'] == 'S')  
+                $notificado++;   
+              $total++;
+            }
+            $aux['autoevaluado'] = $autoevaluado;
+            $aux['evaluado'] = $evaluado;
+            $aux['notificado'] = $notificado;
+            $aux['total'] = $total;
+            $form->set_datos($aux);                
+        }
+    }   
 
     function evt__form__desempenio($datos)
     {
