@@ -175,9 +175,9 @@ class ci_inicio_docentes extends planta_ci
                 $notificado++;   
               $total++;
             }
-            $aux['autoevaluado'] = $autoevaluado;
-            $aux['evaluado'] = $evaluado;
-            $aux['notificado'] = $notificado;
+            $aux['autoevaluado'] = $autoevaluado. ' - %'.round($autoevaluado / $total * 100, 2);
+            $aux['evaluado'] = $evaluado. ' - %'.round($evaluado / $total * 100, 2);
+            $aux['notificado'] = $notificado. ' - %'.round($notificado / $total * 100, 2);
             $aux['total'] = $total;
             $form->set_datos($aux);                
         }
