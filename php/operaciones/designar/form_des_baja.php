@@ -1,7 +1,7 @@
 <?php
 class form_des_baja extends planta_ei_formulario
 {
-	//-----------------------------------------------------------------------------------
+    	//-----------------------------------------------------------------------------------
 	//---- JAVASCRIPT -------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 
@@ -10,7 +10,7 @@ class form_des_baja extends planta_ei_formulario
 		echo "
 		{$this->objeto_js}.ini = function(es_inicial)
 		{
-			this.ef('fecha_desde_jubilacion').ocultar();
+			this.ef('ubicacion').ocultar();
 		} 
 			
 		//---- Procesamiento de EFs --------------------------------
@@ -23,5 +23,6 @@ class form_des_baja extends planta_ei_formulario
 		}            
 		";
 	}
+       
 }
 ?>
