@@ -1848,7 +1848,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_notificacion', --identificador
 	'ef_checkbox', --elemento_formulario
 	'eval_notificacion', --columnas
-	'0', --obligatorio
+	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'20', --orden
 	'Notificación', --etiqueta

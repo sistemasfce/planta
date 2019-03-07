@@ -245,19 +245,19 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 			<td>
 				<span style="font-size:12px;"><strong>Ficha docente:</strong></span></td>
 			<td colspan="2">
-				<span style="font-size:12px;">[ef id=ficha_docente_path_2]</td>
+				<span style="font-size:12px;">[ef id=ficha_docente_path_2]</span></td>
 		</tr>
 		<tr>
 			<td>
 				<span style="font-size:12px;"><strong>Programa:</strong></span></td>
 			<td colspan="2">
-				<span style="font-size:12px;">[ef id=autoeval_programa_path_2]</td>
+				<span style="font-size:12px;">[ef id=autoeval_programa_path_2]</span></td>
 		</tr>
 		<tr>
 			<td>
 				<span style="font-size:12px;"><strong>Informe de c&aacute;tedra:</strong></span></td>
 			<td colspan="2">
-				<span style="font-size:12px;">[ef id=autoeval_informe_catedra_path_2]</td>
+				<span style="font-size:12px;">[ef id=autoeval_informe_catedra_path_2]</span></td>
 		</tr>
 		<tr>
 			<td>
@@ -269,7 +269,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 			<td>
 				<span style="font-size:12px;"><strong>Informe:</strong></span></td>
 			<td colspan="2">
-				<span style="font-size:12px;">[ef id=autoeval_informe_otros_path_2]</td>
+				<span style="font-size:12px;">[ef id=autoeval_informe_otros_path_2]</span></td>
 		</tr>
 		<tr>
 			<td>
@@ -299,7 +299,15 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="3">
-				<span style="font-size:12px;"><span style="color:#0000cd;">[ef id=eval_plan_de_mejora]</span></span></td>
+				<span style="font-size:12px;">COMENTARIOS SOBRE LA EVALUACION</span></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<span style="font-size:12px;">[ef id=eval_observaciones]</span></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<span style="font-size:12px;">[ef id=eval_plan_de_mejora]</span></td>
 		</tr>
 		<tr>
 			<td colspan="3">
@@ -355,31 +363,19 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="3">
-				<span style="font-size:12px;">COMENTARIOS SOBRE LA EVALUACION</span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;">[ef id=eval_observaciones]</span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color:#b22222;"><strong>Haciendo click en el bot&oacute;n &quot;guardar&quot; la evaluaci&oacute;n quedar&aacute; guardada en el sistema y se podr&aacute; modificar en otro momento.&nbsp;</strong></span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
 				&nbsp;</td>
 		</tr>
 		<tr>
 			<td colspan="3">
-				<span style="font-size:12px;"><strong>Confirmar evaluaci&oacute;n (no podr&aacute; volver a modificar)</strong></span></td>
+				<span style="font-size:12px;"><strong>Haciendo click en el bot&oacute;n &quot;guardar&quot; la evaluaci&oacute;n quedar&aacute; guardada en el sistema y se podr&aacute; modificar en otro momento.&nbsp;</strong></span></td>
 		</tr>
 		<tr>
 			<td colspan="3">
-				<span style="font-size:14px;"><strong style="font-size: 14px;">[ef id=eval_confirmado]</strong></span></td>
+				<span style="color:#b22222;"><span style="font-size:14px;"><strong style="font-size: 14px;">[ef id=eval_confirmado]</strong></span></span></td>
 		</tr>
 		<tr>
 			<td colspan="3">
-				<span style="color:#b22222;"><strong><span style="font-size:12px;"><span style="font-family: arial, sans-serif;">hasta tanto no confirme la evaluaci&oacute;n,</span><strong style="color: rgb(178, 34, 34);">&nbsp;el docente evaluado, no podr&aacute; verla ni notificarse</strong></span></strong></span></td>
+				<strong><span style="font-size:12px;"><span style="font-family: arial, sans-serif;">hasta tanto no confirme la evaluaci&oacute;n,&nbsp;el docente evaluado, no podr&aacute; verla ni notificarse</span></span></strong></td>
 		</tr>
 		<tr>
 			<td colspan="3">
@@ -743,7 +739,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_plan_de_mejora', --identificador
 	'ef_checkbox', --elemento_formulario
 	'eval_plan_de_mejora', --columnas
-	'0', --obligatorio
+	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'5', --orden
 	'Plan de desarrollo', --etiqueta
@@ -903,7 +899,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_desvio1', --identificador
 	'ef_editable_textarea', --elemento_formulario
 	'eval_desvio1', --columnas
-	'0', --obligatorio
+	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'7', --orden
 	'1)', --etiqueta
@@ -1223,7 +1219,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_act1', --identificador
 	'ef_editable_textarea', --elemento_formulario
 	'eval_act1', --columnas
-	'0', --obligatorio
+	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'11', --orden
 	'1)', --etiqueta
@@ -1543,7 +1539,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_desempenio1', --identificador
 	'ef_editable_textarea', --elemento_formulario
 	'eval_desempenio1', --columnas
-	'0', --obligatorio
+	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'15', --orden
 	'1)', --etiqueta
