@@ -201,7 +201,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 	NULL, --clase
 	NULL, --auto_reset
 	'100%', --ancho
-	'120px', --ancho_etiqueta
+	'140px', --ancho_etiqueta
 	'0', --expandir_descripcion
 	NULL, --campo_bl
 	NULL, --scroll
@@ -295,11 +295,23 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="3">
+				<span style="font-size:12px;"><strong>Evaluaci&oacute;n</strong></span></td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<span style="font-size:12px;">Recuerde que usted est&aacute; evaluando una actividad y un rol en un per&iacute;odo dado.</span></td>
+		</tr>
+		<tr>
+			<td colspan="3">
 				<span style="font-size:12px;">[ef id=eval_calificacion]</span></td>
 		</tr>
 		<tr>
 			<td colspan="3">
-				<span style="font-size:12px;">COMENTARIOS SOBRE LA EVALUACION</span></td>
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="3">
+				<strong><span style="font-size:12px;">Fundamentaci&oacute;n de la evaluaci&oacute;n</span></strong></td>
 		</tr>
 		<tr>
 			<td colspan="3">
@@ -307,7 +319,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="3">
-				<span style="font-size:12px;">[ef id=eval_plan_de_mejora]</span></td>
+				<strong><span style="font-size:12px;">[ef id=eval_plan_de_mejora]</span></strong></td>
 		</tr>
 		<tr>
 			<td colspan="3">
@@ -375,7 +387,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="3">
-				<strong><span style="font-size:12px;"><span style="font-family: arial, sans-serif;">hasta tanto no confirme la evaluaci&oacute;n,&nbsp;el docente evaluado, no podr&aacute; verla ni notificarse</span></span></strong></td>
+				<span style="font-size:12px;"><strong>Hasta tanto no confirme la evaluaci&oacute;n,&nbsp;el docente evaluado, no podr&aacute; verla ni notificarse.</strong></span></td>
 		</tr>
 		<tr>
 			<td colspan="3">
@@ -659,10 +671,10 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_calificacion', --identificador
 	'ef_radio', --elemento_formulario
 	'eval_calificacion', --columnas
-	'0', --obligatorio
+	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'4', --orden
-	'Evaluación', --etiqueta
+	NULL, --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado
@@ -822,7 +834,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'6', --orden
-	'DESVIOS Y/O NECESIDADES/S:', --etiqueta
+	'Desvíos y/o necesidades actuales y/o potenciales:', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	NULL, --colapsado
@@ -1142,7 +1154,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'10', --orden
-	'ACTIVIDADES A REALIZAR:', --etiqueta
+	'Actividades a realizar:', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	NULL, --colapsado
@@ -1462,7 +1474,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'14', --orden
-	'DESEMPEÑO ESPERADO:', --etiqueta
+	'Desempeño esperado:', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	NULL, --colapsado
