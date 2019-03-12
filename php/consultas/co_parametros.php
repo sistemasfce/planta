@@ -26,6 +26,7 @@ class co_parametros
     {
 	$sql = "SELECT *
 		FROM ciclos_lectivos
+                ORDER BY ciclo_lectivo DESC
 		";
 	return toba::db()->consultar($sql);
     }
