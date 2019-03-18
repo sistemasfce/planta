@@ -68,6 +68,18 @@ class co_autoevaluaciones
 	return toba::db()->consultar_fila($sql);
     }
 
+    function get_cantidad_fichas($ciclo)
+    {
+       $sql =   "SELECT COUNT (*) FROM (SELECT DISTINCT apellido || ', ' || nombres as nombre_completo
+			FROM 	personas, 
+				designaciones
+			WHERE  personas.persona = designaciones.persona
+				AND designaciones.designacion_tipo = 1 
+				AND designaciones.estado in (1,4,5)) as c1
+                ";
+        return toba::db()->consultar_fila($sql);
+    }
+    
     function get_ficha_pendientes($where,$ciclo)
     {
 	$sql = "SELECT DISTINCT ON (nombre_completo) *
@@ -83,7 +95,7 @@ class co_autoevaluaciones
 			WHERE personas.persona not in (SELECT persona FROM autoevaluaciones WHERE ciclo_lectivo = $ciclo)
 				AND personas.persona = designaciones.persona
 				AND designaciones.designacion_tipo = 1 
-				AND designaciones.estado in (1,4)
+				AND designaciones.estado in (1,4,5)
 		UNION
                     SELECT apellido || ', ' || nombres as nombre_completo,
                     personas.persona,
@@ -93,10 +105,13 @@ class co_autoevaluaciones
                     designaciones.ubicacion,
                     designaciones.departamento
                     FROM personas, 
-                        autoevaluaciones LEFT OUTER JOIN designaciones ON (autoevaluaciones.persona = designaciones.persona AND designaciones.estado in (1,4))
+                        autoevaluaciones LEFT OUTER JOIN designaciones ON (autoevaluaciones.persona = designaciones.persona)
+                                                                            
 
                     WHERE personas.persona = autoevaluaciones.persona 
-                    AND autoevaluaciones.confirmado = 'N'
+                        AND autoevaluaciones.confirmado = 'N'
+                        AND designaciones.estado in (1,4,5)
+                        AND autoevaluaciones.ciclo_lectivo = $ciclo
 		) as sub
 		WHERE $where AND persona in (SELECT persona FROM designaciones WHERE extract (year from fecha_desde) <= $ciclo)
 		ORDER BY nombre_completo
@@ -294,6 +309,45 @@ class co_autoevaluaciones
                 ORDER BY actividad_desc
 		";
 	return toba::db()->consultar($sql);
+    }
+    
+    // devuelve la cantidad de personas de una dimension para autoevaluarse
+    function get_personas_por_dimension($ciclo,$dimension) 
+    {
+        $sql = "
+		SELECT COUNT(DISTINCT persona)
+                FROM asignaciones
+                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+        ";
+        return toba::db()->consultar_fila($sql);
+    }
+    
+    // devuelve la cantidad de personas de una dimension que no tiene la autoeval 
+    function get_autoeval_pendientes_por_dimension($ciclo,$dimension) 
+    {
+        $sql = "
+		SELECT COUNT(DISTINCT persona)
+                FROM asignaciones
+                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                    AND persona not in (SELECT persona FROM asignaciones as asig2 
+                                        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+					AND (autoeval_calificacion is not null or autoeval_calificacion <> ''))
+        ";
+        return toba::db()->consultar_fila($sql);
+    }    
+    
+    // devuelve la cantidad de personas de una dimension que no tiene la autoeval confirmada
+    function get_autoeval_no_conf_por_dimension($ciclo,$dimension) 
+    {
+        $sql = "
+		SELECT COUNT(DISTINCT persona)
+                FROM asignaciones
+                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                    	AND persona not in (SELECT persona FROM asignaciones as asig2 
+                        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+					AND autoeval_confirmado = 'N')
+        ";
+        return toba::db()->consultar_fila($sql);
     }
 
     function get_act_pendientes($where)
