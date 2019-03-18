@@ -344,7 +344,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280001384', --objeto_cuadro_col
 	'eval_pen', --clave
 	'10', --orden
-	'No evaluaron', --titulo
+	'No fueron evaluadas', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
 	NULL, --ancho
@@ -375,7 +375,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280001385', --objeto_cuadro_col
 	'eval_pen_conf', --clave
 	'11', --orden
-	'No confirmaron', --titulo
+	'No fueron confirmadas', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
 	NULL, --ancho

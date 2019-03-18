@@ -328,31 +328,45 @@ class co_autoevaluaciones
     }
     
     // devuelve la cantidad de personas de una dimension que no tiene la autoeval 
-    function get_autoeval_pendientes_por_dimension($ciclo,$dimension) 
+    function get_pendientes_por_dimension($ciclo,$dimension,$tipo) 
     {
+        if ($tipo == 'autoeval') {
+            $where = 'persona not in (SELECT persona FROM asignaciones as asig2 '
+                . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
+                . " AND (autoeval_calificacion is not null or autoeval_calificacion <> ''))";
+        } else {
+             $where = 'persona not in (SELECT persona FROM asignaciones as asig2 '
+                . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
+                . " AND (eval_calificacion is not null or eval_calificacion <> ''))";           
+        }
         $sql = "
 		SELECT COUNT(DISTINCT persona)
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                     AND actividades.se_evalua = 'S'
-                    AND persona not in (SELECT persona FROM asignaciones as asig2 
-                                        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
-					AND (autoeval_calificacion is not null or autoeval_calificacion <> ''))
+                    AND $where
         ";
         return toba::db()->consultar_fila($sql);
     }    
     
     // devuelve la cantidad de personas de una dimension que no tiene la autoeval confirmada
-    function get_autoeval_no_conf_por_dimension($ciclo,$dimension) 
+    function get_no_conf_por_dimension($ciclo,$dimension,$tipo) 
     {
+        if ($tipo == 'autoeval') {
+            $where = 'persona not in (SELECT persona FROM asignaciones as asig2 '
+                . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
+                . " AND autoeval_estado = 1 AND autoeval_confirmado = 'N')";
+        } else {
+             $where = 'persona not in (SELECT persona FROM asignaciones as asig2 '
+                . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
+                . " AND eval_estado = 1 AND eval_confirmado = 'N')";          
+        }
         $sql = "
 		SELECT COUNT(DISTINCT persona)
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                         AND actividades.se_evalua = 'S'
-                    	AND persona not in (SELECT persona FROM asignaciones as asig2 
-                                    WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
-                                    AND autoeval_confirmado = 'N')
+                    	AND $where
         ";
         return toba::db()->consultar_fila($sql);
     }

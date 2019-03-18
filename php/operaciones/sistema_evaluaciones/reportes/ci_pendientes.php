@@ -18,56 +18,89 @@ class ci_pendientes extends planta_ci
                 $sin_ficha+=1;
         }        
         $total_personas = toba::consulta_php('co_autoevaluaciones')->get_cantidad_fichas($ciclo);
+        
         $total_docencia = toba::consulta_php('co_autoevaluaciones')->get_personas_por_dimension($ciclo,'1');
-        $sin_hacer_docencia = toba::consulta_php('co_autoevaluaciones')->get_autoeval_pendientes_por_dimension($ciclo,'1');
-        $sin_confirmar_docencia = toba::consulta_php('co_autoevaluaciones')->get_autoeval_no_conf_por_dimension($ciclo,'1'); 
+        $sin_hacer_docencia = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'1','autoeval');
+        $sin_confirmar_docencia = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'1','autoeval'); 
+        $eval_sin_hacer_docencia = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'1','eval');
+        $eval_sin_confirmar_docencia = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'1','eval');        
         $datos[0]['dimension'] = 'Docencia';
         $datos[0]['ficha_personas'] = $total_personas['count'];
         $datos[0]['ficha_pen_conf'] = count($pendientes);
         $datos[0]['ficha_pen'] = $sin_ficha;
         $datos[0]['auto_personas'] = $total_docencia['count'];
         $datos[0]['auto_pen'] = $sin_hacer_docencia['count'];
-        $datos[0]['auto_pen_conf'] = $sin_confirmar_docencia['count'];        
+        $datos[0]['auto_pen_conf'] = $sin_confirmar_docencia['count'];     
+        $datos[0]['eval_personas'] = $total_docencia['count'];
+        $datos[0]['eval_pen'] = $eval_sin_hacer_docencia['count'];
+        $datos[0]['eval_pen_conf'] = $eval_sin_confirmar_docencia['count'];       
         
         $total_ext = toba::consulta_php('co_autoevaluaciones')->get_personas_por_dimension($ciclo,'2');
-        $sin_hacer_ext = toba::consulta_php('co_autoevaluaciones')->get_autoeval_pendientes_por_dimension($ciclo,'2');
-        $sin_confirmar_ext = toba::consulta_php('co_autoevaluaciones')->get_autoeval_no_conf_por_dimension($ciclo,'2');
+        $sin_hacer_ext = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'2','autoeval');
+        $sin_confirmar_ext = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'2','autoeval');
+        $eval_sin_hacer_ext = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'2','eval');
+        $eval_sin_confirmar_ext = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'2','eval');        
         $datos[1]['dimension'] = 'Extensión';
         $datos[1]['auto_personas'] = $total_ext['count'];
         $datos[1]['auto_pen'] = $sin_hacer_ext['count'];
         $datos[1]['auto_pen_conf'] = $sin_confirmar_ext['count'];
+        $datos[1]['eval_personas'] = $total_ext['count'];
+        $datos[1]['eval_pen'] = $eval_sin_hacer_ext['count'];
+        $datos[1]['eval_pen_conf'] = $eval_sin_confirmar_ext['count'];
+        
         
         $total_inv = toba::consulta_php('co_autoevaluaciones')->get_personas_por_dimension($ciclo,'3');
-        $sin_hacer_inv = toba::consulta_php('co_autoevaluaciones')->get_autoeval_pendientes_por_dimension($ciclo,'3');
-        $sin_confirmar_inv = toba::consulta_php('co_autoevaluaciones')->get_autoeval_no_conf_por_dimension($ciclo,'3');
+        $sin_hacer_inv = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'3','autoeval');
+        $sin_confirmar_inv = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'3','autoeval');
+        $eval_sin_hacer_inv = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'3','eval');
+        $eval_sin_confirmar_inv = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'3','eval');
         $datos[2]['dimension'] = 'Investigación';
         $datos[2]['auto_personas'] = $total_inv['count'];
         $datos[2]['auto_pen'] = $sin_hacer_inv['count'];
         $datos[2]['auto_pen_conf'] = $sin_confirmar_inv['count'];
-
+        $datos[2]['eval_personas'] = $total_inv['count'];
+        $datos[2]['eval_pen'] = $eval_sin_hacer_inv['count'];
+        $datos[2]['eval_pen_conf'] = $eval_sin_confirmar_inv['count'];
+        
+        
         $total_gestion = toba::consulta_php('co_autoevaluaciones')->get_personas_por_dimension($ciclo,'4');
-        $sin_hacer_gestion = toba::consulta_php('co_autoevaluaciones')->get_autoeval_pendientes_por_dimension($ciclo,'4');
-        $sin_confirmar_gestion = toba::consulta_php('co_autoevaluaciones')->get_autoeval_no_conf_por_dimension($ciclo,'4');
+        $sin_hacer_gestion = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'4','autoeval');
+        $sin_confirmar_gestion = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'4','autoeval');
+        $eval_sin_hacer_gestion = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'4','eval');
+        $eval_sin_confirmar_gestion = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'4','eval');
         $datos[3]['dimension'] = 'Gestión';
         $datos[3]['auto_personas'] = $total_gestion['count'];
         $datos[3]['auto_pen'] = $sin_hacer_gestion['count'];
         $datos[3]['auto_pen_conf'] = $sin_confirmar_gestion['count'];
+        $datos[3]['eval_personas'] = $total_gestion['count'];
+        $datos[3]['eval_pen'] = $eval_sin_hacer_gestion['count'];
+        $datos[3]['eval_pen_conf'] = $eval_sin_confirmar_gestion['count'];        
         
         $total_for = toba::consulta_php('co_autoevaluaciones')->get_personas_por_dimension($ciclo,'5');
-        $sin_hacer_for = toba::consulta_php('co_autoevaluaciones')->get_autoeval_pendientes_por_dimension($ciclo,'5');
-        $sin_confirmar_for = toba::consulta_php('co_autoevaluaciones')->get_autoeval_no_conf_por_dimension($ciclo,'5');        
+        $sin_hacer_for = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'5','autoeval');
+        $sin_confirmar_for = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'5','autoeval');       
+        $eval_sin_hacer_for = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'5','eval');
+        $eval_sin_confirmar_for = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'5','eval');                
         $datos[4]['dimension'] = 'Formación';
         $datos[4]['auto_personas'] = $total_for['count'];
         $datos[4]['auto_pen'] = $sin_hacer_for['count'];
-        $datos[4]['auto_pen_conf'] = $sin_confirmar_for['count'];        
+        $datos[4]['auto_pen_conf'] = $sin_confirmar_for['count'];  
+        $datos[4]['eval_personas'] = $total_for['count'];
+        $datos[4]['eval_pen'] = $eval_sin_hacer_for['count'];
+        $datos[4]['eval_pen_conf'] = $eval_sin_confirmar_for['count'];       
         
         $total_noc = toba::consulta_php('co_autoevaluaciones')->get_personas_por_dimension($ciclo,'0');
-        $sin_hacer_noc = toba::consulta_php('co_autoevaluaciones')->get_autoeval_pendientes_por_dimension($ciclo,'0');
-        $sin_confirmar_noc = toba::consulta_php('co_autoevaluaciones')->get_autoeval_no_conf_por_dimension($ciclo,'0');        
+        $sin_hacer_noc = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'0','autoeval');
+        $sin_confirmar_noc = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'0','autoeval');   
+        $eval_sin_hacer_noc = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,'0','eval');
+        $eval_sin_confirmar_noc = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,'0','eval');        
         $datos[5]['dimension'] = 'NO CORRESPONDE';
         $datos[5]['auto_personas'] = $total_noc['count'];
         $datos[5]['auto_pen'] = $sin_hacer_noc['count'];
-        $datos[5]['auto_pen_conf'] = $sin_confirmar_noc['count'];           
+        $datos[5]['auto_pen_conf'] = $sin_confirmar_noc['count'];   
+        $datos[5]['eval_personas'] = $total_noc['count'];
+        $datos[5]['eval_pen'] = $eval_sin_hacer_noc['count'];
+        $datos[5]['eval_pen_conf'] = $eval_sin_confirmar_noc['count'];        
         
         //$cuadro->set_titulo('Docentes que no subieron o no confirmaron ficha docente');
         $cuadro->set_datos($datos);        

@@ -21,7 +21,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'Pendientes Sistema de evaluación - filtro', --nombre
-	NULL, --titulo
+	'Filtrar por dimensiones', --titulo
 	'0', --colapsable
 	NULL, --descripcion
 	'planta', --fuente_datos_proyecto
