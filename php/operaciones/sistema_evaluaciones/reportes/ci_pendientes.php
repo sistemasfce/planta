@@ -60,6 +60,15 @@ class ci_pendientes extends planta_ci
         $datos[4]['auto_personas'] = $total_for['count'];
         $datos[4]['auto_pen'] = $sin_hacer_for['count'];
         $datos[4]['auto_pen_conf'] = $sin_confirmar_for['count'];        
+        
+        $total_noc = toba::consulta_php('co_autoevaluaciones')->get_personas_por_dimension($ciclo,'0');
+        $sin_hacer_noc = toba::consulta_php('co_autoevaluaciones')->get_autoeval_pendientes_por_dimension($ciclo,'0');
+        $sin_confirmar_noc = toba::consulta_php('co_autoevaluaciones')->get_autoeval_no_conf_por_dimension($ciclo,'0');        
+        $datos[5]['dimension'] = 'NO CORRESPONDE';
+        $datos[5]['auto_personas'] = $total_noc['count'];
+        $datos[5]['auto_pen'] = $sin_hacer_noc['count'];
+        $datos[5]['auto_pen_conf'] = $sin_confirmar_noc['count'];           
+        
         //$cuadro->set_titulo('Docentes que no subieron o no confirmaron ficha docente');
         $cuadro->set_datos($datos);        
     }        

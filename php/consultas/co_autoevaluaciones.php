@@ -314,10 +314,15 @@ class co_autoevaluaciones
     // devuelve la cantidad de personas de una dimension para autoevaluarse
     function get_personas_por_dimension($ciclo,$dimension) 
     {
+        if ($dimension == 0)
+                $where = 'dimension not in (1,2,3,4,5)';
+        else 
+            $where = ' dimension = '.$dimension;
         $sql = "
 		SELECT COUNT(DISTINCT persona)
-                FROM asignaciones
-                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND $where 
+                AND actividades.se_evalua = 'S'
         ";
         return toba::db()->consultar_fila($sql);
     }
@@ -327,8 +332,9 @@ class co_autoevaluaciones
     {
         $sql = "
 		SELECT COUNT(DISTINCT persona)
-                FROM asignaciones
+                FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                    AND actividades.se_evalua = 'S'
                     AND persona not in (SELECT persona FROM asignaciones as asig2 
                                         WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
 					AND (autoeval_calificacion is not null or autoeval_calificacion <> ''))
@@ -341,11 +347,12 @@ class co_autoevaluaciones
     {
         $sql = "
 		SELECT COUNT(DISTINCT persona)
-                FROM asignaciones
+                FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                        AND actividades.se_evalua = 'S'
                     	AND persona not in (SELECT persona FROM asignaciones as asig2 
-                        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
-					AND autoeval_confirmado = 'N')
+                                    WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                                    AND autoeval_confirmado = 'N')
         ";
         return toba::db()->consultar_fila($sql);
     }
