@@ -18,6 +18,8 @@ class ci_ver_personas_actividades extends planta_ci
         //ficha: no subieron 
         if ($columna == 2) {
             $datos = array();
+            $where = "(ficha_docente_path is null OR ficha_docente_path = '')";
+            $datos = toba::consulta_php('co_autoevaluaciones')->get_ficha_pendientes($where,$ciclo);
         }  
         //ficha: no confirmaron
         if ($columna == 3) {   
