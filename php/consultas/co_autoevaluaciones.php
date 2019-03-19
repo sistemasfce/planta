@@ -311,36 +311,45 @@ class co_autoevaluaciones
 	return toba::db()->consultar($sql);
     }
     
-    // devuelve la cantidad de personas de una dimension para autoevaluarse
-    function get_personas_por_dimension($ciclo,$dimension) 
+    // devuelve la cantidad de personas de una dimension para autoevaluarse, si el parametro personas es 1
+    // pone un distinct para obtener la cantidad de personas, sino devuelve la cantidad de actividades por personas repetidas
+    function get_personas_por_dimension($ciclo,$dimension,$personas) 
     {
         if ($dimension == 0)
                 $where = 'dimension not in (1,2,3,4,5)';
         else 
             $where = ' dimension = '.$dimension;
+        if ($personas == 1)
+            $distintos = 'DISTINCT';
+        else
+            $distintos = '';
         $sql = "
-		SELECT COUNT(DISTINCT persona)
+		SELECT COUNT($distintos persona)
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
-                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND $where 
+                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND autoeval_estado = 1 AND eval_estado = 1 AND $where 
                 AND actividades.se_evalua = 'S'
         ";
         return toba::db()->consultar_fila($sql);
     }
     
     // devuelve la cantidad de personas de una dimension que no tiene la autoeval 
-    function get_pendientes_por_dimension($ciclo,$dimension,$tipo) 
+    function get_pendientes_por_dimension($ciclo,$dimension,$tipo,$personas) 
     {
         if ($tipo == 'autoeval') {
             $where = 'persona not in (SELECT persona FROM asignaciones as asig2 '
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND (autoeval_calificacion is not null or autoeval_calificacion <> ''))";
+                . " AND autoeval_estado = 1 AND (autoeval_calificacion is not null or autoeval_calificacion <> ''))";
         } else {
              $where = 'persona not in (SELECT persona FROM asignaciones as asig2 '
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND (eval_calificacion is not null or eval_calificacion <> ''))";           
+                . " AND eval_estado = 1 AND (eval_calificacion is not null or eval_calificacion <> ''))";           
         }
+        if ($personas == 1)
+            $distintos = 'DISTINCT';
+        else
+            $distintos = '';
         $sql = "
-		SELECT COUNT(DISTINCT persona)
+		SELECT COUNT($distintos persona)
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                     AND actividades.se_evalua = 'S'
@@ -350,19 +359,23 @@ class co_autoevaluaciones
     }    
     
     // devuelve la cantidad de personas de una dimension que no tiene la autoeval confirmada
-    function get_no_conf_por_dimension($ciclo,$dimension,$tipo) 
+    function get_no_conf_por_dimension($ciclo,$dimension,$tipo,$personas) 
     {
         if ($tipo == 'autoeval') {
             $where = 'persona not in (SELECT persona FROM asignaciones as asig2 '
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND autoeval_estado = 1 AND autoeval_confirmado = 'N')";
+                . " AND autoeval_estado = 1 AND autoeval_confirmado = 'S')";
         } else {
              $where = 'persona not in (SELECT persona FROM asignaciones as asig2 '
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND eval_estado = 1 AND eval_confirmado = 'N')";          
+                . " AND eval_estado = 1 AND eval_confirmado = 'S')";          
         }
+        if ($personas == 1)
+            $distintos = 'DISTINCT';
+        else
+            $distintos = '';
         $sql = "
-		SELECT COUNT(DISTINCT persona)
+		SELECT COUNT($distintos persona)
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                         AND actividades.se_evalua = 'S'
@@ -371,6 +384,24 @@ class co_autoevaluaciones
         return toba::db()->consultar_fila($sql);
     }
 
+    function get_notifico_por_dimension($ciclo,$dimension,$personas) 
+    {
+        if ($personas == 1)
+            $distintos = 'DISTINCT';
+        else
+            $distintos = '';
+        $sql = "
+        SELECT COUNT($distintos persona)
+        FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                AND actividades.se_evalua = 'S'
+                AND persona not in (SELECT persona FROM asignaciones as asig2 
+                        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension 
+                        AND eval_notificacion = 'S')
+        ";
+        return toba::db()->consultar_fila($sql);
+    }
+    
     function get_act_pendientes($where)
     {
 	$sql = "
