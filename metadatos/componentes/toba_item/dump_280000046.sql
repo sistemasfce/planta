@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[280000046]--  Consulta individual (total) 
+--[280000046]--  Consulta individual 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,7 +23,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Consulta individual (total)', --nombre
+	'Consulta individual', --nombre
 	NULL, --descripcion
 	'280000002', --punto_montaje
 	NULL, --actividad_accion

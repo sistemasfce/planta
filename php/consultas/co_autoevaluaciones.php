@@ -313,7 +313,7 @@ class co_autoevaluaciones
     
     // devuelve la cantidad de personas de una dimension para autoevaluarse, si el parametro personas es 1
     // pone un distinct para obtener la cantidad de personas, sino devuelve la cantidad de actividades por personas repetidas
-    function get_personas_por_dimension($ciclo,$dimension,$personas) 
+    function get_personas_por_dimension($ciclo,$dimension,$personas,$cuenta=1) 
     {
         if ($dimension == 0)
                 $where = 'dimension not in (1,2,3,4,5)';
@@ -323,13 +323,27 @@ class co_autoevaluaciones
             $distintos = 'DISTINCT';
         else
             $distintos = '';
+        if ($cuenta == 1) {
+            $select = 'SELECT COUNT('.$distintos.' asignaciones.persona)';
+            $order = '';
+        } 
+        else {
+            $select = "SELECT $distintos personas.apellido || ', ' || personas.nombres as persona_nombre, actividades.descripcion as actividad_desc";
+            $order = ' ORDER BY persona_nombre, actividad_desc';
+        }
+        
         $sql = "
-		SELECT COUNT($distintos persona)
+		$select
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND autoeval_estado = 1 AND eval_estado = 1 AND $where 
                 AND actividades.se_evalua = 'S'
+                $order
         ";
-        return toba::db()->consultar_fila($sql);
+         if ($cuenta == 1) 
+             return toba::db()->consultar_fila($sql);
+         else
+             return toba::db()->consultar($sql);
     }
     
     // devuelve la cantidad de personas de una dimension que no tiene la autoeval 
