@@ -10,7 +10,8 @@ class ci_ver_personas_actividades extends planta_ci
         $param = toba::memoria()->get_parametros();
         $dimension = $param['dimension'];
         $columna = $param['columna'];
-        $ciclo = 2018;
+        $parametro_ciclo = toba::consulta_php('co_parametros')->get_parametro_valor('PAR_AUTOEVAL_CICLO');
+        $ciclo =  $parametro_ciclo['valor_num'];
         //ficha: cantidad de personas
         if ($columna == 1) {
            $datos = toba::consulta_php('co_autoevaluaciones')->get_cantidad_fichas($ciclo,0);        

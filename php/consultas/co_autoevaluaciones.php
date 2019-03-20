@@ -343,7 +343,7 @@ class co_autoevaluaciones
             $select = "SELECT $distintos personas.apellido || ', ' || personas.nombres as persona_nombre, actividades.descripcion as actividad_desc";
             $order = ' ORDER BY persona_nombre, actividad_desc';
         }  
-        $sql = "
+        $sql = "-- get_personas_por_dimension
 		$select
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
@@ -381,7 +381,7 @@ class co_autoevaluaciones
             $select = "SELECT $distintos personas.apellido || ', ' || personas.nombres as persona_nombre, actividades.descripcion as actividad_desc";
             $order = ' ORDER BY persona_nombre, actividad_desc';
         }        
-        $sql = "
+        $sql = "-- get_pendientes_por_dimension
 		$select
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
@@ -420,7 +420,7 @@ class co_autoevaluaciones
             $select = "SELECT $distintos personas.apellido || ', ' || personas.nombres as persona_nombre, actividades.descripcion as actividad_desc";
             $order = ' ORDER BY persona_nombre, actividad_desc';
         }  
-        $sql = "
+        $sql = "-- get_no_conf_por_dimension
 		$select
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
@@ -449,7 +449,7 @@ class co_autoevaluaciones
             $select = "SELECT $distintos personas.apellido || ', ' || personas.nombres as persona_nombre, actividades.descripcion as actividad_desc";
             $order = ' ORDER BY persona_nombre, actividad_desc';
         }          
-        $sql = "
+        $sql = "-- get_notifico_por_dimension
             $select
             FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
             LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
@@ -533,6 +533,91 @@ class co_autoevaluaciones
 		";
 
 	return toba::db()->consultar_fila($sql);
+    }
+    
+    function get_matriz_por_sede($ciclo,$dimension)
+    {
+        $sql = "SELECT 	(SELECT codigo FROM ubicaciones WHERE ubicacion = c1.ubicacion) as sede, 
+	(SELECT descripcion FROM departamentos WHERE departamento = c1.departamento) as depto, 
+	c1.count as auto_personas, 
+	c2.count as auto_pen,
+	c3.count as auto_pen_conf,
+        c1.count as eval_personas,
+	c4.count as eval_pen,
+	c5.count as eval_pen_conf,
+        c1.count as noti_personas,
+	c6.count as noti_notificados
+
+        FROM (
+
+        SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        FROM asignaciones 
+                        LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                        LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND autoeval_estado = 1 AND eval_estado = 1 AND  dimension = $dimension 
+                        AND actividades.se_evalua = 'S'
+        GROUP BY asignaciones.ubicacion, asignaciones.departamento) as c1
+
+        LEFT JOIN 
+
+        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                        LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                            AND actividades.se_evalua = 'S'
+                            AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 
+                            WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension AND autoeval_estado = 1 
+                            AND (autoeval_calificacion is not null or autoeval_calificacion <> ''))
+        GROUP BY asignaciones.ubicacion, asignaciones.departamento) c2 ON c1.ubicacion = c2.ubicacion AND c1.departamento = c2.departamento
+
+        LEFT JOIN
+
+        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+                        FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                        LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                                AND actividades.se_evalua = 'S'
+                                AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 
+                                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                                AND autoeval_estado = 1 AND autoeval_confirmado = 'S')
+        GROUP BY asignaciones.ubicacion, asignaciones.departamento) c3 ON c1.ubicacion = c3.ubicacion AND c1.departamento = c3.departamento
+
+        LEFT JOIN
+
+        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                        LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                            AND actividades.se_evalua = 'S'
+                            AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 
+                            WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension AND eval_estado = 1 
+                            AND (eval_calificacion is not null or eval_calificacion <> ''))		
+        GROUP BY asignaciones.ubicacion, asignaciones.departamento) c4 ON c1.ubicacion = c4.ubicacion AND c1.departamento = c4.departamento
+
+        LEFT JOIN
+
+        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                        LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+                        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                                AND actividades.se_evalua = 'S'
+                                AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 
+                                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension AND eval_estado = 1 AND eval_confirmado = 'S')
+        GROUP BY asignaciones.ubicacion, asignaciones.departamento) c5 ON c1.ubicacion = c5.ubicacion AND c1.departamento = c5.departamento
+
+        LEFT JOIN
+
+        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                    LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+        WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                        AND actividades.se_evalua = 'S'
+                        AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 
+                                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension 
+                                AND eval_notificacion = 'S')
+        GROUP BY asignaciones.ubicacion, asignaciones.departamento) c6 ON c1.ubicacion = c6.ubicacion AND c1.departamento = c6.departamento
+        ";
+        return toba::db()->consultar($sql);
     }
 }
 
