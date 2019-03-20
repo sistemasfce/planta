@@ -535,8 +535,12 @@ class co_autoevaluaciones
 	return toba::db()->consultar_fila($sql);
     }
     
-    function get_matriz_por_sede($ciclo,$dimension)
+    function get_matriz_por_sede($ciclo,$dimension,$personas)
     {
+        if ($personas == 1)
+            $distintos = 'DISTINCT';
+        else
+            $distintos = '';
         $sql = "SELECT 	(SELECT codigo FROM ubicaciones WHERE ubicacion = c1.ubicacion) as sede, 
 	(SELECT descripcion FROM departamentos WHERE departamento = c1.departamento) as depto, 
 	c1.count as auto_personas, 
@@ -550,7 +554,7 @@ class co_autoevaluaciones
 
         FROM (
 
-        SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT($distintos asignaciones.persona)
         FROM asignaciones 
                         LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                         LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
@@ -560,7 +564,7 @@ class co_autoevaluaciones
 
         LEFT JOIN 
 
-        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT($distintos asignaciones.persona)
         FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                         LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
         WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
@@ -572,7 +576,7 @@ class co_autoevaluaciones
 
         LEFT JOIN
 
-        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT($distintos asignaciones.persona)
                         FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                         LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
         WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
@@ -584,7 +588,7 @@ class co_autoevaluaciones
 
         LEFT JOIN
 
-        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT($distintos asignaciones.persona)
         FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                         LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
         WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
@@ -596,7 +600,7 @@ class co_autoevaluaciones
 
         LEFT JOIN
 
-        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT($distintos asignaciones.persona)
         FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                         LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
                         WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
@@ -607,7 +611,7 @@ class co_autoevaluaciones
 
         LEFT JOIN
 
-        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT(DISTINCT asignaciones.persona)
+        (SELECT asignaciones.ubicacion, asignaciones.departamento,COUNT($distintos asignaciones.persona)
         FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                     LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
         WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension

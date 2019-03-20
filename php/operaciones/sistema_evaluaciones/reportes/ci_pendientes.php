@@ -87,6 +87,21 @@ class ci_pendientes extends planta_ci
         
     }
     
+    function conf__cuadro_sede_act(planta_ei_cuadro $cuadro)
+    {
+        $where = $this->dep('filtro')->get_sql_where();  
+        if ($where == '1=1')
+                return;
+        
+        $parametro_ciclo = toba::consulta_php('co_parametros')->get_parametro_valor('PAR_AUTOEVAL_CICLO');
+        $ciclo =  $parametro_ciclo['valor_num'];
+        $filtro = $this->dep('filtro')->get_datos();
+        $dimension = $filtro['dimension']['valor'];
+        $por_persona = 0;
+        
+        $datos = toba::consulta_php('co_autoevaluaciones')->get_matriz_por_sede($ciclo,$dimension,$por_persona);
+        $cuadro->set_datos($datos); 
+    }
     //-----------------------------------------------------------------------------------
     //---- filtro -----------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
