@@ -128,13 +128,13 @@ class ci_pendientes extends planta_ci
         $where = '1=1';
         $sin_ficha=0;
         $path = toba::proyecto()->get_www();
+        
+        $total_personas = toba::consulta_php('co_autoevaluaciones')->get_cantidad_fichas($ciclo);
         $pendientes = toba::consulta_php('co_autoevaluaciones')->get_ficha_pendientes($where,$ciclo);
         foreach ($pendientes as $pen) {
             if ($pen['confirmado'] == '')
                 $sin_ficha+=1;
         }        
-        $total_personas = toba::consulta_php('co_autoevaluaciones')->get_cantidad_fichas($ciclo);
-        
         $dimension = 1;
         $total_docencia = toba::consulta_php('co_autoevaluaciones')->get_personas_por_dimension($ciclo,$dimension,$por_persona);
         $sin_hacer_docencia = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,$dimension,'autoeval',$por_persona);
