@@ -74,10 +74,10 @@ class co_autoevaluaciones
             $order = '';
         } 
         else {
-            $select = "SELECT nombre_completo as persona_nombre";
+            $select = "SELECT nombre_completo as persona_nombre, '' as actividad_desc";
             $order = ' ORDER BY persona_nombre';
         } 
-       $sql =   "$select FROM (SELECT DISTINCT apellido || ', ' || nombres as nombre_completo
+       $sql =   "$select FROM (SELECT DISTINCT apellido || ', ' || nombres as nombre_completo  
 			FROM 	personas, 
 				designaciones
 			WHERE  personas.persona = designaciones.persona

@@ -16,8 +16,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba', --clase_proyecto
 	'toba_ei_cuadro', --clase
 	'280000002', --punto_montaje
-	NULL, --subclase
-	NULL, --subclase_archivo
+	'cuadro_dim', --subclase
+	'operaciones/sistema_evaluaciones/reportes/cuadro_dim.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'Pendientes Sistema de evaluación - cuadro_dim', --nombre
@@ -65,7 +65,7 @@ INSERT INTO apex_objeto_cuadro (objeto_cuadro_proyecto, objeto_cuadro, titulo, s
 	'0', --siempre_con_titulo
 	'0', --exportar_paginado
 	'1', --exportar
-	'1', --exportar_rtf
+	'0', --exportar_rtf
 	NULL, --pdf_propiedades
 	NULL, --pdf_respetar_paginacion
 	NULL, --asociacion_columnas
