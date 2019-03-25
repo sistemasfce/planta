@@ -51,11 +51,11 @@ class ci_autoevaluacion extends planta_ci
             // si la ficha NO esta confirmada
             else {
                 $this->evento('constancia')->desactivar();
-                $confirma_act = toba::consulta_php('co_autoevaluaciones')->get_actividades_sin_confirmar($persona,$ciclo);
-                if ($confirma_act[0]['autoeval_confirmado'] == 'N') {
+                //$confirma_act = toba::consulta_php('co_autoevaluaciones')->get_actividades_sin_confirmar($persona,$ciclo);
+                //if ($confirma_act[0]['autoeval_confirmado'] == 'N') {
                     // si todavia no confirmo sus actividades
-                    $form->ef('confirmado')->set_solo_lectura(true);
-                }                        
+                    //$form->ef('confirmado')->set_solo_lectura(true);
+                //}                        
             }
         } else {
             // si la ficha NO esta cargada desactivamos el boton siguiente            
