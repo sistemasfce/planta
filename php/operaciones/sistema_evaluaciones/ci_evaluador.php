@@ -152,11 +152,11 @@ class ci_evaluador extends planta_ci
     function evt__form__modificacion($datos)
     {
         if (($datos['eval_calificacion'] == 'Insatisfactorio' or $datos['calificacion'] == 'Poco satisfactorio') and $datos['plan_de_mejora'] == 'N') {
-            $this->informar_msg("Si la evaluaci√≥n NO es satistactoria se debe solicitar un plan de mejora","error");
+            $this->informar_msg("Si la evaluaciÛn NO es satistactoria se debe solicitar un plan de mejora","error");
             return;
         } 
         if ($datos['eval_notificacion'] == 'S') {
-            $this->informar_msg("La evaluaci√≥n ya fue notificada por el docente, no se puede modificar","error");
+            $this->informar_msg("La evaluaciÛn ya fue notificada por el docente, no se puede modificar","error");
             return;
         } 
         if ($datos['eval_confirmado'] == 'S' and $datos['eval_calificacion'] == null) {
@@ -199,10 +199,10 @@ class ci_evaluador extends planta_ci
 
         if (isset($docente['mail'])) {
             $asunto = "Sistema de evaluacion de actividades FCE";
-            $cuerpo_mail = '<p>'."A trav√©s del presente correo le informamos que Ud. fue evaluado en una de sus actividades en el marco del SISTEMA DE EVALUACION DE ACTIVIDADES. ".
-                    " Para poder conocer la evaluaci√≥n deber√° ingresar al sistema, dentro del apartado INFORME ANUAL DE DESEMPE√ëO, y hacer click en Mis evaluaciones. ".
-                    " All√≠ se desplegara el listado de sus actividades y por cada una de ellas, al ingresar a trav√©s del icono de la lupa, podr√° acceder a la evaluaci√≥n y los comentarios realizados por el evaluador. ".
-                    " Al pie de la evaluaci√≥n, deber√° notificarse de la misma, tildando el campo notificaci√≥n, contando con el espacio de observaciones para comentarios. ".
+            $cuerpo_mail = '<p>'."A travÈs del presente correo le informamos que Ud. fue evaluado en una de sus actividades en el marco del SISTEMA DE EVALUACION DE ACTIVIDADES. ".
+                    " Para poder conocer la evaluaciÛn deber· ingresar al sistema, dentro del apartado INFORME ANUAL DE DESEMPE—O, y hacer click en Mis evaluaciones. ".
+                    " AllÌ se desplegara el listado de sus actividades y por cada una de ellas, al ingresar a travÈs del icono de la lupa, podr· acceder a la evaluaciÛn y los comentarios realizados por el evaluador. ".
+                    " Al pie de la evaluaciÛn, deber· notificarse de la misma, tildando el campo notificaciÛn, contando con el espacio de observaciones para comentarios. ".
                     '</p>';
             $mail = new toba_mail($docente['mail'], $asunto, $cuerpo_mail);
             $mail->set_html(true);
