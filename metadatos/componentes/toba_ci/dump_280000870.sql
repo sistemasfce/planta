@@ -86,6 +86,30 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
+	'280000766', --dep_id
+	'280000870', --objeto_consumidor
+	'280000876', --objeto_proveedor
+	'cuadro_autoeval', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'planta', --proyecto
+	'280000767', --dep_id
+	'280000870', --objeto_consumidor
+	'280000877', --objeto_proveedor
+	'cuadro_eval', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	NULL  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'planta', --proyecto
 	'280000760', --dep_id
 	'280000870', --objeto_consumidor
 	'280000871', --objeto_proveedor
@@ -140,4 +164,18 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'280000870', --objeto_ci
 	'1', --orden
 	'280000761'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'planta', --proyecto
+	'280000266', --pantalla
+	'280000870', --objeto_ci
+	'2', --orden
+	'280000766'  --dep_id
+);
+INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
+	'planta', --proyecto
+	'280000266', --pantalla
+	'280000870', --objeto_ci
+	'3', --orden
+	'280000767'  --dep_id
 );

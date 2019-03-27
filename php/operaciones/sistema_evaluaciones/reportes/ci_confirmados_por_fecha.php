@@ -15,6 +15,36 @@ class ci_confirmados_por_fecha extends planta_ci
         $datos = toba::consulta_php('co_autoevaluaciones')->get_fichas_por_fecha($where);
         $cuadro->set_datos($datos);       
     }    
+
+    //-----------------------------------------------------------------------------------
+    //---- cuadro -----------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------
+
+    function conf__cuadro_autoeval(planta_ei_cuadro $cuadro)
+    {
+        $where = $this->dep('filtro')->get_sql_where();  
+        if ($where == '1=1')
+            return;
+        $filtro = $this->dep('filtro')->get_datos();
+        $fecha = $filtro['fecha']['valor'];
+        $datos = toba::consulta_php('co_autoevaluaciones')->get_autoevaluaciones_por_fecha($where);
+        $cuadro->set_datos($datos);       
+    }   
+
+    //-----------------------------------------------------------------------------------
+    //---- cuadro -----------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------
+
+    function conf__cuadro_eval(planta_ei_cuadro $cuadro)
+    {
+        $where = $this->dep('filtro')->get_sql_where();  
+        if ($where == '1=1')
+            return;
+        $filtro = $this->dep('filtro')->get_datos();
+        $fecha = $filtro['fecha']['valor'];
+        $datos = toba::consulta_php('co_evaluaciones')->get_evaluaciones_por_fecha($where);
+        $cuadro->set_datos($datos);       
+    }  
     
     //-----------------------------------------------------------------------------------
     //---- filtro -----------------------------------------------------------------------

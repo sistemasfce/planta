@@ -171,6 +171,41 @@ class co_autoevaluaciones
              ORDER BY nombre_completo";
         return toba::db()->consultar($sql);
     }
+
+    function get_autoevaluaciones_por_fecha($where)
+    {
+        $fecha_confirma = str_replace('fecha','autoeval_confirmado_fecha',$where);
+        $fecha_sube = str_replace('fecha','autoeval_calificacion_fecha',$where);
+        
+        $sql = "SELECT personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        'Confirmó autoevaluación' as accion,
+                        actividades.descripcion as actividad_desc,
+                        autoeval_confirmado_fecha as fecha,
+                        ubicaciones.codigo as ubicacion_desc,
+                        dimensiones.codigo as dimension_desc
+                FROM asignaciones LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+                            LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                            LEFT OUTER JOIN ubicaciones ON asignaciones.ubicacion = ubicaciones.ubicacion
+                            LEFT OUTER JOIN dimensiones ON asignaciones.dimension = dimensiones.dimension
+                WHERE $fecha_confirma
+                
+                UNION
+
+                SELECT personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        'Cargó autoevaluación' as accion,
+                        actividades.descripcion as actividad_desc,
+                        autoeval_calificacion_fecha as fecha,
+                        ubicaciones.codigo as ubicacion_desc,
+                        dimensiones.codigo as dimension_desc
+                FROM asignaciones LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+                            LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                            LEFT OUTER JOIN ubicaciones ON asignaciones.ubicacion = ubicaciones.ubicacion
+                            LEFT OUTER JOIN dimensiones ON asignaciones.dimension = dimensiones.dimension
+                WHERE $fecha_sube
+
+             ORDER BY nombre_completo";
+        return toba::db()->consultar($sql);
+    }
     
     function get_autoevaluaciones_control_personas($where=null)
     {

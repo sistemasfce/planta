@@ -163,6 +163,10 @@ class ci_autoevaluacion extends planta_ci
 
     function evt__form_act__modificacion($datos)
     {
+        if ($datos['autoeval_confirmado'] == 'S')
+            $datos['autoeval_confirmado_fecha'] = date('Y-m-d');
+        if ($datos['autoeval_calificacion'] != '')
+            $datos['autoeval_calificacion_fecha'] = date('Y-m-d');
         $this->tabla('asignaciones')->set($datos);
         $this->tabla('asignaciones')->sincronizar();
         $this->tabla('asignaciones')->resetear();
@@ -272,6 +276,10 @@ class ci_autoevaluacion extends planta_ci
             $datos['autoeval_informe_otros_path'] = $destino;
         }
         $datos['ciclo_lectivo'] = $ciclo;
+        if ($datos['autoeval_confirmado'] == 'S')
+            $datos['autoeval_confirmado_fecha'] = date('Y-m-d');
+        if ($datos['autoeval_calificacion'] != '')
+            $datos['autoeval_calificacion_fecha'] = date('Y-m-d');
 
         $this->tabla('asignaciones')->set($datos);
         $this->tabla('asignaciones')->sincronizar();

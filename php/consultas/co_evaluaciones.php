@@ -59,6 +59,56 @@ class co_evaluaciones
 	return toba::db()->consultar($sql);
     }
 
+    function get_evaluaciones_por_fecha($where)
+    {
+        $fecha_confirma = str_replace('fecha','eval_confirmado_fecha',$where);
+        $fecha_sube = str_replace('fecha','eval_calificacion_fecha',$where);
+        $fecha_noti = str_replace('fecha','eval_notificacion_fecha',$where);
+        
+        $sql = "SELECT personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        'Evaluación fue confirmada' as accion,
+                        actividades.descripcion as actividad_desc,
+                        eval_confirmado_fecha as fecha,
+                        ubicaciones.codigo as ubicacion_desc,
+                        dimensiones.codigo as dimension_desc
+                FROM asignaciones LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+                            LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                            LEFT OUTER JOIN ubicaciones ON asignaciones.ubicacion = ubicaciones.ubicacion
+                            LEFT OUTER JOIN dimensiones ON asignaciones.dimension = dimensiones.dimension
+                WHERE $fecha_confirma
+                
+                UNION
+
+                SELECT personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        'Calificaron su evaluación' as accion,
+                        actividades.descripcion as actividad_desc,
+                        eval_calificacion_fecha as fecha,
+                        ubicaciones.codigo as ubicacion_desc,
+                        dimensiones.codigo as dimension_desc
+                FROM asignaciones LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+                            LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                            LEFT OUTER JOIN ubicaciones ON asignaciones.ubicacion = ubicaciones.ubicacion
+                            LEFT OUTER JOIN dimensiones ON asignaciones.dimension = dimensiones.dimension
+                WHERE $fecha_sube
+
+                UNION
+
+                SELECT personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        'Notificó su evaluación' as accion,
+                        actividades.descripcion as actividad_desc,
+                        eval_notificacion_fecha as fecha,
+                        ubicaciones.codigo as ubicacion_desc,
+                        dimensiones.codigo as dimension_desc
+                FROM asignaciones LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
+                            LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
+                            LEFT OUTER JOIN ubicaciones ON asignaciones.ubicacion = ubicaciones.ubicacion
+                            LEFT OUTER JOIN dimensiones ON asignaciones.dimension = dimensiones.dimension
+                WHERE $fecha_noti
+                    
+             ORDER BY nombre_completo";
+        return toba::db()->consultar($sql);
+    }    
+    
     function get_evaluacion_tabla($asignacion)
     {
 	$sql = "SELECT *

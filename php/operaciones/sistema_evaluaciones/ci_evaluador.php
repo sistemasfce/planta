@@ -170,8 +170,12 @@ class ci_evaluador extends planta_ci
         if ($datos['eval_confirmado'] == 'N') {
             $this->informar_msg("Los datos se guardaron correctamente, pero la evaluación aún no fue confirmada","notificacion");
         } 
-
-        $datos['fecha'] = date('Y-m-d');
+        if ($datos['eval_confirmado'] == 'S') {
+            $datos['eval_confirmado_fecha'] = date('Y-m-d');
+        }  
+        if ($datos['eval_calificacion'] != '') {
+            $datos['eval_calificacion_fecha'] = date('Y-m-d');
+        }  
         $asignacion = toba::memoria()->get_dato('asignacion');  
         $datos['asignacion'] = $asignacion;
         $this->tabla('asignaciones')->set($datos);
