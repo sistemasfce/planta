@@ -41,50 +41,6 @@ class ci_pendientes extends planta_ci
         
         $datos = toba::consulta_php('co_autoevaluaciones')->get_matriz_por_sede($ciclo,$dimension,$por_persona);
         $cuadro->set_datos($datos); 
-        
-//        $datos[0]['sede'] = 'TW';
-//        $datos[0]['depto'] = 'CONTABLE';
-//        $datos[1]['sede'] = 'TW';
-//        $datos[1]['depto'] = 'DERECHO';
-//        $datos[2]['sede'] = 'TW';
-//        $datos[2]['depto'] = 'ADMINISTRACION';
-//        $datos[3]['sede'] = 'TW';
-//        $datos[3]['depto'] = 'ECONOMIA';
-//        $datos[4]['sede'] = 'TW';
-//        $datos[4]['depto'] = 'MATEMATICA';
-//        $datos[5]['sede'] = 'TW';
-//        $datos[5]['depto'] = 'HUMANIDADES';
-//        $datos[6]['sede'] = 'TW';
-//        $datos[6]['depto'] = 'SIN DEPTO';        
-//        $datos[7]['sede'] = 'CR';
-//        $datos[7]['depto'] = 'CONTABLE';
-//        $datos[8]['sede'] = 'CR';
-//        $datos[8]['depto'] = 'DERECHO';
-//        $datos[9]['sede'] = 'CR';
-//        $datos[9]['depto'] = 'ADMINISTRACION';
-//        $datos[10]['sede'] = 'CR';
-//        $datos[10]['depto'] = 'ECONOMIA';
-//        $datos[11]['sede'] = 'CR';
-//        $datos[11]['depto'] = 'MATEMATICA';
-//        $datos[12]['sede'] = 'CR';
-//        $datos[12]['depto'] = 'HUMANIDADES';
-//        $datos[13]['sede'] = 'CR';
-//        $datos[13]['depto'] = 'SIN DEPTO';        
-//        $datos[14]['sede'] = 'ES';
-//        $datos[14]['depto'] = 'CONTABLE';
-//        $datos[15]['sede'] = 'ES';
-//        $datos[15]['depto'] = 'DERECHO';
-//        $datos[16]['sede'] = 'ES';
-//        $datos[16]['depto'] = 'ADMINISTRACION';
-//        $datos[17]['sede'] = 'ES';
-//        $datos[17]['depto'] = 'ECONOMIA';
-//        $datos[18]['sede'] = 'ES';
-//        $datos[18]['depto'] = 'MATEMATICA';
-//        $datos[19]['sede'] = 'ES';
-//        $datos[19]['depto'] = 'HUMANIDADES';
-//        $datos[20]['sede'] = 'ES';
-//        $datos[20]['depto'] = 'SIN DEPTO'; 
-        
     }
     
     function conf__cuadro_sede_act(planta_ei_cuadro $cuadro)

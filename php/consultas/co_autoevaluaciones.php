@@ -149,6 +149,29 @@ class co_autoevaluaciones
         return toba::db()->consultar($sql);
     }
     
+    function get_fichas_por_fecha($where)
+    {
+        $fecha_confirma = str_replace('fecha','confirmado_fecha',$where);
+        $fecha_sube = str_replace('fecha','ficha_docente_fecha',$where);
+        
+        $sql = "SELECT personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        'Confirmó ficha' as accion,
+                        confirmado_fecha as fecha
+                FROM autoevaluaciones LEFT OUTER JOIN personas ON autoevaluaciones.persona = personas.persona
+                WHERE $fecha_confirma
+                
+                UNION
+
+                SELECT personas.apellido || ', ' || personas.nombres as nombre_completo,
+                        'Aubió ficha' as accion,
+                        ficha_docente_fecha as fecha
+                FROM autoevaluaciones LEFT OUTER JOIN personas ON autoevaluaciones.persona = personas.persona
+                WHERE $fecha_sube
+
+             ORDER BY nombre_completo";
+        return toba::db()->consultar($sql);
+    }
+    
     function get_autoevaluaciones_control_personas($where=null)
     {
 	if (!isset($where)) $where = '1=1';
