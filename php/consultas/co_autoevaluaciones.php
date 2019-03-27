@@ -163,7 +163,7 @@ class co_autoevaluaciones
                 UNION
 
                 SELECT personas.apellido || ', ' || personas.nombres as nombre_completo,
-                        'Aubió ficha' as accion,
+                        'Subió ficha' as accion,
                         ficha_docente_fecha as fecha
                 FROM autoevaluaciones LEFT OUTER JOIN personas ON autoevaluaciones.persona = personas.persona
                 WHERE $fecha_sube
