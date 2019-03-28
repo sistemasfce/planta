@@ -67,8 +67,9 @@ class co_autoevaluaciones
 	return toba::db()->consultar_fila($sql);
     }
 
-    function get_cantidad_fichas($ciclo,$cuenta=1)
+    function get_cantidad_fichas($ciclo,$cuenta=1,$departamento,$ubicacion)
     {
+        $where = '';
         if ($cuenta == 1) {
             $select = 'SELECT COUNT (*) ';
             $order = '';
@@ -77,12 +78,15 @@ class co_autoevaluaciones
             $select = "SELECT nombre_completo as persona_nombre, '' as actividad_desc";
             $order = ' ORDER BY persona_nombre';
         } 
+        if($departamento and $ubicacion){
+            $where = "AND designaciones.ubicacion = $ubicacion AND designaciones.departamento = $departamento";
+        }
        $sql =   "$select FROM (SELECT DISTINCT apellido || ', ' || nombres as nombre_completo  
 			FROM 	personas, 
 				designaciones
 			WHERE  personas.persona = designaciones.persona
 				AND designaciones.designacion_tipo = 1 
-				AND designaciones.estado in (1,4,5)) as c1
+				AND designaciones.estado in (1,4,5) $where) as c1
                                 $order
                 ";
         if ($cuenta == 1) 
@@ -109,8 +113,12 @@ class co_autoevaluaciones
         return toba::db()->consultar($sql);
     }
     
-    function get_ficha_pendientes($where,$ciclo)
+    function get_ficha_pendientes($where,$ciclo,$departamento,$ubicacion)
     {
+        $where2 = '';
+        if($departamento and $ubicacion){
+            $where2 = "AND designaciones.ubicacion = $ubicacion AND designaciones.departamento = $departamento";
+        }
 	$sql = "SELECT DISTINCT ON (nombre_completo) *
 		FROM (	SELECT apellido || ', ' || nombres as nombre_completo,
                         apellido || ', ' || nombres as persona_nombre,
@@ -126,6 +134,7 @@ class co_autoevaluaciones
 				AND personas.persona = designaciones.persona
 				AND designaciones.designacion_tipo = 1 
 				AND designaciones.estado in (1,4,5)
+                                $where2
 		UNION
                     SELECT apellido || ', ' || nombres as nombre_completo,
                     apellido || ', ' || nombres as persona_nombre,
@@ -141,6 +150,7 @@ class co_autoevaluaciones
                         AND autoevaluaciones.confirmado = 'N'
                         AND designaciones.estado in (1,4,5)
                         AND autoevaluaciones.ciclo_lectivo = $ciclo
+                        $where2
 		) as sub
 		WHERE $where AND persona in (SELECT persona FROM designaciones WHERE extract (year from fecha_desde) <= $ciclo)
 		ORDER BY nombre_completo
@@ -612,16 +622,21 @@ class co_autoevaluaciones
     
     function get_matriz_por_sede($ciclo,$dimension,$personas)
     {
+        $path = toba::proyecto()->get_www();
         if ($personas == 1)
             $distintos = 'DISTINCT';
         else
             $distintos = '';
+        $ficha_personas= "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=1&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c7.count||'</a>'";
+        $ficha_pen= "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=2&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c8.count||'</a>'";
         $sql = "
         SELECT 
             (SELECT codigo FROM ubicaciones WHERE ubicacion = c1.ubicacion) as sede, 
             (SELECT descripcion FROM departamentos WHERE departamento = c1.departamento) as depto, 
-            c7.count as ficha_personas,
-            c8.count as ficha_pen,
+           -- c7.count as ficha_personas,
+            ".$ficha_personas." as ficha_personas,
+           -- c8.count as ficha_pen,
+            ".$ficha_pen." as ficha_pen,
             round(c8.count::numeric * 100/c7.count::numeric,2) as ficha_pen_porc,
             c9.count as ficha_pen_conf,
             round(c9.count::numeric * 100/c7.count::numeric,2) as ficha_pen_conf_porc,

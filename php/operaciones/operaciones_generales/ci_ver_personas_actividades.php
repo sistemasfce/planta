@@ -12,18 +12,27 @@ class ci_ver_personas_actividades extends planta_ci
         $param = toba::memoria()->get_parametros();
         $dimension = $param['dimension'];
         $columna = $param['columna'];
+        $departamento = 0;
+        $ubicacion = 0;
+        
+        if(sizeof($param)>2){
+            $departamento = $param['departamento'];
+            $ubicacion = $param['ubicacion'];
+        }
+        ei_arbol($departamento);
+        ei_arbol($ubicacion);
         $parametro_ciclo = toba::consulta_php('co_parametros')->get_parametro_valor('PAR_AUTOEVAL_CICLO');
         $ciclo =  $parametro_ciclo['valor_num'];
         //ficha: cantidad de personas
         if ($columna == 1) {
-           $this->s__datos = toba::consulta_php('co_autoevaluaciones')->get_cantidad_fichas($ciclo,0);    
+           $this->s__datos = toba::consulta_php('co_autoevaluaciones')->get_cantidad_fichas($ciclo,0,$departamento,$ubicacion);    
            
         }
         //ficha: no subieron 
         if ($columna == 2) {
             $datos = array();
             $where = "(ficha_docente_path is null OR ficha_docente_path = '')";
-            $this->s__datos = toba::consulta_php('co_autoevaluaciones')->get_ficha_pendientes($where,$ciclo);
+            $this->s__datos = toba::consulta_php('co_autoevaluaciones')->get_ficha_pendientes($where,$ciclo,$departamento,$ubicacion);
         }  
         //ficha: no confirmaron
         if ($columna == 3) {   
