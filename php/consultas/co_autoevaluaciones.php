@@ -545,6 +545,7 @@ class co_autoevaluaciones
                 AND autoeval_estado = 1 AND eval_estado = 1
                 AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 
                         WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension 
+                            AND autoeval_estado = 1 AND eval_estado = 1
                         AND eval_notificacion = 'S')
             $order
         ";
