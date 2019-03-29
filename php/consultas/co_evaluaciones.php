@@ -191,7 +191,7 @@ class co_evaluaciones
 			AND asig2.persona = personas.persona
 			AND asig2.actividad = actividades.actividad
                         AND asignaciones.persona <> asig2.persona
-                        AND (asignaciones.fecha_desde < '$ciclo-11-01' AND asignaciones.dimension <> 4)
+            --            AND (asignaciones.fecha_desde < '$ciclo-11-01' AND asignaciones.dimension <> 4)
 			$where
 			$ciclo_actual
 		ORDER BY actividad_desc, ubicacion_desc, evaluado_nombre_completo
@@ -251,8 +251,8 @@ class co_evaluaciones
             		AND asig2.responsable = actividades_a_evaluar.responsable
 			AND asig2.ciclo_lectivo = $ciclo
                         AND asignaciones.persona <> asig2.persona
-                        AND ( (asig2.fecha_desde < '$ciclo-11-01' AND asig2.dimension = 4) or (asig2.fecha_desde < '$ciclo-12-01' AND asig2.dimension <> 4) )
-                        AND asignaciones.fecha_desde < '$ciclo-11-01'
+                --        AND ( (asig2.fecha_desde < '$ciclo-11-01' AND asig2.dimension = 4) or (asig2.fecha_desde < '$ciclo-12-01' AND asig2.dimension <> 4) )
+                --        AND asignaciones.fecha_desde < '$ciclo-11-01'
                         $where
 			$ciclo_actual
 		";
@@ -362,8 +362,8 @@ class co_evaluaciones
             AND asig2.responsable = ambitos_a_evaluar.responsable
             AND asig2.ciclo_lectivo = $ciclo
             AND asignaciones.persona <> asig2.persona
-            AND ( (asig2.fecha_desde < '$ciclo-11-01' AND asig2.dimension = 4) or (asig2.fecha_desde < '$ciclo-11-01' AND asig2.dimension <> 4) )
-            AND asignaciones.fecha_desde < '$ciclo-11-01'
+        --    AND ( (asig2.fecha_desde < '$ciclo-11-01' AND asig2.dimension = 4) or (asig2.fecha_desde < '$ciclo-11-01' AND asig2.dimension <> 4) )
+        --    AND asignaciones.fecha_desde < '$ciclo-11-01'
 	    $where
             $ciclo_actual
             ";
@@ -382,7 +382,7 @@ class co_evaluaciones
                     AND asignaciones.ciclo_lectivo = $ciclo
                     AND asignaciones.autoeval_estado = 1 
                     AND asignaciones.actividad in (427,688,687,443) -- secretario academico, colaborador academico
-                    AND asignaciones.fecha_desde < '$ciclo-11-01'
+                    AND asignaciones.fecha_desde < '$ciclo-12-01'
                 ";
         return toba::db()->consultar($sql);
     }
