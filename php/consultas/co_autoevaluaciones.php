@@ -633,9 +633,9 @@ class co_autoevaluaciones
         SELECT 
             (SELECT codigo FROM ubicaciones WHERE ubicacion = c1.ubicacion) as sede, 
             (SELECT descripcion FROM departamentos WHERE departamento = c1.departamento) as depto, 
-           -- c7.count as ficha_personas,
+          
             ".$ficha_personas." as ficha_personas,
-           -- c8.count as ficha_pen,
+          
             ".$ficha_pen." as ficha_pen,
             round(c8.count::numeric * 100/c7.count::numeric,2) as ficha_pen_porc,
             c9.count as ficha_pen_conf,
@@ -752,7 +752,9 @@ class co_autoevaluaciones
         
         LEFT JOIN
         
-            (       SELECT ubicacion, departamento, COUNT(DISTINCT designaciones.persona)
+            (SELECT ubicacion, departamento, sum(cc9.count) as count
+             FROM(     
+                    SELECT ubicacion, departamento, COUNT(DISTINCT designaciones.persona)
 
                     FROM personas, 
                         autoevaluaciones LEFT OUTER JOIN designaciones ON (autoevaluaciones.persona = designaciones.persona)
@@ -771,6 +773,8 @@ class co_autoevaluaciones
 				AND designaciones.designacion_tipo = 1 
 				AND designaciones.estado in (1,4,5)
 				AND dimension = $dimension
+                        GROUP BY ubicacion, departamento
+                    ) as cc9
                     GROUP BY ubicacion, departamento
             ) c9 ON c1.ubicacion = c9.ubicacion AND c1.departamento = c9.departamento
         ";
