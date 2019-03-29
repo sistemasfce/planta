@@ -432,7 +432,8 @@ class co_autoevaluaciones
 		$select
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
-                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND autoeval_estado = 1 AND eval_estado = 1 AND $where 
+                WHERE ciclo_lectivo = $ciclo AND estado = 15 "
+                . "AND autoeval_estado = 1 AND eval_estado = 1 AND $where 
                 AND actividades.se_evalua = 'S'
                 $order
         ";
@@ -472,6 +473,7 @@ class co_autoevaluaciones
                 LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                     AND actividades.se_evalua = 'S'
+                    AND autoeval_estado = 1 AND eval_estado = 1
                     AND $where
                 $order        
         ";
@@ -540,6 +542,7 @@ class co_autoevaluaciones
             LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
             WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                 AND actividades.se_evalua = 'S'
+                AND autoeval_estado = 1 AND eval_estado = 1
                 AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 
                         WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension 
                         AND eval_notificacion = 'S')
