@@ -86,7 +86,8 @@ class co_autoevaluaciones
 				designaciones
 			WHERE  personas.persona = designaciones.persona
 				AND designaciones.designacion_tipo = 1 
-				AND designaciones.estado in (1,4,5) $where) as c1
+				AND designaciones.estado in (1,4,5) 
+                                AND designaciones.categoria <> 6 $where) as c1
                                 $order
                 ";
         if ($cuenta == 1) 
@@ -134,6 +135,7 @@ class co_autoevaluaciones
 				AND personas.persona = designaciones.persona
 				AND designaciones.designacion_tipo = 1 
 				AND designaciones.estado in (1,4,5)
+                                AND designaciones.categoria <> 6
                                 $where2
 		UNION
                     SELECT apellido || ', ' || nombres as nombre_completo,
@@ -149,6 +151,7 @@ class co_autoevaluaciones
                     WHERE personas.persona = autoevaluaciones.persona 
                         AND autoevaluaciones.confirmado = 'N'
                         AND designaciones.estado in (1,4,5)
+                        AND designaciones.categoria <> 6
                         AND autoevaluaciones.ciclo_lectivo = $ciclo
                         $where2
 		) as sub
