@@ -346,7 +346,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -377,7 +377,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -408,7 +408,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -439,7 +439,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -470,7 +470,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -501,7 +501,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -563,7 +563,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -594,7 +594,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -625,7 +625,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -656,7 +656,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -687,7 +687,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL, --mostrar_pdf
 	NULL, --pdf_propiedades
 	NULL, --desabilitado
-	'1', --total
+	'0', --total
 	NULL, --total_cc
 	'0', --usar_vinculo
 	NULL, --vinculo_carpeta
@@ -733,84 +733,3 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL  --evento_asociado
 );
 --- FIN Grupo de desarrollo 280
-
-------------------------------------------------------------
--- apex_objeto_cuadro_col_cc
-------------------------------------------------------------
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001438', --objeto_cuadro_col
-	'1'  --total
-);
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001439', --objeto_cuadro_col
-	'1'  --total
-);
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001440', --objeto_cuadro_col
-	'1'  --total
-);
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001441', --objeto_cuadro_col
-	'1'  --total
-);
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001442', --objeto_cuadro_col
-	'1'  --total
-);
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001443', --objeto_cuadro_col
-	'1'  --total
-);
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001445', --objeto_cuadro_col
-	'1'  --total
-);
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001446', --objeto_cuadro_col
-	'1'  --total
-);
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001447', --objeto_cuadro_col
-	'1'  --total
-);
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001448', --objeto_cuadro_col
-	'1'  --total
-);
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000065', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000868', --objeto_cuadro
-	'280001449', --objeto_cuadro_col
-	'1'  --total
-);

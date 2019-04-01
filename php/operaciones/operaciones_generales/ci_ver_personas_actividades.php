@@ -23,23 +23,23 @@ class ci_ver_personas_actividades extends planta_ci
         $ciclo =  $parametro_ciclo['valor_num'];
         //ficha: cantidad de personas
 
-        if($dimension == 1){
-            if ($columna == 1) {
-               $this->s__datos = toba::consulta_php('co_autoevaluaciones')->get_cantidad_fichas($ciclo,0,$departamento,$ubicacion);    
 
-            }
-            //ficha: no subieron 
-            if ($columna == 2) {
-                $datos = array();
-                $where = "(ficha_docente_path is null OR ficha_docente_path = '')";
-                $this->s__datos = toba::consulta_php('co_autoevaluaciones')->get_ficha_pendientes($where,$ciclo,$departamento,$ubicacion);
-            }  
-            //ficha: no confirmaron
-            if ($columna == 3) {   
-               $where = '1=1';
-               $this->s__datos = toba::consulta_php('co_autoevaluaciones')->get_ficha_pendientes($where,$ciclo,$departamento,$ubicacion);
-            }        
+        if ($columna == 1) {
+           $this->s__datos = toba::consulta_php('co_autoevaluaciones')->get_cantidad_fichas($ciclo,0,$departamento,$ubicacion,$dimension);    
+
         }
+        //ficha: no subieron 
+        if ($columna == 2) {
+            $datos = array();
+            $where = "(ficha_docente_path is null OR ficha_docente_path = '')";
+            $this->s__datos = toba::consulta_php('co_autoevaluaciones')->get_ficha_pendientes($where,$ciclo,$departamento,$ubicacion,$dimension);
+        }  
+        //ficha: no confirmaron
+        if ($columna == 3) {   
+           $where = '1=1';
+           $this->s__datos = toba::consulta_php('co_autoevaluaciones')->get_ficha_pendientes($where,$ciclo,$departamento,$ubicacion,$dimension);
+        }        
+     
          
         //autoeval: cantidad de personas
         if ($columna == 4) {

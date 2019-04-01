@@ -67,8 +67,13 @@ class co_autoevaluaciones
 	return toba::db()->consultar_fila($sql);
     }
 
-    function get_cantidad_fichas($ciclo,$cuenta=1,$departamento,$ubicacion)
+    function get_cantidad_fichas($ciclo,$cuenta=1,$departamento,$ubicacion,$dimension=-1)
     {
+        if ($dimension == -1) {
+            $dim_where = '';
+        } else {
+            $dim_where = " AND designaciones.dimension = $dimension ";
+        }
         $where = '';
         if ($cuenta == 1) {
             $select = 'SELECT COUNT (*) ';
@@ -87,6 +92,7 @@ class co_autoevaluaciones
 			WHERE  personas.persona = designaciones.persona
 				AND designaciones.designacion_tipo = 1 
 				AND designaciones.estado in (1,4,5) 
+                                $dim_where
                                 AND designaciones.categoria <> 6 $where) as c1
                                 $order
                 ";
@@ -114,8 +120,13 @@ class co_autoevaluaciones
         return toba::db()->consultar($sql);
     }
     
-    function get_ficha_pendientes($where,$ciclo,$departamento,$ubicacion)
+    function get_ficha_pendientes($where,$ciclo,$departamento,$ubicacion,$dimension=-1)
     {
+        if ($dimension == -1) {
+            $dim_where = '';
+        } else {
+            $dim_where = " AND designaciones.dimension = $dimension ";
+        }
         $where2 = '';
         if($departamento and $ubicacion){
             $where2 = "AND designaciones.ubicacion = $ubicacion AND designaciones.departamento = $departamento";
@@ -136,6 +147,7 @@ class co_autoevaluaciones
 				AND designaciones.designacion_tipo = 1 
 				AND designaciones.estado in (1,4,5)
                                 AND designaciones.categoria <> 6
+                                $dim_where
                                 $where2
 		UNION
                     SELECT apellido || ', ' || nombres as nombre_completo,
@@ -152,6 +164,7 @@ class co_autoevaluaciones
                         AND autoevaluaciones.confirmado = 'N'
                         AND designaciones.estado in (1,4,5)
                         AND designaciones.categoria <> 6
+                        $dim_where
                         AND autoevaluaciones.ciclo_lectivo = $ciclo
                         $where2
 		) as sub
@@ -770,6 +783,8 @@ class co_autoevaluaciones
         
         LEFT JOIN 
         
+
+
             (SELECT ubicacion,
                         departamento,
                     COUNT($distintos designaciones.persona)
