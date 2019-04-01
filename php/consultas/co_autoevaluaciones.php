@@ -633,6 +633,8 @@ class co_autoevaluaciones
             $distintos = '';
         $ficha_personas= "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=1&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c7.count||'</a>'";
         $ficha_pen= "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=2&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c8.count||'</a>'";
+        $ficha_pen_conf = "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=3&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c9.count||'</a>'";
+        
         $sql = "
         SELECT 
             (SELECT codigo FROM ubicaciones WHERE ubicacion = c1.ubicacion) as sede, 
@@ -732,7 +734,7 @@ class co_autoevaluaciones
         
             (SELECT ubicacion,
                         departamento,
-                    COUNT(designaciones.persona)
+                    COUNT($distintos designaciones.persona)
 
             FROM 	personas, 
 				designaciones
