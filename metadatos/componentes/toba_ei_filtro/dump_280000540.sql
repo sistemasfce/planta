@@ -199,18 +199,18 @@ INSERT INTO apex_objeto_ei_filtro_col (objeto_ei_filtro_col, objeto_ei_filtro, o
 	'1', --inicial
 	'2', --orden
 	NULL, --estado_defecto
-	'1', --opciones_es_multiple
-	'ef_multi_seleccion_check', --opciones_ef
-	NULL, --carga_metodo
+	'0', --opciones_es_multiple
+	'ef_combo', --opciones_ef
+	'get_ciclos_lectivos', --carga_metodo
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
-	NULL, --carga_consulta_php
+	'280000002', --carga_consulta_php
 	NULL, --carga_sql
 	'planta', --carga_fuente
-	'2016,2017', --carga_lista
-	NULL, --carga_col_clave
-	NULL, --carga_col_desc
+	NULL, --carga_lista
+	'ciclo_lectivo', --carga_col_clave
+	'ciclo_lectivo', --carga_col_desc
 	'0', --carga_permite_no_seteado
 	NULL, --carga_no_seteado
 	NULL, --carga_no_seteado_ocultar
