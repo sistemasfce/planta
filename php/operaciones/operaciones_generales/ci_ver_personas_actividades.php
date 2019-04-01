@@ -19,8 +19,6 @@ class ci_ver_personas_actividades extends planta_ci
             $departamento = $param['departamento'];
             $ubicacion = $param['ubicacion'];
         }
-        ei_arbol($departamento);
-        ei_arbol($ubicacion);
         $parametro_ciclo = toba::consulta_php('co_parametros')->get_parametro_valor('PAR_AUTOEVAL_CICLO');
         $ciclo =  $parametro_ciclo['valor_num'];
         //ficha: cantidad de personas

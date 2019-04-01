@@ -454,13 +454,13 @@ class co_autoevaluaciones
             $where2 = "AND asignaciones.ubicacion = $ubicacion AND asignaciones.departamento = $departamento";
         }        
         if ($tipo == 'autoeval') {
-            $where = 'asignaciones.persona in (SELECT persona FROM asignaciones as asig2 '
-                . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND autoeval_estado = 1 AND (autoeval_calificacion is null or autoeval_calificacion = ''))";
+            $where = 'asignaciones.persona in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as ac2 ON asig2.actividad = ac2.actividad '
+                . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension . ""
+                . " AND autoeval_estado = 1 AND ac2.se_evalua = 'S' AND (autoeval_calificacion is null or autoeval_calificacion = ''))";
         } else {
-             $where = 'asignaciones.persona  in (SELECT persona FROM asignaciones as asig2 '
+             $where = 'asignaciones.persona  in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as ac2 ON asig2.actividad = ac2.actividad '
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND eval_estado = 1 AND (eval_calificacion is null or eval_calificacion = ''))";           
+                . " AND eval_estado = 1 AND ac2.se_evalua = 'S' AND (eval_calificacion is null or eval_calificacion = ''))";           
         }
         if ($personas == 1)
             $distintos = 'DISTINCT';
