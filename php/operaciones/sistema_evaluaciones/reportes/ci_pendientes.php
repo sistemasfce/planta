@@ -84,14 +84,14 @@ class ci_pendientes extends planta_ci
         $where = '1=1';
         $sin_ficha=0;
         $path = toba::proyecto()->get_www();
-        
+        $dimension = 1;
         $total_personas = toba::consulta_php('co_autoevaluaciones')->get_cantidad_fichas($ciclo);
         $pendientes = toba::consulta_php('co_autoevaluaciones')->get_ficha_pendientes($where,$ciclo);
         foreach ($pendientes as $pen) {
             if ($pen['confirmado'] == '')
                 $sin_ficha+=1;
         }        
-        $dimension = 1;
+        
         $total_docencia = toba::consulta_php('co_autoevaluaciones')->get_personas_por_dimension($ciclo,$dimension,$por_persona);
         $sin_hacer_docencia = toba::consulta_php('co_autoevaluaciones')->get_pendientes_por_dimension($ciclo,$dimension,'autoeval',$por_persona);
         $sin_confirmar_docencia = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,$dimension,'autoeval',$por_persona); 
@@ -99,10 +99,10 @@ class ci_pendientes extends planta_ci
         $eval_sin_confirmar_docencia = toba::consulta_php('co_autoevaluaciones')->get_no_conf_por_dimension($ciclo,$dimension,'eval',$por_persona);        
         $eval_notificado = toba::consulta_php('co_autoevaluaciones')->get_notifico_por_dimension($ciclo,$dimension,$por_persona);
         $datos[0]['dimension'] = 'Docencia';
-        $datos[0]['ficha_personas'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=1&columna=1 target='_blank'>".$total_personas['count']."</a>"; 
-        $datos[0]['ficha_pen'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=1&columna=2 target='_blank'>".$sin_ficha."</a>"; 
+        $datos[0]['ficha_personas'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=-1&columna=1 target='_blank'>".$total_personas['count']."</a>"; 
+        $datos[0]['ficha_pen'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=-1&columna=2 target='_blank'>".$sin_ficha."</a>"; 
         $datos[0]['ficha_pen_porc'] = $sin_ficha / $total_personas['count'] * 100;      
-        $datos[0]['ficha_pen_conf'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=1&columna=3 target='_blank'>".count($pendientes)."</a>"; 
+        $datos[0]['ficha_pen_conf'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=-1&columna=3 target='_blank'>".count($pendientes)."</a>"; 
         $datos[0]['ficha_pen_conf_porc'] = count($pendientes) / $total_personas['count'] * 100; 
         
         $datos[0]['auto_personas'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=1&columna=4 target='_blank'>".$total_docencia['count']."</a>";
