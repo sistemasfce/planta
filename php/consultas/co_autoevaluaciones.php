@@ -410,8 +410,11 @@ class co_autoevaluaciones
     
     // devuelve la cantidad de personas de una dimension para autoevaluarse, si el parametro personas es 1
     // pone un distinct para obtener la cantidad de personas, sino devuelve la cantidad de actividades por personas repetidas
-    function get_personas_por_dimension($ciclo,$dimension,$personas,$cuenta=1) 
+    function get_personas_por_dimension($ciclo,$dimension,$personas,$cuenta=1,$departamento,$ubicacion) 
     {
+        if($departamento and $ubicacion){
+            $where2 = "AND asignaciones.ubicacion = $ubicacion AND asignaciones.departamento = $departamento";
+        }
         if ($dimension == 0)
                 $where = 'dimension not in (1,2,3,4,5)';
         else 
@@ -433,7 +436,7 @@ class co_autoevaluaciones
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 "
-                . "AND autoeval_estado = 1 AND eval_estado = 1 AND $where 
+                . "AND autoeval_estado = 1 AND eval_estado = 1 AND $where $where2
                 AND actividades.se_evalua = 'S'
                 $order
         ";
@@ -444,8 +447,11 @@ class co_autoevaluaciones
     }
     
     // devuelve la cantidad de personas de una dimension que no tiene la autoeval 
-    function get_pendientes_por_dimension($ciclo,$dimension,$tipo,$personas,$cuenta=1) 
+    function get_pendientes_por_dimension($ciclo,$dimension,$tipo,$personas,$cuenta=1,$departamento,$ubicacion) 
     {
+        if($departamento and $ubicacion){
+            $where2 = "AND asignaciones.ubicacion = $ubicacion AND asignaciones.departamento = $departamento";
+        }        
         if ($tipo == 'autoeval') {
             $where = 'asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 '
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
@@ -474,7 +480,7 @@ class co_autoevaluaciones
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                     AND actividades.se_evalua = 'S'
                     AND autoeval_estado = 1 AND eval_estado = 1
-                    AND $where
+                    AND $where $where2
                 $order        
         ";
         if ($cuenta == 1) 
@@ -484,8 +490,11 @@ class co_autoevaluaciones
     }    
     
     // devuelve la cantidad de personas de una dimension que no tiene la autoeval confirmada
-    function get_no_conf_por_dimension($ciclo,$dimension,$tipo,$personas,$cuenta=1) 
+    function get_no_conf_por_dimension($ciclo,$dimension,$tipo,$personas,$cuenta=1,$departamento,$ubicacion) 
     {
+        if($departamento and $ubicacion){
+            $where2 = "AND asignaciones.ubicacion = $ubicacion AND asignaciones.departamento = $departamento";
+        }
         if ($tipo == 'autoeval') {
             $where = 'asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 '
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
@@ -513,7 +522,7 @@ class co_autoevaluaciones
                 LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                         AND actividades.se_evalua = 'S'
-                    	AND $where
+                    	AND $where $where2
                 $order            
         ";
         if ($cuenta == 1) 
@@ -522,8 +531,11 @@ class co_autoevaluaciones
              return toba::db()->consultar($sql);
     }
 
-    function get_notifico_por_dimension($ciclo,$dimension,$personas,$cuenta=1) 
+    function get_notifico_por_dimension($ciclo,$dimension,$personas,$cuenta=1,$departamento,$ubicacion) 
     {
+        if($departamento and $ubicacion){
+            $where2 = "AND asignaciones.ubicacion = $ubicacion AND asignaciones.departamento = $departamento";
+        }
         if ($personas == 1)
             $distintos = 'DISTINCT';
         else
@@ -634,7 +646,14 @@ class co_autoevaluaciones
         $ficha_personas= "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=1&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c7.count||'</a>'";
         $ficha_pen= "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=2&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c8.count||'</a>'";
         $ficha_pen_conf = "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=3&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c9.count||'</a>'";
-        
+        $auto_personas = "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=4&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c1.count||'</a>'";
+        $auto_pen = "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=5&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c2.count||'</a>'";
+        $auto_pen_conf = "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=6&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c3.count||'</a>'";
+        $eval_personas = "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=7&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c1.count||'</a>'";
+        $eval_pen = "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=8&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c4.count||'</a>'";
+        $eval_pen_conf = "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=9&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c5.count||'</a>'";
+        $noti_personas = "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=10&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c1.count||'</a>'";
+        $noti_notificados = "'<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=".$dimension."&columna=11&departamento='||c1.departamento||'&ubicacion='||c1.ubicacion||' target=''_blank''>'||c6.count||'</a>'";
         $sql = "
         SELECT 
             (SELECT codigo FROM ubicaciones WHERE ubicacion = c1.ubicacion) as sede, 
@@ -644,20 +663,20 @@ class co_autoevaluaciones
           
             ".$ficha_pen." as ficha_pen,
             round(c8.count::numeric * 100/c7.count::numeric,2) as ficha_pen_porc,
-            c9.count as ficha_pen_conf,
+            ".$ficha_pen_conf." as ficha_pen_conf,
             round(c9.count::numeric * 100/c7.count::numeric,2) as ficha_pen_conf_porc,
-            c1.count as auto_personas, 
-            c2.count as auto_pen,
+            ".$auto_personas." as auto_personas, 
+            ".$auto_pen." as auto_pen,
             round(c2.count::numeric * 100/c1.count::numeric,2) as auto_pen_porc,
-            c3.count as auto_pen_conf,
+            ".$auto_pen_conf." as auto_pen_conf,
             round(c3.count::numeric * 100/c1.count::numeric,2) as auto_pen_conf_porc,
-            c1.count as eval_personas,
-            c4.count as eval_pen,
+            ".$eval_personas." as eval_personas,
+            ".$eval_pen." as eval_pen,
             round(c4.count::numeric * 100/c1.count::numeric,2) as eval_pen_porc,
-            c5.count as eval_pen_conf,
+            ".$eval_pen_conf." as eval_pen_conf,
             round(c5.count::numeric * 100/c1.count::numeric,2) as eval_pen_conf_porc,
-            c1.count as noti_personas,
-            c6.count as noti_notificados,
+            ".$noti_personas." as noti_personas,
+            ".$noti_notificados." as noti_notificados,
             round(c6.count::numeric * 100/c1.count::numeric,2) as noti_notificados_porc
 
         FROM (
