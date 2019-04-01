@@ -449,17 +449,18 @@ class co_autoevaluaciones
     // devuelve la cantidad de personas de una dimension que no tiene la autoeval 
     function get_pendientes_por_dimension($ciclo,$dimension,$tipo,$personas,$cuenta=1,$departamento,$ubicacion) 
     {
+        $evaluacion = '';
         if($departamento and $ubicacion){
             $where2 = "AND asignaciones.ubicacion = $ubicacion AND asignaciones.departamento = $departamento";
         }        
         if ($tipo == 'autoeval') {
-            $where = 'asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 '
+            $where = 'asignaciones.persona in (SELECT persona FROM asignaciones as asig2 '
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND autoeval_estado = 1 AND (autoeval_calificacion is not null or autoeval_calificacion <> ''))";
+                . " AND autoeval_estado = 1 AND (autoeval_calificacion is null or autoeval_calificacion = ''))";
         } else {
-             $where = 'asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 '
+             $where = 'asignaciones.persona  in (SELECT persona FROM asignaciones as asig2 '
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND eval_estado = 1 AND (eval_calificacion is not null or eval_calificacion <> ''))";           
+                . " AND eval_estado = 1 AND (eval_calificacion is null or eval_calificacion = ''))";           
         }
         if ($personas == 1)
             $distintos = 'DISTINCT';
@@ -471,7 +472,14 @@ class co_autoevaluaciones
         } 
         else {
             $select = "SELECT $distintos personas.apellido || ', ' || personas.nombres as persona_nombre, actividades.descripcion as actividad_desc";
+           
             $order = ' ORDER BY persona_nombre, actividad_desc';
+            if ($tipo == 'autoeval') {
+                 $evaluacion = " AND (autoeval_calificacion is null or autoeval_calificacion = '')";
+            } else {
+                $evaluacion = " AND (eval_calificacion is null or eval_calificacion = '')";
+            }
+                
         }        
         $sql = "-- get_pendientes_por_dimension
 		$select
@@ -480,7 +488,7 @@ class co_autoevaluaciones
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                     AND actividades.se_evalua = 'S'
                     AND autoeval_estado = 1 AND eval_estado = 1
-                    AND $where $where2
+                    AND $where $where2 $evaluacion
                 $order        
         ";
         if ($cuenta == 1) 
