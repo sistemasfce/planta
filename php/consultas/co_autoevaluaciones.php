@@ -504,7 +504,6 @@ class co_autoevaluaciones
     // devuelve la cantidad de personas de una dimension que no tiene la autoeval confirmada
     function get_no_conf_por_dimension($ciclo,$dimension,$tipo,$personas,$cuenta=1,$departamento,$ubicacion) 
     {
-        $evaluacion = '';
         if ($personas == 1) {
             $distintos = 'DISTINCT';
             $pers_act = 'persona';
@@ -517,13 +516,13 @@ class co_autoevaluaciones
             $where2 = "AND asignaciones.ubicacion = $ubicacion AND asignaciones.departamento = $departamento";
         }
         if ($tipo == 'autoeval') {
-            $where = 'asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as ac2 ON asig2.actividad = ac2.actividad '
+            $where = "asignaciones.$pers_act in (SELECT $pers_act FROM asignaciones as asig2 LEFT OUTER JOIN actividades as ac2 ON asig2.actividad = ac2.actividad "
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND autoeval_estado = 1 AND ac2.se_evalua = 'S' AND autoeval_confirmado = 'S')";
+                . " AND autoeval_estado = 1 AND ac2.se_evalua = 'S' AND (autoeval_confirmado = 'N' or autoeval_confirmado is null or autoeval_confirmado = ''))";
         } else {
-             $where = 'asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as ac2 ON asig2.actividad = ac2.actividad '
+             $where = "asignaciones.$pers_act in (SELECT $pers_act FROM asignaciones as asig2 LEFT OUTER JOIN actividades as ac2 ON asig2.actividad = ac2.actividad "
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND eval_estado = 1 AND ac2.se_evalua = 'S' AND eval_confirmado = 'S')";          
+                . " AND eval_estado = 1 AND ac2.se_evalua = 'S' AND (autoeval_confirmado = 'N' or autoeval_confirmado is null or autoeval_confirmado = ''))";          
         }
         if ($cuenta == 1) {
             $select = 'SELECT COUNT('.$distintos.' asignaciones.persona)';
@@ -532,11 +531,6 @@ class co_autoevaluaciones
         else {
             $select = "SELECT $distintos personas.apellido || ', ' || personas.nombres as persona_nombre, actividades.descripcion as actividad_desc";
             $order = ' ORDER BY persona_nombre, actividad_desc';
-            if ($tipo == 'autoeval') {
-                 $evaluacion = " AND (autoeval_calificacion is null or autoeval_calificacion = '')";
-            } else {
-                $evaluacion = " AND (eval_calificacion is null or eval_calificacion = '')";
-            }
         }  
         $sql = "-- get_no_conf_por_dimension
 		$select
@@ -544,7 +538,7 @@ class co_autoevaluaciones
                 LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                         AND actividades.se_evalua = 'S'
-                    	AND $where $where2 $evaluacion
+                    	AND $where $where2 
                 $order            
         ";
         if ($cuenta == 1) 
