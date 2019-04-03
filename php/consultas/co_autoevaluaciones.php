@@ -538,7 +538,7 @@ class co_autoevaluaciones
         } else {
              $where = "asignaciones.$pers_act in (SELECT $pers_act FROM asignaciones as asig2 LEFT OUTER JOIN actividades as ac2 ON asig2.actividad = ac2.actividad "
                 . 'WHERE ciclo_lectivo = '.$ciclo.' AND estado = 15 AND dimension = '.$dimension 
-                . " AND eval_estado = 1 AND ac2.se_evalua = 'S' AND (autoeval_confirmado = 'N' or autoeval_confirmado is null or autoeval_confirmado = ''))";          
+                . " AND eval_estado = 1 AND ac2.se_evalua = 'S' AND (eval_confirmado = 'N' or eval_confirmado is null or eval_confirmado = ''))";          
         }
         if ($cuenta == 1) {
             $select = 'SELECT COUNT('.$distintos.' asignaciones.persona)';
