@@ -728,7 +728,7 @@ class co_autoevaluaciones
                             LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
             WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                                 AND actividades.se_evalua = 'S'
-                                AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
+                                AND asignaciones.persona in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
                                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension AND autoeval_estado = 1 
                                 AND act2.se_evalua = 'S' AND  (autoeval_calificacion is not null or autoeval_calificacion <> ''))
             GROUP BY asignaciones.ubicacion, asignaciones.departamento) c2 ON c1.ubicacion = c2.ubicacion AND c1.departamento = c2.departamento
@@ -740,7 +740,7 @@ class co_autoevaluaciones
                             LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
             WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                                     AND actividades.se_evalua = 'S'
-                                    AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
+                                    AND asignaciones.persona in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
                                     WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                                     AND act2.se_evalua = 'S' AND autoeval_estado = 1 AND autoeval_confirmado = 'S')
             GROUP BY asignaciones.ubicacion, asignaciones.departamento) c3 ON c1.ubicacion = c3.ubicacion AND c1.departamento = c3.departamento
@@ -752,7 +752,7 @@ class co_autoevaluaciones
                             LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
             WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                                 AND actividades.se_evalua = 'S'
-                                AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
+                                AND asignaciones.persona in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
                                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension AND eval_estado = 1 
                                 AND act2.se_evalua = 'S' AND (eval_calificacion is not null or eval_calificacion <> ''))		
             GROUP BY asignaciones.ubicacion, asignaciones.departamento) c4 ON c1.ubicacion = c4.ubicacion AND c1.departamento = c4.departamento
@@ -764,7 +764,7 @@ class co_autoevaluaciones
                             LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
                             WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                                     AND actividades.se_evalua = 'S'
-                                    AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
+                                    AND asignaciones.persona in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
                                     WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension AND eval_estado = 1 
                                         AND act2.se_evalua = 'S' AND eval_confirmado = 'S')
             GROUP BY asignaciones.ubicacion, asignaciones.departamento) c5 ON c1.ubicacion = c5.ubicacion AND c1.departamento = c5.departamento
@@ -777,7 +777,7 @@ class co_autoevaluaciones
             WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
                             AND autoeval_estado = 1 AND eval_estado = 1
                             AND actividades.se_evalua = 'S'
-                            AND asignaciones.persona not in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
+                            AND asignaciones.persona in (SELECT persona FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
                                     WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension 
                                     AND act2.se_evalua = 'S' AND eval_notificacion = 'S')
             GROUP BY asignaciones.ubicacion, asignaciones.departamento) c6 ON c1.ubicacion = c6.ubicacion AND c1.departamento = c6.departamento
