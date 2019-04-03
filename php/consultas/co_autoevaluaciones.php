@@ -730,7 +730,7 @@ class co_autoevaluaciones
                                 AND actividades.se_evalua = 'S'
                                 AND asignaciones.asignacion in (SELECT asignacion FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
                                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension 
-                                AND act2.se_evalua = 'S' AND autoeval_estado = 1 AND (autoeval_calificacion is null or autoeval_calificacion = ''))
+                                AND act2.se_evalua = 'S' AND autoeval_estado = 1 AND (autoeval_calificacion is null or autoeval_calificacion = '' ))
             GROUP BY asignaciones.ubicacion, asignaciones.departamento) c2 ON c1.ubicacion = c2.ubicacion AND c1.departamento = c2.departamento
 
         LEFT JOIN
@@ -742,7 +742,7 @@ class co_autoevaluaciones
                                 AND actividades.se_evalua = 'S'
                                 AND asignaciones.asignacion in (SELECT asignacion FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
                                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
-                                AND act2.se_evalua = 'S' AND autoeval_estado = 1 AND (autoeval_confirmado = 'N' or autoeval_confirmado = ''))
+                                AND act2.se_evalua = 'S' AND autoeval_estado = 1 AND (autoeval_confirmado = 'N' or autoeval_confirmado = '' or autoeval_confirmado is null))
             GROUP BY asignaciones.ubicacion, asignaciones.departamento) c3 ON c1.ubicacion = c3.ubicacion AND c1.departamento = c3.departamento
 
         LEFT JOIN
@@ -766,7 +766,7 @@ class co_autoevaluaciones
                                 AND actividades.se_evalua = 'S'
                                 AND asignaciones.asignacion in (SELECT asignacion FROM asignaciones as asig2 LEFT OUTER JOIN actividades as act2 ON asig2.actividad = act2.actividad
                                 WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension  
-                                AND act2.se_evalua = 'S' AND eval_estado = 1 AND (eval_confirmado = 'N' or eval_confirmado = ''))
+                                AND act2.se_evalua = 'S' AND eval_estado = 1 AND (eval_confirmado = 'N' or eval_confirmado = '' or eval_confirmado is null))
             GROUP BY asignaciones.ubicacion, asignaciones.departamento) c5 ON c1.ubicacion = c5.ubicacion AND c1.departamento = c5.departamento
 
         LEFT JOIN
