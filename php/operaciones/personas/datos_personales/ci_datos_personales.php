@@ -127,6 +127,23 @@ class ci_datos_personales extends planta_ci
 	}
 
 	//-----------------------------------------------------------------------------------
+	//---- form_ml ----------------------------------------------------------------------
+	//-----------------------------------------------------------------------------------
+
+	function conf__form_ml_inv(planta_ei_formulario_ml $form_ml)
+	{
+		if ($this->relacion()->esta_cargada()) {
+			$datos = $this->tabla('personas_categoria_inv')->get_filas();
+			$form_ml->set_datos($datos);
+		}
+	}
+
+	function evt__form_ml_inv__modificacion($datos)
+	{
+		$this->tabla('personas_categoria_inv')->procesar_filas($datos);
+	}
+        
+	//-----------------------------------------------------------------------------------
 	//---- form -------------------------------------------------------------------------
 	//-----------------------------------------------------------------------------------
 

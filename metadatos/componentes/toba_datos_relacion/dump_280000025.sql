@@ -77,6 +77,18 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
+	'280000769', --dep_id
+	'280000025', --objeto_consumidor
+	'280000880', --objeto_proveedor
+	'personas_categoria_inv', --identificador
+	NULL, --parametros_a
+	NULL, --parametros_b
+	NULL, --parametros_c
+	NULL, --inicializar
+	'3'  --orden
+);
+INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
+	'planta', --proyecto
 	'280000049', --dep_id
 	'280000025', --objeto_consumidor
 	'280000074', --objeto_proveedor
@@ -110,6 +122,22 @@ INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador
 	NULL, --cascada
 	'1'  --orden
 );
+INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador, padre_proyecto, padre_objeto, padre_id, padre_clave, hijo_proyecto, hijo_objeto, hijo_id, hijo_clave, cascada, orden) VALUES (
+	'planta', --proyecto
+	'280000025', --objeto
+	'280000062', --asoc_id
+	NULL, --identificador
+	'planta', --padre_proyecto
+	'280000024', --padre_objeto
+	'personas', --padre_id
+	NULL, --padre_clave
+	'planta', --hijo_proyecto
+	'280000880', --hijo_objeto
+	'personas_categoria_inv', --hijo_id
+	NULL, --hijo_clave
+	NULL, --cascada
+	'2'  --orden
+);
 --- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------
@@ -123,4 +151,13 @@ INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_obje
 	'280000067', --padre_clave
 	'280000074', --hijo_objeto
 	'280000147'  --hijo_clave
+);
+INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
+	'planta', --proyecto
+	'280000025', --objeto
+	'280000062', --asoc_id
+	'280000024', --padre_objeto
+	'280000067', --padre_clave
+	'280000880', --hijo_objeto
+	'280001235'  --hijo_clave
 );
