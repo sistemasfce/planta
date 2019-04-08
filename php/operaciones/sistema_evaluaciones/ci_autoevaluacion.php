@@ -243,6 +243,7 @@ class ci_autoevaluacion extends planta_ci
         if (isset($datos['autoeval_informe_catedra_archivo']['name'])) {
             $nombre_archivo = $datos['autoeval_informe_catedra_archivo']['name'];
             $nombre_act = str_replace(' ','_',$datos_act['actividad_desc']);
+            $nombre_act = str_replace('/','_',$nombre_act);
             $info = new SplFileInfo($nombre_archivo);
             $nombre_nuevo = 'IC_'.$ciclo.'_'.$datos_act['ubicacion_desc'].'_'.$nombre_act. '.' .$info->getExtension();           
             $destino = '/home/fce/informes/'.$nombre_nuevo;
@@ -255,6 +256,7 @@ class ci_autoevaluacion extends planta_ci
         if (isset($datos['autoeval_programa_archivo']['name'])) {
             $nombre_archivo = $datos['autoeval_programa_archivo']['name'];
             $nombre_act = str_replace(' ','_',$datos_act['actividad_desc']);
+            $nombre_act = str_replace('/','_',$nombre_act);
             $info = new SplFileInfo($nombre_archivo);
             $nombre_nuevo = 'PR_'.$ciclo.'_'.$datos_act['ubicacion_desc'].'_'.$nombre_act. '.' .$info->getExtension();          
             $destino = '/home/fce/informes/'.$nombre_nuevo;
@@ -267,6 +269,7 @@ class ci_autoevaluacion extends planta_ci
         if (isset($datos['autoeval_informe_otros_archivo']['name'])) {
             $nombre_archivo = $datos['autoeval_informe_otros_archivo']['name'];
             $nombre_act = str_replace(' ','_',$datos_act['actividad_desc']);
+            $nombre_act = str_replace('/','_',$nombre_act);
             $info = new SplFileInfo($nombre_archivo);
             $nombre_nuevo = 'IO_'.$ciclo.'_'.$datos_act['ubicacion_desc'].'_'.$datos['autoeval_tipo_informe'].'_'.  $nombre_act.'.' .$info->getExtension();         
             $destino = '/home/fce/informes/'.$nombre_nuevo;
