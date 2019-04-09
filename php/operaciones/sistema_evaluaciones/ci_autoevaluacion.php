@@ -242,9 +242,7 @@ class ci_autoevaluacion extends planta_ci
 
         if (isset($datos['autoeval_informe_catedra_archivo']['name'])) {
             $nombre_archivo = $datos['autoeval_informe_catedra_archivo']['name'];
-            $nombre_act = str_replace(' ','_',$datos_act['actividad_desc']);
-            $nombre_act = str_replace('/','_',$nombre_act);
-            $nombre_act = str_replace('º','_',$nombre_act);
+            $nombre_act = $this->sanear_string($datos_act['actividad_desc']);
             $info = new SplFileInfo($nombre_archivo);
             $nombre_nuevo = 'IC_'.$ciclo.'_'.$datos_act['ubicacion_desc'].'_'.$nombre_act. '.' .$info->getExtension();           
             $destino = '/home/fce/informes/'.$nombre_nuevo;
@@ -256,9 +254,7 @@ class ci_autoevaluacion extends planta_ci
         }
         if (isset($datos['autoeval_programa_archivo']['name'])) {
             $nombre_archivo = $datos['autoeval_programa_archivo']['name'];
-            $nombre_act = str_replace(' ','_',$datos_act['actividad_desc']);
-            $nombre_act = str_replace('/','_',$nombre_act);
-            $nombre_act = str_replace('º','_',$nombre_act);
+            $nombre_act = $this->sanear_string($datos_act['actividad_desc']);
             $info = new SplFileInfo($nombre_archivo);
             $nombre_nuevo = 'PR_'.$ciclo.'_'.$datos_act['ubicacion_desc'].'_'.$nombre_act. '.' .$info->getExtension();          
             $destino = '/home/fce/informes/'.$nombre_nuevo;
@@ -270,9 +266,10 @@ class ci_autoevaluacion extends planta_ci
         }
         if (isset($datos['autoeval_informe_otros_archivo']['name'])) {
             $nombre_archivo = $datos['autoeval_informe_otros_archivo']['name'];
-            $nombre_act = str_replace(' ','_',$datos_act['actividad_desc']);
-            $nombre_act = str_replace('/','_',$nombre_act);
-            $nombre_act = str_replace('º','_',$nombre_act);
+            //$nombre_act = str_replace(' ','_',$datos_act['actividad_desc']);
+            //$nombre_act = str_replace('/','_',$nombre_act);
+            //$nombre_act = str_replace('º','_',$nombre_act);
+            $nombre_act = $this->sanear_string($datos_act['actividad_desc']);
             $info = new SplFileInfo($nombre_archivo);
             $nombre_nuevo = 'IO_'.$ciclo.'_'.$datos_act['ubicacion_desc'].'_'.$datos['autoeval_tipo_informe'].'_'.  $nombre_act.'.' .$info->getExtension();         
             $destino = '/home/fce/informes/'.$nombre_nuevo;
@@ -377,5 +374,25 @@ class ci_autoevaluacion extends planta_ci
         $report->set_path_reporte($path);
         $report->completar_con_datos();
     }
+    
+    function sanear_string($s) {
+        $s = mb_convert_encoding($s, 'UTF-8','');
+        $s = preg_replace("/á|à|â|ã|ª/","a",$s);
+        $s = preg_replace("/Á|À|Â|Ã/","A",$s);
+        $s = preg_replace("/é|è|ê/","e",$s);
+        $s = preg_replace("/É|È|Ê/","E",$s);
+        $s = preg_replace("/í|ì|î/","i",$s);
+        $s = preg_replace("/Í|Ì|Î/","I",$s);
+        $s = preg_replace("/ó|ò|ô|õ|º/","o",$s);
+        $s = preg_replace("/Ó|Ò|Ô|Õ/","O",$s);
+        $s = preg_replace("/ú|ù|û/","u",$s);
+        $s = preg_replace("/Ú|Ù|Û/","U",$s);
+        $s = str_replace(" ","_",$s);
+        $s = str_replace("ñ","n",$s);
+        $s = str_replace("Ñ","N",$s);
+
+        $s = preg_replace('/[^a-zA-Z0-9_.-]/', '', $s);
+        return $s;
+    }   
 }
 ?>
