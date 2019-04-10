@@ -134,7 +134,7 @@ class ci_pendientes extends planta_ci
         $datos[1]['auto_pen_conf_porc'] = $sin_confirmar_ext['count'] / $total_ext['count'] * 100;
         $datos[1]['eval_personas'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=2&columna=7 target='_blank'>".$total_ext['count']."</a>";
         $datos[1]['eval_pen'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=2&columna=8 target='_blank'>".$eval_sin_hacer_ext['count']."</a>";
-        $datos[1]['eval_pen_porc'] = $sin_hacer_ext['count'] / $total_ext['count'] * 100;
+        $datos[1]['eval_pen_porc'] = $eval_sin_hacer_ext['count'] / $total_ext['count'] * 100;
         $datos[1]['eval_pen_conf'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=2&columna=9 target='_blank'>".$eval_sin_confirmar_ext['count']."</a>";
         $datos[1]['eval_pen_conf_porc'] = $eval_sin_confirmar_ext['count'] / $total_ext['count'] * 100;
         $datos[1]['noti_personas'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=2&columna=10 target='_blank'>".$total_ext['count']."</a>";
@@ -158,7 +158,7 @@ class ci_pendientes extends planta_ci
         $datos[2]['eval_pen'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=3&columna=8 target='_blank'>".$eval_sin_hacer_inv['count']."</a>";
         $datos[2]['eval_pen_porc'] = $eval_sin_hacer_inv['count'] / $total_inv['count'] * 100;
         $datos[2]['eval_pen_conf'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=3&columna=9 target='_blank'>".$eval_sin_confirmar_inv['count']."</a>";
-        $datos[2]['eval_pen_conf_porc'] = $sin_confirmar_inv['count'] / $total_inv['count'] * 100;
+        $datos[2]['eval_pen_conf_porc'] = $eval_sin_confirmar_inv['count'] / $total_inv['count'] * 100;
         $datos[2]['noti_personas'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=3&columna=10 target='_blank'>".$total_inv['count']."</a>";
         $datos[2]['noti_notificados'] = "<a href=".$path['url']."/?ai=planta||280000226&tcm=previsualizacion&tm=1&dimension=3&columna=11 target='_blank'>".$eval_notificado_inv['count']."</a>";
         $datos[2]['noti_notificados_porc'] = $eval_notificado_inv['count'] / $total_inv['count'] * 100;
