@@ -33,8 +33,10 @@ class ci_cargar_asignacion_docente_edicion extends planta_ci
 
             foreach ($datos as $dat) {
                     $fila = $dat;
-                    //if ($fila['estado'] == 3)
-                    //        continue;
+                    if ($fila['estado'] == 3)
+                            continue;
+                    if ($fila['designacion_tipo'] != 1)
+                            continue;                    
                     $fila['resolucion_desc'] = $dat['resolucion']. '/'.$dat['resolucion_anio']. ' '.$dat['resolucion_tipo_desc'];
 
                     if ($fila['designacion_tipo'] == 1 and $fila['designacion'] != null and ($fila['estado'] == 1 or $fila['estado'] == 5)) {
@@ -90,9 +92,10 @@ class ci_cargar_asignacion_docente_edicion extends planta_ci
 	{
 		$datos_para_cuadro = array();
 		$aux = array();
+                $anio = date('Y');
 		$datos = $this->tabla('asignaciones')->get_filas();
 		foreach ($datos as $dat) {
-			if ($dat['estado'] == 3)
+                        if ($dat['ciclo_lectivo'] != $anio)
 				continue;
 			$fila = $dat;
 			$fila['resolucion_desc'] = $dat['resolucion']. '/'.$dat['resolucion_anio']. ' '.$dat['resolucion_tipo_desc'];
