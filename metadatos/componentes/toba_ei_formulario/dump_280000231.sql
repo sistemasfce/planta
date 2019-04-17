@@ -808,16 +808,16 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --estado_defecto
 	'0', --solo_lectura
 	'0', --solo_lectura_modificacion
-	NULL, --carga_metodo
+	'get_calificaciones', --carga_metodo
 	NULL, --carga_clase
 	NULL, --carga_include
 	NULL, --carga_dt
 	NULL, --carga_consulta_php
 	NULL, --carga_sql
 	'planta', --carga_fuente
-	'Excelente,Muy satisfactorio,Satisfactorio,Poco satisfactorio,Insatisfactorio,No se realizo/No se realizó la actividad', --carga_lista
-	NULL, --carga_col_clave
-	NULL, --carga_col_desc
+	NULL, --carga_lista
+	'calificacion', --carga_col_clave
+	'descripcion', --carga_col_desc
 	NULL, --carga_maestros
 	'0', --carga_cascada_relaj
 	'0', --cascada_mantiene_estado
@@ -860,7 +860,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --selec_tamano
 	NULL, --selec_ancho
 	NULL, --selec_serializar
-	'6', --selec_cant_columnas
+	'7', --selec_cant_columnas
 	NULL, --upload_extensiones
 	'280000002', --punto_montaje
 	NULL  --placeholder

@@ -394,5 +394,39 @@ class ci_autoevaluacion extends planta_ci
         $s = preg_replace('/[^a-zA-Z0-9_.-]/', '', $s);
         return $s;
     }   
+    
+    function get_calificaciones()
+    {
+        //Excelente,Muy satisfactorio,Satisfactorio,Poco satisfactorio,Insatisfactorio,
+        //No se realizo/No se realizó la actividad
+        $calificacion['calificacion'] = 'Excelente';
+        $calificacion['descripcion'] = 'Excelente';
+        $arreglo[] = $calificacion;
+        $calificacion['calificacion'] = 'Muy satisfactorio';
+        $calificacion['descripcion'] = 'Muy satisfactorio';
+        $arreglo[] = $calificacion;
+        $calificacion['calificacion'] = 'Satisfactorio';
+        $calificacion['descripcion'] = 'Satisfactorio';
+        $arreglo[] = $calificacion;
+        $calificacion['calificacion'] = 'Poco satisfactorio';
+        $calificacion['descripcion'] = 'Poco satisfactorio';
+        $arreglo[] = $calificacion;
+        $calificacion['calificacion'] = 'Insatisfactorio';
+        $calificacion['descripcion'] = 'Insatisfactorio';
+        $arreglo[] = $calificacion;        
+        $calificacion['calificacion'] = 'No se realizo';
+        $calificacion['descripcion'] = 'No se realizó la actividad';
+        $arreglo[] = $calificacion;           
+        
+        
+        $perfil = toba::usuario()->get_perfiles_funcionales();
+        if ($perfil[0] == 'admin') {
+            $calificacion['calificacion'] = 'No se autoevaluo';
+            $calificacion['descripcion'] = 'No se autoevaluo';
+            $arreglo[] = $calificacion;     
+        }
+        return $arreglo;
+        
+    }
 }
 ?>
