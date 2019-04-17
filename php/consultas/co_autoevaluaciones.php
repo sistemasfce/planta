@@ -591,6 +591,7 @@ class co_autoevaluaciones
                         WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension 
                             AND autoeval_estado = 1 AND eval_estado = 1
                         AND eval_notificacion = 'S')
+            $where2
             $order
         ";
         if ($cuenta == 1) 
@@ -796,6 +797,8 @@ class co_autoevaluaciones
 				AND designaciones.designacion_tipo = 1 
 				AND designaciones.estado in (1,4,5)
 				AND designaciones.dimension = $dimension
+                                AND designaciones.categoria <> 6    
+                                AND designaciones.persona in (SELECT persona FROM designaciones WHERE extract (year from fecha_desde) <= 2018)
             GROUP BY designaciones.ubicacion, designaciones.departamento
             ORDER BY ubicacion, departamento) c7 ON c1.ubicacion = c7.ubicacion AND c1.departamento = c7.departamento               
         
@@ -809,6 +812,8 @@ class co_autoevaluaciones
                     AND designaciones.designacion_tipo = 1 
                     AND designaciones.estado in (1,4,5)
                     AND dimension = $dimension
+                    AND designaciones.categoria <> 6    
+                    AND designaciones.persona in (SELECT persona FROM designaciones WHERE extract (year from fecha_desde) <= 2018)
             GROUP BY ubicacion, departamento ) c8 ON c1.ubicacion = c8.ubicacion AND c1.departamento = c8.departamento      
         
         LEFT JOIN
@@ -824,6 +829,8 @@ class co_autoevaluaciones
                         AND designaciones.estado in (1,4,5)
                         AND autoevaluaciones.ciclo_lectivo = $ciclo
                         AND designaciones.dimension = $dimension
+                        AND designaciones.categoria <> 6
+                        AND designaciones.persona in (SELECT persona FROM designaciones WHERE extract (year from fecha_desde) <= 2018)
 			GROUP BY ubicacion, departamento 
             UNION
                     SELECT ubicacion, departamento, COUNT(DISTINCT designaciones.persona)
@@ -834,6 +841,8 @@ class co_autoevaluaciones
 				AND designaciones.designacion_tipo = 1 
 				AND designaciones.estado in (1,4,5)
 				AND dimension = $dimension
+                                AND designaciones.categoria <> 6
+                                AND designaciones.persona in (SELECT persona FROM designaciones WHERE extract (year from fecha_desde) <= 2018)    
                         GROUP BY ubicacion, departamento
                     ) as cc9
                     GROUP BY ubicacion, departamento
