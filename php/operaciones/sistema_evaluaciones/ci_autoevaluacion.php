@@ -420,7 +420,7 @@ class ci_autoevaluacion extends planta_ci
         
         
         $perfil = toba::usuario()->get_perfiles_funcionales();
-        if ($perfil[0] == 'admin') {
+        if ($perfil[0] == 'admin' or $perfil[0] == 'usuario') { 
             $calificacion['calificacion'] = 'No se autoevaluo';
             $calificacion['descripcion'] = 'No se autoevaluo';
             $arreglo[] = $calificacion;     
