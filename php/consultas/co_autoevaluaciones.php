@@ -552,7 +552,7 @@ class co_autoevaluaciones
 		$select
                 FROM asignaciones LEFT OUTER JOIN actividades ON asignaciones.actividad = actividades.actividad
                 LEFT OUTER JOIN personas ON asignaciones.persona = personas.persona
-                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension
+                WHERE ciclo_lectivo = $ciclo AND estado = 15 AND dimension = $dimension AND eval_estado = 1
                         AND actividades.se_evalua = 'S'
                     	AND $where $where2 
                 $order            
