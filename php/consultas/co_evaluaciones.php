@@ -300,7 +300,7 @@ class co_evaluaciones
 		LEFT OUTER JOIN ubicaciones ON (asignaciones.ubicacion = ubicaciones.ubicacion)
 
         WHERE 	asignaciones.persona in (SELECT persona FROM asignaciones as asig WHERE autoeval_estado = 1 AND ciclo_lectivo = $ciclo
-					AND actividad in (415,405,383,447,322,362,321,372,676,387,314,315,317,316))
+					AND actividad in (415,405,383,447,322,362,321,372,676,387,314,315,317,316) AND asig.ubicacion = $ubicacion)
 		AND asignaciones.responsable = 'S'
                 --AND actividades.se_evalua = 'S'
 		AND asignaciones.dimension = 1
