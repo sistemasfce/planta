@@ -244,7 +244,7 @@ class co_evaluaciones
 			AND asignaciones.persona = $persona
 			AND asignaciones.ciclo_lectivo = $ciclo
 			AND asignaciones.responsable = 'S'
-                        --AND actividades.se_evalua = 'S'
+                        AND actividades.se_evalua = 'S'
 		        AND asignaciones.ubicacion = actividades_a_evaluar.ubicacion_evaluador
             		AND asig2.ubicacion = actividades_a_evaluar.ubicacion_evaluado
             		AND act2.actividad = asig2.actividad
