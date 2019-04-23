@@ -182,7 +182,7 @@ class co_evaluaciones
 			AND asig2.eval_estado = 1 
                         AND asignaciones.eval_estado = 1
 			AND asignaciones.responsable = 'S'
-                        AND actividades.se_evalua = 'S'
+                        --AND actividades.se_evalua = 'S'
 			AND asignaciones.ciclo_lectivo = '$ciclo'
 			AND asignaciones.actividad = asig2.actividad
 			AND asig2.ubicacion = asignaciones.ubicacion
@@ -244,7 +244,7 @@ class co_evaluaciones
 			AND asignaciones.persona = $persona
 			AND asignaciones.ciclo_lectivo = $ciclo
 			AND asignaciones.responsable = 'S'
-                        AND actividades.se_evalua = 'S'
+                        --AND actividades.se_evalua = 'S'
 		        AND asignaciones.ubicacion = actividades_a_evaluar.ubicacion_evaluador
             		AND asig2.ubicacion = actividades_a_evaluar.ubicacion_evaluado
             		AND act2.actividad = asig2.actividad
@@ -302,7 +302,7 @@ class co_evaluaciones
         WHERE 	asignaciones.persona in (SELECT persona FROM asignaciones as asig WHERE autoeval_estado = 1 AND ciclo_lectivo = $ciclo
 					AND actividad in (415,405,383,447,322,362,321,372,676,387,314,315,317,316))
 		AND asignaciones.responsable = 'S'
-                AND actividades.se_evalua = 'S'
+                --AND actividades.se_evalua = 'S'
 		AND asignaciones.dimension = 1
 		AND asignaciones.autoeval_estado = 1
 		AND asignaciones.ciclo_lectivo = $ciclo
