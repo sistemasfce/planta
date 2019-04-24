@@ -363,6 +363,7 @@ class co_evaluaciones
             AND act2.actividad = asig2.actividad
             AND asig2.persona = personas.persona
             AND asig2.ubicacion = ubicaciones.ubicacion
+            AND act2.se_evalua = 'S'
             AND asig2.responsable = ambitos_a_evaluar.responsable
             AND asig2.ciclo_lectivo = $ciclo
             AND asignaciones.persona <> asig2.persona
