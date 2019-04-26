@@ -100,7 +100,7 @@ class ci_evaluador extends planta_ci
         $datos_tabla = toba::consulta_php('co_evaluaciones')->get_evaluacion_tabla($asignacion);
         $datos = toba::consulta_php('co_evaluaciones')->get_evaluacion($asignacion);
         $evaluador = toba::memoria()->get_dato('persona');
-        $datos['eval_evaluador'] = $evaluador;
+        //$datos['eval_evaluador'] = $evaluador;
 
         $datos_docente = toba::consulta_php('co_autoevaluaciones')->get_ficha_de_docente_por_asignacion($asignacion);
         if ($datos_docente['ficha_docente'] == 'S') {
@@ -176,6 +176,8 @@ class ci_evaluador extends planta_ci
         if ($datos['eval_calificacion'] != '') {
             $datos['eval_calificacion_fecha'] = date('Y-m-d');
         }  
+        $evaluador = toba::memoria()->get_dato('persona');
+        $datos['eval_evaluador'] = $evaluador;
         $asignacion = toba::memoria()->get_dato('asignacion');  
         $datos['asignacion'] = $asignacion;
         $this->tabla('asignaciones')->set($datos);
