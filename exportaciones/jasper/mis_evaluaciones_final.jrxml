@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="mis_evaluaciones_final" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1810bd35-b36e-4dc5-be4f-fa71bf47a748">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="144"/>
+	<property name="ireport.y" value="240"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
 	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
 	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
@@ -187,7 +187,7 @@ AND asignaciones.eval_estado = 1
 				<textFieldExpression><![CDATA[$F{plan_de_mejora}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="7" y="81" width="548" height="62" uuid="1c089766-9c45-4e9f-94fa-a2100d133236">
+				<reportElement stretchType="RelativeToTallestObject" x="7" y="81" width="548" height="62" uuid="1c089766-9c45-4e9f-94fa-a2100d133236">
 					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
@@ -278,8 +278,8 @@ AND asignaciones.eval_estado = 1
 				</textElement>
 				<text><![CDATA[Observaciones evaluado:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="294" y="316" width="261" height="35" uuid="84a7fc98-81c5-4c1d-a9e2-4417f3bf2890">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="294" y="316" width="261" height="35" uuid="84a7fc98-81c5-4c1d-a9e2-4417f3bf2890">
 					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
@@ -343,22 +343,22 @@ AND asignaciones.eval_estado = 1
 				</textElement>
 				<text><![CDATA[Desvíos / Necesidades]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="92" y="164" width="463" height="15" uuid="e08e96ea-2d75-45a1-8133-1a4f13d22b31"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="164" width="463" height="15" uuid="e08e96ea-2d75-45a1-8133-1a4f13d22b31"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desvio1}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="92" y="180" width="463" height="15" uuid="2f582b8e-f872-43f2-98cc-f373914ca3a8"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="180" width="463" height="15" uuid="2f582b8e-f872-43f2-98cc-f373914ca3a8"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desvio2}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="92" y="196" width="463" height="15" uuid="ae5b5f56-2901-4311-9f82-076903dc9cae"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="196" width="463" height="15" uuid="ae5b5f56-2901-4311-9f82-076903dc9cae"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -378,43 +378,43 @@ AND asignaciones.eval_estado = 1
 				</textElement>
 				<text><![CDATA[Desempeño esperado:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="92" y="213" width="463" height="15" uuid="f1db9ea0-c910-498b-9f2a-0ded14a207d6"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="213" width="463" height="15" uuid="f1db9ea0-c910-498b-9f2a-0ded14a207d6"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_act1}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="92" y="229" width="463" height="15" uuid="968c7a66-0848-4295-971d-ed8cf527ad33"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="229" width="463" height="15" uuid="968c7a66-0848-4295-971d-ed8cf527ad33"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_act2}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="92" y="245" width="463" height="15" uuid="887ee34b-5e59-465c-9187-a802bb0546a4"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="245" width="463" height="15" uuid="887ee34b-5e59-465c-9187-a802bb0546a4"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_act3}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="92" y="262" width="463" height="15" uuid="1d465777-ee7f-4b3d-be26-9468fb9b8402"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="262" width="463" height="15" uuid="1d465777-ee7f-4b3d-be26-9468fb9b8402"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desempenio1}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="92" y="279" width="463" height="15" uuid="b1da8a7e-34d3-4436-b6ed-c2395f483ce9"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="279" width="463" height="15" uuid="b1da8a7e-34d3-4436-b6ed-c2395f483ce9"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desempenio2}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="92" y="296" width="463" height="15" uuid="37df962c-5172-432e-a6bd-c8a987294fe8"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="296" width="463" height="15" uuid="37df962c-5172-432e-a6bd-c8a987294fe8"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
