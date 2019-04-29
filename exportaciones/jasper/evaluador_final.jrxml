@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="affca742-8ed8-436b-a0c7-56e2f655f119">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="308"/>
+	<property name="ireport.y" value="212"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
 	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
 	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
@@ -339,21 +339,21 @@ AND asignaciones.ciclo_lectivo = $P{ciclo}
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="195" width="463" height="15" uuid="7998b7a0-26c8-4601-8706-922712f3905e"/>
 				<textElement>
-					<font fontName="DejaVu Sans"/>
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desvio1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="211" width="463" height="15" uuid="241fdcc3-d418-4bcd-a89e-7cae009a9acd"/>
 				<textElement>
-					<font fontName="DejaVu Sans"/>
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desvio2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="227" width="463" height="15" uuid="c7878c56-814c-409d-9f2c-9285947c5a05"/>
 				<textElement>
-					<font fontName="DejaVu Sans"/>
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desvio3}]]></textFieldExpression>
 			</textField>
@@ -374,42 +374,42 @@ AND asignaciones.ciclo_lectivo = $P{ciclo}
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="244" width="463" height="15" uuid="de4f677a-0196-4cdc-9d23-ecf682afee9d"/>
 				<textElement>
-					<font fontName="DejaVu Sans"/>
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_act1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="260" width="463" height="15" uuid="99a045c7-8c02-4169-a2f6-5c470c35307d"/>
 				<textElement>
-					<font fontName="DejaVu Sans"/>
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_act2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="276" width="463" height="15" uuid="1a2de81a-89b4-453f-b678-4b522c1809a2"/>
 				<textElement>
-					<font fontName="DejaVu Sans"/>
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_act3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="293" width="463" height="15" uuid="25ed80ef-835d-4645-98ee-88e9861d7b15"/>
 				<textElement>
-					<font fontName="DejaVu Sans"/>
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desempenio1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="310" width="463" height="15" uuid="0fdf4357-5caa-4992-bd74-d4aa26aff7c6"/>
 				<textElement>
-					<font fontName="DejaVu Sans"/>
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desempenio2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
 				<reportElement x="92" y="327" width="463" height="15" uuid="cee0096a-fc2e-4c45-8fba-9b94b35ce336"/>
 				<textElement>
-					<font fontName="DejaVu Sans"/>
+					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desempenio3}]]></textFieldExpression>
 			</textField>

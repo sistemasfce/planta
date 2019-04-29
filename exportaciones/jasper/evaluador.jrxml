@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5d8aa165-69c9-45ce-805a-89273ba9582f">
 	<property name="ireport.zoom" value="1.5"/>
-	<property name="ireport.x" value="217"/>
+	<property name="ireport.x" value="293"/>
 	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
 	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
@@ -227,8 +227,8 @@ ELSE 'Sí' END as plan_de_mejora,
 				</textElement>
 				<textFieldExpression><![CDATA[$F{plan_de_mejora}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="593" y="0" width="170" height="20" uuid="017857f4-22c1-4a91-9287-b17647ea09b9">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="593" y="0" width="170" height="20" uuid="017857f4-22c1-4a91-9287-b17647ea09b9">
 					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
