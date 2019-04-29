@@ -180,7 +180,7 @@ AND asignaciones.ciclo_lectivo = $P{ciclo}
 				<textFieldExpression><![CDATA[$F{plan_de_mejora}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="7" y="101" width="548" height="75" uuid="2d3862ec-e22e-4e73-b008-46b50b2d70a5">
+				<reportElement stretchType="RelativeToTallestObject" x="7" y="101" width="548" height="75" uuid="2d3862ec-e22e-4e73-b008-46b50b2d70a5">
 					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement textAlignment="Justified" verticalAlignment="Top">
@@ -272,7 +272,7 @@ AND asignaciones.ciclo_lectivo = $P{ciclo}
 				<text><![CDATA[Observaciones evaluado:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="221" y="348" width="334" height="35" uuid="8171b170-7a62-4403-98bf-b08ecc9ace9c">
+				<reportElement stretchType="RelativeToTallestObject" x="221" y="348" width="334" height="35" uuid="8171b170-7a62-4403-98bf-b08ecc9ace9c">
 					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Top">
@@ -337,21 +337,21 @@ AND asignaciones.ciclo_lectivo = $P{ciclo}
 				<text><![CDATA[Desvíos / Necesidades:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="92" y="195" width="463" height="15" uuid="7998b7a0-26c8-4601-8706-922712f3905e"/>
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="195" width="463" height="15" uuid="7998b7a0-26c8-4601-8706-922712f3905e"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desvio1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="92" y="211" width="463" height="15" uuid="241fdcc3-d418-4bcd-a89e-7cae009a9acd"/>
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="211" width="463" height="15" uuid="241fdcc3-d418-4bcd-a89e-7cae009a9acd"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desvio2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="92" y="227" width="463" height="15" uuid="c7878c56-814c-409d-9f2c-9285947c5a05"/>
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="227" width="463" height="15" uuid="c7878c56-814c-409d-9f2c-9285947c5a05"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
@@ -372,42 +372,42 @@ AND asignaciones.ciclo_lectivo = $P{ciclo}
 				<text><![CDATA[Desempeño esperado:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="92" y="244" width="463" height="15" uuid="de4f677a-0196-4cdc-9d23-ecf682afee9d"/>
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="244" width="463" height="15" uuid="de4f677a-0196-4cdc-9d23-ecf682afee9d"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_act1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="92" y="260" width="463" height="15" uuid="99a045c7-8c02-4169-a2f6-5c470c35307d"/>
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="260" width="463" height="15" uuid="99a045c7-8c02-4169-a2f6-5c470c35307d"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_act2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="92" y="276" width="463" height="15" uuid="1a2de81a-89b4-453f-b678-4b522c1809a2"/>
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="276" width="463" height="15" uuid="1a2de81a-89b4-453f-b678-4b522c1809a2"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_act3}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="92" y="293" width="463" height="15" uuid="25ed80ef-835d-4645-98ee-88e9861d7b15"/>
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="293" width="463" height="15" uuid="25ed80ef-835d-4645-98ee-88e9861d7b15"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desempenio1}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="92" y="310" width="463" height="15" uuid="0fdf4357-5caa-4992-bd74-d4aa26aff7c6"/>
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="310" width="463" height="15" uuid="0fdf4357-5caa-4992-bd74-d4aa26aff7c6"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{eval_desempenio2}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="92" y="327" width="463" height="15" uuid="cee0096a-fc2e-4c45-8fba-9b94b35ce336"/>
+				<reportElement stretchType="RelativeToTallestObject" x="92" y="327" width="463" height="15" uuid="cee0096a-fc2e-4c45-8fba-9b94b35ce336"/>
 				<textElement>
 					<font fontName="DejaVu Sans" size="8"/>
 				</textElement>
