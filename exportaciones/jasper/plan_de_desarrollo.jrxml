@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4276d453-f903-4c98-9fc3-f64ae48db44a">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="64"/>
+	<property name="ireport.y" value="48"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
 	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
 	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
@@ -32,7 +32,7 @@ eval_desempenio3,
 eval_confirmado,
 eval_calificacion,
 eval_confirmado_fecha as fecha,
-	(SELECT nombre from personas WHERE personas.persona = asignaciones.eval_evaluador) as evaluador
+	(SELECT personas.apellido || ', ' || personas.nombres from personas WHERE personas.persona = asignaciones.eval_evaluador) as evaluador
 
             FROM asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
             LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
@@ -286,40 +286,40 @@ eval_confirmado_fecha as fecha,
 				</textElement>
 				<text><![CDATA[DESEMPEÑO ESPERADO:]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="26" y="85" width="762" height="20" uuid="f71c6f62-cc5d-400e-8d8b-6578df5abbb7"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="25" y="85" width="762" height="20" uuid="f71c6f62-cc5d-400e-8d8b-6578df5abbb7"/>
 				<textFieldExpression><![CDATA[$F{eval_desvio1}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="26" y="113" width="762" height="20" uuid="0078deab-9a75-4812-ae7c-a01f42a004b9"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="26" y="113" width="762" height="20" uuid="0078deab-9a75-4812-ae7c-a01f42a004b9"/>
 				<textFieldExpression><![CDATA[$F{eval_desvio2}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="26" y="140" width="762" height="20" uuid="bc3054d8-3d22-469a-986b-66862e711878"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="26" y="140" width="762" height="20" uuid="bc3054d8-3d22-469a-986b-66862e711878"/>
 				<textFieldExpression><![CDATA[$F{eval_desvio3}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="26" y="189" width="762" height="20" uuid="1db5fd16-1114-4561-837b-d1fdbf454f6d"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="26" y="189" width="762" height="20" uuid="1db5fd16-1114-4561-837b-d1fdbf454f6d"/>
 				<textFieldExpression><![CDATA[$F{eval_act1}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="26" y="217" width="762" height="20" uuid="b028d65d-6dc8-4736-b3c3-9c96f1ef1f7f"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="26" y="217" width="762" height="20" uuid="b028d65d-6dc8-4736-b3c3-9c96f1ef1f7f"/>
 				<textFieldExpression><![CDATA[$F{eval_act2}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="26" y="244" width="762" height="20" uuid="554e47ad-d85f-4684-a9ea-f1e9ea287e72"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="26" y="244" width="762" height="20" uuid="554e47ad-d85f-4684-a9ea-f1e9ea287e72"/>
 				<textFieldExpression><![CDATA[$F{eval_act3}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="26" y="314" width="762" height="20" uuid="38e53578-640c-4dd3-b679-780d299c2e66"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="26" y="314" width="762" height="20" uuid="38e53578-640c-4dd3-b679-780d299c2e66"/>
 				<textFieldExpression><![CDATA[$F{eval_desempenio2}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="26" y="286" width="762" height="20" uuid="ab3b3b1f-afcf-4801-9080-469269747e18"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="26" y="286" width="762" height="20" uuid="ab3b3b1f-afcf-4801-9080-469269747e18"/>
 				<textFieldExpression><![CDATA[$F{eval_desempenio1}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="26" y="341" width="762" height="20" uuid="c1d2affd-9b5f-4841-98c6-1709c02baaaf"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement stretchType="RelativeToTallestObject" x="26" y="341" width="762" height="20" uuid="c1d2affd-9b5f-4841-98c6-1709c02baaaf"/>
 				<textFieldExpression><![CDATA[$F{eval_desempenio3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
