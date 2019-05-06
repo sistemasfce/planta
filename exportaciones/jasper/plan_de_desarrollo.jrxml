@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4276d453-f903-4c98-9fc3-f64ae48db44a">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="64"/>
 	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
 	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
 	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
@@ -19,7 +19,20 @@
                 categorias.codigo as rol_desc,
                 categorias.descripcion as rol_nombre,
                 ubicaciones.codigo as ubicacion_desc,
-		(SELECT nombre from personas WHERE personas.persona = asignaciones.eval_evaluador) as evaluador
+asignaciones.ciclo_lectivo,
+asignaciones.eval_desvio1,
+asignaciones.eval_desvio2,
+asignaciones.eval_desvio3,
+eval_act1,
+eval_act2,
+eval_act3,
+eval_desempenio1,
+eval_desempenio2,
+eval_desempenio3,
+eval_confirmado,
+eval_calificacion,
+eval_confirmado_fecha as fecha,
+	(SELECT nombre from personas WHERE personas.persona = asignaciones.eval_evaluador) as evaluador
 
             FROM asignaciones LEFT OUTER JOIN personas ON (asignaciones.persona = personas.persona)
             LEFT OUTER JOIN actividades ON (asignaciones.actividad = actividades.actividad)
@@ -31,64 +44,29 @@
              WHERE         asignaciones.asignacion = $P{asignacion}
             ORDER BY nombre]]>
 	</queryString>
-	<field name="id_funcion" class="java.lang.Integer">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="doc" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="nombre" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="actividad_desc" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="dimension_desc" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="departamento_desc" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="rol_desc" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="rol_nombre" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="ubicacion_desc" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="periodo_lectivo_desc" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="estado_desc" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="confirmado" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="calificacion" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="resolucion_nombre" class="java.lang.String">
-		<fieldDescription><![CDATA[]]></fieldDescription>
-	</field>
-	<field name="observaciones" class="java.lang.String"/>
-	<field name="plan_de_mejora" class="java.lang.String"/>
-	<field name="evaluador" class="java.lang.String"/>
+	<field name="asignacion" class="java.lang.Integer"/>
+	<field name="doc" class="java.lang.String"/>
+	<field name="nombre" class="java.lang.String"/>
+	<field name="actividad_desc" class="java.lang.String"/>
+	<field name="dimension_desc" class="java.lang.String"/>
+	<field name="departamento_desc" class="java.lang.String"/>
+	<field name="rol_desc" class="java.lang.String"/>
+	<field name="rol_nombre" class="java.lang.String"/>
+	<field name="ubicacion_desc" class="java.lang.String"/>
 	<field name="ciclo_lectivo" class="java.lang.Integer"/>
-	<field name="notificacion" class="java.lang.String"/>
-	<field name="observaciones_notificacion" class="java.lang.String"/>
-	<field name="desvio1" class="java.lang.String"/>
-	<field name="desvio2" class="java.lang.String"/>
-	<field name="desvio3" class="java.lang.String"/>
-	<field name="act1" class="java.lang.String"/>
-	<field name="act2" class="java.lang.String"/>
-	<field name="act3" class="java.lang.String"/>
-	<field name="desempenio1" class="java.lang.String"/>
-	<field name="desempenio2" class="java.lang.String"/>
-	<field name="desempenio3" class="java.lang.String"/>
-	<field name="fecha" class="java.util.Date"/>
+	<field name="eval_desvio1" class="java.lang.String"/>
+	<field name="eval_desvio2" class="java.lang.String"/>
+	<field name="eval_desvio3" class="java.lang.String"/>
+	<field name="eval_act1" class="java.lang.String"/>
+	<field name="eval_act2" class="java.lang.String"/>
+	<field name="eval_act3" class="java.lang.String"/>
+	<field name="eval_desempenio1" class="java.lang.String"/>
+	<field name="eval_desempenio2" class="java.lang.String"/>
+	<field name="eval_desempenio3" class="java.lang.String"/>
+	<field name="eval_confirmado" class="java.lang.String"/>
+	<field name="eval_calificacion" class="java.lang.String"/>
+	<field name="fecha" class="java.sql.Timestamp"/>
+	<field name="evaluador" class="java.lang.String"/>
 	<variable name="fecha_narrada" class="java.lang.String">
 		<variableExpression><![CDATA[new java.text.SimpleDateFormat("dd 'días del mes de' MMMM 'de' yyyy", new java.util.Locale("es")).format(new java.util.Date())]]></variableExpression>
 	</variable>
@@ -123,8 +101,8 @@
 					</textElement>
 					<text><![CDATA[Ciclo lectivo:]]></text>
 				</staticText>
-				<textField isBlankWhenNull="true">
-					<reportElement x="91" y="24" width="100" height="19" uuid="a3b9dd50-c356-4921-86bd-90839fa794ed"/>
+				<textField>
+					<reportElement x="93" y="25" width="100" height="20" uuid="01c5f93d-41d9-41a8-91bc-dd0dd38ae39c"/>
 					<textFieldExpression><![CDATA[$F{ciclo_lectivo}]]></textFieldExpression>
 				</textField>
 			</band>
@@ -170,10 +148,10 @@
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="102" y="44" width="130" height="15" uuid="2908d434-f510-4f6c-a1ef-73b78f901432">
-					<printWhenExpression><![CDATA[$F{confirmado} == 'S']]></printWhenExpression>
+					<printWhenExpression><![CDATA[$F{eval_confirmado} == 'S']]></printWhenExpression>
 				</reportElement>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$F{calificacion}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_calificacion}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement style="Column header" x="8" y="27" width="52" height="15" forecolor="#736343" uuid="b824c76d-b7c7-47b9-8c68-7d64564fe159"/>
@@ -310,39 +288,39 @@
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="26" y="85" width="762" height="20" uuid="f71c6f62-cc5d-400e-8d8b-6578df5abbb7"/>
-				<textFieldExpression><![CDATA[$F{desvio1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desvio1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="26" y="113" width="762" height="20" uuid="0078deab-9a75-4812-ae7c-a01f42a004b9"/>
-				<textFieldExpression><![CDATA[$F{desvio2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desvio2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="26" y="140" width="762" height="20" uuid="bc3054d8-3d22-469a-986b-66862e711878"/>
-				<textFieldExpression><![CDATA[$F{desvio3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desvio3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="26" y="189" width="762" height="20" uuid="1db5fd16-1114-4561-837b-d1fdbf454f6d"/>
-				<textFieldExpression><![CDATA[$F{act1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_act1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="26" y="217" width="762" height="20" uuid="b028d65d-6dc8-4736-b3c3-9c96f1ef1f7f"/>
-				<textFieldExpression><![CDATA[$F{act2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_act2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="26" y="244" width="762" height="20" uuid="554e47ad-d85f-4684-a9ea-f1e9ea287e72"/>
-				<textFieldExpression><![CDATA[$F{act3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_act3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="26" y="314" width="762" height="20" uuid="38e53578-640c-4dd3-b679-780d299c2e66"/>
-				<textFieldExpression><![CDATA[$F{desempenio2}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desempenio2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="26" y="286" width="762" height="20" uuid="ab3b3b1f-afcf-4801-9080-469269747e18"/>
-				<textFieldExpression><![CDATA[$F{desempenio1}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desempenio1}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="26" y="341" width="762" height="20" uuid="c1d2affd-9b5f-4841-98c6-1709c02baaaf"/>
-				<textFieldExpression><![CDATA[$F{desempenio3}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{eval_desempenio3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="272" y="44" width="100" height="15" uuid="c07e08ab-b247-4327-83d2-f98d03a38cdd"/>
