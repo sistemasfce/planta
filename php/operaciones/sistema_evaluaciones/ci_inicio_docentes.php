@@ -240,8 +240,8 @@ class ci_inicio_docentes extends planta_ci
 
         if ($tipo == 'plan') {
             $report->set_nombre_archivo('Plan de desarrollo.pdf');
-            $funcion = toba::memoria()->get_dato('jasper');
-            $report->set_parametro('funcion','E',$funcion);  
+            $asignacion = toba::memoria()->get_dato('asignacion');
+            $report->set_parametro('asignacion','E',$asignacion);  
             $path_toba = toba::proyecto()->get_path().'/exportaciones/jasper/';
             $path = $path_toba.'plan_de_desarrollo.jasper';
             $report->set_path_reporte($path);
