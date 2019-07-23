@@ -3,7 +3,7 @@
 	// busco las designaciones con licencia vencida
 	$sql = "SELECT *
 		FROM designaciones
-		WHERE designacion_tipo = 2 
+		WHERE designacion_tipo in (2,9) 
 		AND estado = 6
 		AND fecha_hasta::date < current_date
 		AND designacion_padre is not null
@@ -18,7 +18,7 @@
 			WHERE designacion = ".$dat['designacion_padre'];
 		toba::db()->consultar($sql);
 
-		// activar las funciones del docente que estaban con licencia
+		// activar las asignaciones del docente que estaban con licencia
 		$sql_asig = "UPDATE asignaciones
 		SET estado = 1
 		WHERE designacion = ".$dat['designacion_padre']." AND estado = 7 ";
@@ -33,14 +33,14 @@
 
 	//----------------------------------------------VENCIMIENTOS DE ACTIVOS designaciones/asignaciones-----------------
 
-	// pongo como historico las designaciones que eran activas y finalizaron	
+	// pongo como finalizado las designaciones que eran activas y finalizaron	
 	$sql = "UPDATE designaciones
 		SET estado = 15, fecha_cambios = now()
 		WHERE estado = 1 AND fecha_hasta::date < current_date 
 		";
 	toba::db()->consultar($sql);
 
-	// pongo como historico las asignaciones activas que finalizaron
+	// pongo como finalizado las asignaciones activas que finalizaron
 	$sql = "UPDATE asignaciones
 		SET estado = 15, cambia_estado = 'N', fecha_cambios = now()
 		WHERE estado = 1 AND fecha_hasta::date < current_date
