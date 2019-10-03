@@ -1,5 +1,5 @@
 <?php
-class ci_categorias extends planta_ci
+class ci_departamentos extends planta_ci
 {
     //-------------------------------------------------------------------------
     function relacion()
@@ -19,7 +19,7 @@ class ci_categorias extends planta_ci
 
     function conf__cuadro(planta_ei_cuadro $cuadro)
     {
-        $datos = toba::consulta_php('co_parametros')->get_categorias_roles();
+        $datos = toba::consulta_php('co_parametros')->get_departamentos();
         $cuadro->set_datos($datos);
     }
 
@@ -34,7 +34,7 @@ class ci_categorias extends planta_ci
     function conf__form(planta_ei_formulario $form)
     {
         if ($this->relacion()->esta_cargada()) {
-            $datos = $this->tabla('categorias')->get();            
+            $datos = $this->tabla('departamentos')->get();            
             $form->set_datos($datos);
         }
     }
@@ -42,7 +42,7 @@ class ci_categorias extends planta_ci
 
     function evt__form__alta($datos)
     {
-        $this->tabla('categorias')->set($datos);
+        $this->tabla('departamentos')->set($datos);
         $this->relacion()->sincronizar();
         $this->relacion()->resetear();
     }
@@ -59,7 +59,7 @@ class ci_categorias extends planta_ci
 
     function evt__form__modificacion($datos)
     {
-        $this->tabla('categorias')->set($datos);
+        $this->tabla('departamentos')->set($datos);
         $this->relacion()->sincronizar();
         $this->relacion()->resetear();
     }

@@ -13,26 +13,26 @@ class ci_cargar_designacion extends planta_ci
 		return $this->controlador->dep('relacion')->tabla($id);    
 	}
 	
-	//-----------------------------------------------------------------------------------
-	//---- cuadro -----------------------------------------------------------------------
-	//-----------------------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------
+    //---- cuadro -----------------------------------------------------------------------
+    //-----------------------------------------------------------------------------------
 
-	function conf__cuadro(planta_ei_cuadro $cuadro)
-	{
-		$where = $this->dep('filtro')->get_sql_where();
-		$datos = toba::consulta_php('co_docentes')->get_docentes($where);
-		$datos_aux = array();
-		
-		foreach ($datos as $fila) {
-			if ($fila['persona_estado'] == 1 ) {
-				$fila['estado'] = '<font color=green><b>'.$fila['estado'].'</b></font>';
-			} else {
-				$fila['estado'] = '<font color=red><b>'.$fila['estado'].'</b></font>';
-			}
-			$datos_aux[] = $fila; 
-		}
-		$cuadro->set_datos($datos_aux);
-	}
+    function conf__cuadro(planta_ei_cuadro $cuadro)
+    {
+        $where = $this->dep('filtro')->get_sql_where();
+        $datos = toba::consulta_php('co_docentes')->get_docentes($where);
+        $datos_aux = array();
+
+        foreach ($datos as $fila) {
+            if ($fila['persona_estado'] == 1 ) {
+                $fila['estado'] = '<font color=green><b>'.$fila['estado'].'</b></font>';
+            } else {
+                $fila['estado'] = '<font color=red><b>'.$fila['estado'].'</b></font>';
+            }
+            $datos_aux[] = $fila; 
+        }
+        $cuadro->set_datos($datos_aux);
+    }
 	
 	function evt__cuadro__seleccion($seleccion)
 	{
