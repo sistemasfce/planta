@@ -48,7 +48,7 @@ INSERT INTO apex_objeto_cuadro (objeto_cuadro_proyecto, objeto_cuadro, titulo, s
 	'planta', --objeto_cuadro_proyecto
 	'280000100', --objeto_cuadro
 	NULL, --titulo
-	'DESIGNACIONES DE DOCENTE', --subtitulo
+	'DESIGNACIONES ACTIVAS DE DOCENTE', --subtitulo
 	NULL, --sql
 	NULL, --columnas_clave
 	NULL, --columna_descripcion

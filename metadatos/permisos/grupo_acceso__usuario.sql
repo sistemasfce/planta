@@ -149,24 +149,6 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'planta', --proyecto
 	'usuario', --usuario_grupo_acc
 	NULL, --item_id
-	'280000027'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario', --usuario_grupo_acc
-	NULL, --item_id
-	'280000028'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario', --usuario_grupo_acc
-	NULL, --item_id
-	'280000029'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario', --usuario_grupo_acc
-	NULL, --item_id
 	'280000030'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
@@ -174,12 +156,6 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'usuario', --usuario_grupo_acc
 	NULL, --item_id
 	'280000031'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario', --usuario_grupo_acc
-	NULL, --item_id
-	'280000032'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
 	'planta', --proyecto
@@ -503,12 +479,6 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'planta', --proyecto
 	'usuario', --usuario_grupo_acc
 	NULL, --item_id
-	'280000143'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario', --usuario_grupo_acc
-	NULL, --item_id
 	'280000144'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
@@ -588,6 +558,12 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'usuario', --usuario_grupo_acc
 	NULL, --item_id
 	'280000183'  --item
+);
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'planta', --proyecto
+	'usuario', --usuario_grupo_acc
+	NULL, --item_id
+	'280000185'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
 	'planta', --proyecto

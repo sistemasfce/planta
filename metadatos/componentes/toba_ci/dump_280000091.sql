@@ -21,7 +21,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'Cargar designación', --nombre
-	'DESIGNAR -> CARGAR NUEVA DESIGNACION', --titulo
+	'DESIGNAR -> CARGAR ALTA DE DESIGNACION', --titulo
 	'0', --colapsable
 	NULL, --descripcion
 	NULL, --fuente_datos_proyecto

@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[280000014]--  Cargar nueva designación 
+--[280000014]--  Cargar alta de designación 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -23,7 +23,7 @@ INSERT INTO apex_item (item_id, proyecto, item, padre_id, padre_proyecto, padre,
 	NULL, --actividad_buffer
 	NULL, --actividad_patron_proyecto
 	NULL, --actividad_patron
-	'Cargar nueva designación', --nombre
+	'Cargar alta de designación', --nombre
 	NULL, --descripcion
 	'280000002', --punto_montaje
 	NULL, --actividad_accion

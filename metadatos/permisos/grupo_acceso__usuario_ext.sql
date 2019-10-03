@@ -89,55 +89,7 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'planta', --proyecto
 	'usuario_ext', --usuario_grupo_acc
 	NULL, --item_id
-	'280000027'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario_ext', --usuario_grupo_acc
-	NULL, --item_id
-	'280000028'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario_ext', --usuario_grupo_acc
-	NULL, --item_id
-	'280000029'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario_ext', --usuario_grupo_acc
-	NULL, --item_id
-	'280000030'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario_ext', --usuario_grupo_acc
-	NULL, --item_id
-	'280000031'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario_ext', --usuario_grupo_acc
-	NULL, --item_id
-	'280000032'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario_ext', --usuario_grupo_acc
-	NULL, --item_id
 	'280000033'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario_ext', --usuario_grupo_acc
-	NULL, --item_id
-	'280000034'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario_ext', --usuario_grupo_acc
-	NULL, --item_id
-	'280000035'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
 	'planta', --proyecto
@@ -341,6 +293,12 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'planta', --proyecto
 	'usuario_ext', --usuario_grupo_acc
 	NULL, --item_id
+	'280000077'  --item
+);
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'planta', --proyecto
+	'usuario_ext', --usuario_grupo_acc
+	NULL, --item_id
 	'280000079'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
@@ -348,18 +306,6 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'usuario_ext', --usuario_grupo_acc
 	NULL, --item_id
 	'280000080'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario_ext', --usuario_grupo_acc
-	NULL, --item_id
-	'280000081'  --item
-);
-INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
-	'planta', --proyecto
-	'usuario_ext', --usuario_grupo_acc
-	NULL, --item_id
-	'280000083'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
 	'planta', --proyecto

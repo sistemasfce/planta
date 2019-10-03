@@ -16,8 +16,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba', --clase_proyecto
 	'toba_ci', --clase
 	'280000002', --punto_montaje
-	'ci_estados', --subclase
-	'operaciones/parametros/ci_estados.php', --subclase_archivo
+	'ci_dimensiones', --subclase
+	'operaciones/parametros/ci_dimensiones.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'fcefceABM Instituciones', --nombre
