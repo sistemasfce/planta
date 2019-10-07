@@ -2,7 +2,7 @@
 
 require_once(toba::proyecto()->get_path_php().'/comunes.php');
 
-class ci_modificar_designacion_edicion extends planta_ci
+class ci_cargar_modificacion_desig_edicion extends planta_ci
 {
     protected $hay_cambios;
 
@@ -39,6 +39,12 @@ class ci_modificar_designacion_edicion extends planta_ci
         $datos = $this->tabla('designaciones')->get_filas();
 
         foreach ($datos as $dat) {
+            
+            // si es historico no lo muestro
+            if ($dat['estado'] != comunes::estado_activo and $dat['estado'] != comunes::estado_vigente) {
+                continue;
+            }  
+            
             $fila = $dat;
             $fila['resolucion_desc'] = $dat['resolucion']. '/'.$dat['resolucion_anio']. ' '.$dat['resolucion_tipo_desc'];
 
@@ -46,16 +52,8 @@ class ci_modificar_designacion_edicion extends planta_ci
                 $horas_licenciadas = toba::consulta_php('co_designaciones')->get_horas_licencias_activas($fila['designacion']);
                 $fila['carga_horaria_real'] = $fila['carga_horaria_dedicacion'] - $horas_licenciadas['total'];            
             }
-
-            if ($dat['estado'] == comunes::estado_activo  or $dat['estado'] == comunes::estado_vigente) {
-                    $fila['estado_desc'] = '<font color=green><b>'.$fila['estado_desc'].'</b></font>';
-            }
-            if ($dat['estado'] == comunes::estado_historico ) {
-                    $fila['estado_desc'] = '<font color=red><b>'.$fila['estado_desc'].'</b></font>';
-            }  else {
-                    $fila['estado_desc'] = '<font color=blue><b>'.$fila['estado_desc'].'</b></font>';
-            }
-            $this->datos_para_cuadro[] = $fila;
+            $fila['estado_desc'] = '<font color=green><b>'.$fila['estado_desc'].'</b></font>';
+            $datos_para_cuadro[] = $fila;
         }
         $datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
         $cuadro->set_datos($datos_ordenados);
@@ -63,44 +61,29 @@ class ci_modificar_designacion_edicion extends planta_ci
 	
     function evt__cuadro_des__seleccion($seleccion)
     {
-        $this->tabla('designaciones')->set_cursor($seleccion);
+
+        toba::memoria()->set_dato('seleccion',$seleccion);
         $this->hay_cambios = true;  
     }    
 	
     //-----------------------------------------------------------------------------------
     //---- form_des ---------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
-
-    function conf__form_des(planta_ei_formulario $form)
+    function evt__form_des__alta($datos)
     {
-        if ($this->tabla('designaciones')->hay_cursor()) {
-            $datos = $this->tabla('designaciones')->get();    
-            $form->set_datos($datos);
-        }        
-    }
-
-    function evt__form_des__baja()
-    {
-        $this->tabla('designaciones')->set(null);
-    }
-
-    function evt__form_des__modificacion($datos)
-    {
-        //si es contratado, controlar que la categoria sea de profesor
+        $selec = toba::memoria()->get_dato('seleccion');
+        ei_arbol($selec);
+        // si es contratado, controlar que la categoria sea de profesor
         if ($datos['caracter'] == comunes::car_contratado) {
-            //si no es titular, adjunto o asociado mostrar mensaje y no grabar
+            // si no es titular, adjunto o asociado mostrar mensaje y no grabar
             if ($datos['categoria'] != comunes::cat_titular and $datos['categoria'] != comunes::cat_asociado and $datos['categoria'] != comunes::cat_adjunto) {
                 $this->informar_msg("La designación de caracter contratado sólo puede ser para las categorías titular, adjunto, asociado","error");
                 return;
             }
-         }
-        $this->tabla('designaciones')->set($datos);
-        $this->evt__form_des__cancelar();
-    }
-
-    function evt__form_des__cancelar()
-    {
-        $this->tabla('designaciones')->resetear_cursor();
+        }
+        $datos['nombre_completo'] = '';
+        $this->tabla('designaciones')->nueva_fila($datos);
+        $this->hay_cambios = true;
     }
 }
 ?>

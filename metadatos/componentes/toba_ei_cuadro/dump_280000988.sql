@@ -90,9 +90,9 @@ INSERT INTO apex_objeto_cuadro (objeto_cuadro_proyecto, objeto_cuadro, titulo, s
 	NULL, --titulo
 	'DESIGNACIONES ACTIVAS DE DOCENTE', --subtitulo
 	NULL, --sql
-	NULL, --columnas_clave
+	'designacion', --columnas_clave
 	NULL, --columna_descripcion
-	'1', --clave_dbr
+	'0', --clave_dbr
 	NULL, --archivos_callbacks
 	'100%', --ancho
 	'1', --ordenar

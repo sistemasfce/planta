@@ -8,9 +8,8 @@ class co_docentes
         $sql = "SELECT DISTINCT    
                         personas.*,
                         apellido || ', ' || nombres as nombre_completo
-                FROM    personas--, personas_perfiles
-                WHERE   -- personas.persona = personas_perfiles.persona
-                        -- AND perfil = 1 -- docente
+                FROM    personas
+                WHERE   
                         estado_docente = 1
 			AND $where
 		ORDER BY nombre_completo

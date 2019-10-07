@@ -76,22 +76,6 @@ class ci_cargar_designacion_edicion extends planta_ci
         $this->hay_cambios = true;
     }
 
-    function evt__form_des__baja()
-    {
-        $this->tabla('designaciones')->set(null);
-    }
-
-    function evt__form_des__modificacion($datos)
-    {
-        $this->tabla('designaciones')->set($datos);
-        $this->evt__form_asig__cancelar();
-    }
-
-    function evt__form_des__cancelar()
-    {
-        $this->tabla('designaciones')->resetear_cursor();
-    }
-
     function get_hay_cambios()
     {
         return $this->hay_cambios;
