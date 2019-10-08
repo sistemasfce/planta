@@ -61,18 +61,20 @@ class ci_cargar_modificacion_desig_edicion extends planta_ci
 	
     function evt__cuadro_des__seleccion($seleccion)
     {
-
         toba::memoria()->set_dato('seleccion',$seleccion);
         $this->hay_cambios = true;  
+    }    
+    
+     function evt__cuadro_des__confirmar()
+    {
+         $this->pantalla('pant_inicial')->agregar_dep('form_des');
     }    
 	
     //-----------------------------------------------------------------------------------
     //---- form_des ---------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
-    function evt__form_des__alta($datos)
+    function evt__form_des__modificacion($datos)
     {
-        $selec = toba::memoria()->get_dato('seleccion');
-        ei_arbol($selec);
         // si es contratado, controlar que la categoria sea de profesor
         if ($datos['caracter'] == comunes::car_contratado) {
             // si no es titular, adjunto o asociado mostrar mensaje y no grabar
@@ -84,6 +86,18 @@ class ci_cargar_modificacion_desig_edicion extends planta_ci
         $datos['nombre_completo'] = '';
         $this->tabla('designaciones')->nueva_fila($datos);
         $this->hay_cambios = true;
+        
+        $modificadas = array();
+        $seleccionados = toba::memoria()->get_dato('seleccion');
+        foreach ($seleccionados as $sel) {
+            // poner historica la designacion modificada
+            toba::consulta_php('act_designaciones')->cambiar_estado($sel['designacion'], comunes::estado_historico);
+            // insertar en tabla intermedia
+            $fila['designacion_anterior'] = $sel['designacion'];
+            $fila['apex_ei_analisis_fila'] = 'A';
+            $modificadas[] = $fila;
+            $this->tabla('designaciones_modificadas')->nueva_fila($fila);
+        }
     }
 }
 ?>

@@ -1,4 +1,7 @@
 <?php
+
+//require_once(toba::proyecto()->get_path_php().'/operaciones/designar/ci_cargar_modificacion_desig_edicion.php');
+
 class ci_cargar_modificacion_desig extends planta_ci
 {
     //-------------------------------------------------------------------------
@@ -60,9 +63,10 @@ class ci_cargar_modificacion_desig extends planta_ci
         try {
             $this->dep('relacion')->sincronizar();
             $this->dep('relacion')->resetear();
+            $this->informar_msg("La designación de modificación se cargo correctamente","info");
             $this->set_pantalla('seleccion');
         }catch (toba_error $e) {
-            toba::notificacion()->agregar('No se puede eliminar la designación porque tiene asignaciones asociadas', 'error');
+            toba::notificacion()->agregar('No se puede modificar la designacion'.$e, 'error');
         }
     }
 

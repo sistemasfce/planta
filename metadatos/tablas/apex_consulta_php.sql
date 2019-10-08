@@ -121,4 +121,13 @@ INSERT INTO apex_consulta_php (proyecto, consulta_php, clase, archivo_clase, arc
 	NULL, --descripcion
 	'280000002'  --punto_montaje
 );
+INSERT INTO apex_consulta_php (proyecto, consulta_php, clase, archivo_clase, archivo, descripcion, punto_montaje) VALUES (
+	'planta', --proyecto
+	'280000032', --consulta_php
+	'act_designaciones', --clase
+	'act_designaciones', --archivo_clase
+	'actualizaciones/act_designaciones.php', --archivo
+	NULL, --descripcion
+	'280000002'  --punto_montaje
+);
 --- FIN Grupo de desarrollo 280

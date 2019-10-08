@@ -35,9 +35,7 @@ class ci_modificar_designacion_edicion extends planta_ci
     function conf__cuadro_des(planta_ei_cuadro $cuadro)
     {
         $datos_para_cuadro = array();
-        $aux = array();
         $datos = $this->tabla('designaciones')->get_filas();
-
         foreach ($datos as $dat) {
             $fila = $dat;
             $fila['resolucion_desc'] = $dat['resolucion']. '/'.$dat['resolucion_anio']. ' '.$dat['resolucion_tipo_desc'];

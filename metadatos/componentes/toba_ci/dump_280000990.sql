@@ -134,10 +134,3 @@ INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id)
 	'0', --orden
 	'280000868'  --dep_id
 );
-INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
-	'planta', --proyecto
-	'280000304', --pantalla
-	'280000990', --objeto_ci
-	'1', --orden
-	'280000869'  --dep_id
-);

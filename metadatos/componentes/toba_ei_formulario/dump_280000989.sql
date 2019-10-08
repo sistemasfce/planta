@@ -48,24 +48,24 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
 	'planta', --proyecto
-	'280000875', --evento_id
+	'280000876', --evento_id
 	'280000989', --objeto
-	'alta', --identificador
-	'&Agregar', --etiqueta
+	'modificacion', --identificador
+	'&Modificar', --etiqueta
 	'1', --maneja_datos
 	NULL, --sobre_fila
 	NULL, --confirmacion
-	'ei-boton-alta', --estilo
+	NULL, --estilo
 	'apex', --imagen_recurso_origen
-	'nucleo/agregar.gif', --imagen
-	'1', --en_botonera
+	NULL, --imagen
+	'0', --en_botonera
 	NULL, --ayuda
 	'1', --orden
 	NULL, --ci_predep
-	'0', --implicito
+	'1', --implicito
 	'0', --defecto
 	NULL, --display_datos_cargados
-	'no_cargado', --grupo
+	NULL, --grupo
 	NULL, --accion
 	NULL, --accion_imphtml_debug
 	NULL, --accion_vinculo_carpeta
@@ -647,7 +647,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	NULL, --inicializacion
 	'0', --permitir_html
 	'0', --deshabilitar_rest_func
-	'1', --estado_defecto
+	'11', --estado_defecto
 	'1', --solo_lectura
 	'0', --solo_lectura_modificacion
 	'get_designaciones_tipos', --carga_metodo
