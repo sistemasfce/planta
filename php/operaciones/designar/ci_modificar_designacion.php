@@ -1,4 +1,7 @@
 <?php
+
+require_once(toba::proyecto()->get_path_php().'/comunes.php');
+
 class ci_modificar_designacion extends planta_ci
 {
     //-------------------------------------------------------------------------
@@ -21,17 +24,7 @@ class ci_modificar_designacion extends planta_ci
     {
         $where = $this->dep('filtro')->get_sql_where();
         $datos = toba::consulta_php('co_docentes')->get_docentes($where);
-        $datos_aux = array();
-
-        foreach ($datos as $fila) {
-            if ($fila['persona_estado'] == 1 ) {
-                $fila['estado'] = '<font color=green><b>'.$fila['estado'].'</b></font>';
-            } else {
-                $fila['estado'] = '<font color=red><b>'.$fila['estado'].'</b></font>';
-            }
-            $datos_aux[] = $fila; 
-        }
-        $cuadro->set_datos($datos_aux);
+        $cuadro->set_datos($datos);
     }
 
     function evt__cuadro__seleccion($seleccion)

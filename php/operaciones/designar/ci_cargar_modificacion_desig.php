@@ -1,7 +1,5 @@
 <?php
 
-//require_once(toba::proyecto()->get_path_php().'/operaciones/designar/ci_cargar_modificacion_desig_edicion.php');
-
 class ci_cargar_modificacion_desig extends planta_ci
 {
     //-------------------------------------------------------------------------

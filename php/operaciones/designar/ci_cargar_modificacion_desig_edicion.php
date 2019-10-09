@@ -86,8 +86,6 @@ class ci_cargar_modificacion_desig_edicion extends planta_ci
         $datos['nombre_completo'] = '';
         $this->tabla('designaciones')->set($datos);
         $this->hay_cambios = true;
-        
-        $modificadas = array();
         $seleccionados = toba::memoria()->get_dato('seleccion');
         foreach ($seleccionados as $sel) {
             // poner historica la designacion modificada
@@ -95,7 +93,6 @@ class ci_cargar_modificacion_desig_edicion extends planta_ci
             // insertar en tabla intermedia
             $fila['designacion_anterior'] = $sel['designacion'];
             $fila['apex_ei_analisis_fila'] = 'A';
-            $modificadas[] = $fila;
             $this->tabla('designaciones_modificadas')->nueva_fila($fila);
         }
     }
