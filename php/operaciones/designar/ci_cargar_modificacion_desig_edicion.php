@@ -65,7 +65,7 @@ class ci_cargar_modificacion_desig_edicion extends planta_ci
         $this->hay_cambios = true;  
     }    
     
-     function evt__cuadro_des__confirmar()
+    function evt__cuadro_des__confirmar()
     {
          $this->pantalla('pant_inicial')->agregar_dep('form_des');
     }    
@@ -84,7 +84,7 @@ class ci_cargar_modificacion_desig_edicion extends planta_ci
             }
         }
         $datos['nombre_completo'] = '';
-        $this->tabla('designaciones')->nueva_fila($datos);
+        $this->tabla('designaciones')->set($datos);
         $this->hay_cambios = true;
         
         $modificadas = array();

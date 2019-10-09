@@ -53,7 +53,7 @@ class ci_modificar_designacion_edicion extends planta_ci
             }  else {
                     $fila['estado_desc'] = '<font color=blue><b>'.$fila['estado_desc'].'</b></font>';
             }
-            $this->datos_para_cuadro[] = $fila;
+            $datos_para_cuadro[] = $fila;
         }
         $datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
         $cuadro->set_datos($datos_ordenados);
