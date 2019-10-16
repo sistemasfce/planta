@@ -59,8 +59,8 @@ class ci_cargar_baja_desig extends planta_ci
     function evt__procesar()
     {
         try {
-//            $this->dep('relacion')->sincronizar();
-//            $this->dep('relacion')->resetear();
+            $this->dep('relacion')->sincronizar();
+            $this->dep('relacion')->resetear();
             $this->informar_msg("La designación de dió de baja correctamente","info");
             $this->set_pantalla('seleccion');
         }catch (toba_error $e) {

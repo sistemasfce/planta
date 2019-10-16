@@ -27,7 +27,8 @@ class comunes {
     const desig_remocion = 7;
     const desig_baja = 8;
     const desig_licencia_mji = 9;
-    const desig_sin_efecto = 10;       
+    const desig_sin_efecto = 10;
+    const desig_modifica = 11;    
    
     //tabla categorias
     const cat_titular = 1; 

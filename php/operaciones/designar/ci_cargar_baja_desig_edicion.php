@@ -79,28 +79,55 @@ class ci_cargar_baja_desig_edicion extends planta_ci
         $this->hay_cambios = true;
         $datos['nombre_completo'] = '';
         $seleccionados = toba::memoria()->get_dato('seleccion');
+
         
         if ($pantalla == 'parcial') {
+            // cargo la baja parcial y la relaciono
             $this->tabla('designaciones')->nueva_fila($datos);
+            $completo = $this->tabla('designaciones')->get_filas();
+            $this->tabla('designaciones')->set_cursor(count($completo)-1);
             foreach ($seleccionados as $sel) {
-                // insertar en tabla intermedia
-                $fila['designacion_anterior'] = $sel['designacion'];
-                $fila['apex_ei_analisis_fila'] = 'A';
-                $this->tabla('designaciones_modificadas')->nueva_fila($fila);
+                foreach ($completo as $co) {
+                    if ($sel['x_dbr_clave'] == $co['x_dbr_clave']) {
+                        toba::consulta_php('act_designaciones')->cambiar_estado($co['designacion'], comunes::estado_historico);
+                        $fila['designacion_anterior'] = $co['designacion'];
+                        $fila['apex_ei_analisis_fila'] = 'A';
+                        $this->tabla('designaciones_modificadas')->nueva_fila($fila);
+                    }
+                }
             }
-            $datos['designacion_tipo'] = 11;
+            // cargo la modificacion y la relaciono
+            $datos['designacion_tipo'] = comunes::desig_modifica;
+            $datos['estado'] = comunes::estado_activo;
+            $this->tabla('designaciones')->nueva_fila($datos);
+            $completo = $this->tabla('designaciones')->get_filas();
+            $this->tabla('designaciones')->set_cursor(count($completo)-1);    
+            foreach ($seleccionados as $sel) {
+                foreach ($completo as $co) {
+                    if ($sel['x_dbr_clave'] == $co['x_dbr_clave']) {                        
+                        $fila['designacion_anterior'] = $co['designacion'];
+                        $fila['apex_ei_analisis_fila'] = 'A';
+                        $this->tabla('designaciones_modificadas')->nueva_fila($fila);
+                    }
+                }
+            }       
+            
         } else {
-            $this->tabla('designaciones')->set($datos);        
+            $this->tabla('designaciones')->nueva_fila($datos);
+            $completo = $this->tabla('designaciones')->get_filas();
+            $this->tabla('designaciones')->set_cursor(count($completo)-1);
             foreach ($seleccionados as $sel) {
-                // poner historica la designacion modificada
-                if ($patanlla == 'definitiva') {
-                    toba::consulta_php('act_designaciones')->cambiar_estado($sel['designacion'], comunes::estado_historico);
-                } 
-                // insertar en tabla intermedia
-                $fila['designacion_anterior'] = $sel['designacion'];
-                $fila['apex_ei_analisis_fila'] = 'A';
-                $this->tabla('designaciones_modificadas')->nueva_fila($fila);
-            }
+                foreach ($completo as $co) {
+                    if ($sel['x_dbr_clave'] == $co['x_dbr_clave']) {
+                        if ($pantalla == 'definitiva') {
+                            toba::consulta_php('act_designaciones')->cambiar_estado($sel['designacion'], comunes::estado_historico);
+                        }
+                        $fila['designacion_anterior'] = $co['designacion'];
+                        $fila['apex_ei_analisis_fila'] = 'A';
+                        $this->tabla('designaciones_modificadas')->nueva_fila($fila);
+                    }
+                }
+            }            
         }
     }
 }
