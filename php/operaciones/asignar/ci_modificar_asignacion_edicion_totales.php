@@ -1,4 +1,7 @@
 <?php
+
+require_once(toba::proyecto()->get_path_php().'/comunes.php');
+
 class ci_modificar_asignacion_edicion_totales extends planta_ci
 {
     protected $hay_cambios;
@@ -33,12 +36,10 @@ class ci_modificar_asignacion_edicion_totales extends planta_ci
         $datos = $this->tabla('designaciones')->get_filas();
 
         foreach ($datos as $dat) {
-            $fila = $dat;
-            //if ($fila['estado'] == 3)
-            //    continue;            
+            $fila = $dat;          
             $fila['resolucion_desc'] = $dat['resolucion']. '/'.$dat['resolucion_anio']. ' '.$dat['resolucion_tipo_desc'];
 
-            if ($fila['designacion_tipo'] == 1 and $fila['designacion'] != null and ($fila['estado'] == 1 or $fila['estado'] == 5)) {
+            if ($fila['designacion_tipo'] == comunes::desig_alta and $fila['designacion'] != null and ($fila['estado'] == comunes::estado_activo or $fila['estado'] == comunes::estado_con_licencia_p)) {
                 $horas_licenciadas = toba::consulta_php('co_designaciones')->get_horas_licencias_activas($fila['designacion']);
                 $fila['carga_horaria_real'] = $fila['carga_horaria_dedicacion'] - $horas_licenciadas['total'];            
             }
@@ -46,10 +47,10 @@ class ci_modificar_asignacion_edicion_totales extends planta_ci
             $suma_asignaciones = toba::consulta_php('co_asignaciones')->get_horas_asignadas_x_designacion($fila['designacion']);
             $fila['a_definir'] = $fila['carga_horaria_real'] - $suma_asignaciones['suma'];
 
-            if ($dat['estado'] == 1  or $dat['estado'] == 6) {
+            if ($dat['estado'] == comunes::estado_activo  or $dat['estado'] == comunes::estado_vigente) {
                 $fila['estado_desc'] = '<font color=green><b>'.$fila['estado_desc'].'</b></font>';
             }
-            if ($dat['estado'] == 3 ) {
+            if ($dat['estado'] == comunes::estado_historico) {
                 $fila['estado_desc'] = '<font color=red><b>'.$fila['estado_desc'].'</b></font>';
             }  else {
                 $fila['estado_desc'] = '<font color=blue><b>'.$fila['estado_desc'].'</b></font>';
@@ -66,22 +67,7 @@ class ci_modificar_asignacion_edicion_totales extends planta_ci
         $this->tabla('designaciones')->set_cursor($seleccion);
         $this->hay_cambios = true; 
     } 
-	/*
-	function conf_evt__cuadro_des__seleccion(toba_evento_usuario $evento, $fila)
-	{
-		$datos = $this->datos_para_cuadro;
-		if ($datos[$fila]['designacion_tipo'] != 1) {
-			$evento->anular(); 
-		} else {
-                    if ($datos[$fila]['estado'] == 3 or $datos[$fila]['estado'] == 4) {
-			$evento->anular(); 
-                    }
-                    else {
-                        $evento->mostrar();  
-                    }  
-		}
-	}    
-        */
+
     //-----------------------------------------------------------------------------------
     //---- cuadro_asig ------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
@@ -95,10 +81,10 @@ class ci_modificar_asignacion_edicion_totales extends planta_ci
             $fila = $dat;
             $fila['resolucion_desc'] = $dat['resolucion']. '/'.$dat['resolucion_anio']. ' '.$dat['resolucion_tipo_desc'];
 
-            if ($dat['estado'] == 1  or $dat['estado'] == 6) {
+            if ($dat['estado'] == comunes::estado_activo  or $dat['estado'] == comunes::estado_vigente) {
                 $fila['estado_desc'] = '<font color=green><b>'.$fila['estado_desc'].'</b></font>';
             }
-            if ($dat['estado'] == 3 ) {
+            if ($dat['estado'] == comunes::estado_historico) {
                 $fila['estado_desc'] = '<font color=red><b>'.$fila['estado_desc'].'</b></font>';
             }  else {
                 $fila['estado_desc'] = '<font color=blue><b>'.$fila['estado_desc'].'</b></font>';
@@ -107,13 +93,11 @@ class ci_modificar_asignacion_edicion_totales extends planta_ci
         }
         $datos_ordenados = rs_ordenar_por_columna($datos_para_cuadro, 'resolucion_fecha');
         $cuadro->set_datos($datos_ordenados);
-
     }
 
     function evt__cuadro_asig__seleccion($seleccion)
     {
         $this->tabla('asignaciones')->set_cursor($seleccion);
-
     }
 	
     //-----------------------------------------------------------------------------------
