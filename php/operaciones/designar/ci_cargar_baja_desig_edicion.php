@@ -89,6 +89,7 @@ class ci_cargar_baja_desig_edicion extends planta_ci
                 foreach ($completo as $co) {
                     if ($sel['x_dbr_clave'] == $co['x_dbr_clave']) {
                         toba::consulta_php('act_designaciones')->cambiar_estado($co['designacion'], comunes::estado_historico);
+                        toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($co['designacion'], comunes::estado_historico);
                         $fila['designacion_anterior'] = $co['designacion'];
                         $fila['apex_ei_analisis_fila'] = 'A';
                         $this->tabla('designaciones_modificadas')->nueva_fila($fila);
@@ -119,8 +120,8 @@ class ci_cargar_baja_desig_edicion extends planta_ci
                 foreach ($completo as $co) {
                     if ($sel['x_dbr_clave'] == $co['x_dbr_clave']) {
                         if ($pantalla == 'definitiva') {
-                            toba::consulta_php('act_designaciones')->cambiar_estado($sel['designacion'], comunes::estado_historico);
-                            toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($sel['designacion'], comunes::estado_historico);
+                            toba::consulta_php('act_designaciones')->cambiar_estado($co['designacion'], comunes::estado_historico);
+                            toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($co['designacion'], comunes::estado_historico);
                         }
                         $fila['designacion_anterior'] = $co['designacion'];
                         $fila['apex_ei_analisis_fila'] = 'A';
