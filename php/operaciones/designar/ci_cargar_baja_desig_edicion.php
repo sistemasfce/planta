@@ -80,7 +80,6 @@ class ci_cargar_baja_desig_edicion extends planta_ci
         $datos['nombre_completo'] = '';
         $seleccionados = toba::memoria()->get_dato('seleccion');
 
-        
         if ($pantalla == 'parcial') {
             // cargo la baja parcial y la relaciono
             $this->tabla('designaciones')->nueva_fila($datos);
@@ -121,6 +120,7 @@ class ci_cargar_baja_desig_edicion extends planta_ci
                     if ($sel['x_dbr_clave'] == $co['x_dbr_clave']) {
                         if ($pantalla == 'definitiva') {
                             toba::consulta_php('act_designaciones')->cambiar_estado($sel['designacion'], comunes::estado_historico);
+                            toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($sel['designacion'], comunes::estado_historico);
                         }
                         $fila['designacion_anterior'] = $co['designacion'];
                         $fila['apex_ei_analisis_fila'] = 'A';

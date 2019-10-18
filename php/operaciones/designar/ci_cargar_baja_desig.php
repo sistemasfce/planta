@@ -61,7 +61,7 @@ class ci_cargar_baja_desig extends planta_ci
         try {
             $this->dep('relacion')->sincronizar();
             $this->dep('relacion')->resetear();
-            $this->informar_msg("La designación de dió de baja correctamente","info");
+            $this->informar_msg("La designación se dió de baja correctamente","info");
             $this->set_pantalla('seleccion');
         }catch (toba_error $e) {
             toba::notificacion()->agregar('No se puede dar de baja la designacion'.$e, 'error');

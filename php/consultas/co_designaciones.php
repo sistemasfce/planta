@@ -101,7 +101,6 @@ class co_designaciones
                         caracteres.codigo as caracter_desc,
                         ubicaciones.codigo as ubicacion_desc,
                         dimensiones.codigo as dimension_desc,
-                        --fecha_desde,
 			COALESCE (fecha_desde_jubilacion, fecha_desde) as fecha_desde,
                         fecha_hasta,
                         resolucion,
@@ -119,31 +118,20 @@ class co_designaciones
 				FROM designaciones as d2, resoluciones_tipos 
 				WHERE d2.resolucion_tipo = resoluciones_tipos.resolucion_tipo AND d2.designacion = designaciones.designacion_padre) as resolucion_padre
 
-                FROM    designaciones LEFT OUTER JOIN dimensiones ON (designaciones.dimension = dimensiones.dimension), 
-                        designaciones_tipos,
-                        espacios_disciplinares, 
-                        dedicaciones, 
-                        personas,
-                        departamentos,
-                        resoluciones_tipos,
-                        categorias,
-                        caracteres,
-                        ubicaciones,
-                        estados
-                WHERE   designaciones.persona = personas.persona
-                        AND designaciones.espacio_disciplinar = espacios_disciplinares.espacio_disciplinar
-                        AND designaciones.designacion_tipo = designaciones_tipos.designacion_tipo 
-                        AND designaciones.dedicacion = dedicaciones.dedicacion
-                        AND designaciones.categoria = categorias.categoria
-                        AND designaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo
-                        AND designaciones.caracter = caracteres.caracter
-                        AND designaciones.ubicacion = ubicaciones.ubicacion
-                        AND designaciones.departamento = departamentos.departamento
-                        AND designaciones.estado = estados.estado
-
-		
-		AND $where
-		AND $where_estado
+                FROM    designaciones LEFT OUTER JOIN dimensiones ON (designaciones.dimension = dimensiones.dimension)
+                        LEFT OUTER JOIN designaciones_tipos ON (designaciones.designacion_tipo = designaciones_tipos.designacion_tipo )
+                        LEFT OUTER JOIN espacios_disciplinares ON (designaciones.espacio_disciplinar = espacios_disciplinares.espacio_disciplinar)
+                        LEFT OUTER JOIN dedicaciones ON (designaciones.dedicacion = dedicaciones.dedicacion)
+                        LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)
+                        LEFT OUTER JOIN departamentos ON (designaciones.departamento = departamentos.departamento)
+                        LEFT OUTER JOIN resoluciones_tipos ON (designaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo)
+                        LEFT OUTER JOIN categorias ON (designaciones.categoria = categorias.categoria)
+                        LEFT OUTER JOIN caracteres ON (designaciones.caracter = caracteres.caracter)
+                        LEFT OUTER JOIN ubicaciones ON (designaciones.ubicacion = ubicaciones.ubicacion)
+                        LEFT OUTER JOIN estados ON (designaciones.estado = estados.estado)
+                WHERE   
+                    $where
+                    AND $where_estado
 		ORDER BY designaciones.resolucion_fecha::date DESC, espacios_disciplinares.descripcion
 		";
 	return toba::db()->consultar($sql);
