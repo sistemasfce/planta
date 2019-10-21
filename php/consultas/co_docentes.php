@@ -1,5 +1,7 @@
 <?php
 
+require_once(toba::proyecto()->get_path_php().'/comunes.php');
+
 class co_docentes
 {
     function get_docentes($where=null)
@@ -93,6 +95,18 @@ SELECT apellido || ', ' || nombres as nombre_completo,
         ORDER BY nombre_completo
 		";
         return toba::db()->consultar($sql);
+    }
+    
+    function get_bajas_cond_sin_confirmar($where) {
+        
+        $sql = "
+            SELECT DISTINCT    
+                personas.*,
+                apellido || ', ' || nombres as nombre_completo
+            FROM personas LEFT OUTER JOIN designaciones ON personas.persona = designaciones.persona
+            WHERE designaciones.designacion_tipo = ".comunes::desig_baja
+            ."AND designaciones.estado = ".comunes::estado_vigente;
+        return toba::db()->consultar($sql);       
     }
 
 }
