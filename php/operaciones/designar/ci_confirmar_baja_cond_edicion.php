@@ -76,8 +76,10 @@ class ci_confirmar_baja_cond_edicion extends planta_ci
     
     function evt__form_des__modificacion($datos)
     {
-        $datos['estado'] = comunes::estado_historico;
-        $this->tabla('designaciones')->set($datos);
+        if ($this->tabla('designaciones')->hay_cursor()) { 
+            $datos['estado'] = comunes::estado_historico;
+            $this->tabla('designaciones')->set($datos);
+        }
     }
 }
 ?>

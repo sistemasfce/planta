@@ -59,10 +59,22 @@ class ci_cargar_baja_parcial extends planta_ci
     function evt__procesar()
     {
         try {
+            $completo = $this->tabla('designaciones')->get_filas();
             $this->dep('relacion')->sincronizar();
             $this->dep('relacion')->resetear();
+            $seleccionados = toba::memoria()->get_dato('seleccion');        
+            foreach ($seleccionados as $sel) {
+                foreach ($completo as $co) {
+                    if ($sel['x_dbr_clave'] == $co['x_dbr_clave']) {
+                        toba::consulta_php('act_designaciones')->cambiar_estado($co['designacion'], comunes::estado_historico);
+                        toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($co['designacion'], comunes::estado_historico);
+                    }
+                }
+            }
+            $this->dependencia('ci_edicion')->set_hay_cambios(false);
             $this->informar_msg("La designación se dió de baja correctamente","info");
-            $this->set_pantalla('seleccion');
+            toba::vinculador()->navegar_a(toba_proyecto::get_id(), '280000016');
+            //$this->set_pantalla('seleccion');
         }catch (toba_error $e) {
             toba::notificacion()->agregar('No se puede dar de baja la designacion'.$e, 'error');
         }
