@@ -16,8 +16,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba', --clase_proyecto
 	'toba_ci', --clase
 	'280000002', --punto_montaje
-	'ci_cargar_baja_desig_edicion', --subclase
-	'operaciones/designar/ci_cargar_baja_desig_edicion.php', --subclase_archivo
+	'ci_cargar_baja_definitiva_edicion', --subclase
+	'operaciones/designar/ci_cargar_baja_definitiva_edicion.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'fcefceModificar designación - ci_edicion', --nombre

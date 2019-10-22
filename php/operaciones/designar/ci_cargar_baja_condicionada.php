@@ -1,6 +1,6 @@
 <?php
 
-class ci_cargar_modificacion_desig extends planta_ci
+class ci_cargar_baja_condicionada extends planta_ci
 {
     //-------------------------------------------------------------------------
     function relacion()
@@ -60,19 +60,12 @@ class ci_cargar_modificacion_desig extends planta_ci
     {
         try {
             $this->dep('relacion')->sincronizar();
-            $this->dep('relacion')->resetear();
-            $seleccionados = toba::memoria()->get_dato('seleccion');
-            foreach ($seleccionados as $sel) {
-               // poner historica la designacion modificada
-               toba::consulta_php('act_designaciones')->cambiar_estado($sel['designacion'], comunes::estado_historico);
-               toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($sel['designacion'], comunes::estado_historico);
-           }           
-           $this->dependencia('ci_edicion')->set_hay_cambios(false);
-           $this->informar_msg("La designación de modificación se cargo correctamente","info");
-           toba::vinculador()->navegar_a(toba_proyecto::get_id(), '280000016');
-           //$this->set_pantalla('seleccion');
+            $this->dep('relacion')->resetear();              
+            $this->dependencia('ci_edicion')->set_hay_cambios(false);
+            $this->informar_msg("La designación se dió de baja correctamente","info");  
+            $this->set_pantalla('seleccion');
         }catch (toba_error $e) {
-            toba::notificacion()->agregar('No se puede modificar la designacion'.$e, 'error');
+            toba::notificacion()->agregar('No se puede dar de baja la designacion'.$e, 'error');
         }
     }
 

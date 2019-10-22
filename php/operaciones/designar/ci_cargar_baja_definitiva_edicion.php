@@ -2,7 +2,7 @@
 
 require_once(toba::proyecto()->get_path_php().'/comunes.php');
 
-class ci_cargar_modificacion_desig_edicion extends planta_ci
+class ci_cargar_baja_definitiva_edicion extends planta_ci
 {
     protected $hay_cambios;
 
@@ -26,13 +26,12 @@ class ci_cargar_modificacion_desig_edicion extends planta_ci
     function get_hay_cambios()
     {
         return $this->hay_cambios;
-    } 
+    }       
     
     function set_hay_cambios($valor)
     {
         $this->hay_cambios = $valor;
-    }  
-    
+    }              
     //-----------------------------------------------------------------------------------
     //---- cuadro_des ------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
@@ -66,7 +65,7 @@ class ci_cargar_modificacion_desig_edicion extends planta_ci
 	
     function evt__cuadro_des__seleccion($seleccion)
     {
-        toba::memoria()->set_dato('seleccion',$seleccion);
+        toba::memoria()->set_dato('seleccion',$seleccion); 
     }    
     
     function evt__cuadro_des__confirmar()
@@ -94,25 +93,19 @@ class ci_cargar_modificacion_desig_edicion extends planta_ci
     
     function evt__form_des__modificacion($datos)
     {
-        // si es contratado, controlar que la categoria sea de profesor
-        if ($datos['caracter'] == comunes::car_contratado) {
-            // si no es titular, adjunto o asociado mostrar mensaje y no grabar
-            if ($datos['categoria'] != comunes::cat_titular and $datos['categoria'] != comunes::cat_asociado and $datos['categoria'] != comunes::cat_adjunto) {
-                $this->informar_msg("La designación de caracter contratado sólo puede ser para las categorías titular, adjunto, asociado","error");
-                return;
-            }
-        }
-        $datos['nombre_completo'] = '';
-        $this->tabla('designaciones')->set($datos);
         $this->hay_cambios = true;
-        $seleccionados = toba::memoria()->get_dato('seleccion');
+        $datos['nombre_completo'] = '';
+        $this->tabla('designaciones')->nueva_fila($datos);
+        $completo = $this->tabla('designaciones')->get_filas();
+        $this->tabla('designaciones')->set_cursor(count($completo)-1);
+        $seleccionados = toba::memoria()->get_dato('seleccion');       
         foreach ($seleccionados as $sel) {
-             // insertar en tabla intermedia
+            toba::consulta_php('act_designaciones')->cambiar_estado($sel['designacion'], comunes::estado_historico);
+            toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($sel['designacion'], comunes::estado_historico);
             $fila['designacion_anterior'] = $sel['designacion'];
             $fila['apex_ei_analisis_fila'] = 'A';
-            $this->tabla('designaciones_modificadas')->nueva_fila($fila);
+            $this->tabla('designaciones_modificadas')->nueva_fila($fila); 
         }
     }
-    
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-class ci_cargar_baja_desig extends planta_ci
+class ci_cargar_baja_parcial extends planta_ci
 {
     //-------------------------------------------------------------------------
     function relacion()

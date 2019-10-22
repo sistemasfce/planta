@@ -80,6 +80,30 @@ class co_designaciones
 	return toba::db()->consultar($sql);
     }
 
+    function get_datos_designacion($designacion) {
+        $sql = "SELECT espacios_disciplinares.descripcion as espacio_disciplinar_desc,
+                    departamentos.descripcion as departamento_desc,
+                    categorias.codigo as categoria_desc,
+                    dedicaciones.codigo as dedicacion_desc,
+                    caracteres.codigo as caracter_desc,
+                    ubicaciones.codigo as ubicacion_desc,
+                    dimensiones.codigo as dimension_desc,
+                    resolucion || '/' || resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_desc
+                FROM designaciones
+                
+			LEFT OUTER JOIN espacios_disciplinares ON (designaciones.espacio_disciplinar = espacios_disciplinares.espacio_disciplinar)
+			LEFT OUTER JOIN dedicaciones ON (designaciones.dedicacion = dedicaciones.dedicacion)
+                        LEFT OUTER JOIN departamentos ON (designaciones.departamento = departamentos.departamento)
+			LEFT OUTER JOIN resoluciones_tipos ON (designaciones.resolucion_tipo = resoluciones_tipos.resolucion_tipo)
+			LEFT OUTER JOIN categorias ON (designaciones.categoria = categorias.categoria)
+			LEFT OUTER JOIN caracteres ON (designaciones.caracter = caracteres.caracter)
+			LEFT OUTER JOIN ubicaciones ON (designaciones.ubicacion = ubicaciones.ubicacion)
+                        LEFT OUTER JOIN dimensiones ON (designaciones.dimension = dimensiones.dimension)
+                WHERE designaciones.designacion = $designacion
+                ";
+        return toba::db()->consultar_fila($sql);
+    }
+    
     function get_designaciones_de_persona($where,$mostrar_historico=null)
     {
 	if (!$mostrar_historico) {

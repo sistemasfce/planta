@@ -2,7 +2,7 @@
 
 require_once(toba::proyecto()->get_path_php().'/comunes.php');
 
-class ci_cargar_baja_desig_edicion extends planta_ci
+class ci_cargar_baja_parcial_edicion extends planta_ci
 {
     protected $hay_cambios;
 
@@ -61,8 +61,7 @@ class ci_cargar_baja_desig_edicion extends planta_ci
 	
     function evt__cuadro_des__seleccion($seleccion)
     {
-        toba::memoria()->set_dato('seleccion',$seleccion);
-        $this->hay_cambios = true;  
+        toba::memoria()->set_dato('seleccion',$seleccion); 
     }    
     
     function evt__cuadro_des__confirmar()
@@ -73,6 +72,21 @@ class ci_cargar_baja_desig_edicion extends planta_ci
     //-----------------------------------------------------------------------------------
     //---- form_des ---------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
+    function conf__form_des(planta_ei_formulario $form)
+    {
+        $titulo = '';
+        $seleccionados = toba::memoria()->get_dato('seleccion');
+        foreach ($seleccionados as $sel) {
+            $desig = toba::consulta_php('co_designaciones')->get_datos_designacion($sel['designacion']);
+            $titulo .= $desig['espacio_disciplinar_desc'] .' '. $desig['departamento_desc'] .' '. $desig['categoria_desc'].' ';
+            $titulo .= $desig['dedicacion_desc'] .' '. $desig['caracter_desc'] .' '. $desig['ubicacion_desc'].' ';
+            $titulo .= $desig['dimension_desc'] .' '. $desig['resolucion_desc'].' ';      
+            $titulo .= ' --- ';
+        }    
+        $datos['titulo'] = $titulo;
+        $form->set_datos($datos);
+    }
+    
     function evt__form_des__modificacion($datos)
     {
         $pantalla = $this->get_parametro('a');
@@ -113,6 +127,7 @@ class ci_cargar_baja_desig_edicion extends planta_ci
             }       
             
         } else {
+            // si es condicionada o definitiva
             $this->tabla('designaciones')->nueva_fila($datos);
             $completo = $this->tabla('designaciones')->get_filas();
             $this->tabla('designaciones')->set_cursor(count($completo)-1);
