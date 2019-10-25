@@ -45,6 +45,8 @@ class comunes {
     const ded_exc25 = 4; 
     const ded_exc50 = 5; 
     const ded_exc75 = 6; 
+    const ded_exc_sim = 11;
+    const ded_semi_sim = 12;
 
     //tabla caracteres
     const car_interino = 1;
