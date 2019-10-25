@@ -59,6 +59,8 @@ class ci_cargar_baja_parcial extends planta_ci
     function evt__procesar()
     {
         try {
+            $ar = $completo = $this->tabla('designaciones_modificadas')->get_filas();
+
             $completo = $this->tabla('designaciones')->get_filas();
             $this->dep('relacion')->sincronizar();
             $this->dep('relacion')->resetear();

@@ -106,6 +106,7 @@ class ci_cargar_modificacion_desig_edicion extends planta_ci
         $this->tabla('designaciones')->set($datos);
         $this->hay_cambios = true;
         $seleccionados = toba::memoria()->get_dato('seleccion');
+
         foreach ($seleccionados as $sel) {
              // insertar en tabla intermedia
             $fila['designacion_anterior'] = $sel['designacion'];

@@ -125,25 +125,34 @@ class co_designaciones
                         caracteres.codigo as caracter_desc,
                         ubicaciones.codigo as ubicacion_desc,
                         dimensiones.codigo as dimension_desc,
-			COALESCE (fecha_desde_jubilacion, fecha_desde) as fecha_desde,
-                        fecha_hasta,
-                        resolucion,
-                        resolucion_fecha,
-                        resolucion_anio,
-                        resolucion || '/' || resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_desc,
-                        ratif_resolucion || '/' || ratif_resolucion_anio as ratif_resolucion_desc,
-                        carrera_academica,
+			COALESCE (designaciones.fecha_desde_jubilacion, designaciones.fecha_desde) as fecha_desde,
+                        designaciones.fecha_hasta,
+                        designaciones.resolucion,
+                        designaciones.resolucion_fecha,
+                        designaciones.resolucion_anio,
+                        CASE WHEN designaciones.designacion_padre is not null THEN 
+                            (SELECT resolucion || '/' || resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_padre 
+                                FROM designaciones as d2, resoluciones_tipos 
+                                WHERE d2.resolucion_tipo = resoluciones_tipos.resolucion_tipo 
+                                AND d2.designacion = designaciones.designacion_padre)
+                        ELSE
+                            des2.resolucion || '/' || des2.resolucion_anio || ' ' || res2.descripcion 
+                        END as vinculo,
+                        
+                        designaciones.resolucion || '/' || designaciones.resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_desc,
+                        designaciones.ratif_resolucion || '/' || designaciones.ratif_resolucion_anio as ratif_resolucion_desc,
+                        designaciones.carrera_academica,
                         designaciones.observaciones,
                         designaciones.designacion_tipo,
                         designaciones_tipos.descripcion as designacion_tipo_desc,
                         designaciones.estado,
-                        estados.descripcion as estado_desc,
-			(SELECT resolucion || '/' || resolucion_anio || ' ' || resoluciones_tipos.descripcion as resolucion_padre 
-				FROM designaciones as d2, resoluciones_tipos 
-				WHERE d2.resolucion_tipo = resoluciones_tipos.resolucion_tipo AND d2.designacion = designaciones.designacion_padre) as resolucion_padre
+                        estados.descripcion as estado_desc
 
                 FROM    designaciones LEFT OUTER JOIN dimensiones ON (designaciones.dimension = dimensiones.dimension)
                         LEFT OUTER JOIN designaciones_tipos ON (designaciones.designacion_tipo = designaciones_tipos.designacion_tipo )
+                        LEFT OUTER JOIN designaciones_modificadas ON (designaciones.designacion = designaciones_modificadas.designacion_nueva)
+                        LEFT OUTER JOIN designaciones as des2 ON (designaciones_modificadas.designacion_anterior = des2.designacion)
+			LEFT OUTER JOIN resoluciones_tipos as res2 ON (des2.resolucion_tipo = res2.resolucion_tipo)
                         LEFT OUTER JOIN espacios_disciplinares ON (designaciones.espacio_disciplinar = espacios_disciplinares.espacio_disciplinar)
                         LEFT OUTER JOIN dedicaciones ON (designaciones.dedicacion = dedicaciones.dedicacion)
                         LEFT OUTER JOIN personas ON (designaciones.persona = personas.persona)

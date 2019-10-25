@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[280001001]--  fcefceModificar designación - relacion 
+--[280001037]--  fceModificar designación - relacion 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -9,7 +9,7 @@
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'planta', --proyecto
-	'280001001', --objeto
+	'280001037', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
@@ -20,7 +20,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	NULL, --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'fcefceModificar designación - relacion', --nombre
+	'fceModificar designación - relacion', --nombre
 	NULL, --titulo
 	NULL, --colapsable
 	NULL, --descripcion
@@ -46,7 +46,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 ------------------------------------------------------------
 INSERT INTO apex_objeto_datos_rel (proyecto, objeto, debug, clave, ap, punto_montaje, ap_clase, ap_archivo, sinc_susp_constraints, sinc_orden_automatico, sinc_lock_optimista) VALUES (
 	'planta', --proyecto
-	'280001001', --objeto
+	'280001037', --objeto
 	'0', --debug
 	NULL, --clave
 	'2', --ap
@@ -65,11 +65,11 @@ INSERT INTO apex_objeto_datos_rel (proyecto, objeto, debug, clave, ap, punto_mon
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
-	'280000879', --dep_id
-	'280001001', --objeto_consumidor
+	'280000925', --dep_id
+	'280001037', --objeto_consumidor
 	'280000089', --objeto_proveedor
 	'designaciones', --identificador
-	'1', --parametros_a
+	NULL, --parametros_a
 	NULL, --parametros_b
 	NULL, --parametros_c
 	NULL, --inicializar
@@ -77,20 +77,8 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
-	'280000880', --dep_id
-	'280001001', --objeto_consumidor
-	'280000995', --objeto_proveedor
-	'designaciones_modificadas', --identificador
-	NULL, --parametros_a
-	NULL, --parametros_b
-	NULL, --parametros_c
-	NULL, --inicializar
-	'3'  --orden
-);
-INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
-	'planta', --proyecto
-	'280000881', --dep_id
-	'280001001', --objeto_consumidor
+	'280000926', --dep_id
+	'280001037', --objeto_consumidor
 	'280000024', --objeto_proveedor
 	'personas', --identificador
 	'1', --parametros_a
@@ -108,8 +96,8 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador, padre_proyecto, padre_objeto, padre_id, padre_clave, hijo_proyecto, hijo_objeto, hijo_id, hijo_clave, cascada, orden) VALUES (
 	'planta', --proyecto
-	'280001001', --objeto
-	'280000070', --asoc_id
+	'280001037', --objeto
+	'280000081', --asoc_id
 	NULL, --identificador
 	'planta', --padre_proyecto
 	'280000024', --padre_objeto
@@ -122,22 +110,6 @@ INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador
 	NULL, --cascada
 	'1'  --orden
 );
-INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador, padre_proyecto, padre_objeto, padre_id, padre_clave, hijo_proyecto, hijo_objeto, hijo_id, hijo_clave, cascada, orden) VALUES (
-	'planta', --proyecto
-	'280001001', --objeto
-	'280000071', --asoc_id
-	NULL, --identificador
-	'planta', --padre_proyecto
-	'280000089', --padre_objeto
-	'designaciones', --padre_id
-	NULL, --padre_clave
-	'planta', --hijo_proyecto
-	'280000995', --hijo_objeto
-	'designaciones_modificadas', --hijo_id
-	NULL, --hijo_clave
-	NULL, --cascada
-	'2'  --orden
-);
 --- FIN Grupo de desarrollo 280
 
 ------------------------------------------------------------
@@ -145,19 +117,10 @@ INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador
 ------------------------------------------------------------
 INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
 	'planta', --proyecto
-	'280001001', --objeto
-	'280000070', --asoc_id
+	'280001037', --objeto
+	'280000081', --asoc_id
 	'280000024', --padre_objeto
 	'280000067', --padre_clave
 	'280000089', --hijo_objeto
 	'280000165'  --hijo_clave
-);
-INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
-	'planta', --proyecto
-	'280001001', --objeto
-	'280000071', --asoc_id
-	'280000089', --padre_objeto
-	'280000164', --padre_clave
-	'280000995', --hijo_objeto
-	'280001269'  --hijo_clave
 );

@@ -138,7 +138,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="2">
-				<span style="font-size:14px;"><strong>Datos de la modificaci&oacute;n de designaci&oacute;n:</strong></span></td>
+				<span style="font-size:14px;"><strong>Datos de nueva modificaci&oacute;n de designaci&oacute;n:</strong></span></td>
 		</tr>
 		<tr>
 			<td colspan="2">

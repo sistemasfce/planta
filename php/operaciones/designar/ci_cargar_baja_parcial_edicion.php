@@ -100,7 +100,8 @@ class ci_cargar_baja_parcial_edicion extends planta_ci
         $this->tabla('designaciones')->nueva_fila($datos);
         $completo = $this->tabla('designaciones')->get_filas();
         $this->tabla('designaciones')->set_cursor(count($completo)-1);
-        $seleccionados = toba::memoria()->get_dato('seleccion');        
+        $aa = $this->tabla('designaciones')->get_cursor();
+        $seleccionados = toba::memoria()->get_dato('seleccion');     
         foreach ($seleccionados as $sel) {
             foreach ($completo as $co) {
                 if ($sel['x_dbr_clave'] == $co['x_dbr_clave']) {
