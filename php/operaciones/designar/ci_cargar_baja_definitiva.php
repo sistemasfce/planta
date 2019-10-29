@@ -27,6 +27,7 @@ class ci_cargar_baja_definitiva extends planta_ci
 
     function evt__cuadro__seleccion($seleccion)
     {
+        toba::memoria()->set_dato('persona',$seleccion['persona']);
         $this->relacion()->cargar($seleccion);
         $this->set_pantalla('edicion');
     }    
@@ -67,8 +68,8 @@ class ci_cargar_baja_definitiva extends planta_ci
                 toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($sel['designacion'], comunes::estado_historico);
             }   
             $this->dependencia('ci_edicion')->set_hay_cambios(false);
-            $this->informar_msg("La designación se dió de baja correctamente","info");
-            $this->set_pantalla('seleccion');
+            $this->informar_msg("La designación se dió de baja correctamente","info"); 
+            $this->pantalla('edicion')->agregar_evento('inactivar');
         }catch (toba_error $e) {
             toba::notificacion()->agregar('No se puede dar de baja la designacion'.$e, 'error');
         }
@@ -80,6 +81,13 @@ class ci_cargar_baja_definitiva extends planta_ci
         $this->set_pantalla('seleccion');
     }    
 
+    function evt__inactivar()
+    {
+        $persona = toba::memoria()->get_dato('persona'); 
+        toba::consulta_php('act_docentes')->inactivar_docente($persona);
+        $this->set_pantalla('seleccion');
+    }    
+    
     //-----------------------------------------------------------------------------------
     //---- JAVASCRIPT -------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
@@ -121,6 +129,6 @@ class ci_cargar_baja_definitiva extends planta_ci
                 return confirmar_cambios();
             }
         ";
-    }   
+    }      
 }
 ?>

@@ -65,6 +65,7 @@ class ci_confirmar_baja_cond extends planta_ci
             $persona = toba::memoria()->get_dato('persona');
             toba::consulta_php('act_designaciones')->cambiar_estado_persona($persona['persona'], comunes::estado_historico);
             toba::consulta_php('act_asignaciones')->cambiar_estado_persona($persona['persona'], comunes::estado_historico);
+            toba::consulta_php('act_docentes')->inactivar_docente($persona['persona']);
             $this->informar_msg("La baja condicionada se confirmó correctamente","info");
             $this->set_pantalla('seleccion');
         }catch (toba_error $e) {

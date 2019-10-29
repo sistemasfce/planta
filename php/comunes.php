@@ -57,6 +57,16 @@ class comunes {
     const car_visitante = 6;  
     const car_libre = 7;  
     const car_noc = 8;  
-    const car_suplente = 9;       
+    const car_suplente = 9;     
+    
+    const perfil_docente = 1;
+    const perfil_no_docente = 2;
+    const perfil_externo = 3;
+    const perfil_alumno = 4;
+    
+    const perfil_estado_activo = 1;
+    const perfil_estado_jubilado = 2;
+    const perfil_estado_renuncia = 3;
+
 
 }
