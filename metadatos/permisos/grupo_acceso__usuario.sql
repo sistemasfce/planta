@@ -359,6 +359,18 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'planta', --proyecto
 	'usuario', --usuario_grupo_acc
 	NULL, --item_id
+	'280000070'  --item
+);
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'planta', --proyecto
+	'usuario', --usuario_grupo_acc
+	NULL, --item_id
+	'280000071'  --item
+);
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'planta', --proyecto
+	'usuario', --usuario_grupo_acc
+	NULL, --item_id
 	'280000073'  --item
 );
 INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
@@ -642,5 +654,11 @@ INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, i
 	'usuario', --usuario_grupo_acc
 	NULL, --item_id
 	'280000267'  --item
+);
+INSERT INTO apex_usuario_grupo_acc_item (proyecto, usuario_grupo_acc, item_id, item) VALUES (
+	'planta', --proyecto
+	'usuario', --usuario_grupo_acc
+	NULL, --item_id
+	'280000268'  --item
 );
 --- FIN Grupo de desarrollo 280
