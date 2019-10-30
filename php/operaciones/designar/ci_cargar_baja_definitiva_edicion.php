@@ -100,8 +100,6 @@ class ci_cargar_baja_definitiva_edicion extends planta_ci
         $this->tabla('designaciones')->set_cursor(count($completo)-1);
         $seleccionados = toba::memoria()->get_dato('seleccion');       
         foreach ($seleccionados as $sel) {
-            toba::consulta_php('act_designaciones')->cambiar_estado($sel['designacion'], comunes::estado_historico);
-            toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($sel['designacion'], comunes::estado_historico);
             $fila['designacion_anterior'] = $sel['designacion'];
             $fila['apex_ei_analisis_fila'] = 'A';
             $this->tabla('designaciones_modificadas')->nueva_fila($fila); 
