@@ -28,6 +28,11 @@ class ci_cargar_licencia_total_edicion extends planta_ci
         return $this->hay_cambios;
     }
 
+    function set_hay_cambios($valor)
+    {
+        $this->hay_cambios = $valor;
+    }     
+    
     //-----------------------------------------------------------------------------------
     //---- cuadro_des ------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
@@ -59,31 +64,26 @@ class ci_cargar_licencia_total_edicion extends planta_ci
 
     function evt__cuadro_des__seleccion($seleccion)
     {
-        $this->tabla('designaciones')->set_cursor($seleccion);
         toba::memoria()->set_dato('seleccion',$seleccion);
-        $this->hay_cambios = true; 
+        $this->pantalla('pant_inicial')->agregar_dep('form_des');
     }
-
-    //-----------------------------------------------------------------------------------
-    //---- form_des ---------------------------------------------------------------------
-    //-----------------------------------------------------------------------------------
-
+   
     function evt__form_des__modificacion($datos)
     {   
-        if ($this->tabla('designaciones')->hay_cursor()) {
-            $datos_origen = $this->tabla('designaciones')->get();
-            $datos['persona'] = $datos_origen['persona'];
-            $datos['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
-            $datos['departamento'] = $datos_origen['departamento'];
-            $datos['categoria'] = $datos_origen['categoria'];
-            $datos['caracter'] = $datos_origen['caracter'];
-            $datos['ubicacion'] = $datos_origen['ubicacion'];
-            $datos['carrera_academica'] = $datos_origen['carrera_academica'];
-            $datos['carga_horaria'] = $datos_origen['carga_horaria'];
-            $this->tabla('designaciones')->nueva_fila($datos);
-            ei_arbol($datos);
-        }
         
+        $this->hay_cambios = true; 
+        $seleccion = toba::memoria()->get_dato('seleccion');  
+        $datos_origen = toba::consulta_php('co_designaciones')->get_designacion($seleccion['designacion']);
+       
+        $datos['persona'] = $datos_origen['persona'];
+        $datos['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
+        $datos['departamento'] = $datos_origen['departamento'];
+        $datos['categoria'] = $datos_origen['categoria'];
+        $datos['caracter'] = $datos_origen['caracter'];
+        $datos['ubicacion'] = $datos_origen['ubicacion'];
+        $datos['carrera_academica'] = $datos_origen['carrera_academica'];
+        $datos['carga_horaria'] = $datos_origen['carga_horaria'];
+        $this->tabla('designaciones')->nueva_fila($datos);
     }
 
 }

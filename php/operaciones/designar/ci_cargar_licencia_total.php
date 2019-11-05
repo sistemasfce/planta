@@ -1,8 +1,6 @@
 <?php
 
-require_once(toba::proyecto()->get_path_php().'/comunes.php');
-
-class ci_cargar_designacion extends planta_ci
+class ci_cargar_licencia_total extends planta_ci
 {
     //-------------------------------------------------------------------------
     function relacion()
@@ -15,7 +13,7 @@ class ci_cargar_designacion extends planta_ci
     {
         return $this->controlador->dep('relacion')->tabla($id);    
     }
-	
+
     //-----------------------------------------------------------------------------------
     //---- cuadro -----------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
@@ -26,13 +24,14 @@ class ci_cargar_designacion extends planta_ci
         $datos = toba::consulta_php('co_docentes')->get_docentes($where);
         $cuadro->set_datos($datos);
     }
-	
+
     function evt__cuadro__seleccion($seleccion)
     {
+        toba::memoria()->set_dato('persona',$seleccion['persona']);
         $this->relacion()->cargar($seleccion);
         $this->set_pantalla('edicion');
     }    
-	
+
     //-----------------------------------------------------------------------------------
     //---- filtro -----------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
@@ -52,24 +51,34 @@ class ci_cargar_designacion extends planta_ci
     function evt__filtro__cancelar()
     {
         unset($this->s__filtro);
-    }    
+    }  
+
     //-----------------------------------------------------------------------------------
     //---- Eventos ----------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
 
     function evt__procesar()
     {
-//        $this->dep('relacion')->sincronizar();
-//        $this->dep('relacion')->resetear();
-//        $this->set_pantalla('seleccion');
+        try {
+            $this->dep('relacion')->sincronizar();
+            $this->dep('relacion')->resetear();
+            $seleccion = toba::memoria()->get_dato('seleccion');  
+            toba::consulta_php('act_designaciones')->cambiar_estado($seleccion['designacion'], comunes::estado_historico);
+            toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($seleccion['designacion'], comunes::estado_historico); 
+            $this->dependencia('ci_edicion')->set_hay_cambios(false);
+            $this->informar_msg("La licencia de designación se cargó correctamente","info"); 
+            $this->set_pantalla('seleccion');
+        }catch (toba_error $e) {
+            toba::notificacion()->agregar('No se puede cargar la licencia de designacion'.$e, 'error');
+        }
     }
 
     function evt__cancelar()
     {
         $this->dep('relacion')->resetear();
         $this->set_pantalla('seleccion');
-    }   
-
+    }      
+    
     //-----------------------------------------------------------------------------------
     //---- JAVASCRIPT -------------------------------------------------------------------
     //-----------------------------------------------------------------------------------
@@ -77,15 +86,13 @@ class ci_cargar_designacion extends planta_ci
     function extender_objeto_js()
     {   
         $msj_confirmacion = 'Se han detectado cambios ¿Desea salir sin guardar?';
-
         if ($this->dependencia('ci_edicion')->get_hay_cambios()) {
             $confirmar = 'var confirmar = true;';
         } else {
             $confirmar = 'var confirmar = hay_algun_cambio || toba.hay_cambios();';
         }   
-
+        
         echo $this->js_evt_cancelar();
-
         echo "
             var hay_algun_cambio = false;
 
@@ -113,6 +120,6 @@ class ci_cargar_designacion extends planta_ci
                 return confirmar_cambios();
             }
         ";
-    }           
+    }      
 }
 ?>

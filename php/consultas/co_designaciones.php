@@ -25,6 +25,12 @@ class co_designaciones
 	return toba::db()->consultar_fila($sql);
     }
 
+    function get_designacion($designacion)
+    {
+        $sql = "SELECT * FROM designaciones WHERE designacion = ".$designacion;
+        return toba::db()->consultar_fila($sql);
+    }
+    
     function get_designaciones($where=null)
     {
 	if (!isset($where)) $where = '1=1';

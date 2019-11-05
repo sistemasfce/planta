@@ -16,8 +16,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'toba', --clase_proyecto
 	'toba_ci', --clase
 	'280000002', --punto_montaje
-	'ci_cargar_designacion', --subclase
-	'operaciones/designar/ci_cargar_designacion.php', --subclase_archivo
+	'ci_cargar_licencia_total', --subclase
+	'operaciones/designar/ci_cargar_licencia_total.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
 	'fcefcefceModificar designación', --nombre

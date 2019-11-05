@@ -70,7 +70,7 @@ class ci_cargar_baja_definitiva_edicion extends planta_ci
     
     function evt__cuadro_des__confirmar()
     {
-         $this->pantalla('pant_inicial')->agregar_dep('form_des');
+        $this->pantalla('pant_inicial')->agregar_dep('form_des');
     }    
 	
     //-----------------------------------------------------------------------------------
