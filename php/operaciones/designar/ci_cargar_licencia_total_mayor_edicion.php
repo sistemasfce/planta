@@ -2,7 +2,7 @@
 
 require_once(toba::proyecto()->get_path_php().'/comunes.php');
 
-class ci_cargar_licencia_total_edicion extends planta_ci
+class ci_cargar_licencia_total_mayor_edicion extends planta_ci
 {
     protected $hay_cambios;
 
@@ -73,23 +73,38 @@ class ci_cargar_licencia_total_edicion extends planta_ci
         
         $this->hay_cambios = true; 
         $seleccion = toba::memoria()->get_dato('seleccion');  
-        $datos_origen = toba::consulta_php('co_designaciones')->get_designacion($seleccion['designacion']);
-       
-        $datos['persona'] = $datos_origen['persona'];
-        $datos['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
-        $datos['departamento'] = $datos_origen['departamento'];
-        $datos['categoria'] = $datos_origen['categoria'];
-        $datos['caracter'] = $datos_origen['caracter'];
-        $datos['ubicacion'] = $datos_origen['ubicacion'];
-        $datos['carrera_academica'] = $datos_origen['carrera_academica'];
-        $datos['carga_horaria'] = $datos_origen['carga_horaria'];
-        $this->tabla('designaciones')->nueva_fila($datos);
+        $datos_origen = toba::consulta_php('co_designaciones')->get_designacion($seleccion['designacion']);       
+        $aux = $datos;
+        
+        //cargo los datos de la licencia
+        $aux['persona'] = $datos_origen['persona'];
+        $aux['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
+        $aux['departamento'] = $datos_origen['departamento'];
+        $aux['categoria'] = $datos_origen['categoria'];        
+        $aux['caracter'] = $datos_origen['caracter'];
+        $aux['ubicacion'] = $datos_origen['ubicacion'];
+        $aux['carrera_academica'] = $datos_origen['carrera_academica'];
+        $aux['carga_horaria'] = $datos_origen['carga_horaria'];
+        $this->tabla('designaciones')->nueva_fila($aux);
         
         $completo = $this->tabla('designaciones')->get_filas();
         $this->tabla('designaciones')->set_cursor(count($completo)-1);
         $fila['designacion_anterior'] = $seleccion['designacion'];
         $fila['apex_ei_analisis_fila'] = 'A';
         $this->tabla('designaciones_modificadas')->nueva_fila($fila);
+        
+        $aux = $datos;        
+        //cargo los datos de la interina
+        $aux['persona'] = $datos_origen['persona'];
+        $aux['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
+        $aux['departamento'] = $datos_origen['departamento'];
+        $aux['caracter'] = comunes::car_interino;
+        $aux['ubicacion'] = $datos_origen['ubicacion'];
+        $aux['carrera_academica'] = 'N';
+        $aux['carga_horaria'] = $datos_origen['carga_horaria'];
+        $aux['designacion_tipo'] = comunes::desig_alta;
+        $aux['estado'] = comunes::estado_activo;
+        $this->tabla('designaciones')->nueva_fila($aux);       
     }
 
 }
