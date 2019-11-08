@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[280001093]--  Modificar designación 
+--[280001107]--  fceModificar designación 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -9,7 +9,7 @@
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'planta', --proyecto
-	'280001093', --objeto
+	'280001107', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
@@ -20,8 +20,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'operaciones/designar/ci_cargar_licencia_total.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'Modificar designación', --nombre
-	'DESIGNAR -> CARGAR LICENCIA TOTAL MAYOR JERARQUIA', --titulo
+	'fceModificar designación', --nombre
+	'DESIGNAR -> CARGAR LICENCIA PARCIAL MAYOR JERARQUIA', --titulo
 	'0', --colapsable
 	NULL, --descripcion
 	NULL, --fuente_datos_proyecto
@@ -48,8 +48,8 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
 	'planta', --proyecto
-	'280001006', --evento_id
-	'280001093', --objeto
+	'280001020', --evento_id
+	'280001107', --objeto
 	'procesar', --identificador
 	'&Guardar', --etiqueta
 	'1', --maneja_datos
@@ -81,8 +81,8 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 );
 INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, etiqueta, maneja_datos, sobre_fila, confirmacion, estilo, imagen_recurso_origen, imagen, en_botonera, ayuda, orden, ci_predep, implicito, defecto, display_datos_cargados, grupo, accion, accion_imphtml_debug, accion_vinculo_carpeta, accion_vinculo_item, accion_vinculo_objeto, accion_vinculo_popup, accion_vinculo_popup_param, accion_vinculo_target, accion_vinculo_celda, accion_vinculo_servicio, es_seleccion_multiple, es_autovinculo) VALUES (
 	'planta', --proyecto
-	'280001005', --evento_id
-	'280001093', --objeto
+	'280001019', --evento_id
+	'280001107', --objeto
 	'cancelar', --identificador
 	'&Volver', --etiqueta
 	'0', --maneja_datos
@@ -119,7 +119,7 @@ INSERT INTO apex_objeto_eventos (proyecto, evento_id, objeto, identificador, eti
 ------------------------------------------------------------
 INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_etiq, ev_cancelar_etiq, ancho, alto, posicion_botonera, tipo_navegacion, botonera_barra_item, con_toc, incremental, debug_eventos, activacion_procesar, activacion_cancelar, ev_procesar, ev_cancelar, objetos, post_procesar, metodo_despachador, metodo_opciones) VALUES (
 	'planta', --objeto_mt_me_proyecto
-	'280001093', --objeto_mt_me
+	'280001107', --objeto_mt_me
 	NULL, --ev_procesar_etiq
 	NULL, --ev_cancelar_etiq
 	'95%', --ancho
@@ -147,9 +147,9 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
-	'280000991', --dep_id
-	'280001093', --objeto_consumidor
-	'280001089', --objeto_proveedor
+	'280001009', --dep_id
+	'280001107', --objeto_consumidor
+	'280001103', --objeto_proveedor
 	'ci_edicion', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
@@ -159,9 +159,9 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
-	'280000992', --dep_id
-	'280001093', --objeto_consumidor
-	'280001090', --objeto_proveedor
+	'280001010', --dep_id
+	'280001107', --objeto_consumidor
+	'280001104', --objeto_proveedor
 	'cuadro', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
@@ -171,9 +171,9 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
-	'280000993', --dep_id
-	'280001093', --objeto_consumidor
-	'280001091', --objeto_proveedor
+	'280001011', --dep_id
+	'280001107', --objeto_consumidor
+	'280001105', --objeto_proveedor
 	'filtro', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
@@ -183,9 +183,9 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
-	'280000994', --dep_id
-	'280001093', --objeto_consumidor
-	'280001092', --objeto_proveedor
+	'280001012', --dep_id
+	'280001107', --objeto_consumidor
+	'280001106', --objeto_proveedor
 	'relacion', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
@@ -202,8 +202,8 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
 	'planta', --objeto_ci_proyecto
-	'280001093', --objeto_ci
-	'280000346', --pantalla
+	'280001107', --objeto_ci
+	'280000352', --pantalla
 	'edicion', --identificador
 	'2', --orden
 	'Pantalla edición', --etiqueta
@@ -221,8 +221,8 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 );
 INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
 	'planta', --objeto_ci_proyecto
-	'280001093', --objeto_ci
-	'280000347', --pantalla
+	'280001107', --objeto_ci
+	'280000353', --pantalla
 	'seleccion', --identificador
 	'1', --orden
 	'Pantalla Inicial', --etiqueta
@@ -245,38 +245,38 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 ------------------------------------------------------------
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'planta', --proyecto
-	'280000346', --pantalla
-	'280001093', --objeto_ci
+	'280000352', --pantalla
+	'280001107', --objeto_ci
 	'0', --orden
-	'280000991'  --dep_id
+	'280001009'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'planta', --proyecto
-	'280000347', --pantalla
-	'280001093', --objeto_ci
+	'280000353', --pantalla
+	'280001107', --objeto_ci
 	'1', --orden
-	'280000992'  --dep_id
+	'280001010'  --dep_id
 );
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'planta', --proyecto
-	'280000347', --pantalla
-	'280001093', --objeto_ci
+	'280000353', --pantalla
+	'280001107', --objeto_ci
 	'0', --orden
-	'280000993'  --dep_id
+	'280001011'  --dep_id
 );
 
 ------------------------------------------------------------
 -- apex_eventos_pantalla
 ------------------------------------------------------------
 INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VALUES (
-	'280000346', --pantalla
-	'280001093', --objeto_ci
-	'280001005', --evento_id
+	'280000352', --pantalla
+	'280001107', --objeto_ci
+	'280001019', --evento_id
 	'planta'  --proyecto
 );
 INSERT INTO apex_eventos_pantalla (pantalla, objeto_ci, evento_id, proyecto) VALUES (
-	'280000346', --pantalla
-	'280001093', --objeto_ci
-	'280001006', --evento_id
+	'280000352', --pantalla
+	'280001107', --objeto_ci
+	'280001020', --evento_id
 	'planta'  --proyecto
 );

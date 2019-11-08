@@ -2,7 +2,7 @@
 
 require_once(toba::proyecto()->get_path_php().'/comunes.php');
 
-class ci_cargar_licencia_total_mayor_edicion extends planta_ci
+class ci_cargar_licencia_parcial_mayor_edicion extends planta_ci
 {
     protected $hay_cambios;
 

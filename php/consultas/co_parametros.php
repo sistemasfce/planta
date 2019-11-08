@@ -193,6 +193,17 @@ class co_parametros
 	return toba::db()->consultar($sql);
     }
 
+    function get_dedicaciones_licencia_parcial($where=null)
+    {
+	if (!isset($where)) $where = '1=1';
+        $sql = "SELECT *
+		FROM dedicaciones
+		WHERE activo = 'S' AND dedicacion in (1,2,12)
+		ORDER BY descripcion
+        ";
+	return toba::db()->consultar($sql);
+    }
+    
     function get_dedicaciones_licencias_activos($where=null)
     {
 	if (!isset($where)) $where = '1=1';

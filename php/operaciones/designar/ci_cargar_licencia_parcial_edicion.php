@@ -2,7 +2,7 @@
 
 require_once(toba::proyecto()->get_path_php().'/comunes.php');
 
-class ci_cargar_licencia_total_mayor_edicion extends planta_ci
+class ci_cargar_licencia_parcial_edicion extends planta_ci
 {
     protected $hay_cambios;
 
@@ -80,12 +80,10 @@ class ci_cargar_licencia_total_mayor_edicion extends planta_ci
         $aux['persona'] = $datos_origen['persona'];
         $aux['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
         $aux['departamento'] = $datos_origen['departamento'];
-        $aux['dedicacion'] = $datos_origen['dedicacion'];
         $aux['categoria'] = $datos_origen['categoria'];        
         $aux['caracter'] = $datos_origen['caracter'];
         $aux['ubicacion'] = $datos_origen['ubicacion'];
         $aux['carrera_academica'] = $datos_origen['carrera_academica'];
-        $aux['carga_horaria'] = $datos_origen['carga_horaria'];
         $this->tabla('designaciones')->nueva_fila($aux);
         
         $completo = $this->tabla('designaciones')->get_filas();
@@ -95,17 +93,38 @@ class ci_cargar_licencia_total_mayor_edicion extends planta_ci
         $this->tabla('designaciones_modificadas')->nueva_fila($fila);
         
         $aux = $datos;        
-        //cargo los datos de la interina
+        //cargo los datos de la modificacion
         $aux['persona'] = $datos_origen['persona'];
         $aux['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
         $aux['departamento'] = $datos_origen['departamento'];
+        $aux['categoria'] = $datos_origen['categoria']; 
+        $aux['dedicacion'] = null;
+        $horas = $datos_origen['carga_horaria'] - $datos['carga_horaria'];
+        $aux['carga_horaria'] = null;
+        $aux['caracter'] = $datos_origen['caracter'];
+        $aux['ubicacion'] = $datos_origen['ubicacion'];
+        $aux['carrera_academica'] = $datos_origen['carrera_academica'];
+        $aux['carga_horaria'] = $datos_origen['carga_horaria'];
+        $aux['designacion_tipo'] = comunes::desig_modifica;
+        $aux['estado'] = comunes::estado_activo;
+        $this->tabla('designaciones')->nueva_fila($aux);   
+        
+        $aux = $datos;        
+        //cargo los datos de la modificacion
+        $aux['persona'] = $datos_origen['persona'];
+        $aux['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
+        $aux['departamento'] = $datos_origen['departamento'];
+        $aux['categoria'] = $datos_origen['categoria']; 
+        $aux['dedicacion'] = null;
+        $horas = $datos_origen['carga_horaria'] - $datos['carga_horaria'];
+        $aux['carga_horaria'] = null;
         $aux['caracter'] = comunes::car_interino;
         $aux['ubicacion'] = $datos_origen['ubicacion'];
         $aux['carrera_academica'] = 'N';
         $aux['carga_horaria'] = $datos_origen['carga_horaria'];
         $aux['designacion_tipo'] = comunes::desig_alta;
         $aux['estado'] = comunes::estado_activo;
-        $this->tabla('designaciones')->nueva_fila($aux);       
+        $this->tabla('designaciones')->nueva_fila($aux);          
     }
 
 }

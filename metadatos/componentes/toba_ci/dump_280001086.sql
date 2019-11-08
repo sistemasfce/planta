@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[280001086]--  fcefcefceModificar designación 
+--[280001086]--  Modificar designación 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -20,7 +20,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'operaciones/designar/ci_cargar_licencia_total.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'fcefcefceModificar designación', --nombre
+	'Modificar designación', --nombre
 	'DESIGNAR -> CARGAR LICENCIA TOTAL DE DESIGNACION', --titulo
 	'0', --colapsable
 	NULL, --descripcion

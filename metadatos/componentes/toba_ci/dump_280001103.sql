@@ -1,5 +1,5 @@
 ------------------------------------------------------------
---[280001089]--  Modificar designación - ci_edicion 
+--[280001103]--  fceModificar designación - ci_edicion 
 ------------------------------------------------------------
 
 ------------------------------------------------------------
@@ -9,7 +9,7 @@
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, clase_proyecto, clase, punto_montaje, subclase, subclase_archivo, objeto_categoria_proyecto, objeto_categoria, nombre, titulo, colapsable, descripcion, fuente_datos_proyecto, fuente_datos, solicitud_registrar, solicitud_obj_obs_tipo, solicitud_obj_observacion, parametro_a, parametro_b, parametro_c, parametro_d, parametro_e, parametro_f, usuario, creacion, posicion_botonera) VALUES (
 	'planta', --proyecto
-	'280001089', --objeto
+	'280001103', --objeto
 	NULL, --anterior
 	NULL, --identificador
 	NULL, --reflexivo
@@ -20,7 +20,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 	'operaciones/designar/ci_cargar_licencia_total_mayor_edicion.php', --subclase_archivo
 	NULL, --objeto_categoria_proyecto
 	NULL, --objeto_categoria
-	'Modificar designación - ci_edicion', --nombre
+	'fceModificar designación - ci_edicion', --nombre
 	NULL, --titulo
 	'0', --colapsable
 	NULL, --descripcion
@@ -46,7 +46,7 @@ INSERT INTO apex_objeto (proyecto, objeto, anterior, identificador, reflexivo, c
 ------------------------------------------------------------
 INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_etiq, ev_cancelar_etiq, ancho, alto, posicion_botonera, tipo_navegacion, botonera_barra_item, con_toc, incremental, debug_eventos, activacion_procesar, activacion_cancelar, ev_procesar, ev_cancelar, objetos, post_procesar, metodo_despachador, metodo_opciones) VALUES (
 	'planta', --objeto_mt_me_proyecto
-	'280001089', --objeto_mt_me
+	'280001103', --objeto_mt_me
 	NULL, --ev_procesar_etiq
 	NULL, --ev_cancelar_etiq
 	'100%', --ancho
@@ -74,9 +74,9 @@ INSERT INTO apex_objeto_mt_me (objeto_mt_me_proyecto, objeto_mt_me, ev_procesar_
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
-	'280000986', --dep_id
-	'280001089', --objeto_consumidor
-	'280001087', --objeto_proveedor
+	'280001004', --dep_id
+	'280001103', --objeto_consumidor
+	'280001101', --objeto_proveedor
 	'cuadro_des', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
@@ -86,9 +86,9 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 );
 INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objeto_proveedor, identificador, parametros_a, parametros_b, parametros_c, inicializar, orden) VALUES (
 	'planta', --proyecto
-	'280000987', --dep_id
-	'280001089', --objeto_consumidor
-	'280001088', --objeto_proveedor
+	'280001005', --dep_id
+	'280001103', --objeto_consumidor
+	'280001102', --objeto_proveedor
 	'form_des', --identificador
 	NULL, --parametros_a
 	NULL, --parametros_b
@@ -105,8 +105,8 @@ INSERT INTO apex_objeto_dependencias (proyecto, dep_id, objeto_consumidor, objet
 --- INICIO Grupo de desarrollo 280
 INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, identificador, orden, etiqueta, descripcion, tip, imagen_recurso_origen, imagen, objetos, eventos, subclase, subclase_archivo, template, template_impresion, punto_montaje) VALUES (
 	'planta', --objeto_ci_proyecto
-	'280001089', --objeto_ci
-	'280000345', --pantalla
+	'280001103', --objeto_ci
+	'280000351', --pantalla
 	'pant_inicial', --identificador
 	'1', --orden
 	'Pantalla Inicial', --etiqueta
@@ -129,8 +129,8 @@ INSERT INTO apex_objeto_ci_pantalla (objeto_ci_proyecto, objeto_ci, pantalla, id
 ------------------------------------------------------------
 INSERT INTO apex_objetos_pantalla (proyecto, pantalla, objeto_ci, orden, dep_id) VALUES (
 	'planta', --proyecto
-	'280000345', --pantalla
-	'280001089', --objeto_ci
+	'280000351', --pantalla
+	'280001103', --objeto_ci
 	'0', --orden
-	'280000986'  --dep_id
+	'280001004'  --dep_id
 );
