@@ -59,9 +59,9 @@ class ci_cargar_designacion extends planta_ci
 
     function evt__procesar()
     {
-//        $this->dep('relacion')->sincronizar();
-//        $this->dep('relacion')->resetear();
-//        $this->set_pantalla('seleccion');
+        $this->dep('relacion')->sincronizar();
+        $this->dep('relacion')->resetear();
+        $this->set_pantalla('seleccion');
     }
 
     function evt__cancelar()

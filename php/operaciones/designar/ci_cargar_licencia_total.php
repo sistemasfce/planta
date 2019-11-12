@@ -64,7 +64,7 @@ class ci_cargar_licencia_total extends planta_ci
             $this->dep('relacion')->resetear();
             $seleccion = toba::memoria()->get_dato('seleccion');  
             toba::consulta_php('act_designaciones')->cambiar_estado($seleccion['designacion'], comunes::estado_historico);
-            toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($seleccion['designacion'], comunes::estado_historico); 
+            toba::consulta_php('act_asignaciones')->cambiar_estado_por_desig($seleccion['designacion'], comunes::estado_con_licencia); 
             $this->dependencia('ci_edicion')->set_hay_cambios(false);
             $this->informar_msg("La licencia de designación se cargó correctamente","info"); 
             $this->set_pantalla('seleccion');

@@ -581,9 +581,9 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'planta', --objeto_cuadro_proyecto
 	'280000135', --objeto_cuadro
 	'280000568', --objeto_cuadro_col
-	'resolucion_padre', --clave
+	'vinculo', --clave
 	'19', --orden
-	'Afectada a', --titulo
+	'Vinculo', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
 	NULL, --ancho
