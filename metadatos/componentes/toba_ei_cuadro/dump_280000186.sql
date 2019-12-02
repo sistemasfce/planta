@@ -86,28 +86,6 @@ INSERT INTO apex_objeto_cuadro (objeto_cuadro_proyecto, objeto_cuadro, titulo, s
 );
 
 ------------------------------------------------------------
--- apex_objeto_cuadro_cc
-------------------------------------------------------------
-
---- INICIO Grupo de desarrollo 280
-INSERT INTO apex_objeto_cuadro_cc (objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_cc, identificador, descripcion, orden, columnas_id, columnas_descripcion, pie_contar_filas, pie_mostrar_titular, pie_mostrar_titulos, imp_paginar, modo_inicio_colapsado) VALUES (
-	'planta', --objeto_cuadro_proyecto
-	'280000186', --objeto_cuadro
-	'280000056', --objeto_cuadro_cc
-	'actividad_desc', --identificador
-	NULL, --descripcion
-	'1', --orden
-	'actividad_desc', --columnas_id
-	'actividad_desc', --columnas_descripcion
-	'0', --pie_contar_filas
-	'0', --pie_mostrar_titular
-	'0', --pie_mostrar_titulos
-	NULL, --imp_paginar
-	'0'  --modo_inicio_colapsado
-);
---- FIN Grupo de desarrollo 280
-
-------------------------------------------------------------
 -- apex_objeto_ei_cuadro_columna
 ------------------------------------------------------------
 
@@ -671,14 +649,3 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	NULL  --evento_asociado
 );
 --- FIN Grupo de desarrollo 280
-
-------------------------------------------------------------
--- apex_objeto_cuadro_col_cc
-------------------------------------------------------------
-INSERT INTO apex_objeto_cuadro_col_cc (objeto_cuadro_cc, objeto_cuadro_proyecto, objeto_cuadro, objeto_cuadro_col, total) VALUES (
-	'280000056', --objeto_cuadro_cc
-	'planta', --objeto_cuadro_proyecto
-	'280000186', --objeto_cuadro
-	'280000325', --objeto_cuadro_col
-	'1'  --total
-);
