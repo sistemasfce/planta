@@ -97,12 +97,12 @@ class ci_cargar_licencia_total_mayor_edicion extends planta_ci
         $aux = $datos;        
         //cargo los datos de la interina
         $aux['persona'] = $datos_origen['persona'];
-        $aux['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
-        $aux['departamento'] = $datos_origen['departamento'];
+        //$aux['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
+        //$aux['departamento'] = $datos_origen['departamento'];
         $aux['caracter'] = comunes::car_interino;
-        $aux['ubicacion'] = $datos_origen['ubicacion'];
+        //$aux['ubicacion'] = $datos_origen['ubicacion'];
         $aux['carrera_academica'] = 'N';
-        $aux['carga_horaria'] = $datos_origen['carga_horaria'];
+        //$aux['carga_horaria'] = $datos_origen['carga_horaria'];
         $aux['designacion_tipo'] = comunes::desig_alta;
         $aux['estado'] = comunes::estado_activo;
         $this->tabla('designaciones')->nueva_fila($aux);       

@@ -63,10 +63,10 @@ require_once(toba::proyecto()->get_path_php().'/comunes.php');
     //---------------------------------------------- ACTIVO LAS PENDIENTES  -------------------------------------------
 
     // pongo como activas las designaciones que eran pendientes y se activaron
-//    $sql = "UPDATE designaciones
-//            SET estado = 1
-//            WHERE estado = 2 AND fecha_desde::date <= current_date
-//            ";
-//    toba::db()->consultar($sql);
+    $sql = "UPDATE designaciones
+            SET estado = 1
+            WHERE estado = 2 AND fecha_desde::date <= current_date
+            ";
+    toba::db()->consultar($sql);
 
 ?>
