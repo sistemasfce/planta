@@ -583,7 +583,7 @@ INSERT INTO apex_objeto_ei_cuadro_columna (objeto_cuadro_proyecto, objeto_cuadro
 	'280000569', --objeto_cuadro_col
 	'vinculo', --clave
 	'19', --orden
-	'Vinculo', --titulo
+	'Afecta a', --titulo
 	'ei-cuadro-col-tit', --estilo_titulo
 	'4', --estilo
 	NULL, --ancho

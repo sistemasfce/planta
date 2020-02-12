@@ -70,22 +70,23 @@ class ci_cargar_licencia_parcial_mayor_edicion extends planta_ci
    
     function evt__form_des__modificacion($datos)
     {   
-        
         $this->hay_cambios = true; 
         $seleccion = toba::memoria()->get_dato('seleccion');  
         $datos_origen = toba::consulta_php('co_designaciones')->get_designacion($seleccion['designacion']);       
-        $aux = $datos;
+        $aux = $datos_origen;
         
         //cargo los datos de la licencia
-        $aux['persona'] = $datos_origen['persona'];
-        $aux['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
-        $aux['departamento'] = $datos_origen['departamento'];
-        $aux['dedicacion'] = $datos_origen['dedicacion'];
-        $aux['categoria'] = $datos_origen['categoria'];        
-        $aux['caracter'] = $datos_origen['caracter'];
-        $aux['ubicacion'] = $datos_origen['ubicacion'];
-        $aux['carrera_academica'] = $datos_origen['carrera_academica'];
-        $aux['carga_horaria'] = $datos_origen['carga_horaria'];
+        $aux['dedicacion'] = $datos['dedicacion'];
+        $aux['carga_horaria'] = $datos['carga_horaria'];  
+        $aux['fecha_desde'] = $datos['fecha_desde'];  
+        $aux['fecha_hasta'] = $datos['fecha_hasta']; 
+        $aux['observaciones'] = $datos['observaciones'];  
+        $aux['resolucion'] = $datos['resolucion'];
+        $aux['resolucion_anio'] = $datos['resolucion_anio'];
+        $aux['resolucion_fecha'] = $datos['resolucion_fecha'];
+        $aux['resolucion_tipo'] = $datos['resolucion_tipo']; 
+        $aux['designacion_tipo'] = $datos['designacion_tipo'];    
+        $aux['estado'] = $datos['estado'];   
         $this->tabla('designaciones')->nueva_fila($aux);
         
         $completo = $this->tabla('designaciones')->get_filas();
@@ -94,19 +95,52 @@ class ci_cargar_licencia_parcial_mayor_edicion extends planta_ci
         $fila['apex_ei_analisis_fila'] = 'A';
         $this->tabla('designaciones_modificadas')->nueva_fila($fila);
         
-        $aux = $datos;        
+        $aux = $datos_origen; 
+        //cargo los datos de la regular
+        $aux['dedicacion'] = $datos['reg_dedicacion'];
+        $aux['carga_horaria'] = $datos['reg_carga_horaria'];   
+        $aux['fecha_desde'] = $datos['fecha_desde'];  
+        $aux['fecha_hasta'] = $datos['fecha_hasta']; 
+        $aux['resolucion'] = $datos['reg_resolucion'];
+        $aux['resolucion_anio'] = $datos['reg_resolucion_anio'];
+        $aux['resolucion_fecha'] = $datos['reg_resolucion_fecha'];
+        $aux['resolucion_tipo'] = $datos['reg_resolucion_tipo']; 
+        $aux['designacion_tipo'] = $datos['reg_designacion_tipo'];    
+        $aux['estado'] = $datos['reg_estado'];   
+        $this->tabla('designaciones')->nueva_fila($aux);
+        
+        $completo = $this->tabla('designaciones')->get_filas();
+        $this->tabla('designaciones')->set_cursor(count($completo)-1);
+        $fila['designacion_anterior'] = $seleccion['designacion'];
+        $fila['apex_ei_analisis_fila'] = 'A';
+        $this->tabla('designaciones_modificadas')->nueva_fila($fila);       
+        
+        $aux = $datos_origen;        
         //cargo los datos de la interina
-        $aux['persona'] = $datos_origen['persona'];
-        $aux['espacio_disciplinar'] = $datos_origen['espacio_disciplinar'];
-        $aux['departamento'] = $datos_origen['departamento'];
+        $aux['espacio_disciplinar'] = $datos['int_espacio_disciplinar'];
+        $aux['departamento'] = $datos['int_departamento'];
         $aux['caracter'] = comunes::car_interino;
-        $aux['ubicacion'] = $datos_origen['ubicacion'];
+        $aux['ubicacion'] = $datos['int_ubicacion'];
+        $aux['categoria'] = $datos['int_categoria'];
+        $aux['carga_horaria'] = $datos['int_carga_horaria'];
+        $aux['fecha_desde'] = $datos['fecha_desde'];  
+        $aux['fecha_hasta'] = $datos['fecha_hasta'];         
+        $aux['dedicacion'] = $datos['int_dedicacion'];
+        $aux['dimension'] = $datos['int_dimension'];
+        $aux['resolucion'] = $datos['int_resolucion'];
+        $aux['resolucion_anio'] = $datos['int_resolucion_anio'];
+        $aux['resolucion_fecha'] = $datos['int_resolucion_fecha'];
+        $aux['resolucion_tipo'] = $datos['int_resolucion_tipo'];
         $aux['carrera_academica'] = 'N';
-        $aux['carga_horaria'] = $datos_origen['carga_horaria'];
-        $aux['designacion_tipo'] = comunes::desig_alta;
-        $aux['estado'] = comunes::estado_activo;
-        $this->tabla('designaciones')->nueva_fila($aux);       
+        $aux['designacion_tipo'] = $datos['int_designacion_tipo'];
+        $aux['estado'] = $datos['int_estado'];
+        $this->tabla('designaciones')->nueva_fila($aux);
+        
+        $completo = $this->tabla('designaciones')->get_filas();
+        $this->tabla('designaciones')->set_cursor(count($completo)-1);
+        $fila['designacion_anterior'] = $seleccion['designacion'];
+        $fila['apex_ei_analisis_fila'] = 'A';
+        $this->tabla('designaciones_modificadas')->nueva_fila($fila);        
     }
-
 }
 ?>
