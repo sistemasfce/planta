@@ -105,8 +105,13 @@ class ci_cargar_licencia_total_mayor_edicion extends planta_ci
         //$aux['carga_horaria'] = $datos_origen['carga_horaria'];
         $aux['designacion_tipo'] = comunes::desig_alta;
         $aux['estado'] = comunes::estado_activo;
-        $this->tabla('designaciones')->nueva_fila($aux);       
+        $this->tabla('designaciones')->nueva_fila($aux);      
+        
+        $completo = $this->tabla('designaciones')->get_filas();
+        $this->tabla('designaciones')->set_cursor(count($completo)-1);
+        $fila['designacion_anterior'] = $seleccion['designacion'];
+        $fila['apex_ei_analisis_fila'] = 'A';
+        $this->tabla('designaciones_modificadas')->nueva_fila($fila);          
     }
-
 }
 ?>

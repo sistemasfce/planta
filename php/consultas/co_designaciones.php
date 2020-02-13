@@ -72,8 +72,8 @@ class co_designaciones
                         END as vinculo
 		FROM 	designaciones LEFT OUTER JOIN resoluciones_tipos as resoluciones_tipos2 ON (designaciones.ratif_resolucion_tipo = resoluciones_tipos2.resolucion_tipo)
 			LEFT OUTER JOIN designaciones_tipos ON (designaciones.designacion_tipo = designaciones_tipos.designacion_tipo )
-                        LEFT OUTER JOIN designaciones_modificadas ON (designaciones.designacion = designaciones_modificadas.designacion_anterior)
-                        LEFT OUTER JOIN designaciones as des2 ON (designaciones_modificadas.designacion_nueva = des2.designacion)
+                        LEFT OUTER JOIN designaciones_modificadas ON (designaciones.designacion = designaciones_modificadas.designacion_nueva)
+                        LEFT OUTER JOIN designaciones as des2 ON (designaciones_modificadas.designacion_anterior = des2.designacion)
 			LEFT OUTER JOIN resoluciones_tipos as res2 ON (des2.resolucion_tipo = res2.resolucion_tipo)
                         LEFT OUTER JOIN designaciones_tipos as dt2 ON (des2.designacion_tipo = dt2.designacion_tipo)
                         LEFT OUTER JOIN espacios_disciplinares ON (designaciones.espacio_disciplinar = espacios_disciplinares.espacio_disciplinar)
