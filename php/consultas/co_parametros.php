@@ -543,6 +543,16 @@ class co_parametros
 		WHERE $where
         ";
 	return toba::db()->consultar($sql);
-    }    
+    }   
+    
+    function get_programas_web($where=null)
+    {
+	if (!isset($where)) $where = '1=1';
+        $sql = "SELECT *
+		FROM actividades_programas
+		WHERE $where
+        ";
+	return toba::db()->consultar($sql);
+    }     
 }
 ?>
