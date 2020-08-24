@@ -44,7 +44,6 @@ class ci_cargar_asignacion_docente_edicion extends planta_ci
 
             if (($fila['designacion_tipo'] == comunes::desig_alta or $fila['designacion_tipo'] == comunes::desig_modifica)and $fila['designacion'] != null and ($fila['estado'] == comunes::estado_activo or $fila['estado'] == comunes::estado_con_licencia_p)) {
                 $horas_licenciadas = toba::consulta_php('co_designaciones')->get_horas_licencias_activas($fila['designacion']);
-                ei_arbol($horas_licenciadas);
                 $fila['carga_horaria_real'] = $fila['carga_horaria_dedicacion'] - $horas_licenciadas['total'];            
             }
             $suma_asignaciones = toba::consulta_php('co_asignaciones')->get_horas_asignadas_x_designacion($fila['designacion']);
@@ -151,7 +150,7 @@ class ci_cargar_asignacion_docente_edicion extends planta_ci
             $this->tabla('asignaciones')->nueva_fila($datos);
             $this->hay_cambios = true;
         } else {;
-            $this->informar_msg("Debe seleccionar una designación","error");
+            $this->informar_msg("Debe seleccionar una designaciï¿½n","error");
         }
     }
 
