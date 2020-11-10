@@ -34,7 +34,7 @@ class co_designaciones
     function get_designaciones($where=null)
     {
 	if (!isset($where)) $where = '1=1';
-        $sql = "SELECT  designaciones.designacion,
+        $sql = "SELECT DISTINCT  designaciones.designacion,
                         personas.persona,
                         designaciones.designacion_padre,
 			personas.documento,
@@ -127,7 +127,7 @@ class co_designaciones
 		$where_estado = "1=1";
 	}
 	$sql = "
-		SELECT  designaciones.designacion,
+		SELECT DISTINCT designaciones.designacion,
                         personas.documento,
                         personas.apellido || ', ' || personas.nombres as nombre_completo,
                         espacios_disciplinares.descripcion as espacio_disciplinar_desc,
