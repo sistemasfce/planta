@@ -32,6 +32,7 @@ require_once(toba::proyecto()->get_path_php().'/comunes.php');
             // activar las asignaciones del docente que estaban con licencia
             $sql_asig = "UPDATE asignaciones
             SET estado = $activo
+                FROM designaciones_modificadas
             WHERE asignaciones.designacion = designaciones_modificadas.designacion_anterior 
                     AND designaciones_modificadas.designacion_nueva = ".$dat['designacion'].
                     " AND asignaciones.estado = $con_licencia ";
