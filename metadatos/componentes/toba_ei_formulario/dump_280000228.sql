@@ -155,7 +155,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 	NULL, --analisis_cambios
 	'0', --no_imprimir_efs_sin_estado
 	'0', --resaltar_efs_con_estado
-	'<p><span style="font-size:12px;">Estimado Docente </span></p><p><span style="font-size:12px;">Aqu&iacute; Ud. deber&aacute; adjuntar el archivo correspondiente a la actualizaci&oacute;n anual de la Ficha Docente de acuerdo a la Disposici&oacute;n Nro 05/16 DFCE.</span></p><p align="JUSTIFY" style="margin-bottom: 0.35cm"><span style="font-size:12px;">No podr&aacute; continuar con la autoevaluaci&oacute;n de las actividades asignadas hasta tanto suba y guarde el archivo correspondiente a la Ficha Docente. &nbsp;</span></p><p align="JUSTIFY" style="margin-bottom: 0.35cm"><span style="font-size:12px;">Mas informaci&oacute;n sobre ficha docente: <a href="http://aulas.sistemasfce.com.ar/wordpress/index.php/docentes/ficha-del-docente/" target="_blank">http://aulas.sistemasfce.com.ar/wordpress/index.php/docentes/ficha-del-docente/</a></span></p><p align="JUSTIFY" style="margin-bottom: 0.35cm"><strong><em><span style="font-size:12px;">SI UD. REMITIO SU FICHA DOCENTE DURANTE EL A&Ntilde;O 2018 EN EL MARCO DEL PROCESO DE ACREDITACION DE LA CARRERA DE CONTADOR PUBLICO, LA MISMA YA ESTA DISPONIBLE Y SUBIDA.</span></em></strong></p>
+	'<p><span style="font-size:12px;">Estimado Docente </span></p><p><span style="font-size:12px;">Aqu&iacute; Ud. deber&aacute; adjuntar el archivo correspondiente a la actualizaci&oacute;n anual del Curr&iacute;culum Vitae Acad&eacute;mico de acuerdo a la Disposici&oacute;n Nro 05/16 DFCE.</span></p><p align="JUSTIFY" style="margin-bottom: 0.35cm"><span style="font-size:12px;">No podr&aacute; continuar con la autoevaluaci&oacute;n de las actividades asignadas hasta tanto suba y guarde el archivo correspondiente al Curr&iacute;culum Vitae Acad&eacute;mico. &nbsp;</span></p><p align="JUSTIFY" style="margin-bottom: 0.35cm"><span style="font-size:12px;">Mas informaci&oacute;n sobre el CV:&nbsp;</span><a href="http://web.sistemasfce.com.ar/wordpress/index.php/docentes/ficha-del-docente/" target="_blank">http://web.sistemasfce.com.ar/wordpress/index.php/academica/docentes/sistema-de-evaluacion-de-actividades/</a></p>
 <table>
 	<tbody>
 		<tr>
@@ -168,7 +168,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<strong><span style="color:#000000;"><span style="font-size:12px;">Haciendo click en el bot&oacute;n &quot;guardar&quot; la ficha quedar&aacute; guardada de manera provisoria en el sistema, y se podr&aacute; modificar en otro momento.</span></span></strong></td>
+				<strong><span style="color:#000000;"><span style="font-size:12px;">Haciendo click en el bot&oacute;n &quot;guardar&quot; el archivo quedar&aacute; guardado de manera provisoria en el sistema, y se podr&aacute; modificar en otro momento.</span></span></strong></td>
 		</tr>
 		<tr>
 			<td>
@@ -180,7 +180,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td>
-				<strong><span style="color:#000000;"><span style="font-size:12px;">Una vez comfirmada, la ficha no podr&aacute; modificarse. Esto le pemitir&aacute; avanzar en la autoevaluaci&oacute;n de las actividades y asi podr&aacute; finalizar el informe anual docente.</span></span></strong></td>
+				<strong><span style="color:#000000;"><span style="font-size:12px;">Una vez comfirmado, el archivo no podr&aacute; modificarse. Esto le pemitir&aacute; avanzar en la autoevaluaci&oacute;n de las actividades y asi podr&aacute; finalizar el informe anual docente.</span></span></strong></td>
 		</tr>
 	</tbody>
 </table>
@@ -203,7 +203,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'1', --orden
-	'Ficha docente:', --etiqueta
+	'Curriculum:', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado
@@ -363,7 +363,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'3', --orden
-	'Confirmar ficha docente:', --etiqueta
+	'Confirmar CV:', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado
