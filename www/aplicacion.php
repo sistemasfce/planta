@@ -4,7 +4,7 @@
 define('apex_pa_proyecto', 'planta');
 
 # Ejecuta con metadatos compilados
-#define('apex_pa_metadatos_compilados', 1);
+define('apex_pa_metadatos_compilados', 1);
 
 # Deshabilita el autologin
 #define("apex_pa_validacion_debug", 0);
