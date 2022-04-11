@@ -111,3 +111,16 @@ INSERT INTO apex_objeto_datos_rel_asoc (proyecto, objeto, asoc_id, identificador
 	'1'  --orden
 );
 --- FIN Grupo de desarrollo 280
+
+------------------------------------------------------------
+-- apex_objeto_rel_columnas_asoc
+------------------------------------------------------------
+INSERT INTO apex_objeto_rel_columnas_asoc (proyecto, objeto, asoc_id, padre_objeto, padre_clave, hijo_objeto, hijo_clave) VALUES (
+	'planta', --proyecto
+	'280000325', --objeto
+	'280000016', --asoc_id
+	'280000024', --padre_objeto
+	'280000067', --padre_clave
+	'280000090', --hijo_objeto
+	'876'  --hijo_clave
+);
