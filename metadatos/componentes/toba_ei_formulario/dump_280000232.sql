@@ -214,19 +214,19 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 		<tr>
 			<td colspan="4">
-				<p><span style="text-align: justify;">5)&nbsp;</span>&iquest;Cu&aacute;les fueron los principales aprendizajes que le dejo la virtualidad considerando la actividad sobre la cual se est&aacute; autoevaluando y el rol que desempe&ntilde;&oacute;?<span style="text-align: justify;">&nbsp;</span></p><p>&nbsp;</p></td>
+				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;">5) &iquest;Cu&aacute;les fueron los principales aprendizajes que le dejo la virtualidad considerando la actividad sobre la cual se est&aacute; autoevaluando y el rol que desempe&ntilde;&oacute;?</span></p></td>
 		</tr>
 		<tr>
 			<td colspan="4">
-				[ef id=autoeval_pregunta1_pandemia]</td>
+				<span style="font-size:12px;">[ef id=autoeval_pregunta1_pandemia]</span></td>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<p><span style="text-align: justify;">6)&nbsp;</span>&iquest;Qu&eacute; recursos, metodolog&iacute;as, mecanismos e instrumentos, adquiridos durante la virtualidad, le parece importante incorporar a la presencialidad?</p></td>
+				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;">6) &iquest;Qu&eacute; recursos, metodolog&iacute;as, mecanismos e instrumentos, adquiridos durante la virtualidad, le parece importante incorporar a la presencialidad?</span></p></td>
 		</tr>
 		<tr>
 			<td colspan="4">
-				[ef id=autoeval_pregunta2_pandemia]</td>
+				<span style="font-size:12px;">[ef id=autoeval_pregunta2_pandemia]</span></td>
 		</tr>
 		<tr>
 			<td colspan="4">
