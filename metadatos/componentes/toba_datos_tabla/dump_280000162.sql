@@ -60,7 +60,7 @@ INSERT INTO apex_objeto_db_registros (objeto_proyecto, objeto, max_registros, mi
 	'planta', --fuente_datos_proyecto
 	'planta', --fuente_datos
 	'1', --permite_actualizacion_automatica
-	NULL, --esquema
+	'negocio', --esquema
 	'negocio'  --esquema_ext
 );
 
