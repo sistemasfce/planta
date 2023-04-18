@@ -177,7 +177,9 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 		</tr>
 	</tbody>
 </table>
-<p><span style="font-size:12px;">explicitando para cada una, sus objetivos, descripci&oacute;n, metas y/o productos, logros y dificultades y resultado de la autoevaluaci&oacute;n; de acuerdo a la normativa vigente para esa actividad y rol.</span></p>
+<p><span style="font-size:12px;">explicitando para cada una, sus objetivos, descripci&oacute;n, metas y/o productos, logros y dificultades y resultado de la autoevaluaci&oacute;n; de acuerdo a la normativa vigente para esa actividad y rol.</span></p><br />
+<br />
+<br />
 <table>
 	<tbody>
 		<tr>
@@ -213,24 +215,14 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 				<span style="font-size:12px;">[ef id=autoeval_pregunta4]</span></td>
 		</tr>
 		<tr>
-			<td colspan="4">
-				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;">5) &iquest;Cu&aacute;les fueron los principales aprendizajes que le dejo la virtualidad considerando la actividad sobre la cual se est&aacute; autoevaluando y el rol que desempe&ntilde;&oacute;?</span></p></td>
+		</tr>
+		<tr>
+		</tr>
+		<tr>
 		</tr>
 		<tr>
 			<td colspan="4">
-				<span style="font-size:12px;">[ef id=autoeval_pregunta1_pandemia]</span></td>
-		</tr>
-		<tr>
-			<td colspan="4">
-				<p align="JUSTIFY" lang="es-ES" style="margin-bottom: 0.35cm; line-height: 115%;"><span style="font-size:12px;">6) &iquest;Qu&eacute; recursos, metodolog&iacute;as, mecanismos e instrumentos, adquiridos durante la virtualidad, le parece importante incorporar a la presencialidad?</span></p></td>
-		</tr>
-		<tr>
-			<td colspan="4">
-				<span style="font-size:12px;">[ef id=autoeval_pregunta2_pandemia]</span></td>
-		</tr>
-		<tr>
-			<td colspan="4">
-				<p align="JUSTIFY" lang="es-ES"><span style="font-size:12px;">7) Resultado de la Autoevaluaci&oacute;n</span></p></td>
+				<p align="JUSTIFY" lang="es-ES"><span style="font-size:12px;">5) Resultado de la Autoevaluaci&oacute;n</span></p></td>
 		</tr>
 		<tr>
 			<td colspan="4">

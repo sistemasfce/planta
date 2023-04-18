@@ -191,20 +191,16 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 				<span style="font-size:12px;">[ef id=autoeval_informe_otros_path_2]</span></td>
 		</tr>
 		<tr>
-			<td>
-				&iquest;Cu&aacute;les fueron los principales aprendizajes que le dejo la virtualidad considerando la actividad sobre la cual se est&aacute; autoevaluando y el rol que desempe&ntilde;&oacute;?<span style="text-align: justify;">&nbsp;</span></td>
+			<br />
 		</tr>
 		<tr>
-			<td>
-				[ef id=autoeval_pregunta1_pandemia]</td>
+			<br />
 		</tr>
 		<tr>
-			<td>
-				&iquest;Qu&eacute; recursos, metodolog&iacute;as, mecanismos e instrumentos, adquiridos durante la virtualidad, le parece importante incorporar a la presencialidad?</td>
+			<br />
 		</tr>
 		<tr>
-			<td>
-				[ef id=autoeval_pregunta2_pandemia]</td>
+			<br />
 		</tr>
 		<tr>
 			<td>
