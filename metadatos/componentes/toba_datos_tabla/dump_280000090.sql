@@ -912,34 +912,6 @@ INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, colum
 INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
 	'planta', --objeto_proyecto
 	'280000090', --objeto
-	'934', --col_id
-	'autoeval_pregunta1_pandemia', --columna
-	'C', --tipo
-	'0', --pk
-	'', --secuencia
-	'4000', --largo
-	NULL, --no_nulo
-	'0', --no_nulo_db
-	'0', --externa
-	'asignaciones'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'planta', --objeto_proyecto
-	'280000090', --objeto
-	'935', --col_id
-	'autoeval_pregunta2_pandemia', --columna
-	'C', --tipo
-	'0', --pk
-	'', --secuencia
-	'4000', --largo
-	NULL, --no_nulo
-	'0', --no_nulo_db
-	'0', --externa
-	'asignaciones'  --tabla
-);
-INSERT INTO apex_objeto_db_registros_col (objeto_proyecto, objeto, col_id, columna, tipo, pk, secuencia, largo, no_nulo, no_nulo_db, externa, tabla) VALUES (
-	'planta', --objeto_proyecto
-	'280000090', --objeto
 	'936', --col_id
 	'dimension_desc', --columna
 	'C', --tipo

@@ -120,14 +120,6 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 			<td>
 				<span style="font-size:12px;">[ef id=autoeval_informe_otros_path]</span></td>
 		</tr>
-		<tr>
-			<td>
-				[ef id=autoeval_pregunta1_pandemia]</td>
-		</tr>
-		<tr>
-			<td>
-				[ef id=autoeval_pregunta2_pandemia]</td>
-		</tr>
 	</tbody>
 </table>
 <p>&nbsp;</p>', --template
