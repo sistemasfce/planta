@@ -221,207 +221,7 @@ INSERT INTO apex_objeto_ut_formulario (objeto_ut_formulario_proyecto, objeto_ut_
 	NULL, --analisis_cambios
 	'0', --no_imprimir_efs_sin_estado
 	'0', --resaltar_efs_con_estado
-	'<table>
-	<tbody>
-		<tr>
-			<td>
-				<span style="font-size:12px;"><strong>Docente a evaluar:</strong></span></td>
-			<td colspan="2">
-				<span style="font-size:12px;"><strong style="color: rgb(0, 0, 205); font-size: 14px;">[ef id=nombre_completo]</strong></span></td>
-		</tr>
-		<tr>
-			<td>
-				<span style="font-size:12px;"><strong>Actividad:</strong></span></td>
-			<td colspan="2">
-				<span style="font-size:12px;"><strong style="color: rgb(0, 0, 205); font-size: 14px;">[ef id=actividad_desc]</strong></span></td>
-		</tr>
-		<tr>
-			<td>
-				<span style="font-size:12px;"><strong>Rol:</strong></span></td>
-			<td colspan="2">
-				<span style="font-size:12px;"><strong style="color: rgb(0, 0, 205); font-size: 14px;">[ef id=rol_desc]</strong></span></td>
-		</tr>
-		<tr>
-			<td>
-				<span style="font-size:12px;"><strong>Ficha docente:</strong></span></td>
-			<td colspan="2">
-				<span style="font-size:12px;">[ef id=ficha_docente_path_2]</span></td>
-		</tr>
-		<tr>
-			<td>
-				<span style="font-size:12px;"><strong>Programa:</strong></span></td>
-			<td colspan="2">
-				<span style="font-size:12px;">[ef id=autoeval_programa_path_2]</span></td>
-		</tr>
-		<tr>
-			<td>
-				<span style="font-size:12px;"><strong>Informe de c&aacute;tedra:</strong></span></td>
-			<td colspan="2">
-				<span style="font-size:12px;">[ef id=autoeval_informe_catedra_path_2]</span></td>
-		</tr>
-		<tr>
-			<td>
-				<span style="font-size:12px;"><strong>Tipo de informe:</strong></span></td>
-			<td colspan="2">
-				<span style="font-size:12px;">[ef id=autoeval_tipo_informe]</span></td>
-		</tr>
-		<tr>
-			<td>
-				<span style="font-size:12px;"><strong>Informe:</strong></span></td>
-			<td colspan="2">
-				<span style="font-size:12px;">[ef id=autoeval_informe_otros_path_2]</span></td>
-		</tr>
-	</tbody>
-</table>
-<br />
-<br />
-<br />
-<br />
-<table>
-	<tbody>
-		<tr>
-		</tr>
-		<tr>
-		</tr>
-		<tr>
-		</tr>
-		<tr>
-		</tr>
-		<tr>
-			<td colspan="3">
-				[ef id=divisor]</td>
-		</tr>
-		<tr>
-			<td colspan="3" style="text-align: center;">
-				<strong style="text-align: center; font-size: 16px;">Datos de la evaluaci&oacute;n</strong></td>
-		</tr>
-		<tr>
-			<td colspan="3" style="text-align: center;">
-				&nbsp;</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><strong>Evaluaci&oacute;n</strong></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;">Recuerde que usted est&aacute; evaluando una actividad y un rol en un per&iacute;odo dado.</span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;">[ef id=eval_calificacion]</span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				&nbsp;</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<strong><span style="font-size:12px;">Fundamentaci&oacute;n de la evaluaci&oacute;n</span></strong></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;">[ef id=eval_observaciones]</span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<strong><span style="font-size:12px;">[ef id=eval_plan_de_mejora]</span></strong></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color:#0000cd;">[ef id=desvio_tit]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color:#0000cd;">[ef id=eval_desvio1]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color:#0000cd;">[ef id=eval_desvio2]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color:#0000cd;">[ef id=eval_desvio3]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color: rgb(0, 0, 205);">[ef id=act_tit]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color: rgb(0, 0, 205);">[ef id=eval_act1]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color: rgb(0, 0, 205);">[ef id=eval_act2]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color: rgb(0, 0, 205);">[ef id=eval_act3]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color: rgb(0, 0, 205);">[ef id=desempenio_tit]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color: rgb(0, 0, 205);">[ef id=eval_desempenio1]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color: rgb(0, 0, 205);">[ef id=eval_desempenio2]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><span style="color: rgb(0, 0, 205);">[ef id=eval_desempenio3]</span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;">[ef id=eval_evaluador]</span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				&nbsp;</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><strong>Haciendo click en el bot&oacute;n &quot;guardar&quot; la evaluaci&oacute;n quedar&aacute; guardada en el sistema y se podr&aacute; modificar en otro momento.&nbsp;</strong></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="color:#b22222;"><span style="font-size:14px;"><strong style="font-size: 14px;">[ef id=eval_confirmado]</strong></span></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;"><strong>Hasta tanto no confirme la evaluaci&oacute;n,&nbsp;el docente evaluado, no podr&aacute; verla ni notificarse.</strong></span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				[ef id=divisor]</td>
-		</tr>
-		<tr>
-			<td colspan="3" style="text-align: center;">
-				<strong style="font-size: 16px; text-align: center;">Notificaci&oacute;n del docente evaluado</strong></td>
-		</tr>
-		<tr>
-			<td colspan="3" style="text-align: center;">
-				&nbsp;</td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;">[ef id=eval_notificacion]</span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;">[ef id=eval_notificacion_fecha]</span></td>
-		</tr>
-		<tr>
-			<td colspan="3">
-				<span style="font-size:12px;">[ef id=eval_notificacion_observaciones]</span></td>
-		</tr>
-	</tbody>
-</table>
-<p>&nbsp;</p>', --template
+	'', --template
 	NULL  --template_impresion
 );
 
@@ -757,7 +557,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_plan_de_mejora', --identificador
 	'ef_checkbox', --elemento_formulario
 	'eval_plan_de_mejora', --columnas
-	'1', --obligatorio
+	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'5', --orden
 	'Plan de desarrollo', --etiqueta
@@ -917,7 +717,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_desvio1', --identificador
 	'ef_editable_textarea', --elemento_formulario
 	'eval_desvio1', --columnas
-	'1', --obligatorio
+	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'7', --orden
 	'1)', --etiqueta
@@ -1237,7 +1037,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_act1', --identificador
 	'ef_editable_textarea', --elemento_formulario
 	'eval_act1', --columnas
-	'1', --obligatorio
+	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'11', --orden
 	'1)', --etiqueta
@@ -1557,7 +1357,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_desempenio1', --identificador
 	'ef_editable_textarea', --elemento_formulario
 	'eval_desempenio1', --columnas
-	'1', --obligatorio
+	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'15', --orden
 	'1)', --etiqueta
