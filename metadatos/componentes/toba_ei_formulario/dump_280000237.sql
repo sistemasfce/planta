@@ -480,7 +480,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
 	'4', --orden
-	NULL, --etiqueta
+	'Calificación', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado
@@ -559,7 +559,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_plan_de_mejora', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'5', --orden
+	'6', --orden
 	'Plan de desarrollo', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -639,7 +639,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'desvio_tit', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'6', --orden
+	'7', --orden
 	'Desvíos y/o necesidades actuales y/o potenciales:', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -719,7 +719,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_desvio1', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'7', --orden
+	'8', --orden
 	'1)', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -799,7 +799,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_desvio2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'8', --orden
+	'9', --orden
 	'2)', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -879,7 +879,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_desvio3', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'9', --orden
+	'10', --orden
 	'3)', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -959,7 +959,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'act_tit', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'10', --orden
+	'11', --orden
 	'Actividades a realizar:', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1039,7 +1039,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_act1', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'11', --orden
+	'12', --orden
 	'1)', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1119,7 +1119,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_act2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'12', --orden
+	'13', --orden
 	'2)', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1199,7 +1199,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_act3', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'13', --orden
+	'14', --orden
 	'3)', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1279,7 +1279,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'desempenio_tit', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'14', --orden
+	'15', --orden
 	'Desempeño esperado:', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1359,7 +1359,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_desempenio1', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'15', --orden
+	'16', --orden
 	'1)', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1439,7 +1439,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_desempenio2', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'16', --orden
+	'17', --orden
 	'2)', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1519,7 +1519,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_desempenio3', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'17', --orden
+	'18', --orden
 	'3)', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1599,7 +1599,7 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_evaluador', --columnas
 	'0', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'18', --orden
+	'19', --orden
 	'Evaluador', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
@@ -1679,8 +1679,8 @@ INSERT INTO apex_objeto_ei_formulario_ef (objeto_ei_formulario_fila, objeto_ei_f
 	'eval_observaciones', --columnas
 	'1', --obligatorio
 	'0', --oculto_relaja_obligatorio
-	'19', --orden
-	NULL, --etiqueta
+	'5', --orden
+	'Observaciones', --etiqueta
 	NULL, --etiqueta_estilo
 	NULL, --descripcion
 	'0', --colapsado
